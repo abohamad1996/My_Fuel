@@ -27,7 +27,7 @@ Employee employee;
 		try 
 		{
 			stmt = ((java.sql.Connection) connection).createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM employee;");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.employee;");
 	 		while(rs.next())
 	 		{
 	 			employee=new Employee(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));	 			
@@ -44,8 +44,8 @@ public static String UpdateRole(Employee emp)
 	Statement stmt;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "update employee SET Role =? WHERE Empnum=?";
-		ResultSet rs = stmt.executeQuery("SELECT * FROM employee;");
+		String query = "update my_fuel.employee SET Role =? WHERE Empnum=?";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.employee;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 		String a = emp.getRole();
 		String b = emp.getEmpnum();
