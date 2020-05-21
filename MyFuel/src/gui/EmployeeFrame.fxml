@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="625.0" prefWidth="1033.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EmployeeFrameController">
+   <children>
+      <Button id="btnStudentInfo" fx:id="btnSend" layoutX="391.0" layoutY="434.0" mnemonicParsing="false" onAction="#Send" prefHeight="63.0" prefWidth="214.0" text="View Derails" />
+      <Label layoutX="441.0" layoutY="45.0" text="Employee Details" />
+      <TableView fx:id="table" layoutX="10.0" layoutY="86.0" prefHeight="309.0" prefWidth="976.0">
+        <columns>
+          <TableColumn fx:id="firstname" prefWidth="100.0" text="First Name" />
+          <TableColumn fx:id="lasetname" prefWidth="98.0" text="Last Name" />
+            <TableColumn fx:id="numberemp" prefWidth="150.0" text="Employee Number" />
+            <TableColumn fx:id="email" minWidth="0.0" prefWidth="305.0" text="Email" />
+            <TableColumn fx:id="role" minWidth="1.0" prefWidth="131.0" text="Role" />
+            <TableColumn fx:id="org" minWidth="0.0" prefWidth="191.0" text="Organizational affiliation" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnUpdate" layoutX="391.0" layoutY="523.0" mnemonicParsing="false" onAction="#UpdateRole" prefHeight="63.0" prefWidth="214.0" text="Update Role For Employee" />
+   </children>
+</AnchorPane>
