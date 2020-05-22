@@ -6,4 +6,5 @@ public class hhh {
 	int hh;
 	int aa;
 	int hs;
+	String abuhamadnaz3eem;
 }
