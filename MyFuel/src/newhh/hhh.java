@@ -5,4 +5,5 @@ public class hhh {
 	int newcar;
 	int hh;
 	int aa;
+	int hs;
 }
