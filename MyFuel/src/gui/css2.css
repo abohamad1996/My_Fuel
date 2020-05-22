@@ -1,0 +1,65 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#labelDir {
+	-fx-background-color: #01509f;
+	/*-fx-background-color: skyblue;*/
+	-fx-text-fill: #ffffff;
+	-fx-padding: 6 6 6 6;
+	-fx-border-radius: 8;
+	-fx-font-weight : bold;
+}
+.label {
+	/*-fx-background-color: skyblue;*/
+	-fx-text-fill: #ffffff;
+	-fx-padding: 6 6 6 6;
+	-fx-border-radius: 8;
+	-fx-font-weight : bold;
+}
+.root4 {
+	-fx-background-color: #01509f;
+	/*-fx-background-color: skyblue;*/
+	-fx-text-fill: #ffffff;
+	-fx-padding: 6 6 6 6;
+	-fx-border-radius: 8;
+	-fx-font-weight : bold;
+}
+
+.root2{
+	-fx-background-color: #01509f;
+-fx-padding: 6 6 6 6;
+	-fx-border-radius: 8;
+	-fx-font-weight : bold;
+-fx-text-fill: #ffffff;
+}
+.combo{
+	-fx-background-color: #01509f;
+
+	-fx-font-weight : bold;
+-fx-text-fill: #fffff;
+}
+
+.root5{
+	-fx-background-color: #01509f;
+		-fx-text-fill: #000000;
+
+}
+.redlabel{
+
+-fx-text-fill: FF0000;
+
+}
+.greenlabel{
+
+-fx-text-fill: #3CDC26;
+
+}
+.green2label{
+-fx-background-color: #262729;
+-fx-text-fill: #ffffff;
+	-fx-font-weight : bold;
+}
+.root3{
+
+-fx-text-fill: #000000;
+
+}
+
