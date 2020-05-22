@@ -96,8 +96,14 @@ public class EchoServer extends AbstractServer {
 				e.printStackTrace();
 			}
 			break;
-		}
 		
+	case 3:
+		String[] loginMessage = (String[]) recieved.getObject();
+		System.out.println("Username:"+loginMessage[1]+" Password:"+loginMessage[2]);
+	
+		break;
+	}
+
 
 	}
 

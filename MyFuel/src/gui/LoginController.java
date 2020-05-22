@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import client.ClientConsole;
+import common.Message;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +27,7 @@ public class LoginController implements Initializable {
 
 	    @FXML
 	    private Button btnLogin;
-	    public static ClientConsole login;
+		public ClientConsole login= new ClientConsole("localhost", 5555);
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -40,7 +41,7 @@ public class LoginController implements Initializable {
 		loginMessage[0] = "login";
 		loginMessage[1] = username;
 		loginMessage[2] = password;
-		
+		login.accept(new Message(3, loginMessage));
 		System.out.println(""+username+" "+password);
     }
 	public void start(Stage primaryStage) throws Exception {	
