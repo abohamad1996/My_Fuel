@@ -43,9 +43,9 @@ public class LoginController implements Initializable {
 		loginMessage[2] = password;
 		login.accept(new Message(3, loginMessage));
 		System.out.println(""+username+" "+password);
+		
     }
 	public void start(Stage primaryStage) throws Exception {	
-		
 		Parent root = FXMLLoader.load(getClass().getResource("/gui/Login.fxml"));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("/gui/css2.css").toExternalForm());

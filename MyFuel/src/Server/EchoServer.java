@@ -16,6 +16,8 @@ import java.util.Vector;
 import DBconnection.DBconnector;
 import common.Message;
 import gui.Employee;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import ocsf.server.*;
 
 /**
@@ -99,8 +101,24 @@ public class EchoServer extends AbstractServer {
 		
 	case 3:
 		String[] loginMessage = (String[]) recieved.getObject();
-		System.out.println("Username:"+loginMessage[1]+" Password:"+loginMessage[2]);
-	
+		System.out.println("Username:"+loginMessage[1]+" Password:"+loginMessage[2]);	
+			Connection connection;
+			try {
+				connection = DBconnector.getConnection();
+				String a=DBconnector.isInDB(connection, loginMessage[1], loginMessage[2]);
+				System.out.println(""+a);
+				if(a.equals("true"))
+				{
+					
+				System.out.println("Loggeed in");
+				}
+				else if(a.equals("usernot")) {
+					 System.out.println("User not exist");
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		break;
 	}
 

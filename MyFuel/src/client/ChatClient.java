@@ -16,6 +16,8 @@ import javafx.application.Platform;
 import java.io.*;
 import java.util.ArrayList;
 
+import DBconnection.DBconnector;
+
 /**
  * This class overrides some of the methods defined in the abstract
  * superclass in order to give more functionality to the client.
@@ -78,8 +80,11 @@ public class ChatClient extends AbstractClient
 			  UpdateRoleController.instance.status.setText(st + " Updated!");
 		    });
 		  break;
-	  }
 	  
+	  case 3:
+	 	  
+	  break;
+	  }
   }
 
   /**
