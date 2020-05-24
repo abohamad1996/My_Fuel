@@ -42,7 +42,7 @@ public class LoginController implements Initializable {
 		loginMessage[1] = username;
 		loginMessage[2] = password;
 		login.accept(new Message(3, loginMessage));
-		System.out.println(""+username+" "+password);
+		//System.out.println(""+username+" "+password);
 		
     }
 	public void start(Stage primaryStage) throws Exception {	

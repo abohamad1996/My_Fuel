@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import DBconnection.DBconnector;
+import Entity.User;
 import common.Message;
 import gui.Employee;
 import javafx.scene.control.Alert;
@@ -103,25 +104,21 @@ public class EchoServer extends AbstractServer {
 		String[] loginMessage = (String[]) recieved.getObject();
 		System.out.println("Username:"+loginMessage[1]+" Password:"+loginMessage[2]);	
 			Connection connection;
-			try {
-				connection = DBconnector.getConnection();
-				String a=DBconnector.isInDB(connection, loginMessage[1], loginMessage[2]);
-				System.out.println(""+a);
-				if(a.equals("true"))
-				{
-					
-				System.out.println("Loggeed in");
+				//System.out.println(""+a.getId()+" "+a.getFirstname()+" "+a.getLastname()+" "+a.getEmail()+" "+a.getUsername()+" "+a.getPassword()+" "+a.getRank()+" "+a.getStatus());
+				try {
+						connection = DBconnector.getConnection();
+						User user=DBconnector.isInDB(connection, loginMessage[1], loginMessage[2]);
+						client.sendToClient(new Message(3, user));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				else if(a.equals("usernot")) {
-					 System.out.println("User not exist");
-				}
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		break;
-	}
-
+				break;
+		
+		}
 
 	}
 

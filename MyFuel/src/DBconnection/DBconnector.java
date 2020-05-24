@@ -60,26 +60,28 @@ public static String UpdateRole(Employee emp)
 		return "error";
 	}
 }
-public static String isInDB(java.sql.Connection connection, String username, String password) {
+public static User isInDB(java.sql.Connection connection, String username, String password) {
 	Statement stmt ;
-	//User user = null;
+	User user=null ;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "SELECT user.Username,user.Userpassword  FROM my_fuel.user WHERE Username=? AND Userpassword=?;";
+		String query = "SELECT* FROM my_fuel.user WHERE Username=? AND Userpassword=?;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.user;");
 	     PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 	  	String a = username;
 		String b = password;
 		ps.setString(1,a); 
 		ps.setString(2,b); 
-		System.out.println(""+ps.toString());
+		//System.out.println(""+ps.toString());
 		rs = ps.executeQuery();
 		if (!rs.next())
-			return "usernot";
-		else
-		return "true";
+			return null;
+			else {
+ 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9));
+ 			return user;
+			}
 	} catch (SQLException e) {
-//TODO Auto-generated catch block
+		//TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	return null;

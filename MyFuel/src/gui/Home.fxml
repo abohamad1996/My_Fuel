@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.2034956304619226" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css">
+         <children>
+            <Button fx:id="btnAbout" layoutX="41.0" layoutY="329.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="root2" stylesheets="@css2.css" text="About" textFill="#eeeaea" />
+            <Button fx:id="btnHome" layoutX="41.0" layoutY="96.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="root2" stylesheets="@css2.css" text="Home" textFill="#fcf8f8" />
+            <Button fx:id="btnProfile" layoutX="40.0" layoutY="290.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="root2" stylesheets="@css2.css" text="Profile setting" textFill="#eeebeb" />
+            <Button fx:id="btnOrder" layoutX="41.0" layoutY="134.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="root2" stylesheets="@css2.css" text="Refueling" textFill="#f8f6f6" />
+            <Button fx:id="btnRegister" layoutX="41.0" layoutY="210.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="root2" stylesheets="@css2.css" text="Register Client" textFill="#eeeaea" />
+            <Button fx:id="btnOrderHeating" layoutX="41.0" layoutY="170.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="root2" stylesheets="@css2.css" text="Home Heating" textFill="#f8f6f6" />
+            <ImageView fitHeight="79.0" fitWidth="85.0" layoutX="39.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/logo.png" />
+               </image>
+            </ImageView>
+            <Icon content="HELP_OUTLINE" layoutX="10.0" layoutY="332.0" />
+            <Icon content="SETTINGS" layoutX="9.0" layoutY="293.0" />
+            <Icon content="ADD" layoutX="9.0" layoutY="212.0" />
+            <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="12.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/bnzen.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="4.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/home%20heating.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnPurchase" layoutX="40.0" layoutY="250.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="root2" stylesheets="@css2.css" text="Purchase Plan" textFill="#eeeaea" />
+            <Icon content="STORE" layoutX="8.0" layoutY="254.0" />
+            <Icon content="HOME" layoutX="9.0" layoutY="102.0" />
+         </children></AnchorPane>
+    <AnchorPane fx:id="btnOrder" minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="592.0" styleClass="root" stylesheets="@css3.css">
+         <children>
+            <MenuButton layoutX="520.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="116.0" styleClass="combo" stylesheets="@css2.css" text="Wajeh" textFill="WHITE">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+            <Label fx:id="labelDir" layoutY="-1.0" prefHeight="30.0" prefWidth="524.0" styleClass="root7" stylesheets="@css2.css" text="MyFuel-&gt;Home" />
+            <ImageView fitHeight="145.0" fitWidth="303.0" layoutX="146.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="285.0" fitWidth="312.0" layoutX="198.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/logo2.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

@@ -9,14 +9,20 @@ import client.*;
 import common.ChatIF;
 import common.Message;
 import gui.EmployeeFrameController;
+import gui.LoginController;
 import gui.Employee;
 import gui.UpdateRoleController;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.util.ArrayList;
 
 import DBconnection.DBconnector;
+import Entity.User;
 
 /**
  * This class overrides some of the methods defined in the abstract
@@ -82,8 +88,22 @@ public class ChatClient extends AbstractClient
 		  break;
 	  
 	  case 3:
-	 	  
+	 	  User user=(User) recieved.getObject();
+			//System.out.println(""+a.getId()+" "+a.getFirstname()+" "+a.getLastname()+" "+a.getEmail()+" "+a.getUsername()+" "+a.getPassword()+" "+a.getRank()+" "+a.getStatus());
+	 	  if(user.equals(null))
+	 	  {
+	 		  System.out.println("not found");
+	 	  }
+	 	  switch (user.getRank()) {
+		case 1:
+			System.out.println("1");
+	
+			break;
+
+		case 2:
+			System.out.println("2");
 	  break;
+	  }
 	  }
   }
 
