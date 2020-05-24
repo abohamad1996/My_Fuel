@@ -56,7 +56,7 @@ public class HomeController implements Initializable{
 				try {
 					Parent root;
 					root = FXMLLoader.load(getClass().getResource("/gui/Login.fxml"));
-					Scene scene = new Scene(root)
+					Scene scene = new Scene(root);
 					scene.getStylesheets().add(getClass().getResource("/gui/css2.css").toExternalForm());
 					primaryStage.setScene(scene);
 					primaryStage.setResizable(false);
