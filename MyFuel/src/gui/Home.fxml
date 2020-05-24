@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.2034956304619226" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.2034956304619226" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css">
          <children>
@@ -22,7 +22,7 @@
             <Button fx:id="btnOrderHeating" layoutX="41.0" layoutY="170.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="root2" stylesheets="@css2.css" text="Home Heating" textFill="#f8f6f6" />
             <ImageView fitHeight="79.0" fitWidth="85.0" layoutX="39.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/logo.png" />
+                  <Image url="@../Images/HomeLogo.png" />
                </image>
             </ImageView>
             <Icon content="HELP_OUTLINE" layoutX="10.0" layoutY="332.0" />
@@ -30,12 +30,12 @@
             <Icon content="ADD" layoutX="9.0" layoutY="212.0" />
             <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="12.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/bnzen.png" />
+                  <Image url="@../Images/loginLOGO.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="4.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/home%20heating.png" />
+                  <Image url="@../Images/HomeHeat.png" />
                </image>
             </ImageView>
             <Button fx:id="btnPurchase" layoutX="40.0" layoutY="250.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="root2" stylesheets="@css2.css" text="Purchase Plan" textFill="#eeeaea" />
@@ -53,12 +53,12 @@
             <Label fx:id="labelDir" layoutY="-1.0" prefHeight="30.0" prefWidth="524.0" styleClass="root7" stylesheets="@css2.css" text="MyFuel-&gt;Home" />
             <ImageView fitHeight="145.0" fitWidth="303.0" layoutX="146.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/1.png" />
+                  <Image url="@../Images/WelcomeLogo.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="285.0" fitWidth="312.0" layoutX="198.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/logo2.png" />
+                  <Image url="@../Images/MyFuelLogo.png" />
                </image>
             </ImageView>
          </children></AnchorPane>

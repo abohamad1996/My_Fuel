@@ -9,6 +9,7 @@ import client.*;
 import common.ChatIF;
 import common.Message;
 import gui.EmployeeFrameController;
+import gui.HomeController;
 import gui.LoginController;
 import gui.Employee;
 import gui.UpdateRoleController;
@@ -97,7 +98,8 @@ public class ChatClient extends AbstractClient
 	 	  switch (user.getRank()) {
 		case 1:
 			System.out.println("1");
-	
+			HomeController inspector=new HomeController();
+			inspector.start(user);
 			break;
 
 		case 2:

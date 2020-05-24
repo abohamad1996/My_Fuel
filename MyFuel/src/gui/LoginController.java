@@ -1,6 +1,7 @@
 package gui;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,6 +29,7 @@ public class LoginController implements Initializable {
 	    @FXML
 	    private Button btnLogin;
 		public ClientConsole login= new ClientConsole("localhost", 5555);
+		public static Stage primaryStage;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -45,13 +47,28 @@ public class LoginController implements Initializable {
 		//System.out.println(""+username+" "+password);
 		
     }
-	public void start(Stage primaryStage) throws Exception {	
-		Parent root = FXMLLoader.load(getClass().getResource("/gui/Login.fxml"));
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("/gui/css2.css").toExternalForm());
-		primaryStage.setTitle("MyFuel Login");
-		primaryStage.setScene(scene);
-		primaryStage.show();	
+	public void start(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+		try {
+			Parent root;
+		    root = FXMLLoader.load(getClass().getResource("/gui/Login.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/gui/css2.css").toExternalForm());
+			this.primaryStage.setScene(scene);
+			this.primaryStage.setResizable(false);
+			this.primaryStage.setTitle("My Fuel Login");
+			this.primaryStage.show();
+			this.primaryStage.setOnCloseRequest(event -> {
+				System.out.println("EXIT My Fuel");
+				System.exit(0);
+			});
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public Stage getStage() {
+		return primaryStage;
 	}
 	
 }
