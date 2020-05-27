@@ -11,10 +11,10 @@ public class User implements Serializable{
 	String Creditcard;
 	String Username;
 	String Password;
-	Integer Rank;
+	String Rank;
 	Integer Status;
 	public User(String id, String firstname, String lastname, String email, String creditcard, String username,
-			String password, Integer rank, Integer status) {
+			String password, String rank, Integer status) {
 		super();
 		this.id = id;
 		Firstname = firstname;
@@ -68,10 +68,10 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		Password = password;
 	}
-	public Integer getRank() {
+	public String getRank() {
 		return Rank;
 	}
-	public void setRank(Integer rank) {
+	public void setRank(String rank) {
 		Rank = rank;
 	}
 	public Integer getStatus() {

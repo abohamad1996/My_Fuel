@@ -17,6 +17,14 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -43,7 +51,7 @@ public class ChatClient extends AbstractClient
    * the display method in the client.
    */
   ChatIF clientUI;   public static boolean awaitResponse = false;
-
+  Alert a = new Alert(AlertType.NONE);  
   //Constructors ****************************************************
   
   /**
@@ -91,18 +99,26 @@ public class ChatClient extends AbstractClient
 	  case 3:
 	 	  User user=(User) recieved.getObject();
 			//System.out.println(""+a.getId()+" "+a.getFirstname()+" "+a.getLastname()+" "+a.getEmail()+" "+a.getUsername()+" "+a.getPassword()+" "+a.getRank()+" "+a.getStatus());
-	 	  if(user.equals(null))
+	 	  if(user==null)
 	 	  {
-	 		  System.out.println("not found");
+	 			Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setAlertType(AlertType.ERROR); 
+						alert.setContentText("incorrect Username Or Password!!");
+						alert.show(); 
+					}
+				});
 	 	  }
 	 	  switch (user.getRank()) {
-		case 1:
+		case "Manager":
 			System.out.println("1");
 			HomeController inspector=new HomeController();
 			inspector.start(user);
 			break;
 
-		case 2:
+		case "Station Manager":
 			System.out.println("2");
 			HomeController inspector2=new HomeController();
 			inspector2.start(user);

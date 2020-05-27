@@ -49,6 +49,7 @@ public class LoginController implements Initializable {
 		loginMessage[1] = username;
 		loginMessage[2] = password;
 		login.accept(new Message(3, loginMessage));
+		
 	
     }
 	public void start(Stage primaryStage) {
@@ -66,7 +67,6 @@ public class LoginController implements Initializable {
 				System.out.println("My Fuel Closed");
 				System.exit(0);
 			});
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

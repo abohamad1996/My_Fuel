@@ -3,6 +3,8 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.sun.webkit.InspectorClient;
+
 import javafx.application.Application;
 
 
@@ -17,20 +19,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
 public class HomeController implements Initializable{
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
-	}
     @FXML
     private MenuButton UserMenu;
 	  @FXML
-	    private AnchorPane btnPurchase;
+	    private AnchorPane SideMenu;
 	    @FXML
 	    private Button btnAbout;
 
@@ -92,14 +93,17 @@ public class HomeController implements Initializable{
 	    
 	    
 	public static HomeController s;
+	private static User user;
 	public static Stage primaryStage;
-	public void start(User inspector) {
+	public void start(User user) {
+		this.user = user;
 		s = this;
 		primaryStage = LoginController.primaryStage;
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 				try {
+					
 					Parent root;
 					root = FXMLLoader.load(getClass().getResource("/gui/Home.fxml"));
 					Scene scene = new Scene(root);
@@ -115,10 +119,19 @@ public class HomeController implements Initializable{
 
 		});
 	}
+	
+	
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
-
-
-
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		MenuItem rank = new MenuItem(user.getRank());
+	    rank.setStyle("-fx-background-color: #01509f");
+		MenuItem logout = new MenuItem("Logout");
+	       UserMenu.setText(user.getFirstname());
+	        logout.setStyle("-fx-background-color: #01509f");
+	        UserMenu.getItems().add(rank);
+	       UserMenu.getItems().add(logout);
+	}	
 }

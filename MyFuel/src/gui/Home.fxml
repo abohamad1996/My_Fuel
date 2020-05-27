@@ -11,7 +11,7 @@
 
 <SplitPane dividerPositions="0.2034956304619226" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeController">
   <items>
-    <AnchorPane fx:id="btnPurchase" minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="122.0" styleClass="root1" stylesheets="@css2.css">
+    <AnchorPane fx:id="SideMenu" minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="122.0" styleClass="root1" stylesheets="@css2.css">
          <children>
             <Button fx:id="btnAbout" layoutX="41.0" layoutY="337.0" mnemonicParsing="false" onAction="#AboutButton" prefHeight="29.0" prefWidth="107.0" styleClass="root2" stylesheets="@css2.css" text="About" textFill="#eeeaea" />
             <Button fx:id="btnHome" layoutX="43.0" layoutY="96.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="29.0" prefWidth="107.0" styleClass="root2" stylesheets="@css2.css" text="Home" textFill="#fcf8f8" />
@@ -63,10 +63,9 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="592.0" styleClass="root" stylesheets="@css3.css">
          <children>
-            <MenuButton layoutX="520.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="116.0" styleClass="combo" stylesheets="@css2.css" textFill="WHITE">
+            <MenuButton fx:id="UserMenu" layoutX="520.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="116.0" styleClass="combo" stylesheets="@css2.css" textFill="WHITE">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
+   
               </items>
             </MenuButton>
             <Label fx:id="labelDir" layoutY="-1.0" prefHeight="30.0" prefWidth="524.0" styleClass="root7" stylesheets="@css2.css" text="MyFuel-&gt;Home" />
