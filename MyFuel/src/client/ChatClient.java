@@ -104,6 +104,8 @@ public class ChatClient extends AbstractClient
 
 		case 2:
 			System.out.println("2");
+			HomeController inspector2=new HomeController();
+			inspector2.start(user);
 	  break;
 	  }
 	  }
