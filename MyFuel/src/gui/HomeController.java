@@ -3,12 +3,11 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.sun.webkit.InspectorClient;
 
-import javafx.application.Application;
 
 
 import Entity.User;
+import client.Func;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,81 +19,82 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-
+import javafx.scene.image.ImageView;
 public class HomeController implements Initializable{
 	
-    @FXML
-    private MenuButton UserMenu;
-	  @FXML
-	    private AnchorPane SideMenu;
-	    @FXML
-	    private Button btnAbout;
+	   @FXML
+	    private SplitPane splitpane;
 
 	    @FXML
 	    private Button btnHome;
 
 	    @FXML
-	    private Button btnProfile;
-
-	    @FXML
-	    private Button btnRegister;
+	    private Button btnRefuling;
 
 	    @FXML
 	    private Button btnOrderHeating;
 
 	    @FXML
-	    private Button btnRefuling;
+	    private Button btnRegister;
 
 	    @FXML
-	    private Button btnRegister1;
+	    private Button btnPurchase;
 
 	    @FXML
-	    private Label labelDir;
-	    
+	    private Button btnProfile;
+
 	    @FXML
-	    void AboutButton(ActionEvent event) {
-	    	System.out.println("About");
-	    }
+	    private Button btnAbout;
+
+	    @FXML
+	    private MenuButton UserMenu;
 
 	    @FXML
 	    void HomeButton(ActionEvent event) {
-	    	System.out.println("Home");
+
 	    }
 
 	    @FXML
-	    void HomeHeating(ActionEvent event) {
-	    	System.out.println("HomeHeating");
+	    void HomeHeatingButton(ActionEvent event) {
+
 	    }
 
 	    @FXML
 	    void ProfileSettingButton(ActionEvent event) {
-	    	System.out.println("ProfileSettings");
+System.out.println("Profile");
 	    }
 
 	    @FXML
 	    void PurchasePlanButton(ActionEvent event) {
-	    	System.out.println("Purchase Plan");
+
 	    }
 
 	    @FXML
 	    void RefulingButton(ActionEvent event) {
-	    	System.out.println("Refuling");
+
 	    }
 
 	    @FXML
 	    void RegisterClientButton(ActionEvent event) {
-	    	System.out.println("Register Client");
+
 	    }
-	    
+
+	    @FXML
+	    void btnAbout(ActionEvent event) {
+
+	    }
+	  
 	    
 	public static HomeController s;
 	private static User user;
 	public static Stage primaryStage;
+	public static ProfileSettingsController ProfileSetting;
 	public void start(User user) {
 		this.user = user;
 		s = this;
@@ -103,7 +103,6 @@ public class HomeController implements Initializable{
 			@Override
 			public void run() {
 				try {
-					
 					Parent root;
 					root = FXMLLoader.load(getClass().getResource("/gui/Home.fxml"));
 					Scene scene = new Scene(root);
@@ -116,7 +115,6 @@ public class HomeController implements Initializable{
 					e.printStackTrace();
 				}
 			}
-
 		});
 	}
 	
@@ -134,4 +132,5 @@ public class HomeController implements Initializable{
 	        UserMenu.getItems().add(rank);
 	       UserMenu.getItems().add(logout);
 	}	
+	
 }
