@@ -19,16 +19,16 @@
             <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
       </MenuButton>
-      <Label fx:id="labelDir" layoutX="-1.0" layoutY="-1.0" prefHeight="30.0" prefWidth="534.0" styleClass="root2" stylesheets="@css2.css" text="MyFuel-&gt;Profile setting" />
+      <Label fx:id="labelDir" layoutX="-1.0" layoutY="-1.0" prefHeight="30.0" prefWidth="539.0" styleClass="root2" stylesheets="@css2.css" text="MyFuel-&gt;Profile setting" />
       <Label layoutX="11.0" layoutY="129.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="First name:" />
       <Label layoutX="11.0" layoutY="173.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Last name:" />
       <Label layoutX="31.0" layoutY="216.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="ID:" />
       <Label layoutX="20.0" layoutY="259.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Email:" />
-      <TextField layoutX="111.0" layoutY="125.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-      <TextField layoutX="112.0" layoutY="169.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-      <TextField layoutX="112.0" layoutY="212.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-      <TextField layoutX="111.0" layoutY="255.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-      <Button layoutX="227.0" layoutY="341.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="136.0" styleClass="root2" stylesheets="@css2.css" text="Update Details" />
+      <TextField fx:id="txtFirstName" layoutX="111.0" layoutY="125.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField fx:id="txtLastName" layoutX="112.0" layoutY="169.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField fx:id="txtID" layoutX="112.0" layoutY="212.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField fx:id="txtEmail" layoutX="111.0" layoutY="255.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <Button layoutX="251.0" layoutY="341.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="136.0" styleClass="root2" stylesheets="@css2.css" text="Update Details" />
       <Text layoutX="204.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile " textAlignment="CENTER" wrappingWidth="183.20000000000005">
          <font>
             <Font size="29.0" />

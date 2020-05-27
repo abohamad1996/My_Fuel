@@ -9,13 +9,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ProfileSettingsController implements Initializable{
+	  @FXML
+	    private TextField txtFirstName;
 
+	    @FXML
+	    private TextField txtLastName;
+
+	    @FXML
+	    private TextField txtID;
+
+	    @FXML
+	    private TextField txtEmail;
 
 	@FXML
 	private static SplitPane splitpane;
