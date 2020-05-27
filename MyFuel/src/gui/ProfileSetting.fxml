@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,36 +11,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="652.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-  <items>
-    <AnchorPane fx:id="ProfileSettings" minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="625.0" styleClass="root" stylesheets="@css3.css">
-         <children>
-            <MenuButton fx:id="UserMenu" layoutX="538.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" styleClass="combo" stylesheets="@css2.css" textFill="WHITE">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </MenuButton>
-            <Label fx:id="labelDir" layoutX="-1.0" layoutY="-1.0" prefHeight="30.0" prefWidth="534.0" styleClass="root2" stylesheets="@css2.css" text="MyFuel-&gt;Profile setting" />
-            <Label layoutX="11.0" layoutY="129.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="First name:" />
-            <Label layoutX="11.0" layoutY="173.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Last name:" />
-            <Label layoutX="31.0" layoutY="216.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="ID:" />
-            <Label layoutX="20.0" layoutY="259.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Email:" />
-            <TextField layoutX="111.0" layoutY="125.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-            <TextField layoutX="112.0" layoutY="169.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-            <TextField layoutX="112.0" layoutY="212.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-            <TextField layoutX="111.0" layoutY="255.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-            <Button layoutX="227.0" layoutY="341.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="136.0" styleClass="root2" stylesheets="@css2.css" text="Update Details" />
-            <Text layoutX="204.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile " textAlignment="CENTER" wrappingWidth="183.20000000000005">
-               <font>
-                  <Font size="29.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="128.0" fitWidth="142.0" layoutX="421.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/UserPhoto.png" />
-               </image>
-            </ImageView>
-         </children></AnchorPane>
-  </items>
-</SplitPane>
+<AnchorPane fx:id="ProfileSettings" minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="638.0" styleClass="root" stylesheets="@css3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuButton fx:id="UserMenu" layoutX="538.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="98.0" styleClass="combo" stylesheets="@css2.css" textFill="WHITE">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </MenuButton>
+      <Label fx:id="labelDir" layoutX="-1.0" layoutY="-1.0" prefHeight="30.0" prefWidth="534.0" styleClass="root2" stylesheets="@css2.css" text="MyFuel-&gt;Profile setting" />
+      <Label layoutX="11.0" layoutY="129.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="First name:" />
+      <Label layoutX="11.0" layoutY="173.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Last name:" />
+      <Label layoutX="31.0" layoutY="216.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="ID:" />
+      <Label layoutX="20.0" layoutY="259.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Email:" />
+      <TextField layoutX="111.0" layoutY="125.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField layoutX="112.0" layoutY="169.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField layoutX="112.0" layoutY="212.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField layoutX="111.0" layoutY="255.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <Button layoutX="227.0" layoutY="341.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="136.0" styleClass="root2" stylesheets="@css2.css" text="Update Details" />
+      <Text layoutX="204.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile " textAlignment="CENTER" wrappingWidth="183.20000000000005">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="128.0" fitWidth="142.0" layoutX="421.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/UserPhoto.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

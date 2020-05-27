@@ -26,7 +26,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
-public class HomeController implements Initializable{
+public class UserHomeController implements Initializable{
 	
 	   @FXML
 	    private SplitPane splitpane;
@@ -57,8 +57,12 @@ public class HomeController implements Initializable{
 
 	    @FXML
 	    void HomeButton(ActionEvent event) {
-
+	       	HomePage = new HomePage();
+	    	runLater(() -> {
+	    		HomePage.start(splitpane, user, "User");
+	});
 	    }
+	    
 
 	    @FXML
 	    void HomeHeatingButton(ActionEvent event) {
@@ -67,7 +71,10 @@ public class HomeController implements Initializable{
 
 	    @FXML
 	    void ProfileSettingButton(ActionEvent event) {
-System.out.println("Profile");
+	    	ProfileSetting = new ProfileSettingsController();
+	    	runLater(() -> {
+	    		ProfileSetting.start(splitpane, user, "User");
+	});
 	    }
 
 	    @FXML
@@ -87,14 +94,19 @@ System.out.println("Profile");
 
 	    @FXML
 	    void btnAbout(ActionEvent event) {
-
+	    	About = new AboutController();
+	    	runLater(() -> {
+	    		About.start(splitpane, user, "User");
+	});
 	    }
 	  
 	    
-	public static HomeController s;
+	public static UserHomeController s;
 	private static User user;
 	public static Stage primaryStage;
 	public static ProfileSettingsController ProfileSetting;
+	public static AboutController About;
+	public static HomePage HomePage;
 	public void start(User user) {
 		this.user = user;
 		s = this;
@@ -132,5 +144,17 @@ System.out.println("Profile");
 	        UserMenu.getItems().add(rank);
 	       UserMenu.getItems().add(logout);
 	}	
-	
+	private void runLater(Func f) {
+		f.call();
+		Platform.runLater(() -> {
+			try {
+				Thread.sleep(10);
+				f.call();
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+	}
 }

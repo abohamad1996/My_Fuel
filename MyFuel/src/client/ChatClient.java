@@ -9,10 +9,10 @@ import client.*;
 import common.ChatIF;
 import common.Message;
 import gui.EmployeeFrameController;
-import gui.HomeController;
 import gui.LoginController;
 import gui.Employee;
 import gui.UpdateRoleController;
+import gui.UserHomeController;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -114,13 +114,13 @@ public class ChatClient extends AbstractClient
 	 	  switch (user.getRank()) {
 		case "Manager":
 			System.out.println("1");
-			HomeController inspector=new HomeController();
+			UserHomeController inspector=new UserHomeController();
 			inspector.start(user);
 			break;
 
 		case "Station Manager":
 			System.out.println("2");
-			HomeController inspector2=new HomeController();
+			UserHomeController inspector2=new UserHomeController();
 			inspector2.start(user);
 	  break;
 	  }

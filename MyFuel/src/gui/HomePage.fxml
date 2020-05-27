@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="700.0" stylesheets="@Desktop/Home/css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="1.0" minHeight="0.0" minWidth="0.0" prefHeight="554.0" prefWidth="700.0" styleClass="root3" stylesheets="@Desktop/Home/css2.css">
+         <children>
+            <Label prefHeight="34.0" prefWidth="587.0" styleClass="root1" stylesheets="@css2.css" text="My Fuel-&gt;Home" />
+         </children>
+      </AnchorPane>
+      <MenuButton layoutX="588.0" mnemonicParsing="false" styleClass="root1" stylesheets="@css2.css" text="MenuButton">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </MenuButton>
+      <ImageView fitHeight="188.0" fitWidth="273.0" layoutX="154.0" layoutY="110.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/WelcomeLogo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="319.0" fitWidth="299.0" layoutX="299.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MyFuelLogo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

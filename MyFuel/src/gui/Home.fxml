@@ -5,9 +5,11 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="872.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="872.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserHomeController">
    <children>
       <SplitPane fx:id="splitpane" dividerPositions="0.21298405466970388" layoutX="-6.0" layoutY="-2.0" prefHeight="559.0" prefWidth="880.0">
         <items>
@@ -20,6 +22,46 @@
                   <Button fx:id="btnPurchase" layoutX="46.0" layoutY="287.0" mnemonicParsing="false" onAction="#PurchasePlanButton" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="Purchase Plan" />
                   <Button fx:id="btnProfile" layoutX="46.0" layoutY="327.0" mnemonicParsing="false" onAction="#ProfileSettingButton" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="Profile Settings" />
                   <Button fx:id="btnAbout" layoutX="46.0" layoutY="365.0" mnemonicParsing="false" onAction="#btnAbout" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="About" />
+                  <ImageView fitHeight="119.0" fitWidth="156.0" layoutX="31.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/HomeLogo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="17.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/HomeIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="17.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/loginLOGO.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="14.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/HomeHeat.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="17.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/RegisterIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="18.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Purchase.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="18.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Userprofile.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="17.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/AboutIcon.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="root3" stylesheets="@css2.css">
@@ -31,6 +73,16 @@
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                   </MenuButton>
+                  <ImageView fitHeight="188.0" fitWidth="273.0" layoutX="144.0" layoutY="100.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/WelcomeLogo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="319.0" fitWidth="299.0" layoutX="289.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/MyFuelLogo.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
         </items>

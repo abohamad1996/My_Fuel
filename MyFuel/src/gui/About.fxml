@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="btnOrder" minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuButton layoutX="548.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="124.0" styleClass="combo" stylesheets="@css2.css" textFill="#ffffff">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </MenuButton>
+      <Label fx:id="labelDir" layoutX="-1.0" prefHeight="30.0" prefWidth="550.0" styleClass="combo" stylesheets="@css2.css" text="MyFuel-&gt;About" textFill="WHITE" />
+      <Label layoutX="29.0" layoutY="285.0" styleClass="root3" stylesheets="@css2.css" text="For Any Question, Contact us by MyFuel - Sdmin mails:" />
+      <ImageView fitHeight="36.0" fitWidth="39.0" layoutX="14.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="53.0" layoutY="314.0" styleClass="root3" stylesheets="@css2.css" text="Mohamed Abo Hamad" />
+      <Label layoutX="53.0" layoutY="335.0" styleClass="root3" stylesheets="@css2.css" text="Mohamed.abohamad96@gmail.com" />
+      <ImageView fitHeight="36.0" fitWidth="39.0" layoutX="308.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="348.0" layoutY="317.0" styleClass="root3" stylesheets="@css2.css" text="Mahmoud Odeh" />
+      <Label layoutX="348.0" layoutY="338.0" styleClass="root3" stylesheets="@css2.css" text="Odeh.mahmood3@gmail.com" />
+      <ImageView fitHeight="36.0" fitWidth="39.0" layoutX="14.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="39.0" layoutX="308.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="39.0" layoutX="14.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="39.0" layoutX="308.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="349.0" layoutY="361.0" styleClass="root3" stylesheets="@css2.css" text="Bshara Bsharat" />
+      <Label layoutX="52.0" layoutY="405.0" styleClass="root3" stylesheets="@css2.css" text="Ahmad Agbaria" />
+      <Label layoutX="348.0" layoutY="405.0" styleClass="root3" stylesheets="@css2.css" text="Mohamed Sawaed" />
+      <Label layoutX="55.0" layoutY="361.0" styleClass="root3" stylesheets="@css2.css" text="Wajeh Othman" />
+      <Label layoutX="56.0" layoutY="381.0" styleClass="root3" stylesheets="@css2.css" text="Wajeh.otman01@gmail.com" />
+      <Label layoutX="53.0" layoutY="426.0" styleClass="root3" stylesheets="@css2.css" text="A.igbarya97@gmail.com" />
+      <Label layoutX="350.0" layoutY="381.0" styleClass="root3" stylesheets="@css2.css" text="Bshara.b94@gmail.com" />
+      <Label layoutX="348.0" layoutY="426.0" styleClass="root3" stylesheets="@css2.css" text="Mohamed-19@outlook.co.il" />
+      <Label layoutX="1.0" layoutY="40.0" styleClass="root3" stylesheets="@css2.css" text="MyFuel is a computerized infromation system for managing and conrolling Fuel in Fuel Stations " />
+      <Label layoutX="5.0" layoutY="63.0" styleClass="root3" stylesheets="@css2.css" text="and handling clients requests and orders." />
+      <Label layoutX="5.0" layoutY="89.0" styleClass="root3" stylesheets="@css2.css" text="MyFuel system recives orders from a registered clients and processes those orders if possible" />
+      <Label layoutX="5.0" layoutY="115.0" styleClass="root3" stylesheets="@css2.css" text="in the safes way based on the program that the client is subscribed to " />
+      <Label layoutX="5.0" layoutY="141.0" styleClass="root3" stylesheets="@css2.css" text="( Fast Fueling, Normal Fuel , Home Heating Fuel)." />
+      <Label layoutX="5.0" layoutY="170.0" styleClass="root3" stylesheets="@css2.css" text="Client can perform the following Functions:" />
+      <Label layoutX="5.0" layoutY="197.0" styleClass="root3" stylesheets="@css2.css" text="Buying all types of Fuel based on the following program he's in," />
+      <Label layoutX="4.0" layoutY="225.0" styleClass="root3" stylesheets="@css2.css" text="Buying Fuel in Special Offers (Discounts)," />
+      <Label layoutX="5.0" layoutY="255.0" styleClass="root3" stylesheets="@css2.css" text="Checking the status of Order" />
+      <Label layoutX="12.0" layoutY="285.0" prefHeight="30.0" prefWidth="15.0" styleClass="root7" stylesheets="@Desktop/Home/css2.css" text="*" />
+   </children>
+</AnchorPane>
