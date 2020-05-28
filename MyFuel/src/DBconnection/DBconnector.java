@@ -86,23 +86,26 @@ public static User isInDB(java.sql.Connection connection, String username, Strin
 	}
 	return null;
 }
-public static ArrayList<User> userDetails(java.sql.Connection connection)
+public static User userDetails(java.sql.Connection connection, String username)
 {
-ArrayList<User> arr = new ArrayList<User>();
-User user;
+	User user;
 	Statement stmt;
 	try 
 	{
 		stmt = ((java.sql.Connection) connection).createStatement();
+		String query = "SELECT* FROM my_fuel.user WHERE Username=?;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.user;");
+	     PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	  	String a = username;
+		ps.setString(1,a); 
  		while(rs.next())
  		{
- 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9));	 			
-		arr.add(user);	
+ 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9));	 				
+ 			return user;
  		}
 		rs.close();
 		} catch (SQLException e) {e.printStackTrace();}
-	return arr;
-}
+	return null;
+	}
 
 }

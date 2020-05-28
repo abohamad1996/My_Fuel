@@ -48,6 +48,7 @@ public class ProfileSettingsController implements Initializable{
 	private AnchorPane lowerAnchorPane;
 	public ClientConsole details= new ClientConsole("localhost", 5555);
 	ArrayList<User> userdetails= new ArrayList<User>();
+	User detailsUser;
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -62,9 +63,9 @@ public class ProfileSettingsController implements Initializable{
 	}		
 }
 
-	public void Acceptor(ArrayList<User> a) {	
-		userdetails.addAll(a);
-}
+	public void Acceptor(User user) {
+	 detailsUser=new User(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), user.getCreditcard(), user.getUsername(), user.getPassword(), user.getRank(), user.getStatus());
+	}
 
 
     @FXML
@@ -77,13 +78,14 @@ public class ProfileSettingsController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;
-		//details.accept(new Message(4, null));
 		details.accept(new Message(4, null));
-		txtFirstName.setText(userdetails.get(0).getFirstname());
-		txtLastName.setText(userdetails.get(0).getLastname());	
-		txtID.setText(userdetails.get(0).getId());	
-		txtEmail.setText(userdetails.get(0).getEmail());	
+		txtID.setText(detailsUser.getId());	
+		txtFirstName.setText(detailsUser.getFirstname());
+		txtLastName.setText(detailsUser.getLastname());	
+		txtEmail.setText(detailsUser.getEmail());
 	}
+
+
 
 
 

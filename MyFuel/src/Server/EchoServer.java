@@ -119,7 +119,7 @@ public class EchoServer extends AbstractServer {
 				break;
 	case 4:
 		try {
-			ArrayList<User> aa = DBconnector.userDetails(DBconnector.getConnection());
+			User aa = DBconnector.userDetails(DBconnector.getConnection(),"wajeh");
 			Object bb = aa;
 			client.sendToClient(new Message(4, bb));
 		} catch (SQLException e) {

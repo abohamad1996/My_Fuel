@@ -128,9 +128,8 @@ public class ChatClient extends AbstractClient
 	  
 	  }
 	  case 4:
-
-		  ArrayList<?> userArrayList =(ArrayList<?>)recieved.getObject();
-			 ArrayList<User> userarr=(ArrayList<User>)userArrayList;
+		 User userArrayList =(User)recieved.getObject();
+			 User userarr=(User)userArrayList;
 			ProfileSettingsController.acainstance.Acceptor(userarr);
 	  }
   }
