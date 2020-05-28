@@ -86,4 +86,5 @@ public static User isInDB(java.sql.Connection connection, String username, Strin
 	}
 	return null;
 }
+
 }

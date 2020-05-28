@@ -1,13 +1,19 @@
 package gui;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import Entity.User;
+import client.ClientConsole;
+import common.Message;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
+import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +33,11 @@ public class ProfileSettingsController implements Initializable{
 
 	    @FXML
 	    private TextField txtEmail;
+
+	    @FXML
+	    private Button btnUpdate;
+	    @FXML
+	    private Button btnView;
 
 	@FXML
 	private static SplitPane splitpane;
@@ -52,9 +63,24 @@ public class ProfileSettingsController implements Initializable{
 
 
 
+    @FXML
+    void ViewDetails(ActionEvent event) {
+    	System.out.println("aaa");
+    	}
+
+    @FXML
+    void UpdateDetails(ActionEvent event) {
+    	System.out.println("bb");
+    }
+
+	
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+
 	}
+
+
+
 }

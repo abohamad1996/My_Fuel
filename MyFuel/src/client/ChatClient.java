@@ -10,6 +10,7 @@ import common.ChatIF;
 import common.Message;
 import gui.EmployeeFrameController;
 import gui.LoginController;
+import gui.ProfileSettingsController;
 import gui.Employee;
 import gui.UpdateRoleController;
 import gui.UserHomeController;
