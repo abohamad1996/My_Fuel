@@ -20,16 +20,15 @@
          </items>
       </MenuButton>
       <Label fx:id="labelDir" layoutX="-1.0" layoutY="-1.0" prefHeight="30.0" prefWidth="570.0" styleClass="root2" stylesheets="@css2.css" text="MyFuel-&gt;Profile setting" />
-      <Label layoutX="11.0" layoutY="129.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="First name:" />
-      <Label layoutX="11.0" layoutY="173.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Last name:" />
-      <Label layoutX="31.0" layoutY="216.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="ID:" />
-      <Label layoutX="20.0" layoutY="259.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Email:" />
-      <TextField fx:id="txtFirstName" layoutX="111.0" layoutY="125.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-      <TextField fx:id="txtLastName" layoutX="112.0" layoutY="169.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-      <TextField fx:id="txtID" layoutX="112.0" layoutY="212.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-      <TextField fx:id="txtEmail" layoutX="111.0" layoutY="255.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
-      <Button fx:id="btnView" layoutX="124.0" layoutY="341.0" mnemonicParsing="false" onAction="#ViewDetails" prefHeight="40.0" prefWidth="136.0" styleClass="root2" stylesheets="@css2.css" text="View Details" />
-      <Text layoutX="204.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile " textAlignment="CENTER" wrappingWidth="183.20000000000005">
+      <Label layoutX="25.0" layoutY="154.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="First name:" />
+      <Label layoutX="25.0" layoutY="198.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Last name:" />
+      <Label layoutX="46.0" layoutY="112.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="ID:" />
+      <Label layoutX="35.0" layoutY="240.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Email:" />
+      <TextField fx:id="txtFirstName" layoutX="125.0" layoutY="154.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField fx:id="txtLastName" layoutX="126.0" layoutY="194.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField fx:id="txtID" layoutX="127.0" layoutY="114.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField fx:id="txtEmail" layoutX="125.0" layoutY="238.0" prefHeight="26.0" prefWidth="183.0" styleClass="root2" stylesheets="@css2.css" />
+      <Text layoutX="216.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile " textAlignment="CENTER" wrappingWidth="183.20000000000005">
          <font>
             <Font size="29.0" />
          </font>
@@ -39,6 +38,6 @@
             <Image url="@../Images/UserPhoto.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnUpdate" layoutX="353.0" layoutY="341.0" mnemonicParsing="false" onAction="#UpdateDetails" prefHeight="40.0" prefWidth="136.0" styleClass="root2" stylesheets="@css2.css" text="Update Details" />
+      <Button fx:id="btnUpdate" layoutX="266.0" layoutY="337.0" mnemonicParsing="false" onAction="#UpdateDetails" prefHeight="40.0" prefWidth="136.0" styleClass="root2" stylesheets="@css2.css" text="Update Details" />
    </children>
 </AnchorPane>

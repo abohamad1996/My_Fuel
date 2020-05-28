@@ -22,6 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ProfileSettingsController implements Initializable{
+    public static ProfileSettingsController acainstance;
 	  @FXML
 	    private TextField txtFirstName;
 
@@ -36,8 +37,6 @@ public class ProfileSettingsController implements Initializable{
 
 	    @FXML
 	    private Button btnUpdate;
-	    @FXML
-	    private Button btnView;
 
 	@FXML
 	private static SplitPane splitpane;
@@ -47,6 +46,8 @@ public class ProfileSettingsController implements Initializable{
 	public static ProfileSettingsController ProfileSetting;
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
+	public ClientConsole details= new ClientConsole("localhost", 5555);
+	ArrayList<User> userdetails= new ArrayList<User>();
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -61,24 +62,27 @@ public class ProfileSettingsController implements Initializable{
 	}		
 }
 
+	public void Acceptor(ArrayList<User> a) {	
+		userdetails.addAll(a);
+}
 
-
-    @FXML
-    void ViewDetails(ActionEvent event) {
-    	System.out.println("aaa");
-    	}
 
     @FXML
     void UpdateDetails(ActionEvent event) {
     	System.out.println("bb");
     }
 
-	
 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		acainstance = this;
+		//details.accept(new Message(4, null));
+		details.accept(new Message(4, null));
+		txtFirstName.setText(userdetails.get(0).getFirstname());
+		txtLastName.setText(userdetails.get(0).getLastname());	
+		txtID.setText(userdetails.get(0).getId());	
+		txtEmail.setText(userdetails.get(0).getEmail());	
 	}
 
 

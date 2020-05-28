@@ -77,7 +77,9 @@ public class ChatClient extends AbstractClient
    * This method handles all data that comes in from the server.
    *
    * @param msg The message from the server.
+   * aaaaaa
    */
+  
   public void handleMessageFromServer(Object msg) 
   {
 	  awaitResponse = false;
@@ -96,7 +98,6 @@ public class ChatClient extends AbstractClient
 			  UpdateRoleController.instance.status.setText(st + " Updated!");
 		    });
 		  break;
-	  
 	  case 3:
 	 	  User user=(User) recieved.getObject();
 			//System.out.println(""+a.getId()+" "+a.getFirstname()+" "+a.getLastname()+" "+a.getEmail()+" "+a.getUsername()+" "+a.getPassword()+" "+a.getRank()+" "+a.getStatus());
@@ -124,7 +125,13 @@ public class ChatClient extends AbstractClient
 			UserHomeController inspector2=new UserHomeController();
 			inspector2.start(user);
 	  break;
+	  
 	  }
+	  case 4:
+
+		  ArrayList<?> userArrayList =(ArrayList<?>)recieved.getObject();
+			 ArrayList<User> userarr=(ArrayList<User>)userArrayList;
+			ProfileSettingsController.acainstance.Acceptor(userarr);
 	  }
   }
 

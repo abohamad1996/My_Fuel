@@ -15,6 +15,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 import DBconnection.DBconnector;
+import Entity.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -120,6 +121,7 @@ public  class EmployeeFrameController implements Initializable {
 		role.setCellValueFactory(new PropertyValueFactory<>("role"));
 		org.setCellValueFactory(new PropertyValueFactory<>("org"));
 	}
+
 }
 	
 
