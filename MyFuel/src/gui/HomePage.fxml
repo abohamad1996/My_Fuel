@@ -4,9 +4,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="700.0" stylesheets="@Desktop/Home/css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="1.0" minHeight="0.0" minWidth="0.0" prefHeight="554.0" prefWidth="700.0" styleClass="root3" stylesheets="@Desktop/Home/css2.css" />
+      <AnchorPane layoutX="1.0" minHeight="0.0" minWidth="0.0" prefHeight="554.0" prefWidth="700.0" />
       <ImageView fitHeight="188.0" fitWidth="273.0" layoutX="154.0" layoutY="110.0" pickOnBounds="true">
          <image>
             <Image url="@../images/WelcomeLogo.png" />

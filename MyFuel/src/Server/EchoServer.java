@@ -79,7 +79,7 @@ public class EchoServer extends AbstractServer {
 		System.out.println("Message received: " + recieved.getCode() + " from " + client);
 
 		switch (recieved.getCode()) {
-		case 1:
+		case 1:// show emplouyee details
 			try {
 				ArrayList<Employee> aa = DBconnector.addtodb(DBconnector.getConnection());
 				Object bb = aa;
@@ -92,7 +92,7 @@ public class EchoServer extends AbstractServer {
 				e.printStackTrace();
 			}
 			break;
-		case 2:
+		case 2:// update role
 			Employee emp=(Employee) recieved.getObject();
 			String str=DBconnector.UpdateRole(emp);
 			try {
@@ -103,7 +103,7 @@ public class EchoServer extends AbstractServer {
 			}
 			break;
 		
-	case 3:
+	case 3:// login
 		String[] loginMessage = (String[]) recieved.getObject();
 		System.out.println("Username:"+loginMessage[1]+" Password:"+loginMessage[2]);	
 			Connection connection;
@@ -121,7 +121,7 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
-	case 4:
+	case 4:// profile user
 		try {
 			User aa = DBconnector.userDetails(DBconnector.getConnection(),username);
 			Object bb = aa;
@@ -129,6 +129,16 @@ public class EchoServer extends AbstractServer {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 5:// update profile user
+		User user=(User) recieved.getObject();
+		String str1=DBconnector.UpdateUser(user);
+		try {
+			client.sendToClient(new Message(5, str1));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

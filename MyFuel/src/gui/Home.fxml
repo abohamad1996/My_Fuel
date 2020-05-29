@@ -17,11 +17,10 @@
                <children>
                   <Button fx:id="btnHome" layoutX="46.0" layoutY="137.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="Home" />
                   <Button fx:id="btnRefuling" layoutX="46.0" layoutY="174.0" mnemonicParsing="false" onAction="#RefulingButton" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="Refuling" />
-                  <Button fx:id="btnOrderHeating" layoutX="46.0" layoutY="209.0" mnemonicParsing="false" onAction="#HomeHeatingButton" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="Home Heating" />
-                  <Button fx:id="btnRegister" layoutX="46.0" layoutY="248.0" mnemonicParsing="false" onAction="#RegisterClientButton" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="Register Client" />
-                  <Button fx:id="btnPurchase" layoutX="46.0" layoutY="287.0" mnemonicParsing="false" onAction="#PurchasePlanButton" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="Purchase Plan" />
-                  <Button fx:id="btnProfile" layoutX="46.0" layoutY="327.0" mnemonicParsing="false" onAction="#ProfileSettingButton" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="Profile Settings" />
-                  <Button fx:id="btnAbout" layoutX="46.0" layoutY="365.0" mnemonicParsing="false" onAction="#btnAbout" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="About" />
+                  <Button fx:id="btnOrderHeating" layoutX="46.0" layoutY="211.0" mnemonicParsing="false" onAction="#HomeHeatingButton" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="Home Heating" />
+                  <Button fx:id="btnPurchase" layoutX="46.0" layoutY="249.0" mnemonicParsing="false" onAction="#PurchasePlanButton" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="Purchase Plan" />
+                  <Button fx:id="btnProfile" layoutX="46.0" layoutY="287.0" mnemonicParsing="false" onAction="#ProfileSettingButton" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="Profile Settings" />
+                  <Button fx:id="btnAbout" layoutX="46.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnAbout" prefHeight="29.0" prefWidth="122.0" styleClass="root2" stylesheets="@css2.css" text="About" />
                   <ImageView fitHeight="119.0" fitWidth="156.0" layoutX="31.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/HomeLogo.png" />
@@ -37,27 +36,22 @@
                         <Image url="@../images/loginLOGO.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="14.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="14.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/HomeHeat.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="17.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/RegisterIcon.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="18.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="16.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Purchase.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="18.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="16.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Userprofile.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="17.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="16.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/AboutIcon.png" />
                      </image>
@@ -80,13 +74,22 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <AnchorPane prefHeight="41.0" prefWidth="687.0">
+      <AnchorPane prefHeight="44.0" prefWidth="875.0">
          <children>
-            <Label layoutX="185.0" layoutY="-2.0" prefHeight="41.0" prefWidth="679.0" styleClass="root3" stylesheets="@css2.css" text="My Fuel-&gt;Home" />
-            <MenuButton fx:id="UserMenu" layoutX="740.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="135.0" styleClass="root4" stylesheets="@css2.css">
-              <items>
-       
-              </items>
+            <Label layoutX="185.0" layoutY="-2.0" prefHeight="46.0" prefWidth="679.0" styleClass="root3" stylesheets="@css2.css" text="My Fuel-&gt;Home" />
+            <MenuButton fx:id="UserMenu" layoutX="731.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="144.0" styleClass="root4" stylesheets="@css2.css">
+               <items>
+                  <MenuItem fx:id="Rank" mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="btnRank" mnemonicParsing="false" styleClass="root4" stylesheets="@css2.css" text="Button" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="Logout" mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#Logout" styleClass="root4" stylesheets="@css2.css" text="Logout" />
+                     </graphic>
+                  </MenuItem>
+               </items>
             </MenuButton>
          </children>
       </AnchorPane>

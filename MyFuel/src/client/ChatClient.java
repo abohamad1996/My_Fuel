@@ -131,7 +131,14 @@ public class ChatClient extends AbstractClient
 		 User userArrayList =(User)recieved.getObject();
 			 User userarr=(User)userArrayList;
 			ProfileSettingsController.acainstance.Acceptor(userarr);
-	  }
+	  break;
+  case 5:
+	  String st1 = (String) recieved.getObject();
+	  Platform.runLater(() -> {
+		  ProfileSettingsController.acainstance.status.setText(st1 + " Updated!");
+	    });
+	  break;
+  }
   }
 
   /**

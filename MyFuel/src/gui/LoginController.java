@@ -31,6 +31,7 @@ public class LoginController implements Initializable {
 	    @FXML
 	    private Button btnLogin;
 		public ClientConsole login= new ClientConsole("localhost", 5555);
+		public static ClientConsole client;
 
 		public static Stage primaryStage;
 	@Override

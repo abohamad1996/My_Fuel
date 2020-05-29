@@ -59,6 +59,6 @@
       <Label layoutX="5.0" layoutY="197.0" styleClass="root3" stylesheets="@css2.css" text="Buying all types of Fuel based on the following program he's in," />
       <Label layoutX="4.0" layoutY="225.0" styleClass="root3" stylesheets="@css2.css" text="Buying Fuel in Special Offers (Discounts)," />
       <Label layoutX="5.0" layoutY="255.0" styleClass="root3" stylesheets="@css2.css" text="Checking the status of Order" />
-      <Label layoutX="12.0" layoutY="285.0" prefHeight="30.0" prefWidth="15.0" styleClass="root7" stylesheets="@Desktop/Home/css2.css" text="*" />
+      <Label layoutX="12.0" layoutY="285.0" prefHeight="30.0" prefWidth="15.0" text="*" />
    </children>
 </AnchorPane>

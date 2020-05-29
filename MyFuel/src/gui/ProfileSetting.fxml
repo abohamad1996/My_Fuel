@@ -30,5 +30,6 @@
          </image>
       </ImageView>
       <Button fx:id="btnUpdate" layoutX="266.0" layoutY="337.0" mnemonicParsing="false" onAction="#UpdateDetails" prefHeight="40.0" prefWidth="136.0" styleClass="root2" stylesheets="@css2.css" text="Update Details" />
+      <Label fx:id="status" layoutX="259.0" layoutY="300.0" />
    </children>
 </AnchorPane>

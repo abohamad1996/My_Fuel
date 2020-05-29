@@ -109,5 +109,29 @@ public static User userDetails(java.sql.Connection connection, String username)
 		} catch (SQLException e) {e.printStackTrace();}
 	return null;
 	}
-
+public static String UpdateUser(User user)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.user SET Firstname=? , Lastname=? , Email=? WHERE ID=?";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.employee;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		String a = user.getFirstname();
+		String b =user.getLastname();
+		String c = user.getEmail();
+		String d = user.getId();
+		ps.setString(1,a); 
+		ps.setString(2,b); 	
+		ps.setString(3,c); 	
+		ps.setString(4,d); 	
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
 }

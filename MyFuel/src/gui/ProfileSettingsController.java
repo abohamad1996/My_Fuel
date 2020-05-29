@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -37,7 +38,8 @@ public class ProfileSettingsController implements Initializable{
 
 	    @FXML
 	    private Button btnUpdate;
-
+	    @FXML
+		public Label status;
 	@FXML
 	private static SplitPane splitpane;
 	private FXMLLoader loader;	
@@ -70,7 +72,9 @@ public class ProfileSettingsController implements Initializable{
 
     @FXML
     void UpdateDetails(ActionEvent event) {
-    	System.out.println("bb");
+    	User user=new User(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), null, null, null, null, null);
+    	ProfileSettingsController.acainstance.details.accept(new Message(5, user));;
+
     }
 
 

@@ -54,7 +54,15 @@ public class UserHomeController implements Initializable{
 
 	    @FXML
 	    private MenuButton UserMenu;
+	    @FXML
+	    private MenuItem Rank;
+	    @FXML
+	    private Button btnRank;
+	    @FXML
+	    private MenuItem Logout;
 
+	    @FXML
+	    private Button btnLogout;
 	    @FXML
 	    void HomeButton(ActionEvent event) {
 	       	HomePage = new HomePage();
@@ -129,20 +137,21 @@ public class UserHomeController implements Initializable{
 			}
 		});
 	}
-	
+    @FXML
+    void Logout(ActionEvent event) {
+    		System.out.println("Logout");
+    		LogoutController logout=new LogoutController();
+    		logout.start(primaryStage, user);
+    }
 	
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		MenuItem rank = new MenuItem(user.getRank());
-	    rank.setStyle("-fx-background-color: #01509f");
-		MenuItem logout = new MenuItem("Logout");
+		btnRank.setText(user.getRank());
+	    Rank=new MenuItem(user.getRank());
 	       UserMenu.setText(user.getFirstname());
-	        logout.setStyle("-fx-background-color: #01509f");
-	        UserMenu.getItems().add(rank);
-	       UserMenu.getItems().add(logout);
 	}	
 	private void runLater(Func f) {
 		f.call();
