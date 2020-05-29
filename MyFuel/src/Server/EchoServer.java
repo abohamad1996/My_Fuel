@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
+
 import DBconnection.DBconnector;
 import Entity.User;
 import common.Message;
@@ -33,6 +35,7 @@ import ocsf.server.*;
  */
 
 public class EchoServer extends AbstractServer {
+	public String username=null;
 	// Class variables *************************************************
 
 	/**
@@ -104,6 +107,7 @@ public class EchoServer extends AbstractServer {
 		String[] loginMessage = (String[]) recieved.getObject();
 		System.out.println("Username:"+loginMessage[1]+" Password:"+loginMessage[2]);	
 			Connection connection;
+			username=loginMessage[1];
 				//System.out.println(""+a.getId()+" "+a.getFirstname()+" "+a.getLastname()+" "+a.getEmail()+" "+a.getUsername()+" "+a.getPassword()+" "+a.getRank()+" "+a.getStatus());
 				try {
 						connection = DBconnector.getConnection();
@@ -119,7 +123,7 @@ public class EchoServer extends AbstractServer {
 				break;
 	case 4:
 		try {
-			User aa = DBconnector.userDetails(DBconnector.getConnection(),"wajeh");
+			User aa = DBconnector.userDetails(DBconnector.getConnection(),username);
 			Object bb = aa;
 			client.sendToClient(new Message(4, bb));
 		} catch (SQLException e) {
