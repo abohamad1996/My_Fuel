@@ -153,6 +153,11 @@ public class UserHomeController implements Initializable{
 	    Rank=new MenuItem(user.getRank());
 	       UserMenu.setText(user.getFirstname());
 	}	
+	
+	
+	
+	
+	
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {

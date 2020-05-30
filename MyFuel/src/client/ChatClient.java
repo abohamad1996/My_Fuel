@@ -10,6 +10,7 @@ import common.ChatIF;
 import common.Message;
 import gui.EmployeeFrameController;
 import gui.LoginController;
+import gui.MarketingRepresentativeController;
 import gui.ProfileSettingsController;
 import gui.Employee;
 import gui.UpdateRoleController;
@@ -116,14 +117,19 @@ public class ChatClient extends AbstractClient
 	 	  switch (user.getRank()) {
 		case "Manager":
 			System.out.println("1");
-			UserHomeController inspector=new UserHomeController();
-			inspector.start(user);
+			UserHomeController Manager=new UserHomeController();
+			Manager.start(user);
 			break;
 
 		case "Station Manager":
 			System.out.println("2");
-			UserHomeController inspector2=new UserHomeController();
-			inspector2.start(user);
+			UserHomeController StationManager=new UserHomeController();
+			StationManager.start(user);
+	  break;
+		case "Marketing Representative":
+			System.out.println("3");
+			MarketingRepresentativeController Marketing=new MarketingRepresentativeController();
+			Marketing.start(user);
 	  break;
 	  
 	  }

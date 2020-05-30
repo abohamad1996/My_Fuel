@@ -72,7 +72,6 @@ public class LoginController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
 	public Stage getStage() {
 		return primaryStage;
 	}
