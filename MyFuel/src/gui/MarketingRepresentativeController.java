@@ -61,7 +61,9 @@ public class MarketingRepresentativeController implements Initializable{
 
     @FXML
     void Logout(ActionEvent event) {
-
+		System.out.println("Logout");
+		LogoutController logout=new LogoutController();
+		logout.start(primaryStage, user);
     }
 
     @FXML
