@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import com.sun.corba.se.pept.transport.Connection;
 
+import Entity.CreditCard;
 import Entity.User;
 import gui.Employee;
 import gui.UpdateRoleController;
@@ -77,7 +78,7 @@ public static User isInDB(java.sql.Connection connection, String username, Strin
 		if (!rs.next())
 			return null;
 			else {
- 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9));
+ 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8));
  			return user;
 			}
 	} catch (SQLException e) {
@@ -101,7 +102,7 @@ public static User userDetails(java.sql.Connection connection, String username)
 		rs = ps.executeQuery();
  		while(rs.next())
  		{
- 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9));	 				
+ 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getInt(8));	 				
  			return user;
  		}
  		///////// comment
@@ -125,6 +126,66 @@ public static String UpdateUser(User user)
 		ps.setString(2,b); 	
 		ps.setString(3,c); 	
 		ps.setString(4,d); 	
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
+public static String ClientRegisterUserDetails(User user)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.user values(?,?,?,?,?,?,?,?,?);";
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	  	String a = user.getId();
+	      String b = user.getFirstname();
+		String c =user.getLastname();
+		String d = user.getEmail();
+		String e = user.getUsername();
+		String f = user.getPassword();
+		String g = user.getRank();
+		Integer h = user.getStatus();
+		Integer i = 0;
+		ps.setString(1,a); 
+		ps.setString(2,b); 	
+		ps.setString(3,c); 	
+		ps.setString(4,d); 	
+		ps.setString(5,e); 
+		ps.setString(6,f); 
+		ps.setString(7,g); 
+		ps.setInt(8,h); 
+		ps.setInt(9,i); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
+public static String ClientRegisterCreditCard(CreditCard card)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.creditcard values(?,?,?,?,?);";
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	  	String a = card.getOwnerID();
+	      String b = card.getCreditCardNumber();
+		String c =card.getCreditMonth();
+		String d = card.getCreditYearString();
+		String e = card.getCvv();
+		ps.setString(1,a); 
+		ps.setString(2,b); 	
+		ps.setString(3,c); 	
+		ps.setString(4,d); 	
+		ps.setString(5,e); 
 		System.out.println(""+ps.toString());
 		ps.executeUpdate();
 		return "success";

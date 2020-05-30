@@ -76,8 +76,12 @@ public class MarketingRepresentativeController implements Initializable{
 
     @FXML
     void RegisterClient(ActionEvent event) {
-
-    }
+    	register = new ClientRegisterController();
+    	runLater(() -> {
+    		register.start(splitpane, user, "User");
+});
+    	}
+    
 
     @FXML
     void btnAbout(ActionEvent event) {
@@ -89,6 +93,7 @@ public class MarketingRepresentativeController implements Initializable{
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
+	public static ClientRegisterController register;
 	public static MarketingRepresentativeController s;
 	private static User user;
 	public static Stage primaryStage;
@@ -118,10 +123,6 @@ public class MarketingRepresentativeController implements Initializable{
 		});
 		
 
-		
-		
-		
-		
 	}
 	
 	
@@ -141,8 +142,7 @@ public class MarketingRepresentativeController implements Initializable{
 		});
 	}
 	
-	
-	
+
 	
 	
 	@Override

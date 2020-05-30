@@ -66,15 +66,14 @@ public class ProfileSettingsController implements Initializable{
 }
 
 	public void Acceptor(User user) {
-	 detailsUser=new User(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), user.getCreditcard(), user.getUsername(), user.getPassword(), user.getRank(), user.getStatus());
+	 detailsUser=new User(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), user.getUsername(), user.getPassword(), user.getRank(), user.getStatus());
 	}
 
 
     @FXML
     void UpdateDetails(ActionEvent event) {
-    	User user=new User(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), null, null, null, null, null);
+    	User user=new User(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), null, null, null, null);
     	ProfileSettingsController.acainstance.details.accept(new Message(5, user));;
-
     }
 
 

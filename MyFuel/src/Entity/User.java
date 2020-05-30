@@ -8,19 +8,17 @@ public class User implements Serializable{
 	String Firstname;
 	String Lastname;
 	String email;
-	String Creditcard;
 	String Username;
 	String Password;
 	String Rank;
 	Integer Status;
-	public User(String id, String firstname, String lastname, String email, String creditcard, String username,
+	public User(String id, String firstname, String lastname, String email, String username,
 			String password, String rank, Integer status) {
 		super();
 		this.id = id;
 		Firstname = firstname;
 		Lastname = lastname;
 		this.email = email;
-		Creditcard = creditcard;
 		Username = username;
 		Password = password;
 		Rank = rank;
@@ -49,12 +47,6 @@ public class User implements Serializable{
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getCreditcard() {
-		return Creditcard;
-	}
-	public void setCreditcard(String creditcard) {
-		Creditcard = creditcard;
 	}
 	public String getUsername() {
 		return Username;

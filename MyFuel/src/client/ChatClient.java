@@ -12,6 +12,7 @@ import gui.EmployeeFrameController;
 import gui.LoginController;
 import gui.MarketingRepresentativeController;
 import gui.ProfileSettingsController;
+import gui.ClientRegisterController;
 import gui.Employee;
 import gui.UpdateRoleController;
 import gui.UserHomeController;
@@ -142,6 +143,18 @@ public class ChatClient extends AbstractClient
 	  String st1 = (String) recieved.getObject();
 	  Platform.runLater(() -> {
 		  ProfileSettingsController.acainstance.status.setText(st1 + " Updated!");
+	    });
+	  break;
+  case 6:
+	  String s2t = (String) recieved.getObject();
+	  Platform.runLater(() -> {
+		  ClientRegisterController.acainstance.status.setText(s2t + " Updated!");
+	    });
+	  break;
+  case 7:
+	  String s3t = (String) recieved.getObject();
+	  Platform.runLater(() -> {
+		  ClientRegisterController.acainstance.status.setText(s3t + " Updated!");
 	    });
 	  break;
   }
