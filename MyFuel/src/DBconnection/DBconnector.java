@@ -64,17 +64,18 @@ public static String UpdateRole(Employee emp)
 public static User isInDB(java.sql.Connection connection, String username, String password) {
 	Statement stmt ;
 	User user=null ;
+	Integer status=1;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
 		String query = "SELECT* FROM my_fuel.user WHERE Username=? AND Userpassword=?;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.user;");
 	     PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
-	  	String a = username;
+	     String a = username;
 		String b = password;
 		ps.setString(1,a); 
 		ps.setString(2,b); 
-		//System.out.println(""+ps.toString());
-		rs = ps.executeQuery();
+		System.out.println(""+ps.toString());
+		rs=ps.executeQuery();
 		if (!rs.next())
 			return null;
 			else {
@@ -195,4 +196,5 @@ public static String ClientRegisterCreditCard(CreditCard card)
 		return "error";
 	}
 }
+
 }

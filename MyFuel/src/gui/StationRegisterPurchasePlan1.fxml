@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="639.0" styleClass="root" stylesheets="@css3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OneGasStationController">
+   <children>
+      <Button fx:id="btnNext" layoutX="503.0" layoutY="382.0" mnemonicParsing="false" onAction="#Next" prefHeight="28.0" prefWidth="79.0" styleClass="root4" stylesheets="@css2.css" text="Next" />
+      <Text layoutX="20.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gas station" textAlignment="CENTER">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Label layoutX="36.0" layoutY="101.0" prefHeight="31.0" prefWidth="128.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Gas Station" />
+      <Label layoutX="14.0" layoutY="105.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
+      <ComboBox fx:id="comboStation" layoutX="153.0" layoutY="96.0" prefHeight="41.0" prefWidth="215.0" promptText="Choose a gas station" styleClass="root4" stylesheets="@css2.css" />
+   </children>
+</AnchorPane>

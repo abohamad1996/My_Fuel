@@ -91,13 +91,20 @@ public class ClientRegisterController implements Initializable{
     	Integer status=0;
     	String rank="Client";
     	User user = new User(txtID.getText(), txtxFirstname.getText(), txtLastname.getText(), txtEmail.getText(), txtUsername.getText(), txtPassword.getText(), rank, status);
+    /*	Integer status=0;
+    	String rank="Client";
+    	User user = new User(txtID.getText(), txtxFirstname.getText(), txtLastname.getText(), txtEmail.getText(), txtUsername.getText(), txtPassword.getText(), rank, status);
     	ClientRegisterController.acainstance.chat.accept(new Message(6, user));
        	String creditCard=txtCreditA.getText()+txtCreditB.getText()+txtCreditC.getText()+txtCreditD.getText();
     	System.out.println("creditcard:"+creditCard);
     	CreditCard card=new CreditCard(txtID.getText(), creditCard, txtMonth.getText(), txtYear.getText(), txtCVV.getText());
-    	ClientRegisterController.acainstance.chat.accept(new Message(7, card));
+    	ClientRegisterController.acainstance.chat.accept(new Message(7, card));*/
+    	CarRegisterController car;
+    	car = new CarRegisterController();
+    	runLater(() -> {
+    		car.start(splitpane, user, "User");
+});
     }
-	
 	@SuppressWarnings("unused")
 	private void runLater(Func f) {
 		f.call();

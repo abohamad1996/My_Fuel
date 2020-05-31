@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import client.ClientConsole;
 import client.ClientLogin;
 import common.Message;
@@ -50,8 +52,6 @@ public class LoginController implements Initializable {
 		loginMessage[1] = username;
 		loginMessage[2] = password;
 		login.accept(new Message(3, loginMessage));
-		
-	
     }
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
