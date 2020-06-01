@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import Entity.Car;
 import Entity.User;
 import client.ClientConsole;
 import client.Func;
@@ -16,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +29,8 @@ public class CarRegisterController implements Initializable{
 
 	ArrayList<String> planValues=new ArrayList<String>();
 	ArrayList<String> serviceValues=new ArrayList<String>();
+    @FXML
+    private TextField txtID;
 	@FXML
 	    private Button btnNext;
 
@@ -38,6 +42,24 @@ public class CarRegisterController implements Initializable{
 
 	    @FXML
 	    private ComboBox<String> comboServices;
+	    @FXML
+	    private ComboBox<String> comboStation;
+
+	    @FXML
+	    private ComboBox<String> comboStation2;
+
+	    @FXML
+	    private ComboBox<String> comboStation3;
+	    @FXML
+	    private Label gasLabel1;
+
+	    @FXML
+	    private Label star;
+
+
+
+	    @FXML
+	    private Label gasLabel2;
 	@FXML
 	private static SplitPane splitpane;
 
@@ -61,28 +83,45 @@ public class CarRegisterController implements Initializable{
 }	
 }
 	
-	
-	
-	
-	
-	
+
     @FXML
-    void Next(ActionEvent event) {
-    	User user=null;
+    void PlanChoose(ActionEvent event) {
+    	Car car=new Car(txtID.getText(), txtCarNumber.getText(), comboPlan.getValue(), comboServices.getValue(), null, null, null); 
     	String currentLevel=comboPlan.getValue();
     	if(currentLevel.equals("Level 1"))
     	{
-        	OneGasStationController gasStation;
-        	gasStation = new OneGasStationController();
-        	runLater(() -> {
-        		gasStation.start(splitpane, user, "User");
-    });
+    		//comboStation2.setValue("Null");
+    		comboStation2.setVisible(false);
+    		comboStation3.setVisible(false);
+    	gasLabel1.setVisible(false);
+    	gasLabel2.setVisible(false);
+    	star.setVisible(false);
     	}
-    	else {
+    	else if(currentLevel.equals("Level 2"))
+    	{
+    		//comboStation2.setValue("Null");
+    		comboStation2.setVisible(true);
+    		comboStation3.setVisible(true);
+    	gasLabel1.setVisible(true);
+    	gasLabel2.setVisible(true);
+    	star.setVisible(true);
+    	}
+    }
+	
+    @FXML
+    void Next(ActionEvent event) {
+    	
+    	Car car=new Car(txtID.getText(), txtCarNumber.getText(), comboPlan.getValue(), comboServices.getValue(), null, null, null); 
+    	String currentLevel=comboPlan.getValue();
+    	if(currentLevel.equals("Level 1"))
+    	{
+    		
+    	}
+    	else if(currentLevel.equals("Level 2")){
         	MultiGasStationController gasStation;
         	gasStation = new MultiGasStationController();
         	runLater(() -> {
-        		gasStation.start(splitpane, user, "User");
+        		gasStation.start(splitpane, car, "User");
     });
 		}
     }

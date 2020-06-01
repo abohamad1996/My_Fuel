@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import Entity.Car;
 import Entity.User;
 import client.ClientConsole;
 import javafx.collections.FXCollections;
@@ -33,14 +34,17 @@ public class MultiGasStationController implements Initializable{
 	    @FXML
 	    private ComboBox<String> comboStation3;
 		
+	    
+	    Car car;
 	    ObservableList<String> gasstationList =FXCollections.observableArrayList(); 
 		ArrayList<String> gasstationValues=new ArrayList<String>();
 	public ClientConsole chat= new ClientConsole("localhost", 5555);
 	private FXMLLoader loader;	
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
-	public void start(SplitPane splitpane, User user,String userJob) {
+	public void start(SplitPane splitpane, Car car,String userJob) {
 	this.splitpane=splitpane;
+	this.car=car;
 	primaryStage=LoginController.primaryStage;
 	try{	
 		loader = new FXMLLoader(getClass().getResource("/gui/StationRegisterPurchasePlan2.fxml"));

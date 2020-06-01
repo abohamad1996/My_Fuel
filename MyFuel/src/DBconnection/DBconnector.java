@@ -79,7 +79,7 @@ public static User isInDB(java.sql.Connection connection, String username, Strin
 		if (!rs.next())
 			return null;
 			else {
- 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+ 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8),rs.getString(9));
  			return user;
 			}
 	} catch (SQLException e) {
@@ -103,7 +103,7 @@ public static User userDetails(java.sql.Connection connection, String username)
 		rs = ps.executeQuery();
  		while(rs.next())
  		{
- 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getInt(8));	 				
+ 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getInt(8),rs.getString(9));	 				
  			return user;
  		}
  		///////// comment
@@ -141,7 +141,7 @@ public static String ClientRegisterUserDetails(User user)
 	Statement stmt;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "insert into my_fuel.user values(?,?,?,?,?,?,?,?,?);";
+		String query = "insert into my_fuel.user values(?,?,?,?,?,?,?,?,?,?);";
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 	  	String a = user.getId();
 	      String b = user.getFirstname();
@@ -150,7 +150,8 @@ public static String ClientRegisterUserDetails(User user)
 		String e = user.getUsername();
 		String f = user.getPassword();
 		String g = user.getRank();
-		Integer h = user.getStatus();
+		String h = user.getClientType();
+		Integer k = user.getStatus();
 		Integer i = 0;
 		ps.setString(1,a); 
 		ps.setString(2,b); 	
@@ -158,9 +159,10 @@ public static String ClientRegisterUserDetails(User user)
 		ps.setString(4,d); 	
 		ps.setString(5,e); 
 		ps.setString(6,f); 
-		ps.setString(7,g); 
-		ps.setInt(8,h); 
-		ps.setInt(9,i); 
+		ps.setString(7,g);
+		ps.setString(8, h);
+		ps.setInt(9,k); 
+		ps.setInt(10,i); 
 		System.out.println(""+ps.toString());
 		ps.executeUpdate();
 		return "success";

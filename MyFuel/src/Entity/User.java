@@ -12,8 +12,9 @@ public class User implements Serializable{
 	String Password;
 	String Rank;
 	Integer Status;
+	String ClientType;
 	public User(String id, String firstname, String lastname, String email, String username,
-			String password, String rank, Integer status) {
+			String password, String rank, Integer status,String clientType) {
 		super();
 		this.id = id;
 		Firstname = firstname;
@@ -23,6 +24,13 @@ public class User implements Serializable{
 		Password = password;
 		Rank = rank;
 		Status = status;
+		 ClientType= clientType;
+	}
+	public String getClientType() {
+		return ClientType;
+	}
+	public void setClientType(String clientType) {
+		ClientType = clientType;
 	}
 	public String getId() {
 		return id;

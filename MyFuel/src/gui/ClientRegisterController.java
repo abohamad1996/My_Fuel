@@ -1,6 +1,7 @@
 package gui;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Entity.CreditCard;
@@ -9,11 +10,14 @@ import client.ClientConsole;
 import client.Func;
 import common.Message;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
@@ -37,7 +41,7 @@ public class ClientRegisterController implements Initializable{
 	    private TextField txtID;
 
 	    @FXML
-	    private Button btnNext;
+	    private Button btnRegister;
 
 	    @FXML
 	    private TextField txtMonth;
@@ -70,6 +74,11 @@ public class ClientRegisterController implements Initializable{
 	    private Button btnImage;
 	    @FXML
 		public Label status;
+	    @FXML
+	    private ComboBox<String> comboType;
+	    ObservableList<String> TypeList =FXCollections.observableArrayList(); 
+
+		ArrayList<String> TypeValues=new ArrayList<String>();
 	    
 		public ClientConsole chat= new ClientConsole("localhost", 5555);
 	private FXMLLoader loader;	
@@ -87,24 +96,22 @@ public class ClientRegisterController implements Initializable{
 	}		
 }
     @FXML
-    void btnNext(ActionEvent event) {
+    void Register(ActionEvent event) {
     	Integer status=0;
     	String rank="Client";
-    	User user = new User(txtID.getText(), txtxFirstname.getText(), txtLastname.getText(), txtEmail.getText(), txtUsername.getText(), txtPassword.getText(), rank, status);
-    /*	Integer status=0;
-    	String rank="Client";
-    	User user = new User(txtID.getText(), txtxFirstname.getText(), txtLastname.getText(), txtEmail.getText(), txtUsername.getText(), txtPassword.getText(), rank, status);
+    	User user = new User(txtID.getText(), txtxFirstname.getText(), txtLastname.getText(), txtEmail.getText(), txtUsername.getText(), txtPassword.getText(), rank, status,comboType.getValue());
     	ClientRegisterController.acainstance.chat.accept(new Message(6, user));
        	String creditCard=txtCreditA.getText()+txtCreditB.getText()+txtCreditC.getText()+txtCreditD.getText();
     	System.out.println("creditcard:"+creditCard);
     	CreditCard card=new CreditCard(txtID.getText(), creditCard, txtMonth.getText(), txtYear.getText(), txtCVV.getText());
-    	ClientRegisterController.acainstance.chat.accept(new Message(7, card));*/
-    	CarRegisterController car;
-    	car = new CarRegisterController();
+    	ClientRegisterController.acainstance.chat.accept(new Message(7, card));
+    	ClientRegisterDetails clientRegister;
+    	clientRegister = new ClientRegisterDetails();
     	runLater(() -> {
-    		car.start(splitpane, user, "User");
+    		clientRegister.start(splitpane, user, "User");
 });
     }
+    
 	@SuppressWarnings("unused")
 	private void runLater(Func f) {
 		f.call();
@@ -119,13 +126,19 @@ public class ClientRegisterController implements Initializable{
 			}
 		});
 	}
-	
+    @FXML
+    void AddImage(ActionEvent event) {
+
+    }
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;
 	//	chat.accept(new Message(6, null));
-		
+		TypeValues.add("Private Client");
+		TypeValues.add("Company Client");
+		TypeList.addAll(TypeValues);
+		comboType.setItems(TypeList);
 	}
 }

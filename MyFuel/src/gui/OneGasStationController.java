@@ -4,6 +4,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.sun.glass.events.MouseEvent;
+
+import Entity.Car;
 import Entity.User;
 import client.ClientConsole;
 import javafx.collections.FXCollections;
@@ -30,7 +33,7 @@ public class OneGasStationController implements Initializable{
 	    private ComboBox<String> comboStation;
 
 
-	
+	   public Car car2  ;
 	
 	    ObservableList<String> gasstationList =FXCollections.observableArrayList(); 
 		ArrayList<String> gasstationValues=new ArrayList<String>();
@@ -38,27 +41,35 @@ public class OneGasStationController implements Initializable{
 	private FXMLLoader loader;	
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
-	public void start(SplitPane splitpane, User user,String userJob) {
+	public void start(SplitPane splitpane, Car car  ,String userJob) {
+		car2=new Car(car.getOwnerID(), car.getCarNumber(), car.getPurchasePlan(), car.getServices(), null, null, null);		
 	this.splitpane=splitpane;
 	primaryStage=LoginController.primaryStage;
 	try{	
 		loader = new FXMLLoader(getClass().getResource("/gui/StationRegisterPurchasePlan1.fxml"));
 		lowerAnchorPane = loader.load();
 		splitpane.getItems().set(1, lowerAnchorPane);
+		System.out.println(""+car2.getCarNumber());
 	} catch(Exception e) {
 		e.printStackTrace();
 }	
 }
 	
-	
     @FXML
     void Next(ActionEvent event) {
-
+    	try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	car2.setGasStation1(comboStation.getValue());
+    	System.out.println(""+car2.getGasStation1());
+    	
     }
 	
 	
-	
-	
+
 	
 	
 	

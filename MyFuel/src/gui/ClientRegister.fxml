@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,15 +14,15 @@
 
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="487.0" prefWidth="639.0" styleClass="root" stylesheets="@css3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ClientRegisterController">
    <children>
-      <Label layoutX="27.0" layoutY="147.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="First name:" />
-      <Label layoutX="27.0" layoutY="187.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Last name:" />
-      <Label layoutX="30.0" layoutY="114.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="ID:" />
-      <Label layoutX="29.0" layoutY="224.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Email:" />
+      <Label layoutX="27.0" layoutY="167.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="First name:" />
+      <Label layoutX="27.0" layoutY="205.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Last name:" />
+      <Label layoutX="30.0" layoutY="136.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="ID:" />
+      <Label layoutX="29.0" layoutY="239.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Email:" />
       <Label layoutX="285.0" layoutY="90.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Credit Card:" />
-      <TextField fx:id="txtxFirstname" layoutX="122.0" layoutY="149.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css" />
-      <TextField fx:id="txtLastname" layoutX="122.0" layoutY="189.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css" />
-      <TextField fx:id="txtEmail" layoutX="122.0" layoutY="227.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css" />
-      <TextField fx:id="txtID" layoutX="123.0" layoutY="114.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css">
+      <TextField fx:id="txtxFirstname" layoutX="122.0" layoutY="169.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css" />
+      <TextField fx:id="txtLastname" layoutX="122.0" layoutY="207.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css" />
+      <TextField fx:id="txtEmail" layoutX="122.0" layoutY="242.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css" />
+      <TextField fx:id="txtID" layoutX="123.0" layoutY="136.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css">
          <contextMenu>
             <ContextMenu>
                <items>
@@ -31,21 +31,11 @@
             </ContextMenu>
          </contextMenu>
       </TextField>
-      <RadioButton layoutX="42.0" layoutY="78.0" mnemonicParsing="false" styleClass="root3" stylesheets="@css2.css" text="Private" />
-      <RadioButton layoutX="142.0" layoutY="78.0" mnemonicParsing="false" styleClass="root3" stylesheets="@css2.css" text="Company">
-         <contextMenu>
-            <ContextMenu>
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-               </items>
-            </ContextMenu>
-         </contextMenu>
-      </RadioButton>
-      <Label layoutX="7.0" layoutY="149.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
-      <Label layoutX="7.0" layoutY="226.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
-      <Label layoutX="7.0" layoutY="190.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
-      <Label layoutX="8.0" layoutY="116.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
-      <Button fx:id="btnNext" layoutX="509.0" layoutY="414.0" mnemonicParsing="false" onAction="#btnNext" prefHeight="28.0" prefWidth="79.0" styleClass="root4" stylesheets="@css2.css" text="Next" />
+      <Label layoutX="7.0" layoutY="169.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
+      <Label layoutX="7.0" layoutY="241.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
+      <Label layoutX="7.0" layoutY="208.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
+      <Label layoutX="8.0" layoutY="138.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
+      <Button fx:id="btnRegister" layoutX="509.0" layoutY="414.0" mnemonicParsing="false" onAction="#Register" prefHeight="28.0" prefWidth="79.0" styleClass="root4" stylesheets="@css2.css" text="Register" />
       <Label layoutX="285.0" layoutY="131.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Date:" />
       <TextField fx:id="txtMonth" layoutX="339.0" layoutY="132.0" prefHeight="26.0" prefWidth="49.0" styleClass="combo" stylesheets="@css2.css" />
       <Label layoutX="387.0" layoutY="130.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="/" />
@@ -69,19 +59,21 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <Label layoutX="9.0" layoutY="80.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
-      <Label layoutX="30.0" layoutY="262.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Username:" />
-      <Label layoutX="7.0" layoutY="264.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
-      <TextField fx:id="txtUsername" layoutX="122.0" layoutY="263.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css" />
-      <Label layoutX="30.0" layoutY="295.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Password:" />
-      <Label layoutX="7.0" layoutY="297.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
-      <TextField fx:id="txtPassword" layoutX="122.0" layoutY="296.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css" />
+      <Label layoutX="9.0" layoutY="93.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
+      <Label layoutX="30.0" layoutY="274.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Username:" />
+      <Label layoutX="7.0" layoutY="276.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
+      <TextField fx:id="txtUsername" layoutX="122.0" layoutY="275.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css" />
+      <Label layoutX="30.0" layoutY="310.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Password:" />
+      <Label layoutX="7.0" layoutY="312.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
+      <TextField fx:id="txtPassword" layoutX="122.0" layoutY="311.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css" />
       <ImageView fitHeight="99.0" fitWidth="107.0" layoutX="154.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/UserPhoto.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnImage" layoutX="22.0" layoutY="382.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="107.0" styleClass="root4" stylesheets="@css2.css" text="Add image" />
+      <Button fx:id="btnImage" layoutX="22.0" layoutY="382.0" mnemonicParsing="false" onAction="#AddImage" prefHeight="32.0" prefWidth="107.0" styleClass="root4" stylesheets="@css2.css" text="Add image" />
       <Label fx:id="status" layoutX="440.0" layoutY="281.0" />
+      <Label layoutX="30.0" layoutY="91.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Client Type:" />
+      <ComboBox fx:id="comboType" layoutX="123.0" layoutY="82.0" prefHeight="44.0" prefWidth="130.0" promptText="Choose" styleClass="root4" stylesheets="@css2.css" />
    </children>
 </AnchorPane>

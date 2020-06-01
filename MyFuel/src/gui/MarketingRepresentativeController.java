@@ -49,7 +49,9 @@ public class MarketingRepresentativeController implements Initializable{
     @FXML
     private Button btnLogout;
 
-    
+
+    @FXML
+    private Button btnCar;
     
     @FXML
     void HomeButton(ActionEvent event) {
@@ -82,7 +84,16 @@ public class MarketingRepresentativeController implements Initializable{
 });
     	}
     
+    @FXML
+    void AddCar(ActionEvent event) {
 
+    	User user = null;
+    	CarRegisterController car;
+    	car = new CarRegisterController();
+    	runLater(() -> {
+    		car.start(splitpane, user, "User");
+    	});
+    }
     @FXML
     void btnAbout(ActionEvent event) {
     	About = new AboutController();
@@ -121,11 +132,7 @@ public class MarketingRepresentativeController implements Initializable{
 				}
 			}
 		});
-		
-
 	}
-	
-	
 	
 	
 	private void runLater(Func f) {
