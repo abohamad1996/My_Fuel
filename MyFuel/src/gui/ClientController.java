@@ -86,7 +86,10 @@ public class ClientController implements Initializable{
 
     @FXML
     void PurchasePlanButton(ActionEvent event) {
-
+    	pController=new PurchasePlanController();
+    	runLater(() -> {
+    		pController.start(splitpane, user, "User");
+});
     }
 
     @FXML
@@ -113,6 +116,7 @@ public class ClientController implements Initializable{
 	public static RefuelingController refueling;
 	public static AboutController About;
 	public static HomePage HomePage;
+	public static PurchasePlanController pController;
 	public void start(User user) {
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -143,11 +147,7 @@ public class ClientController implements Initializable{
 	
 	
 	
-	
-	
-	
-	
-	
+
 	
 	
 	

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="522.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserHomeController">
+   <children>
+      <Text layoutX="170.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Heating">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Button layoutX="249.0" layoutY="192.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="root4" text="Add Order" />
+      <Button layoutX="249.0" layoutY="248.0" mnemonicParsing="false" styleClass="root4" text="Track Order" />
+      <Text layoutX="41.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Please Choose service">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
