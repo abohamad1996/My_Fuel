@@ -204,15 +204,16 @@ public static String ClientAddCars(Car car)
 	Statement stmt;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "insert into my_fuel.car values(?,?,?,?,?,?,?);";
+		String query = "insert into my_fuel.car values(?,?,?,?,?,?,?,?);";
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 	  	String a = car.getOwnerID();
 	      String b = car.getCarNumber();
 		String c =car.getPurchasePlan();
 		String d = car.getServices();
-		String e = car.getGasStation1();
-		String f = car.getGasStation2();
-		String g = car.getGasStation3();
+		String e = car.getGastype();
+		String f = car.getGasStation1();
+		String g =car.getGasStation2();
+		String h=car.getGasStation3();
 		ps.setString(1,a); 
 		ps.setString(2,b); 	
 		ps.setString(3,c); 	
@@ -220,6 +221,7 @@ public static String ClientAddCars(Car car)
 		ps.setString(5,e); 
 		ps.setString(6,f); 
 		ps.setString(7,g); 
+		ps.setString(8,h); 
 		System.out.println(""+ps.toString());
 		ps.executeUpdate();
 		return "success";
@@ -228,5 +230,22 @@ public static String ClientAddCars(Car car)
 		e.printStackTrace();
 		return "error";
 	}
+}
+public static ArrayList<String> getClientIDfromDatabase(java.sql.Connection connection)
+{
+ArrayList<String> arr = new ArrayList<String>();
+	Statement stmt;
+	try 
+	{
+		stmt = ((java.sql.Connection) connection).createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT ID FROM my_fuel.user;");
+ 		while(rs.next())
+ 		{
+		arr.add(rs.getString(1));	
+ 		}
+		rs.close();
+	
+	} catch (SQLException e) {e.printStackTrace();}
+	return arr;
 }
 }

@@ -176,6 +176,22 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
+	case 9:// show id details
+		try {
+			ArrayList<String> aa;
+			try {
+				aa = DBconnector.getClientIDfromDatabase(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(9, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
 		}
 		}
 	/**

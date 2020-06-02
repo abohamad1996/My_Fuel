@@ -164,6 +164,11 @@ public class ChatClient extends AbstractClient
 		  CarRegisterController.acainstance.status.setText(s4t + " Updated!");
 	    });
 	  break;
+  case 9:
+	  ArrayList<?> IDArrayList =(ArrayList<?>)recieved.getObject();
+		 ArrayList<String> bb=(ArrayList<String>)IDArrayList;
+		 CarRegisterController.acainstance.IDAcceptor(bb);;
+	  break;
   }
   }
 
