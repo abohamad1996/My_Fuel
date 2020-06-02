@@ -35,6 +35,6 @@
          </font>
       </Text>
       <TextField layoutX="236.0" layoutY="255.0" prefHeight="25.0" prefWidth="104.0" styleClass="root4" />
-      <Button layoutX="498.0" layoutY="445.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" styleClass="root4" text="START" />
+      <Button layoutX="498.0" layoutY="445.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" styleClass="root4" stylesheets="@css2.css" text="START" />
    </children>
 </AnchorPane>
