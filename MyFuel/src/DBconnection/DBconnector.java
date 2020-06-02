@@ -248,5 +248,4 @@ ArrayList<String> arr = new ArrayList<String>();
 	} catch (SQLException e) {e.printStackTrace();}
 	return arr;
 }
-int a;
 }
