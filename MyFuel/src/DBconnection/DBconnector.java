@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.sun.corba.se.pept.transport.Connection;
+import com.sun.crypto.provider.RSACipher;
 
 import Entity.Car;
 import Entity.CreditCard;
@@ -238,7 +239,7 @@ ArrayList<String> arr = new ArrayList<String>();
 	try 
 	{
 		stmt = ((java.sql.Connection) connection).createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT ID FROM my_fuel.user;");
+		ResultSet rs = stmt.executeQuery("SELECT ID FROM my_fuel.user WHERE UserRank='Client';");
  		while(rs.next())
  		{
 		arr.add(rs.getString(1));	
@@ -247,5 +248,58 @@ ArrayList<String> arr = new ArrayList<String>();
 	
 	} catch (SQLException e) {e.printStackTrace();}
 	return arr;
+}
+
+public static ArrayList<String> getClientCars(java.sql.Connection connection,String id)
+{
+ArrayList<String> arr = new ArrayList<String>();
+	Statement stmt;
+	try 
+	{
+		stmt = ((java.sql.Connection) connection).createStatement();
+		String query = "SELECT carnumber FROM my_fuel.car WHERE OwnerID=?;";
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		ResultSet rs = stmt.executeQuery("SELECT carnumber FROM my_fuel.car;");
+		String a = id;
+		ps.setString(1,a); 
+		rs = ps.executeQuery();
+		System.out.println(""+rs.toString());
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			arr.add(rs.getString(1));
+ 		}
+		rs.close();
+	} catch (SQLException e) {e.printStackTrace();}
+	return arr;
+}
+public static Car PurchasePlanDetails(java.sql.Connection connection,String id)
+{
+	Car car = null;
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT OwnerID, carnumber, purchaseplan, services, gastype,gasstation1, gasstation2, gasstation3\r\n" + 
+				"FROM my_fuel.car car , my_fuel.user user\r\n" + 
+				"WHERE car.OwnerID=user.ID and OwnerID=?";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.car;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a = id;
+	      //String b=carnumber;
+		ps.setString(1,a); 
+	//	ps.setString(2,b); 
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			car=new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)) ;	
+			return car;
+ 		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return car;
 }
 }

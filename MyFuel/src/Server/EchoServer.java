@@ -38,6 +38,8 @@ import ocsf.server.*;
 
 public class EchoServer extends AbstractServer {
 	public String username=null;
+	public String iD=null;
+	public String carNumber=null;
 	// Class variables *************************************************
 
 	/**
@@ -114,6 +116,7 @@ public class EchoServer extends AbstractServer {
 				try {
 						connection = DBconnector.getConnection();
 						User user=DBconnector.isInDB(connection, loginMessage[1], loginMessage[2]);
+						iD=user.getId();
 						client.sendToClient(new Message(3, user));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -168,6 +171,7 @@ public class EchoServer extends AbstractServer {
 		break;
 	case 8:// add car 
 		Car car=(Car) recieved.getObject();
+		carNumber=car.getCarNumber();
 		String s4t=DBconnector.ClientAddCars(car);
 		try {
 			client.sendToClient(new Message(8, s4t));
@@ -183,6 +187,35 @@ public class EchoServer extends AbstractServer {
 				aa = DBconnector.getClientIDfromDatabase(DBconnector.getConnection());
 				Object bb = aa;
 				client.sendToClient(new Message(9, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 10:// purchase plan
+		try {
+			Car aa = DBconnector.PurchasePlanDetails(DBconnector.getConnection(),iD);
+			Object bb = aa;
+			client.sendToClient(new Message(10, bb));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 11:// carOwners
+		try {
+			ArrayList<String> aa;
+			try {
+				aa = DBconnector.getClientCars(DBconnector.getConnection(),iD);
+				Object bb = aa;
+				client.sendToClient(new Message(11, bb));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

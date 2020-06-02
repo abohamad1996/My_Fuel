@@ -12,6 +12,7 @@ import gui.EmployeeFrameController;
 import gui.LoginController;
 import gui.MarketingRepresentativeController;
 import gui.ProfileSettingsController;
+import gui.PurchasePlanController;
 import gui.CarRegisterController;
 import gui.ClientController;
 import gui.ClientRegisterController;
@@ -36,6 +37,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 import DBconnection.DBconnector;
+import Entity.Car;
 import Entity.User;
 
 /**
@@ -174,8 +176,19 @@ public class ChatClient extends AbstractClient
 		 ArrayList<String> bb=(ArrayList<String>)IDArrayList;
 		 CarRegisterController.acainstance.IDAcceptor(bb);;
 	  break;
+  case 10:
+	  Car carArrayList =(Car)recieved.getObject();
+		 Car CARarr=(Car)carArrayList;
+		PurchasePlanController.acainstance.CarAcceptor(carArrayList);
+	  break;
+  case 11:
+	  ArrayList<?> CarArrayList =(ArrayList<?>)recieved.getObject();
+		 ArrayList<String> bbb=(ArrayList<String>)CarArrayList;
+		 PurchasePlanController.acainstance.Car2Acceptor(bbb);
+	  break;
   }
   }
+
 
   /**
    * This method handles all data coming from the UI            
