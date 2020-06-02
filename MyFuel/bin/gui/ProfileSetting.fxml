@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="ProfileSettings" minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="667.0" styleClass="root" stylesheets="@css3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProfileSettingsController">
+   <children>
+      <Label layoutX="25.0" layoutY="154.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="First name:" />
+      <Label layoutX="25.0" layoutY="198.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Last name:" />
+      <Label layoutX="46.0" layoutY="112.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="ID:" />
+      <Label layoutX="35.0" layoutY="240.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Email:" />
+      <TextField fx:id="txtFirstName" layoutX="125.0" layoutY="154.0" prefHeight="29.0" prefWidth="232.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField fx:id="txtLastName" layoutX="126.0" layoutY="194.0" prefHeight="29.0" prefWidth="232.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField fx:id="txtID" layoutX="127.0" layoutY="114.0" prefHeight="29.0" prefWidth="232.0" styleClass="root2" stylesheets="@css2.css" />
+      <TextField fx:id="txtEmail" layoutX="125.0" layoutY="238.0" prefHeight="29.0" prefWidth="232.0" styleClass="root2" stylesheets="@css2.css" />
+      <Text layoutX="216.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile " textAlignment="CENTER" wrappingWidth="183.20000000000005">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="128.0" fitWidth="142.0" layoutX="421.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/UserPhoto.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnUpdate" layoutX="266.0" layoutY="337.0" mnemonicParsing="false" onAction="#UpdateDetails" prefHeight="40.0" prefWidth="136.0" styleClass="root2" stylesheets="@css2.css" text="Update Details" />
+      <Label fx:id="status" layoutX="259.0" layoutY="300.0" />
+   </children>
+</AnchorPane>
