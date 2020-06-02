@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import com.sun.corba.se.pept.transport.Connection;
 
+import Entity.Car;
 import Entity.CreditCard;
 import Entity.User;
 import gui.Employee;
@@ -198,5 +199,34 @@ public static String ClientRegisterCreditCard(CreditCard card)
 		return "error";
 	}
 }
-
+public static String ClientAddCars(Car car)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.car values(?,?,?,?,?,?,?);";
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	  	String a = car.getOwnerID();
+	      String b = car.getCarNumber();
+		String c =car.getPurchasePlan();
+		String d = car.getServices();
+		String e = car.getGasStation1();
+		String f = car.getGasStation2();
+		String g = car.getGasStation3();
+		ps.setString(1,a); 
+		ps.setString(2,b); 	
+		ps.setString(3,c); 	
+		ps.setString(4,d); 	
+		ps.setString(5,e); 
+		ps.setString(6,f); 
+		ps.setString(7,g); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
 }

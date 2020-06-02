@@ -8,6 +8,7 @@ import Entity.Car;
 import Entity.User;
 import client.ClientConsole;
 import client.Func;
+import common.Message;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,9 +25,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class CarRegisterController implements Initializable{
+	public static CarRegisterController acainstance;
     ObservableList<String> planList =FXCollections.observableArrayList(); 
     ObservableList<String> serviceList =FXCollections.observableArrayList(); 
-
+    ObservableList<String> gasList =FXCollections.observableArrayList(); 
+	ArrayList<String> gasValues=new ArrayList<String>();
 	ArrayList<String> planValues=new ArrayList<String>();
 	ArrayList<String> serviceValues=new ArrayList<String>();
     @FXML
@@ -56,16 +59,19 @@ public class CarRegisterController implements Initializable{
 	    @FXML
 	    private Label star;
 
+	    @FXML
+	    private Label gasLabel;
 
+	    @FXML
+	    private Label star2;
 
 	    @FXML
 	    private Label gasLabel2;
 	@FXML
 	private static SplitPane splitpane;
-
+    @FXML
+    public Label status;
     
-    
- 
     
 	public ClientConsole chat= new ClientConsole("localhost", 5555);
 	private FXMLLoader loader;	
@@ -90,6 +96,10 @@ public class CarRegisterController implements Initializable{
     	String currentLevel=comboPlan.getValue();
     	if(currentLevel.equals("Level 1"))
     	{
+      		comboStation.setVisible(true);
+        	gasLabel.setVisible(true);
+        	gasLabel.setVisible(true);
+        	star2.setVisible(true);
     		//comboStation2.setValue("Null");
     		comboStation2.setVisible(false);
     		comboStation3.setVisible(false);
@@ -99,6 +109,10 @@ public class CarRegisterController implements Initializable{
     	}
     	else if(currentLevel.equals("Level 2"))
     	{
+     		comboStation.setVisible(true);
+        	gasLabel.setVisible(true);
+        	gasLabel.setVisible(true);
+        	star2.setVisible(true);
     		//comboStation2.setValue("Null");
     		comboStation2.setVisible(true);
     		comboStation3.setVisible(true);
@@ -110,20 +124,10 @@ public class CarRegisterController implements Initializable{
 	
     @FXML
     void Next(ActionEvent event) {
-    	
-    	Car car=new Car(txtID.getText(), txtCarNumber.getText(), comboPlan.getValue(), comboServices.getValue(), null, null, null); 
-    	String currentLevel=comboPlan.getValue();
-    	if(currentLevel.equals("Level 1"))
-    	{
-    		
-    	}
-    	else if(currentLevel.equals("Level 2")){
-        	MultiGasStationController gasStation;
-        	gasStation = new MultiGasStationController();
-        	runLater(() -> {
-        		gasStation.start(splitpane, car, "User");
-    });
-		}
+    	Car car=new Car(txtID.getText(), txtCarNumber.getText(), comboPlan.getValue(), comboServices.getValue(), comboStation.getValue(), comboStation2.getValue(), comboStation3.getValue());
+    	CarRegisterController.acainstance.chat.accept(new Message(8, car));
+
+
     }
     
     
@@ -147,16 +151,25 @@ public class CarRegisterController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		acainstance = this;
 		planValues.add("Level 1");
 		planValues.add("Level 2");
 		serviceValues.add("Casual fueling");
 		serviceValues.add("Regular monthly 1 car");
 		serviceValues.add("Regular monthly +1");
 		serviceValues.add("Full monthly");
+		gasValues.add("Paz Station");
+		gasValues.add("Yellow Station");
+		gasValues.add("Sonol Station");
+		gasValues.add("Ten Station");
 		planList.addAll(planValues);
 		serviceList.addAll(serviceValues);
+		gasList.addAll(gasValues);
 		comboPlan.setItems(planList);
 		comboServices.setItems(serviceList);
+		comboStation.setItems(gasList);
+		comboStation2.setItems(gasList);
+		comboStation3.setItems(gasList);
 	}
 
 }

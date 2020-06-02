@@ -33,13 +33,14 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <Label layoutX="42.0" layoutY="320.0" prefHeight="31.0" prefWidth="128.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Gas Station 1:" />
-      <Label layoutX="20.0" layoutY="324.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
-      <ComboBox fx:id="comboStation" layoutX="159.0" layoutY="315.0" prefHeight="41.0" prefWidth="215.0" promptText="Choose a gas station" styleClass="root4" stylesheets="@css2.css" />
+      <Label fx:id="gasLabel" layoutX="42.0" layoutY="320.0" prefHeight="31.0" prefWidth="128.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Gas Station 1:" visible="false" />
+      <Label fx:id="star2" layoutX="20.0" layoutY="324.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" visible="false" />
+      <ComboBox fx:id="comboStation" layoutX="159.0" layoutY="315.0" prefHeight="41.0" prefWidth="215.0" promptText="Choose a gas station" styleClass="root4" stylesheets="@css2.css" visible="false" />
       <Label fx:id="gasLabel1" layoutX="42.0" layoutY="375.0" prefHeight="31.0" prefWidth="128.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Gas Station 2:" visible="false" />
       <Label fx:id="star" layoutX="20.0" layoutY="379.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" visible="false" />
       <ComboBox fx:id="comboStation2" layoutX="159.0" layoutY="370.0" prefHeight="41.0" prefWidth="215.0" promptText="Choose a gas station" styleClass="root4" stylesheets="@css2.css" visible="false" />
       <Label fx:id="gasLabel2" layoutX="42.0" layoutY="426.0" prefHeight="31.0" prefWidth="128.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Gas Station 3:" visible="false" />
       <ComboBox fx:id="comboStation3" layoutX="159.0" layoutY="421.0" prefHeight="41.0" prefWidth="215.0" promptText="Choose a gas station" styleClass="root4" stylesheets="@css2.css" visible="false" />
+      <Label fx:id="status" layoutX="292.0" layoutY="269.0" />
    </children>
 </AnchorPane>
