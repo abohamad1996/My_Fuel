@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="528.0" prefWidth="639.0" styleClass="root" stylesheets="@css3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RefuelingController">
+   <children>
+      <Label fx:id="gasLabel" layoutX="38.0" layoutY="342.0" prefHeight="31.0" prefWidth="128.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Gas Station 1:" visible="false" />
+      <Label fx:id="star2" layoutX="16.0" layoutY="346.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" visible="false" />
+      <ComboBox fx:id="comboStation" layoutX="155.0" layoutY="337.0" prefHeight="41.0" prefWidth="215.0" promptText="Choose a gas station" styleClass="root4" stylesheets="@css2.css" visible="false" />
+      <Label fx:id="gasLabel1" layoutX="38.0" layoutY="397.0" prefHeight="31.0" prefWidth="128.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Gas Station 2:" visible="false" />
+      <Label fx:id="star" layoutX="16.0" layoutY="401.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" visible="false" />
+      <ComboBox fx:id="comboStation2" layoutX="155.0" layoutY="392.0" prefHeight="41.0" prefWidth="215.0" promptText="Choose a gas station" styleClass="root4" stylesheets="@css2.css" visible="false" />
+      <Label fx:id="gasLabel2" layoutX="38.0" layoutY="448.0" prefHeight="31.0" prefWidth="128.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Gas Station 3:" visible="false" />
+      <ComboBox fx:id="comboStation3" layoutX="155.0" layoutY="443.0" prefHeight="41.0" prefWidth="215.0" promptText="Choose a gas station" styleClass="root4" stylesheets="@css2.css" visible="false" />
+      <Label fx:id="status" layoutX="292.0" layoutY="269.0" />
+      <Text layoutX="144.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="green2label" text="NFC Sensor-Refueling" textAlignment="CENTER" wrappingWidth="428.5833282470703">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Text>
+      <Text layoutX="47.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Please enter amount:" textAlignment="CENTER" wrappingWidth="182.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="348.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="NIS" wrappingWidth="31.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField layoutX="236.0" layoutY="255.0" prefHeight="25.0" prefWidth="104.0" styleClass="root4" />
+      <Button layoutX="498.0" layoutY="445.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" styleClass="root4" stylesheets="@css2.css" text="START" />
+   </children>
+</AnchorPane>
