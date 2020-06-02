@@ -12,6 +12,7 @@ import gui.EmployeeFrameController;
 import gui.LoginController;
 import gui.MarketingRepresentativeController;
 import gui.ProfileSettingsController;
+import gui.CarRegisterController;
 import gui.ClientRegisterController;
 import gui.Employee;
 import gui.UpdateRoleController;
@@ -156,6 +157,17 @@ public class ChatClient extends AbstractClient
 	  Platform.runLater(() -> {
 		  ClientRegisterController.acainstance.status.setText(s3t + " Updated!");
 	    });
+	  break;
+  case 8:
+	  String s4t = (String) recieved.getObject();
+	  Platform.runLater(() -> {
+		  CarRegisterController.acainstance.status.setText(s4t + " Updated!");
+	    });
+	  break;
+  case 9:
+	  ArrayList<?> IDArrayList =(ArrayList<?>)recieved.getObject();
+		 ArrayList<String> bb=(ArrayList<String>)IDArrayList;
+		 CarRegisterController.acainstance.IDAcceptor(bb);;
 	  break;
   }
   }

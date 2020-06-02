@@ -16,6 +16,7 @@ import java.util.Vector;
 import com.sun.org.apache.bcel.internal.generic.AALOAD;
 
 import DBconnection.DBconnector;
+import Entity.Car;
 import Entity.CreditCard;
 import Entity.User;
 import common.Message;
@@ -160,6 +161,32 @@ public class EchoServer extends AbstractServer {
 		String s3t=DBconnector.ClientRegisterCreditCard(card);
 		try {
 			client.sendToClient(new Message(7, s3t));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 8:// add car 
+		Car car=(Car) recieved.getObject();
+		String s4t=DBconnector.ClientAddCars(car);
+		try {
+			client.sendToClient(new Message(8, s4t));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 9:// show id details
+		try {
+			ArrayList<String> aa;
+			try {
+				aa = DBconnector.getClientIDfromDatabase(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(9, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

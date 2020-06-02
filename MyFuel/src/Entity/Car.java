@@ -13,20 +13,28 @@ public class Car implements Serializable{
 	String carNumber;
 	String purchasePlan;
 	String Services;
-	String gasStation1;
-	String gasStation2;
-	String gasStation3;
-	public Car(String ownerID, String carNumber, String purchasePlan, String services, String gasStation1,
-			String gasStation2, String gasStation3) {
+	public Car(String ownerID, String carNumber, String purchasePlan, String services, String gastype,
+			String gasStation1, String gasStation2, String gasStation3) {
 		super();
 		this.ownerID = ownerID;
 		this.carNumber = carNumber;
 		this.purchasePlan = purchasePlan;
 		Services = services;
+		this.gastype = gastype;
 		this.gasStation1 = gasStation1;
 		this.gasStation2 = gasStation2;
 		this.gasStation3 = gasStation3;
 	}
+	public String getGastype() {
+		return gastype;
+	}
+	public void setGastype(String gastype) {
+		this.gastype = gastype;
+	}
+	String gastype;
+	String gasStation1;
+	String gasStation2;
+	String gasStation3;
 	public String getOwnerID() {
 		return ownerID;
 	}
