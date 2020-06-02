@@ -13,6 +13,7 @@ import gui.LoginController;
 import gui.MarketingRepresentativeController;
 import gui.ProfileSettingsController;
 import gui.CarRegisterController;
+import gui.ClientController;
 import gui.ClientRegisterController;
 import gui.Employee;
 import gui.UpdateRoleController;
@@ -133,7 +134,11 @@ public class ChatClient extends AbstractClient
 			MarketingRepresentativeController Marketing=new MarketingRepresentativeController();
 			Marketing.start(user);
 	  break;
-	  
+		case "Client":
+			System.out.println("4");
+			ClientController Client=new ClientController();
+			Client.start(user);
+	  break;
 	  }
 	  case 4:
 		 User userArrayList =(User)recieved.getObject();
