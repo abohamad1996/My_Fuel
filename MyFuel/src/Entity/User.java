@@ -4,17 +4,8 @@ import java.io.Serializable;
 
 public class User implements Serializable{
 
-	String id;
-	String Firstname;
-	String Lastname;
-	String email;
-	String Username;
-	String Password;
-	String Rank;
-	Integer Status;
-	String ClientType;
-	public User(String id, String firstname, String lastname, String email, String username,
-			String password, String rank, Integer status,String clientType) {
+	public User(String id, String firstname, String lastname, String email, String username, String password,
+			String rank, String clientType, Integer status, Integer image) {
 		super();
 		this.id = id;
 		Firstname = firstname;
@@ -23,9 +14,27 @@ public class User implements Serializable{
 		Username = username;
 		Password = password;
 		Rank = rank;
+		ClientType = clientType;
 		Status = status;
-		 ClientType= clientType;
+		Image = image;
 	}
+	String id;
+	String Firstname;
+	String Lastname;
+	String email;
+	String Username;
+	String Password;
+	String Rank;
+	String ClientType;
+	Integer Status;
+	Integer Image;
+	public Integer getImage() {
+		return Image;
+	}
+	public void setImage(Integer image) {
+		Image = image;
+	}
+
 	public String getClientType() {
 		return ClientType;
 	}

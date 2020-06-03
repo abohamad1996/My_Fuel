@@ -81,7 +81,7 @@ public static User isInDB(java.sql.Connection connection, String username, Strin
 		if (!rs.next())
 			return null;
 			else {
- 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8),rs.getString(9));
+ 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),rs.getInt(9),rs.getInt(10));
  			return user;
 			}
 	} catch (SQLException e) {
@@ -105,7 +105,7 @@ public static User userDetails(java.sql.Connection connection, String username)
 		rs = ps.executeQuery();
  		while(rs.next())
  		{
- 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getInt(8),rs.getString(9));	 				
+ 			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),rs.getInt(9),rs.getInt(10));	 				
  			return user;
  		}
  		///////// comment
@@ -119,7 +119,7 @@ public static String UpdateUser(User user)
 	try {
 		stmt = DBconnector.getConnection().createStatement();
 		String query = "update my_fuel.user SET Firstname=? , Lastname=? , Email=? WHERE ID=?";
-		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.employee;");
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.user;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 		String a = user.getFirstname();
 		String b =user.getLastname();

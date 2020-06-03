@@ -99,7 +99,7 @@ public class ClientRegisterController implements Initializable{
     void Register(ActionEvent event) {
     	Integer status=0;
     	String rank="Client";
-    	User user = new User(txtID.getText(), txtxFirstname.getText(), txtLastname.getText(), txtEmail.getText(), txtUsername.getText(), txtPassword.getText(), rank, status,comboType.getValue());
+    	User user = new User(txtID.getText(), txtxFirstname.getText(), txtLastname.getText(), txtEmail.getText(), txtUsername.getText(), txtPassword.getText(), rank,comboType.getValue(), status,null);
     	ClientRegisterController.acainstance.chat.accept(new Message(6, user));
        	String creditCard=txtCreditA.getText()+txtCreditB.getText()+txtCreditC.getText()+txtCreditD.getText();
     	System.out.println("creditcard:"+creditCard);

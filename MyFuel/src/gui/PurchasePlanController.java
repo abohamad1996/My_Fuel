@@ -80,6 +80,7 @@ public class PurchasePlanController implements Initializable{
 	
 		public void CarAcceptor(Car car) {
 			detailsCar=new Car(car.getOwnerID(), car.getCarNumber(), car.getPurchasePlan(), car.getServices(), car.getGastype(), car.getGasStation1(), car.getGasStation2(), car.getGasStation3());
+			
 		}
 	
 		public void Car2Acceptor(ArrayList<String> bb) {
@@ -87,7 +88,6 @@ public class PurchasePlanController implements Initializable{
 		}
 	    @FXML
 	    void ShowDetails(ActionEvent event) {
-	    	if(comboCar.getValue().equals(detailsCar.getCarNumber())) {
 	    	System.out.println(""+comboCar.getValue());
 			txtID.setText(detailsCar.getOwnerID());
 			txtGasStation.setText(detailsCar.getGasStation1());
@@ -96,7 +96,7 @@ public class PurchasePlanController implements Initializable{
 			txtPurchaseplan.setText(detailsCar.getPurchasePlan());
 			txtServices.setText(detailsCar.getServices());
 			txtGastype.setText(detailsCar.getGastype());
-			txtCarnumber.setText(detailsCar.getCarNumber());}
+			txtCarnumber.setText(detailsCar.getCarNumber());
 	    }
 	
 	@Override
