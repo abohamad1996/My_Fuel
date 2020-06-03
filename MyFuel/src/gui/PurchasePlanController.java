@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Label;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -22,6 +23,9 @@ import javafx.stage.Stage;
 
 public class PurchasePlanController implements Initializable{
     public static PurchasePlanController acainstance;
+	
+    @FXML
+    private Label labelIDD;
 
 	 @FXML
 	    private ComboBox<String> comboCar;
@@ -49,8 +53,7 @@ public class PurchasePlanController implements Initializable{
 
 	    @FXML
 	    private TextField txtID;
-	
-	
+
 		@FXML
 		private static SplitPane splitpane;
 		private FXMLLoader loader;	
@@ -63,6 +66,8 @@ public class PurchasePlanController implements Initializable{
 		ArrayList<User> userdetails= new ArrayList<User>();
 		Car detailsCar;
 	    ObservableList<String> List =FXCollections.observableArrayList(); 
+	    ObservableList<Car> CarList =FXCollections.observableArrayList(); 
+
 		public void start(SplitPane splitpane, User user,String userJob) {
 			this.splitpane=splitpane;
 			this.user=user;
@@ -78,9 +83,8 @@ public class PurchasePlanController implements Initializable{
 	}
 	
 	
-		public void CarAcceptor(Car car) {
-			detailsCar=new Car(car.getOwnerID(), car.getCarNumber(), car.getPurchasePlan(), car.getServices(), car.getGastype(), car.getGasStation1(), car.getGasStation2(), car.getGasStation3());
-			
+		public void CarAcceptor(ArrayList<Car> car) {
+			CarList.addAll(car);
 		}
 	
 		public void Car2Acceptor(ArrayList<String> bb) {
@@ -88,15 +92,16 @@ public class PurchasePlanController implements Initializable{
 		}
 	    @FXML
 	    void ShowDetails(ActionEvent event) {
-	    	System.out.println(""+comboCar.getValue());
-			txtID.setText(detailsCar.getOwnerID());
-			txtGasStation.setText(detailsCar.getGasStation1());
-			txtGasStation2.setText(detailsCar.getGasStation2());
-			txtGasStation3.setText(detailsCar.getGasStation3());
-			txtPurchaseplan.setText(detailsCar.getPurchasePlan());
-			txtServices.setText(detailsCar.getServices());
-			txtGastype.setText(detailsCar.getGastype());
-			txtCarnumber.setText(detailsCar.getCarNumber());
+	    	//System.out.println(""+comboCar.getValue());
+	    	System.out.println();
+	   // 	txtID.setText(detailsCar.getOwnerID());
+		//	txtGasStation.setText(detailsCar.getGasStation1());
+		//	txtGasStation2.setText(detailsCar.getGasStation2());
+		//	txtGasStation3.setText(detailsCar.getGasStation3());
+		//	txtPurchaseplan.setText(detailsCar.getPurchasePlan());
+		//	txtServices.setText(detailsCar.getServices());
+		//	txtGastype.setText(detailsCar.getGastype());
+		//	txtCarnumber.setText(detailsCar.getCarNumber());
 	    }
 	
 	@Override

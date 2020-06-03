@@ -38,7 +38,6 @@ Employee employee;
 			arr.add(employee);	
 	 		}
 			rs.close();
-		
 			//stmt.executeUpdate("UPDATE course SET semestr=\"W08\" WHERE num=61309");
 		} catch (SQLException e) {e.printStackTrace();}
 		return arr;
@@ -273,10 +272,11 @@ ArrayList<String> arr = new ArrayList<String>();
 	} catch (SQLException e) {e.printStackTrace();}
 	return arr;
 }
-public static Car PurchasePlanDetails(java.sql.Connection connection,String id)
+public static ArrayList<Car> PurchasePlanDetails(java.sql.Connection connection,String id)
 {
-	Car car = null;
+	Car car ;
 	Statement stmt;
+	ArrayList<Car> arr = new ArrayList<Car>();
 	try {
 		stmt = DBconnector.getConnection().createStatement();
 		String query = "SELECT OwnerID, carnumber, purchaseplan, services, gastype,gasstation1, gasstation2, gasstation3\r\n" + 
@@ -293,13 +293,14 @@ public static Car PurchasePlanDetails(java.sql.Connection connection,String id)
  		{
 			System.out.println(""+ps.toString());
 			car=new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)) ;	
-			return car;
+			arr.add(car);
+			return arr;
  		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 		return null;
 	}
-	return car;
+	return arr;
 }
 }

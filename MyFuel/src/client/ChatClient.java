@@ -177,8 +177,8 @@ public class ChatClient extends AbstractClient
 		 CarRegisterController.acainstance.IDAcceptor(bb);;
 	  break;
   case 10:
-	  Car carArrayList =(Car)recieved.getObject();
-		 Car CARarr=(Car)carArrayList;
+	ArrayList<Car>  carArrayList =(ArrayList<Car>)recieved.getObject();
+	ArrayList<Car> CARarr=(ArrayList<Car>)carArrayList;
 		PurchasePlanController.acainstance.CarAcceptor(carArrayList);
 	  break;
   case 11:

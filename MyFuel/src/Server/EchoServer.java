@@ -198,7 +198,7 @@ public class EchoServer extends AbstractServer {
 		break;
 	case 10:// purchase plan
 		try {
-			Car aa = DBconnector.PurchasePlanDetails(DBconnector.getConnection(),iD);
+			ArrayList<Car> aa = DBconnector.PurchasePlanDetails(DBconnector.getConnection(), iD);
 			Object bb = aa;
 			client.sendToClient(new Message(10, bb));
 		} catch (SQLException e) {
