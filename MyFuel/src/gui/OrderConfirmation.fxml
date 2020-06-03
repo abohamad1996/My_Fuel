@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="734.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserHomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="667.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OrderConfirmationController">
    <children>
       <Text layoutX="227.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Confirmation" wrappingWidth="262.0">
          <font>
@@ -43,12 +43,12 @@
       <TextField layoutX="156.0" layoutY="301.0" styleClass="root2" stylesheets="@../../git/My_Fuel/MyFuel/src/gui/css2.css" />
       <TextField layoutX="156.0" layoutY="259.0" styleClass="root2" stylesheets="@../../git/My_Fuel/MyFuel/src/gui/css2.css" />
       <TextField layoutX="155.0" layoutY="345.0" styleClass="root2" stylesheets="@../../git/My_Fuel/MyFuel/src/gui/css2.css" />
-      <Button layoutX="288.0" layoutY="456.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" styleClass="root2" stylesheets="@../../git/My_Fuel/MyFuel/src/gui/css2.css" text=" Confirm" />
-      <Text layoutX="397.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordrer Number :" wrappingWidth="119.0">
+      <Button layoutX="288.0" layoutY="414.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" styleClass="root2" stylesheets="@../../git/My_Fuel/MyFuel/src/gui/css2.css" text=" Confirm" />
+      <Text layoutX="368.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordrer Number :" wrappingWidth="119.0">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <TextField layoutX="525.0" layoutY="151.0" styleClass="root2" stylesheets="@../../git/My_Fuel/MyFuel/src/gui/css2.css" />
+      <TextField layoutX="490.0" layoutY="151.0" styleClass="root2" stylesheets="@../../git/My_Fuel/MyFuel/src/gui/css2.css" />
    </children>
 </AnchorPane>

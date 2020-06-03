@@ -13,6 +13,7 @@ import gui.LoginController;
 import gui.MarketingRepresentativeController;
 import gui.ProfileSettingsController;
 import gui.PurchasePlanController;
+import gui.StaionManagerController;
 import gui.CarRegisterController;
 import gui.ClientController;
 import gui.ClientRegisterController;
@@ -128,7 +129,7 @@ public class ChatClient extends AbstractClient
 
 		case "Station Manager":
 			System.out.println("2");
-			UserHomeController StationManager=new UserHomeController();
+			StaionManagerController StationManager=new StaionManagerController();
 			StationManager.start(user);
 	  break;
 		case "Marketing Representative":
