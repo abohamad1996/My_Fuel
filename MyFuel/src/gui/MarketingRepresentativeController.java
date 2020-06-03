@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
@@ -51,10 +52,13 @@ public class MarketingRepresentativeController implements Initializable{
 
 
     @FXML
+    private Label DiroctoryBar;
+    @FXML
     private Button btnCar;
     
     @FXML
     void HomeButton(ActionEvent event) {
+     	DiroctoryBar.setText("My Fuel->Home");
     	HomePage = new HomePage();
     	runLater(() -> {
     		HomePage.start(splitpane, user, "User");
@@ -70,6 +74,7 @@ public class MarketingRepresentativeController implements Initializable{
 
     @FXML
     void ProfileSettingButton(ActionEvent event) {
+     	DiroctoryBar.setText("My Fuel->Profile Settings");
     	ProfileSetting = new ProfileSettingsController();
     	runLater(() -> {
     		ProfileSetting.start(splitpane, user, "User");
@@ -78,6 +83,7 @@ public class MarketingRepresentativeController implements Initializable{
 
     @FXML
     void RegisterClient(ActionEvent event) {
+    	DiroctoryBar.setText("My Fuel->Register Client");
     	register = new ClientRegisterController();
     	runLater(() -> {
     		register.start(splitpane, user, "User");
@@ -86,7 +92,7 @@ public class MarketingRepresentativeController implements Initializable{
     
     @FXML
     void AddCar(ActionEvent event) {
-
+     	DiroctoryBar.setText("My Fuel->Register Car");
     	User user = null;
     	CarRegisterController car;
     	car = new CarRegisterController();
@@ -96,6 +102,7 @@ public class MarketingRepresentativeController implements Initializable{
     }
     @FXML
     void btnAbout(ActionEvent event) {
+     	DiroctoryBar.setText("My Fuel->About");
     	About = new AboutController();
     	runLater(() -> {
     		About.start(splitpane, user, "User");
