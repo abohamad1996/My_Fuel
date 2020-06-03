@@ -93,7 +93,7 @@ public class PurchasePlanController implements Initializable{
 	    @FXML
 	    void ShowDetails(ActionEvent event) {
 	    	//System.out.println(""+comboCar.getValue());
-	    	System.out.println();
+	    //	System.out.println(""+CarList.get(1).getOwnerID());
 	   // 	txtID.setText(detailsCar.getOwnerID());
 		//	txtGasStation.setText(detailsCar.getGasStation1());
 		//	txtGasStation2.setText(detailsCar.getGasStation2());

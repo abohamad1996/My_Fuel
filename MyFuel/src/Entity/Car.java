@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 public class Car implements Serializable{
 
+	@Override
+	public String toString() {
+		return "Car [ownerID=" + ownerID + ", carNumber=" + carNumber + ", purchasePlan=" + purchasePlan + ", Services="
+				+ Services + ", gastype=" + gastype + ", gasStation1=" + gasStation1 + ", gasStation2=" + gasStation2
+				+ ", gasStation3=" + gasStation3 + "]";
+	}
 	/**
 	 * 
 	 */
