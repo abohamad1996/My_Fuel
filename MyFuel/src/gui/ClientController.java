@@ -66,7 +66,10 @@ public class ClientController implements Initializable{
 
     @FXML
     void HomeHeatingButton(ActionEvent event) {
-
+    	homeHeating =new HomeHeatingController();
+    	runLater(() -> {
+    		homeHeating.start(splitpane, user, "User");
+});
     }
 
     @FXML
@@ -117,6 +120,7 @@ public class ClientController implements Initializable{
 	public static AboutController About;
 	public static HomePage HomePage;
 	public static PurchasePlanController pController;
+	public static	HomeHeatingController  homeHeating;
 	public void start(User user) {
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -142,15 +146,7 @@ public class ClientController implements Initializable{
 	
 	
 	
-	
-	
-	
-	
-	
 
-	
-	
-	
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {

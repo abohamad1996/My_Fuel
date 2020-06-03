@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="522.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserHomeController">
+   <children>
+      <Text layoutX="126.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Confirmation" wrappingWidth="271.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Button layoutX="225.0" layoutY="328.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="100.0" styleClass="root4" text="Make Order" />
+      <Text layoutX="41.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Quantity" wrappingWidth="100.490234375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="41.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Urgent" wrappingWidth="100.490234375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="41.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Supply Date" wrappingWidth="100.490234375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField layoutX="151.0" layoutY="130.0" styleClass="root4" />
+      <Text layoutX="41.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Total Price" wrappingWidth="100.490234375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField layoutX="151.0" layoutY="245.0" styleClass="root4" />
+      <TextField layoutX="151.0" layoutY="205.0" styleClass="root4" />
+      <TextField layoutX="151.0" layoutY="167.0" styleClass="root4" />
+      <Label layoutX="304.0" layoutY="245.0" styleClass="root3" text="NIS" />
+   </children>
+</AnchorPane>
