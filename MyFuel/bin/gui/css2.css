@@ -39,9 +39,8 @@
 }
 .combo{
 	-fx-background-color: #01509f;
-
 	-fx-font-weight : bold;
--fx-text-fill: #ffffff;
+	-fx-text-fill: #CD5C5C;
 }
 
 .root5{

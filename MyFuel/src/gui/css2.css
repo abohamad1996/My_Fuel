@@ -39,9 +39,8 @@
 }
 .combo{
 	-fx-background-color: #01509f;
-
 	-fx-font-weight : bold;
--fx-text-fill: #ffffff;
+	-fx-text-fill: #000000;
 }
 
 .root5{
@@ -67,6 +66,8 @@
 .root3{
 
 -fx-text-fill: #000000;
-
 }
-
+.combo2{
+	-fx-background-color: #01509f;
+	-fx-text-fill: #000000; 
+}
