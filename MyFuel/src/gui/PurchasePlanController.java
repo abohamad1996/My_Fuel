@@ -64,6 +64,7 @@ public class PurchasePlanController implements Initializable{
 		private AnchorPane lowerAnchorPane;
 		public ClientConsole details= new ClientConsole("localhost", 5555);
 		ArrayList<User> userdetails= new ArrayList<User>();
+		ArrayList<Car> car2=new ArrayList<Car>();
 		Car detailsCar;
 	    ObservableList<String> List =FXCollections.observableArrayList(); 
 	    ObservableList<Car> CarList =FXCollections.observableArrayList(); 
@@ -84,7 +85,9 @@ public class PurchasePlanController implements Initializable{
 	
 	
 		public void CarAcceptor(ArrayList<Car> car) {
-			CarList.addAll(car);
+			
+			car2.addAll(car);
+			//CarList.addAll(car);
 		}
 	
 		public void Car2Acceptor(ArrayList<String> bb) {
@@ -92,6 +95,28 @@ public class PurchasePlanController implements Initializable{
 		}
 	    @FXML
 	    void ShowDetails(ActionEvent event) {
+	    	Integer index;
+	    	String carnumber=comboCar.getValue();
+	    	index=getCarNumberPos(carnumber);
+	    	//System.out.println(""+index);
+	 	    	txtID.setText(car2.get(index).getOwnerID());
+				txtGasStation.setText(car2.get(index).getGasStation1());
+				txtGasStation2.setText(car2.get(index).getGasStation2());
+				txtGasStation3.setText(car2.get(index).getGasStation3());
+				txtPurchaseplan.setText(car2.get(index).getPurchasePlan());
+				txtServices.setText(car2.get(index).getServices());
+				txtGastype.setText(car2.get(index).getGastype());
+				txtCarnumber.setText(car2.get(index).getCarNumber());
+	        }
+	    
+	    private int getCarNumberPos(String carnumber) {
+	    	for(int i = 0; i < this.car2.size(); ++i) {
+	            if(this.car2.get(i).getCarNumber().equals(carnumber)) 
+	            	return i;
+	    	}
+	        return -1;
+	    }
+	    //	System.out.println(""+car2.get(1).getCarNumber());
 	    	//System.out.println(""+comboCar.getValue());
 	    //	System.out.println(""+CarList.get(1).getOwnerID());
 	   // 	txtID.setText(detailsCar.getOwnerID());
@@ -102,7 +127,7 @@ public class PurchasePlanController implements Initializable{
 		//	txtServices.setText(detailsCar.getServices());
 		//	txtGastype.setText(detailsCar.getGastype());
 		//	txtCarnumber.setText(detailsCar.getCarNumber());
-	    }
+	    
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
