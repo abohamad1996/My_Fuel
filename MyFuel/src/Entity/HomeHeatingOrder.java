@@ -84,7 +84,22 @@ public class HomeHeatingOrder {
 	}
 
 	
-	
+	public double Calculate_Price_HomeHeating(Integer quan, String urg,double H_Rate) {
+		double FinalPrice = quan * H_Rate;
+		if (quan > 600 && quan < 800) {
+			FinalPrice = FinalPrice * 0.97;
+		}
+		else if (quan > 800) {
+			FinalPrice = FinalPrice * 0.96;
+		}
+		
+		if (urg.equals("yes")) {
+			FinalPrice = FinalPrice * 1.2;
+		}
+		
+		return FinalPrice;
+	}
+
 	
 	
 	
