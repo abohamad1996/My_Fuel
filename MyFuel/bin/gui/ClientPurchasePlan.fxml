@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="688.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PurchasePlanController">
    <children>
-      <ComboBox fx:id="comboCar" layoutX="36.0" layoutY="130.0" onAction="#ShowDetails" prefWidth="150.0" promptText="Select Car" styleClass="combo" stylesheets="@css2.css" />
+      <ComboBox fx:id="comboCar" layoutX="36.0" layoutY="130.0" onAction="#ShowDetails" prefWidth="150.0" promptText="Select Car" styleClass="combo2" stylesheets="@css2.css" />
       <Text layoutX="36.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="root2" text="Purshase Plan Type">
          <font>
             <Font size="15.0" />
