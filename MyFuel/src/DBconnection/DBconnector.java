@@ -1,5 +1,8 @@
 package DBconnection;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +20,6 @@ import gui.Employee;
 import gui.UpdateRoleController;
 
 public class DBconnector {
-
 public static java.sql.Connection getConnection() throws SQLException
 {
  java.sql.Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost/test?serverTimezone=IST","root","Aa123456");
@@ -153,7 +155,7 @@ public static String ClientRegisterUserDetails(User user)
 		String g = user.getRank();
 		String h = user.getClientType();
 		Integer k = user.getStatus();
-		Integer i = 0;
+		Integer i =0;
 		ps.setString(1,a); 
 		ps.setString(2,b); 	
 		ps.setString(3,c); 	
@@ -163,7 +165,7 @@ public static String ClientRegisterUserDetails(User user)
 		ps.setString(7,g);
 		ps.setString(8, h);
 		ps.setInt(9,k); 
-		ps.setInt(10,i); 
+		ps.setInt(10, i);
 		System.out.println(""+ps.toString());
 		ps.executeUpdate();
 		return "success";

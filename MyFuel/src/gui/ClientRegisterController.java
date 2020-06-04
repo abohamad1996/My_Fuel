@@ -1,8 +1,17 @@
 package gui;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javax.imageio.ImageIO;
+
+import com.mysql.cj.result.Field;
+import com.sun.imageio.plugins.common.I18N;
+import com.sun.prism.Image;
 
 import Entity.CreditCard;
 import Entity.User;
@@ -21,10 +30,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.ImageInput;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class ClientRegisterController implements Initializable{
+
 	public static ClientRegisterController acainstance;
 	@FXML
 	private static SplitPane splitpane;
@@ -76,6 +89,8 @@ public class ClientRegisterController implements Initializable{
 		public Label status;
 	    @FXML
 	    private ComboBox<String> comboType;
+	    @FXML
+	    private ImageView imageProfile;
 	    ObservableList<String> TypeList =FXCollections.observableArrayList(); 
 
 		ArrayList<String> TypeValues=new ArrayList<String>();
@@ -128,9 +143,13 @@ public class ClientRegisterController implements Initializable{
 	}
     @FXML
     void AddImage(ActionEvent event) {
-
+    	FileChooser chooser=new FileChooser();
+    	Stage stage=(Stage) splitpane.getScene().getWindow();
+    	File file=chooser.showOpenDialog(stage);
+    	System.out.println(file.getPath().toString());
+    	javafx.scene.image.Image image=new javafx.scene.image.Image(file.toURI().toString());
+    	imageProfile.setImage(image);
     }
-	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

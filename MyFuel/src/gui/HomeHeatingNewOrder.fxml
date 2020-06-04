@@ -31,7 +31,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="btnQuantity" layoutX="151.0" layoutY="130.0" styleClass="root4" text="Enter Quantity" />
+      <TextField fx:id="btnQuantity" layoutX="151.0" layoutY="130.0" styleClass="root4" />
       <DatePicker fx:id="dateSelect" layoutX="151.0" layoutY="179.0" prefHeight="25.0" prefWidth="157.0" promptText="Select Date" styleClass="combo" stylesheets="@css2.css" />
       <ComboBox fx:id="txtUrgent" layoutX="151.0" layoutY="223.0" prefHeight="25.0" prefWidth="157.0" promptText="Choose Urgent" styleClass="combo" stylesheets="@css2.css" />
       <Text fill="RED" layoutX="26.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="*" wrappingWidth="14.490234375">
