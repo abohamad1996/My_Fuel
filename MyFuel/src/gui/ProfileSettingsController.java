@@ -13,10 +13,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -40,6 +42,23 @@ public class ProfileSettingsController implements Initializable{
 	    private Button btnUpdate;
 	    @FXML
 		public Label status;
+	    @FXML
+	    private Button btnPasswordChange;
+
+	    @FXML
+	    private Label labelPassword;
+
+	    @FXML
+	    private Label labelConfirm;
+
+	    @FXML
+	    private TextField txxPassword;
+
+	    @FXML
+	    private TextField txtConfirm;
+
+	    @FXML
+	    private Button btnSetPassword;
 	@FXML
 	private static SplitPane splitpane;
 	private FXMLLoader loader;	
@@ -75,6 +94,38 @@ public class ProfileSettingsController implements Initializable{
     	User user=new User(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), null, null, null, null,null,null);
     	ProfileSettingsController.acainstance.details.accept(new Message(5, user));;
     }
+
+    @FXML
+    void ChangePassword(ActionEvent event) {
+    	btnPasswordChange.setVisible(true);
+    	labelPassword.setVisible(true);
+    	labelConfirm.setVisible(true);
+    	txxPassword.setVisible(true);
+    	txtConfirm.setVisible(true);
+    	btnSetPassword.setVisible(true);
+    }
+
+    @FXML
+    void SetPassword(ActionEvent event) {
+    	System.out.println(txxPassword.getText());
+    	System.out.println(txtConfirm.getText());
+    	if(txxPassword.getText().equals(txtConfirm.getText()))
+    	{
+        	User user2=new User(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), null, txxPassword.getText(), null, null,null,null);
+        	ProfileSettingsController.acainstance.details.accept(new Message(12, user2));;
+        	Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setAlertType(AlertType.CONFIRMATION); 
+			alert.setContentText("Password Changes Successfully!!");
+			alert.show(); 
+    	}
+    	else {
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setAlertType(AlertType.ERROR); 
+			alert.setContentText("Password not match");
+			alert.show(); 
+		}
+    }
+    
 
 
 

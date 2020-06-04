@@ -87,7 +87,7 @@ public static User isInDB(java.sql.Connection connection, String username, Strin
 		//TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	return null;
+	return user;
 }
 public static User userDetails(java.sql.Connection connection, String username)
 {
@@ -303,5 +303,26 @@ public static ArrayList<Car> PurchasePlanDetails(java.sql.Connection connection,
 		return null;
 	}
 	return arr;
+}
+public static String UpdateUserPassword(User user)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.user SET Userpassword=? WHERE ID=?";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.user;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		String a = user.getPassword();
+		String b = user.getId();
+		ps.setString(1,a); 
+		ps.setString(2,b); 	
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
 }
 }

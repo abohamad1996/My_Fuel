@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="ProfileSettings" minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="667.0" styleClass="root" stylesheets="@css3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProfileSettingsController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="667.0" styleClass="root" stylesheets="@css3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProfileSettingsController">
    <children>
       <Label layoutX="25.0" layoutY="154.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="First name:" />
       <Label layoutX="25.0" layoutY="198.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Last name:" />
@@ -19,17 +19,23 @@
       <TextField fx:id="txtLastName" layoutX="126.0" layoutY="194.0" prefHeight="29.0" prefWidth="232.0" styleClass="root2" stylesheets="@css2.css" />
       <TextField fx:id="txtID" layoutX="127.0" layoutY="114.0" prefHeight="29.0" prefWidth="232.0" styleClass="root2" stylesheets="@css2.css" />
       <TextField fx:id="txtEmail" layoutX="125.0" layoutY="238.0" prefHeight="29.0" prefWidth="232.0" styleClass="root2" stylesheets="@css2.css" />
-      <Text layoutX="216.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile " textAlignment="CENTER" wrappingWidth="183.20000000000005">
+      <Text layoutX="242.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile " textAlignment="CENTER" wrappingWidth="183.20000000000005">
          <font>
             <Font size="29.0" />
          </font>
       </Text>
-      <ImageView fitHeight="128.0" fitWidth="142.0" layoutX="421.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="128.0" fitWidth="142.0" layoutX="497.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/UserPhoto.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnUpdate" layoutX="266.0" layoutY="337.0" mnemonicParsing="false" onAction="#UpdateDetails" prefHeight="40.0" prefWidth="136.0" styleClass="root2" stylesheets="@css2.css" text="Update Details" />
+      <Button fx:id="btnUpdate" layoutX="251.0" layoutY="284.0" mnemonicParsing="false" onAction="#UpdateDetails" prefHeight="33.0" prefWidth="128.0" styleClass="root2" stylesheets="@css2.css" text="Update Details" />
       <Label fx:id="status" layoutX="259.0" layoutY="300.0" />
+      <Button fx:id="btnPasswordChange" layoutX="113.0" layoutY="284.0" mnemonicParsing="false" onAction="#ChangePassword" prefHeight="33.0" prefWidth="128.0" styleClass="root2" stylesheets="@css2.css" text="Change Password" />
+      <Label fx:id="labelPassword" layoutX="7.0" layoutY="338.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Enter Password:" visible="false" />
+      <Label fx:id="labelConfirm" layoutX="-2.0" layoutY="380.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Password Confirm:" visible="false" />
+      <TextField fx:id="txxPassword" layoutX="158.0" layoutY="340.0" prefHeight="29.0" prefWidth="205.0" styleClass="root2" stylesheets="@css2.css" visible="false" />
+      <TextField fx:id="txtConfirm" layoutX="158.0" layoutY="382.0" prefHeight="29.0" prefWidth="205.0" styleClass="root2" stylesheets="@css2.css" visible="false" />
+      <Button fx:id="btnSetPassword" layoutX="179.0" layoutY="422.0" mnemonicParsing="false" onAction="#SetPassword" prefHeight="33.0" prefWidth="128.0" styleClass="root2" stylesheets="@css2.css" text="Set Password" visible="false" />
    </children>
 </AnchorPane>

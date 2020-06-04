@@ -225,6 +225,16 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
+	case 12:// update profile user
+		User user2=(User) recieved.getObject();
+		String str11=DBconnector.UpdateUserPassword(user2);
+		try {
+			client.sendToClient(new Message(12, str11));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
 		}
 		}
 	/**

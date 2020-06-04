@@ -75,5 +75,4 @@ public class LoginController implements Initializable {
 	public Stage getStage() {
 		return primaryStage;
 	}
-
 }

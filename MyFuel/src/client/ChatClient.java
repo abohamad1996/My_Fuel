@@ -186,6 +186,12 @@ public class ChatClient extends AbstractClient
 		 ArrayList<String> bbb=(ArrayList<String>)CarArrayList;
 		 PurchasePlanController.acainstance.Car2Acceptor(bbb);
 	  break;
+  case 12:
+	  String st12 = (String) recieved.getObject();
+	  Platform.runLater(() -> {
+		  ProfileSettingsController.acainstance.status.setText("");
+	    });
+	  break;
   }
   }
 
