@@ -1,8 +1,10 @@
 package gui;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import DBconnection.DBconnector;
 import Entity.User;
 import client.Func;
 import javafx.application.Platform;
@@ -70,6 +72,12 @@ public class MarketingRepresentativeController implements Initializable{
 		System.out.println("Logout");
 		LogoutController logout=new LogoutController();
 		logout.start(primaryStage, user);
+		try {
+			user=DBconnector.StatusLogoutUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @FXML

@@ -34,6 +34,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import DBconnection.DBconnector;
@@ -105,8 +106,7 @@ public class ChatClient extends AbstractClient
 		    });
 		  break;
 	  case 3:
-	 	  User user=(User) recieved.getObject();
-			//System.out.println(""+a.getId()+" "+a.getFirstname()+" "+a.getLastname()+" "+a.getEmail()+" "+a.getUsername()+" "+a.getPassword()+" "+a.getRank()+" "+a.getStatus());
+	 	  User user=(User) recieved.getObject();	 	  
 	 	  if(user==null)
 	 	  {
 	 			Platform.runLater(new Runnable() {
@@ -121,25 +121,49 @@ public class ChatClient extends AbstractClient
 	 	  }
 	 	  switch (user.getRank()) {
 		case "Manager":
-			System.out.println("1");
+			System.out.println("Manager");
 			UserHomeController Manager=new UserHomeController();
 			Manager.start(user);
+			try {
+				user=DBconnector.StatusLoginUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 
 		case "Station Manager":
-			System.out.println("2");
+			System.out.println("Station Manager");
 			UserHomeController StationManager=new UserHomeController();
 			StationManager.start(user);
+			try {
+				user=DBconnector.StatusLoginUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	  break;
 		case "Marketing Representative":
-			System.out.println("3");
+			System.out.println("Marketing Representative");
 			MarketingRepresentativeController Marketing=new MarketingRepresentativeController();
 			Marketing.start(user);
+			try {
+				user=DBconnector.StatusLoginUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	  break;
 		case "Client":
-			System.out.println("4");
+			System.out.println("Client");
 			ClientController Client=new ClientController();
 			Client.start(user);
+			try {
+				user=DBconnector.StatusLoginUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	  break;
 	  }
 	  case 4:
@@ -150,7 +174,7 @@ public class ChatClient extends AbstractClient
   case 5:
 	  String st1 = (String) recieved.getObject();
 	  Platform.runLater(() -> {
-		  ProfileSettingsController.acainstance.status.setText(st1 + " Updated!");
+		  ProfileSettingsController.acainstance.status.setText("");
 	    });
 	  break;
   case 6:

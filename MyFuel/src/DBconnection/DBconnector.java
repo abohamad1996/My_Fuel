@@ -325,4 +325,46 @@ public static String UpdateUserPassword(User user)
 		return "error";
 	}
 }
+public static User StatusLoginUpdate(java.sql.Connection connection, String username, String password) {
+	Statement stmt ;
+	User user=null ;
+	Integer status=1;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "UPDATE my_fuel.user SET Status=1 WHERE Username=? and Userpassword=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.user;");
+	     PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	     String a = username;
+		String b = password;
+		ps.setString(1,a); 
+		ps.setString(2,b); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		//TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return user;
+}
+public static User StatusLogoutUpdate(java.sql.Connection connection, String username, String password) {
+	Statement stmt ;
+	User user=null ;
+	Integer status=1;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "UPDATE my_fuel.user SET Status=0 WHERE Username=? and Userpassword=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.user;");
+	     PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	     String a = username;
+		String b = password;
+		ps.setString(1,a); 
+		ps.setString(2,b); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		//TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return user;
+}
 }
