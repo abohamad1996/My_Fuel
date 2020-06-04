@@ -1,5 +1,6 @@
 package Entity;
 
+import java.io.File;
 import java.io.Serializable;
 
 public class User implements Serializable{

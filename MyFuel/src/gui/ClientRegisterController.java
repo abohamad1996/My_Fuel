@@ -149,6 +149,7 @@ public class ClientRegisterController implements Initializable{
     	System.out.println(file.getPath().toString());
     	javafx.scene.image.Image image=new javafx.scene.image.Image(file.toURI().toString());
     	imageProfile.setImage(image);
+    	
     }
 	
 	@Override
