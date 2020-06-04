@@ -9,13 +9,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="872.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserHomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="872.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StaionManagerController">
    <children>
       <SplitPane fx:id="splitpane" dividerPositions="0.21298405466970388" layoutX="-6.0" layoutY="-2.0" prefHeight="559.0" prefWidth="880.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="557.0" prefWidth="263.0" styleClass="root4" stylesheets="@css2.css">
                <children>
-                  <Button fx:id="btnHome" layoutX="45.0" layoutY="148.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Home" />
+                  <Button fx:id="btnHome" layoutX="48.0" layoutY="148.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Home" />
                   <Button fx:id="btnProfile" layoutX="48.0" layoutY="300.0" mnemonicParsing="false" onAction="#ProfileSettingButton" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Profile Settings" />
                   <Button fx:id="btnAbout" layoutX="48.0" layoutY="339.0" mnemonicParsing="false" onAction="#btnAbout" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="About" />
                   <ImageView fitHeight="119.0" fitWidth="156.0" layoutX="31.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -38,14 +38,14 @@
                         <Image url="@../images/AboutIcon.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="47.0" layoutY="188.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Inventory" />
-                  <Button layoutX="48.0" layoutY="225.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="New Reports" />
+                  <Button fx:id="btnInventory" layoutX="47.0" layoutY="188.0" mnemonicParsing="false" onAction="#Inventory" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Inventory" />
+                  <Button fx:id="btnNewReports" layoutX="48.0" layoutY="225.0" mnemonicParsing="false" onAction="#NewReports" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="New Reports" />
                   <ImageView fitHeight="38.0" fitWidth="28.0" layoutX="10.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/reports.png" />
+                        <Image url="@../images/report.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="49.0" layoutY="263.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Order Confirmation" />
+                  <Button fx:id="btnOrderConfirmation" layoutX="49.0" layoutY="263.0" mnemonicParsing="false" onAction="#OrderConfirmation" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Order Confirmation" />
                   <ImageView fitHeight="41.0" fitWidth="44.0" layoutX="-1.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/inventory.jpg" />
@@ -58,7 +58,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="492.0" prefWidth="687.0" styleClass="root3" stylesheets="@css2.css">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="468.0" prefWidth="690.0" styleClass="root3" stylesheets="@css2.css">
                <children>
                   <ImageView fitHeight="188.0" fitWidth="273.0" layoutX="144.0" layoutY="100.0" pickOnBounds="true">
                      <image>

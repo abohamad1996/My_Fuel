@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StationManagerInventoryController">
+   <children>
+      <Text layoutX="43.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Threshold Level" wrappingWidth="217.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text fx:id="GasolineFuel" layoutX="41.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasoline Fuel :" wrappingWidth="101.34765625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="44.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diesel Fuel :" wrappingWidth="81.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="44.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scooter Fuel :" wrappingWidth="95.068359375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="43.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Heating :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="257.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="256.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="256.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter" wrappingWidth="35.068359375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="255.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter" wrappingWidth="35.068359375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="364.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products Inventory">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnSet" layoutX="157.0" layoutY="401.0" mnemonicParsing="false" onAction="#Set" prefHeight="29.0" prefWidth="71.0" styleClass="root4" stylesheets="@css2.css" text="Set" />
+      <Text fill="#0d0d0d" layoutX="574.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter" wrappingWidth="32.9443359375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#151715" layoutX="567.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Liter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#170400" layoutX="570.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Liter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#131413" layoutX="572.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="358.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasoline Fuel :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="362.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diesel Fuel :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="358.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scooter Fuel :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="351.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Heating :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtGasoline" layoutX="148.0" layoutY="186.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtDiesel" layoutX="149.0" layoutY="236.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtScooter" layoutX="149.0" layoutY="286.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtHomeHeating" layoutX="149.0" layoutY="341.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
+      <Text layoutX="210.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory Managment" wrappingWidth="291.474609375">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtGasolineInv" layoutX="462.0" layoutY="188.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtDieselInv" layoutX="463.0" layoutY="238.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtScooterInv" layoutX="463.0" layoutY="288.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtHomeHeatingInv" layoutX="463.0" layoutY="343.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
+   </children>
+</AnchorPane>

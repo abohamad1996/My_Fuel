@@ -71,6 +71,8 @@ public class MarketingManagerController implements Initializable{
 	public static ProfileSettingsController ProfileSetting;
 	public static AboutController About;
 	public static HomePage HomePage;
+	public static RateController rates;
+	public static SaleController sales;
 	public void start(User user) {
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -101,10 +103,7 @@ public class MarketingManagerController implements Initializable{
 });
     }
 
-    @FXML
-    void Inventory(ActionEvent event) {
-
-    }
+  
 
     @FXML
     void Logout(ActionEvent event) {
@@ -119,14 +118,31 @@ public class MarketingManagerController implements Initializable{
 		}
     }
 
-    @FXML
-    void NewReports(ActionEvent event) {
 
+    @FXML
+    void Rates(ActionEvent event) {
+       	DiroctoryBar.setText("My Fuel->Rates");
+       	rates= new RateController();
+    	runLater(() -> {
+    		rates.start(splitpane, user, "User");
+});
     }
 
     @FXML
-    void OrderConfirmation(ActionEvent event) {
-
+    void Sales(ActionEvent event) {
+    	DiroctoryBar.setText("My Fuel->Rates");
+    	sales= new SaleController();
+    	runLater(() -> {
+    		sales.start(splitpane, user, "User");
+});
+    	
+    	
+    	
+   
+    }
+    @FXML
+    void NewReports(ActionEvent event) {
+    	
     }
 
     @FXML

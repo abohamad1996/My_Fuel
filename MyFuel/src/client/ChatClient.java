@@ -14,6 +14,7 @@ import gui.MarketingManagerController;
 import gui.MarketingRepresentativeController;
 import gui.ProfileSettingsController;
 import gui.PurchasePlanController;
+import gui.StaionManagerController;
 import gui.CarRegisterController;
 import gui.ClientController;
 import gui.ClientRegisterController;
@@ -135,7 +136,7 @@ public class ChatClient extends AbstractClient
 
 		case "Station Manager":
 			System.out.println("Station Manager");
-			UserHomeController StationManager=new UserHomeController();
+			StaionManagerController StationManager=new StaionManagerController();
 			StationManager.start(user);
 			try {
 				user=DBconnector.StatusLoginUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());

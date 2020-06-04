@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StationManagerOrderConfirmation">
+   <children>
+      <Text layoutX="227.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Confirmation" wrappingWidth="262.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="25.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasoline :" wrappingWidth="67.94140625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="26.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diesiel :" wrappingWidth="56.99999999999994">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="26.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scotter:" wrappingWidth="56.99999999999994">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="25.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Heating :" wrappingWidth="107.99999999999994">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="24.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staion Address :" wrappingWidth="107.99999999999994">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="24.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordrer Number :" wrappingWidth="119.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtGasoline" layoutX="143.0" layoutY="178.0" prefHeight="25.0" prefWidth="160.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtDeisel" layoutX="143.0" layoutY="220.0" prefHeight="25.0" prefWidth="160.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtSccoter" layoutX="143.0" layoutY="260.0" prefHeight="25.0" prefWidth="160.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtHomeHeating" layoutX="143.0" layoutY="301.0" prefHeight="25.0" prefWidth="160.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtStation" layoutX="143.0" layoutY="342.0" prefHeight="25.0" prefWidth="160.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtOrderNumber" layoutX="143.0" layoutY="136.0" prefHeight="25.0" prefWidth="160.0" styleClass="root4" stylesheets="@css2.css" />
+      <Button fx:id="btnConfirm" layoutX="322.0" layoutY="408.0" mnemonicParsing="false" onAction="#Confirm" styleClass="root4" stylesheets="@css2.css" text="Confirm" />
+   </children>
+</AnchorPane>
