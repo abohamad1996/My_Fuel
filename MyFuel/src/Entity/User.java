@@ -3,8 +3,12 @@ package Entity;
 import java.io.File;
 import java.io.Serializable;
 
+import common.MyFile;
+
 public class User implements Serializable{
 
+
+	
 	public User(String id, String firstname, String lastname, String email, String username, String password,
 			String rank, String clientType, Integer status, Integer image) {
 		super();
@@ -35,6 +39,8 @@ public class User implements Serializable{
 	public void setImage(Integer image) {
 		Image = image;
 	}
+
+
 
 	public String getClientType() {
 		return ClientType;

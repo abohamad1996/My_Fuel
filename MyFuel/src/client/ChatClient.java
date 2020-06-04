@@ -10,6 +10,7 @@ import common.ChatIF;
 import common.Message;
 import gui.EmployeeFrameController;
 import gui.LoginController;
+import gui.MarketingManagerController;
 import gui.MarketingRepresentativeController;
 import gui.ProfileSettingsController;
 import gui.PurchasePlanController;
@@ -120,9 +121,9 @@ public class ChatClient extends AbstractClient
 				});
 	 	  }
 	 	  switch (user.getRank()) {
-		case "Manager":
-			System.out.println("Manager");
-			UserHomeController Manager=new UserHomeController();
+		case "Marketing Manager":
+			System.out.println("Marketing Manager");
+			MarketingManagerController Manager=new MarketingManagerController();
 			Manager.start(user);
 			try {
 				user=DBconnector.StatusLoginUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());

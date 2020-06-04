@@ -1,8 +1,11 @@
 package gui;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -18,6 +21,7 @@ import Entity.User;
 import client.ClientConsole;
 import client.Func;
 import common.Message;
+import common.MyFile;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,7 +41,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class ClientRegisterController implements Initializable{
-
+	 MyFile msg= new MyFile("image.jpg");
 	public static ClientRegisterController acainstance;
 	@FXML
 	private static SplitPane splitpane;
@@ -143,13 +147,13 @@ public class ClientRegisterController implements Initializable{
 	}
     @FXML
     void AddImage(ActionEvent event) {
-    	FileChooser chooser=new FileChooser();
-    	Stage stage=(Stage) splitpane.getScene().getWindow();
-    	File file=chooser.showOpenDialog(stage);
-    	System.out.println(file.getPath().toString());
-    	javafx.scene.image.Image image=new javafx.scene.image.Image(file.toURI().toString());
-    	imageProfile.setImage(image);
-    	
+
+				FileChooser chooser=new FileChooser();
+		    	Stage stage=(Stage) splitpane.getScene().getWindow();
+		    	File file=chooser.showOpenDialog(stage);
+				    javafx.scene.image.Image image=new javafx.scene.image.Image(file.toURI().toString());
+			    	imageProfile.setImage(image);
+		    	System.out.println(file.getPath().toString());
     }
 	
 	@Override
