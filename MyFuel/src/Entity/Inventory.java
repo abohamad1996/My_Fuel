@@ -4,33 +4,74 @@ import java.io.Serializable;
 
 public class Inventory implements Serializable {
 
-	String fuel_Type;
-	Integer Quantity;
-	Integer thresholdLevel;
-	public Inventory(String fuel_Type, Integer quantity, Integer thresholdLevel) {
+
+	public Inventory(String gasoline, String deisel, String scotter, String homeHeating, String gasolineInv,
+			String deiselInv, String scotterInv, String homeHeatingInv) {
 		super();
-		this.fuel_Type = fuel_Type;
-		Quantity = quantity;
-		this.thresholdLevel = thresholdLevel;
+		Gasoline = gasoline;
+		Deisel = deisel;
+		Scotter = scotter;
+		HomeHeating = homeHeating;
+		GasolineInv = gasolineInv;
+		DeiselInv = deiselInv;
+		ScotterInv = scotterInv;
+		HomeHeatingInv = homeHeatingInv;
 	}
-	public String getFuel_Type() {
-		return fuel_Type;
+	public String getGasoline() {
+		return Gasoline;
 	}
-	public void setFuel_Type(String fuel_Type) {
-		this.fuel_Type = fuel_Type;
+	public void setGasoline(String gasoline) {
+		Gasoline = gasoline;
 	}
-	public Integer getQuantity() {
-		return Quantity;
+	public String getDeisel() {
+		return Deisel;
 	}
-	public void setQuantity(Integer quantity) {
-		Quantity = quantity;
+	public void setDeisel(String deisel) {
+		Deisel = deisel;
 	}
-	public Integer getThresholdLevel() {
-		return thresholdLevel;
+	public String getScotter() {
+		return Scotter;
 	}
-	public void setThresholdLevel(Integer thresholdLevel) {
-		this.thresholdLevel = thresholdLevel;
+	public void setScotter(String scotter) {
+		Scotter = scotter;
 	}
-	
+	public String getHomeHeating() {
+		return HomeHeating;
+	}
+	public void setHomeHeating(String homeHeating) {
+		HomeHeating = homeHeating;
+	}
+	public String getGasolineInv() {
+		return GasolineInv;
+	}
+	public void setGasolineInv(String gasolineInv) {
+		GasolineInv = gasolineInv;
+	}
+	public String getDeiselInv() {
+		return DeiselInv;
+	}
+	public void setDeiselInv(String deiselInv) {
+		DeiselInv = deiselInv;
+	}
+	public String getScotterInv() {
+		return ScotterInv;
+	}
+	public void setScotterInv(String scotterInv) {
+		ScotterInv = scotterInv;
+	}
+	public String getHomeHeatingInv() {
+		return HomeHeatingInv;
+	}
+	public void setHomeHeatingInv(String homeHeatingInv) {
+		HomeHeatingInv = homeHeatingInv;
+	}
+	String Gasoline;
+	String Deisel;
+	String Scotter;
+	String HomeHeating;
+	String GasolineInv;
+	String DeiselInv;
+	String ScotterInv;
+	String HomeHeatingInv;
 
 }

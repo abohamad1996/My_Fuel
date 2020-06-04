@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import Entity.Inventory;
 import Entity.User;
 import client.ClientConsole;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class StationManagerInventoryController implements Initializable{
+    public static StationManagerInventoryController acainstance;
     @FXML
     private Text GasolineFuel;
 
@@ -58,9 +60,8 @@ public class StationManagerInventoryController implements Initializable{
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
 	public ClientConsole details= new ClientConsole("localhost", 5555);
-	ArrayList<User> userdetails= new ArrayList<User>();
-	User detailsUser;
-	public void start(SplitPane splitpane, User user,String userJob) {
+	Inventory inventory;
+public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
 		this.userrank=userJob;
@@ -76,12 +77,14 @@ public class StationManagerInventoryController implements Initializable{
 	
 	
 	
-	
+	public void FuelAcceptor(Inventory inventory) {
+		inventory=new Inventory(txtGasoline.getText(), txtDiesel.getText(), txtScooter.getText(), txtHomeHeating.getText(), txtGasolineInv.getText(), txtDiesel.getText(), txtScooterInv.getText(), txtHomeHeatingInv.getText());
+		}
 	
 	
     @FXML
     void Set(ActionEvent event) {
-
+    	
     }
 	
 	
@@ -96,8 +99,7 @@ public class StationManagerInventoryController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+		acainstance = this;		
 	}
 
 }

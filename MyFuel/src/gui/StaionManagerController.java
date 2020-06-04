@@ -1,11 +1,13 @@
 package gui;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.mysql.cj.LicenseConfiguration;
 import com.sun.scenario.effect.impl.prism.PrImage;
 
+import DBconnection.DBconnector;
 import javafx.fxml.Initializable;
 import Entity.User;
 import client.Func;
@@ -79,7 +81,14 @@ public class StaionManagerController implements Initializable {
 	    void Logout(ActionEvent event) {
 	    	System.out.println("Logout");
 			LogoutController logout=new LogoutController();
+			
 			logout.start(primaryStage, user);
+			try {
+				user=DBconnector.StatusLogoutUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    }
 
 	    @FXML

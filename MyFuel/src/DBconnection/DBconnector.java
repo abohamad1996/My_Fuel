@@ -15,6 +15,7 @@ import com.sun.crypto.provider.RSACipher;
 
 import Entity.Car;
 import Entity.CreditCard;
+import Entity.Inventory;
 import Entity.User;
 import gui.Employee;
 import gui.UpdateRoleController;
@@ -369,4 +370,28 @@ public static User StatusLogoutUpdate(java.sql.Connection connection, String use
 	}
 	return user;
 }
+public static Inventory inventoryDetails(java.sql.Connection connection, String fueltype)
+{
+	Inventory inventory;
+	Statement stmt;
+	try 
+	{
+		stmt = ((java.sql.Connection) connection).createStatement();
+		String query = "select *FROM my_fuel.inventory where FuelType=?";
+		
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
+	     PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	  	String a = fueltype;
+		ps.setString(1,a); 
+		rs = ps.executeQuery();
+ 		while(rs.next())
+ 		{
+ 			//inventory=new Inventory(rs.getString(1), rs.getInt(2), rs.getInt(3));	
+ 			//return inventory;
+ 		}
+ 		///////// comment
+		rs.close();
+		} catch (SQLException e) {e.printStackTrace();}
+	return null;
+	}
 }
