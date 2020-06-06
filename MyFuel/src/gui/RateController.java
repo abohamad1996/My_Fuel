@@ -42,15 +42,6 @@ public class RateController implements Initializable {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub

@@ -370,28 +370,51 @@ public static User StatusLogoutUpdate(java.sql.Connection connection, String use
 	}
 	return user;
 }
-public static Inventory inventoryDetails(java.sql.Connection connection, String fueltype)
+
+public static ArrayList<Inventory> inventoryDetails(java.sql.Connection connection)
 {
 	Inventory inventory;
 	Statement stmt;
-	try 
-	{
-		stmt = ((java.sql.Connection) connection).createStatement();
-		String query = "select *FROM my_fuel.inventory where FuelType=?";
-		
+	ArrayList<Inventory> arr = new ArrayList<Inventory>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "select *FROM my_fuel.inventory;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
-	     PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
-	  	String a = fueltype;
-		ps.setString(1,a); 
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 		rs = ps.executeQuery();
- 		while(rs.next())
+		while(rs.next())
  		{
- 			//inventory=new Inventory(rs.getString(1), rs.getInt(2), rs.getInt(3));	
- 			//return inventory;
+			System.out.println(""+ps.toString());
+			inventory=new Inventory(rs.getString(1), rs.getString(2), rs.getString(3))	;
+			arr.add(inventory);
+			System.out.println(arr);
  		}
- 		///////// comment
 		rs.close();
-		} catch (SQLException e) {e.printStackTrace();}
-	return null;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
 	}
+	return arr;
+}
+public static Inventory UpdateInventoryLevel(Inventory inv)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.inventory SET ThresholdLevel=? WHERE FuelType=?";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a = inv.getLevel();
+		String b = inv.getFuelType();
+		ps.setString(1,a); 
+		ps.setString(2,b); 	
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
 }

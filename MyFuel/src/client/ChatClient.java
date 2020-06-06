@@ -14,7 +14,9 @@ import gui.MarketingManagerController;
 import gui.MarketingRepresentativeController;
 import gui.ProfileSettingsController;
 import gui.PurchasePlanController;
+import gui.RefuelingController;
 import gui.StaionManagerController;
+import gui.StationManagerInventoryController;
 import gui.CarRegisterController;
 import gui.ClientController;
 import gui.ClientRegisterController;
@@ -41,6 +43,7 @@ import java.util.ArrayList;
 
 import DBconnection.DBconnector;
 import Entity.Car;
+import Entity.Inventory;
 import Entity.User;
 
 /**
@@ -218,7 +221,23 @@ public class ChatClient extends AbstractClient
 		  ProfileSettingsController.acainstance.status.setText("");
 	    });
 	  break;
-  }
+  case 13:
+	  ArrayList<?> InventoryArrayList =(ArrayList<?>)recieved.getObject();
+		 ArrayList<Inventory> Inv=(ArrayList<Inventory>)InventoryArrayList;
+		 StationManagerInventoryController.acainstance.FuelAcceptor(Inv);
+	  break;
+  case 14:
+	  Inventory stInv = (Inventory) recieved.getObject();
+	  Platform.runLater(() -> {
+		  StationManagerInventoryController.acainstance.NewFuelAcceptor(stInv);
+	    });
+	  break;
+  case 15:
+	ArrayList<Car>  car2ArrayList =(ArrayList<Car>)recieved.getObject();
+	ArrayList<Car> CAR2arr=(ArrayList<Car>)car2ArrayList;
+	RefuelingController.acainstance.CarAcceptor(car2ArrayList);
+	  break;
+	  }
   }
 
 

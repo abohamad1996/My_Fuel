@@ -26,7 +26,6 @@ import javafx.stage.Stage;
 
 
 public class StaionManagerController implements Initializable {
-
 	   @FXML
 	    private SplitPane splitpane;
 

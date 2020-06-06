@@ -53,12 +53,12 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="364.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products Inventory">
+      <Text layoutX="358.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available inventory">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <Button fx:id="btnSet" layoutX="157.0" layoutY="401.0" mnemonicParsing="false" onAction="#Set" prefHeight="29.0" prefWidth="71.0" styleClass="root4" stylesheets="@css2.css" text="Set" />
+      <Button fx:id="btnSetLevel" layoutX="82.0" layoutY="401.0" mnemonicParsing="false" onAction="#SetLevel" prefHeight="29.0" prefWidth="146.0" styleClass="root4" stylesheets="@css2.css" text="Set Threshold Level" />
       <Text fill="#0d0d0d" layoutX="574.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter" wrappingWidth="32.9443359375">
          <font>
             <Font size="15.0" />
@@ -89,12 +89,12 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="358.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scooter Fuel :">
+      <Text layoutX="358.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scooter Fuel :">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="351.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Heating :">
+      <Text layoutX="351.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Heating :">
          <font>
             <Font size="15.0" />
          </font>

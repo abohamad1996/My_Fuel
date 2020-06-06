@@ -18,6 +18,7 @@ import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import DBconnection.DBconnector;
 import Entity.Car;
 import Entity.CreditCard;
+import Entity.Inventory;
 import Entity.User;
 import common.Message;
 import gui.Employee;
@@ -230,6 +231,45 @@ public class EchoServer extends AbstractServer {
 		String str11=DBconnector.UpdateUserPassword(user2);
 		try {
 			client.sendToClient(new Message(12, str11));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 13:// InventoryDetails
+		try {
+			ArrayList<Inventory> aa;
+			try {
+				aa = DBconnector.inventoryDetails(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(13, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 14:// 
+		Inventory inv=(Inventory)recieved.getObject();;
+		Inventory strInv=DBconnector.UpdateInventoryLevel(inv);
+		try {
+			client.sendToClient(new Message(14, strInv));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 15:// purchase plan
+		try {
+			ArrayList<Car> aa = DBconnector.PurchasePlanDetails(DBconnector.getConnection(), iD);
+			Object bb = aa;
+			client.sendToClient(new Message(15, bb));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
