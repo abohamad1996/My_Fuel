@@ -263,8 +263,25 @@ public class ChatClient extends AbstractClient
 		 ArrayList<Rates> rates=(ArrayList<Rates>)RatesArrayList;
 		 NetworkManagerApproveRatesController.acainstance.RatesAcceptor(rates);
 	  break;
+  case 18:
+	  String strNewRates = (String) recieved.getObject();
+	  Platform.runLater(() -> {
+		  NetworkManagerApproveRatesController.acainstance.status.setText("");
+	    });
+	  break;
+  case 19:
+	  String strNewRatesConfirm = (String) recieved.getObject();
+	  Platform.runLater(() -> {
+		  NetworkManagerApproveRatesController.acainstance.status.setText("");
+	    });
+	  break;
+  case 20:
+	  String strNewRatesNotConfirm = (String) recieved.getObject();
+	  Platform.runLater(() -> {
+		  NetworkManagerApproveRatesController.acainstance.status.setText("");
+	    });
+	  break;
 	  }
-
   }
   
 

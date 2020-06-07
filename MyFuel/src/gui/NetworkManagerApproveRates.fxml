@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,6 +21,8 @@
           <TableColumn fx:id="clmPrice" prefWidth="75.0" text="Price" />
         </columns>
       </TableView>
-      <Button fx:id="btnRate" layoutX="299.0" layoutY="455.0" mnemonicParsing="false" onAction="#OpenRequests" styleClass="root4" stylesheets="@css2.css" text="Open Requests" />
+      <Button fx:id="btnRate" layoutX="169.0" layoutY="455.0" mnemonicParsing="false" onAction="#OpenRequests" styleClass="root4" stylesheets="@css2.css" text="Open Requests" />
+      <Label fx:id="status" layoutX="598.0" layoutY="85.0" />
+      <Button fx:id="btnRefresh" layoutX="433.0" layoutY="455.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="29.0" prefWidth="90.0" styleClass="root4" stylesheets="@css2.css" text="Refresh" />
    </children>
 </AnchorPane>

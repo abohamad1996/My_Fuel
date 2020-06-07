@@ -466,4 +466,60 @@ public static ArrayList<Rates> NewRatesRequest(java.sql.Connection connection)
 	}
 	return arr;
 }
+public static String SetNewRates(Rates rates)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.rates SET Price=? WHERE FuelType=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.rates;;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a = rates.getPrice();
+		String b = rates.getFuelType();
+		ps.setString(1,a); 
+		ps.setString(2,b); 	
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
+public static String SetNewRatesStatusConfirmed(Rates rates)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.ratesrequest SET status=1 WHERE FuelType=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.ratesrequest;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		String a = rates.getFuelType();
+		ps.setString(1,a); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
+public static String SetNewRatesStatusNotConfirmed(Rates rates)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.ratesrequest SET status=0 WHERE FuelType=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.ratesrequest;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		String a = rates.getFuelType();
+		ps.setString(1,a); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
 }

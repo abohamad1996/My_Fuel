@@ -303,6 +303,36 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
+	case 18:// update rates
+		Rates newRates=(Rates) recieved.getObject();
+		String strSetRates=DBconnector.SetNewRates(newRates);
+		try {
+			client.sendToClient(new Message(18, strSetRates));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 19:// update rate status confirmed
+		Rates newRatesConfirm=(Rates) recieved.getObject();
+		String strSetRatesConfirm=DBconnector.SetNewRatesStatusConfirmed(newRatesConfirm);
+		try {
+			client.sendToClient(new Message(19, strSetRatesConfirm));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 20:// update rate status not confirmed
+		Rates newRatesNotConfirm=(Rates) recieved.getObject();
+		String strSetRatesNotConfirm=DBconnector.SetNewRatesStatusNotConfirmed(newRatesNotConfirm);
+		try {
+			client.sendToClient(new Message(20, strSetRatesNotConfirm));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
 		}
 		}
 	/**

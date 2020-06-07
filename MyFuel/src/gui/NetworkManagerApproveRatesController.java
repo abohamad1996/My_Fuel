@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Cell;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -30,6 +31,8 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class NetworkManagerApproveRatesController implements Initializable {
+    @FXML
+    public Label status;
 	  @FXML
 	    private Button btnRate;
     @FXML
@@ -44,7 +47,8 @@ public class NetworkManagerApproveRatesController implements Initializable {
     @FXML
     private TableColumn<Rates, String> clmStatus;
 
-
+    @FXML
+    private Button btnRefresh;
 	int j;
 	int ratesLentgh;
 	  final Button addButton  = new Button("Confirm");
@@ -86,7 +90,11 @@ public class NetworkManagerApproveRatesController implements Initializable {
 		//details.accept(new Message(17, null));
     	ratesTable.setItems(List);
     }
-
+    @FXML
+    void Refresh(ActionEvent event) {
+    	List.clear();
+    	ratesTable.setItems(List);
+    }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;		
@@ -101,7 +109,7 @@ public class NetworkManagerApproveRatesController implements Initializable {
 	
     private void addConfirmButtonToTable() {
         TableColumn<Rates, String> colBtn = new TableColumn("Confirm Rate");
-
+       
         Callback<TableColumn<Rates, String>, TableCell<Rates, String>> cellFactory = new Callback<TableColumn<Rates, String>, TableCell<Rates, String>>() {
             @Override
             public TableCell<Rates, String> call(final TableColumn<Rates, String> param) {
@@ -111,8 +119,10 @@ public class NetworkManagerApproveRatesController implements Initializable {
                     {
                         btn.setOnAction((ActionEvent event) -> {
                             Rates data = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + data);
-                            
+                            Rates newRates =new Rates(data.getFuelType(), data.getPrice());
+                       //    System.out.println(newRates.getFuelType() +" "+newRates.getPrice());
+                           NetworkManagerApproveRatesController.acainstance.details.accept(new Message(18, newRates));
+                           NetworkManagerApproveRatesController.acainstance.details.accept(new Message(19, newRates));
                         });
                     }
                     public void updateItem(String item, boolean empty) {
@@ -144,7 +154,10 @@ public class NetworkManagerApproveRatesController implements Initializable {
                     {
                         btn.setOnAction((ActionEvent event) -> {
                             Rates data = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + data);
+                            Rates newRates =new Rates(data.getFuelType(), data.getPrice());
+                            System.out.println("aaaaaaaaaaaaaaaaaaaa");
+                            NetworkManagerApproveRatesController.acainstance.details.accept(new Message(20, newRates));
+                           // System.out.println("selectedData: " + data);
                         });
                     }
                     public void updateItem(String item, boolean empty) {
