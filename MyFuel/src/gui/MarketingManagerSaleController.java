@@ -13,8 +13,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class RateController implements Initializable {
-
+public class MarketingManagerSaleController implements Initializable{
 	@FXML
 	private static SplitPane splitpane;
 	private FXMLLoader loader;	
@@ -32,13 +31,24 @@ public class RateController implements Initializable {
 		this.userrank=userJob;
 		primaryStage=LoginController.primaryStage;
 		try{	
-			loader = new FXMLLoader(getClass().getResource("/gui/Rate.fxml"));
+			loader = new FXMLLoader(getClass().getResource("/gui/MarketingManagerSale.fxml"));
 			lowerAnchorPane = loader.load();
 			splitpane.getItems().set(1, lowerAnchorPane);
 		} catch(Exception e) {
 			e.printStackTrace();
 	}		
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

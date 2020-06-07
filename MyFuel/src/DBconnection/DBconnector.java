@@ -16,6 +16,7 @@ import com.sun.crypto.provider.RSACipher;
 import Entity.Car;
 import Entity.CreditCard;
 import Entity.Inventory;
+import Entity.Rates;
 import Entity.User;
 import gui.Employee;
 import gui.UpdateRoleController;
@@ -416,5 +417,53 @@ public static Inventory UpdateInventoryLevel(Inventory inv)
 		e.printStackTrace();
 	}
 	return null;
+}
+public static String RatesRequest(Rates rates)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.ratesrequest values(?,?,?);";
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	  	String a = rates.getFuelType();
+	      String b = rates.getPrice();;
+		int c=-1;
+		ps.setString(1,a); 
+		ps.setString(2,b); 	
+		ps.setInt(3,c);
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
+public static ArrayList<Rates> NewRatesRequest(java.sql.Connection connection)
+{
+	Rates rates;
+	Statement stmt;
+	ArrayList<Rates> arr = new ArrayList<Rates>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "select *FROM my_fuel.ratesrequest WHERE status=\"-1\";";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.ratesrequest;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			rates=new Rates(rs.getString(1), rs.getString(2));
+			arr.add(rates);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
 }
 }

@@ -2,12 +2,15 @@ package gui;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import DBconnection.DBconnector;
 import Entity.User;
 import client.Func;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -71,8 +74,9 @@ public class MarketingManagerController implements Initializable{
 	public static ProfileSettingsController ProfileSetting;
 	public static AboutController About;
 	public static HomePage HomePage;
-	public static RateController rates;
-	public static SaleController sales;
+	public static MarketingManagerRateController rates;
+	public static MarketingManagerSaleController sales;
+
 	public void start(User user) {
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -122,7 +126,7 @@ public class MarketingManagerController implements Initializable{
     @FXML
     void Rates(ActionEvent event) {
        	DiroctoryBar.setText("My Fuel->Rates");
-       	rates= new RateController();
+       	rates= new MarketingManagerRateController();
     	runLater(() -> {
     		rates.start(splitpane, user, "User");
 });
@@ -131,7 +135,7 @@ public class MarketingManagerController implements Initializable{
     @FXML
     void Sales(ActionEvent event) {
     	DiroctoryBar.setText("My Fuel->Rates");
-    	sales= new SaleController();
+    	sales= new MarketingManagerSaleController();
     	runLater(() -> {
     		sales.start(splitpane, user, "User");
 });
@@ -188,6 +192,7 @@ public class MarketingManagerController implements Initializable{
 		btnRank.setText(user.getRank());
 	    Rank=new MenuItem(user.getRank());
 	       UserMenu.setText(user.getFirstname());
+	   
 		
 	}
 

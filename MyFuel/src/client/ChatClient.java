@@ -11,7 +11,10 @@ import common.Message;
 import gui.EmployeeFrameController;
 import gui.LoginController;
 import gui.MarketingManagerController;
+import gui.MarketingManagerRateController;
 import gui.MarketingRepresentativeController;
+import gui.NetworkManagerApproveRatesController;
+import gui.NetworkManagerController;
 import gui.ProfileSettingsController;
 import gui.PurchasePlanController;
 import gui.RefuelingController;
@@ -44,6 +47,7 @@ import java.util.ArrayList;
 import DBconnection.DBconnector;
 import Entity.Car;
 import Entity.Inventory;
+import Entity.Rates;
 import Entity.User;
 
 /**
@@ -170,6 +174,17 @@ public class ChatClient extends AbstractClient
 				e.printStackTrace();
 			}
 	  break;
+		case "Network Manager":
+			System.out.println("Network");
+			NetworkManagerController Network=new NetworkManagerController();
+			Network.start(user);
+			try {
+				user=DBconnector.StatusLoginUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	  break;
 	  }
 	  case 4:
 		 User userArrayList =(User)recieved.getObject();
@@ -237,8 +252,21 @@ public class ChatClient extends AbstractClient
 	ArrayList<Car> CAR2arr=(ArrayList<Car>)car2ArrayList;
 	RefuelingController.acainstance.CarAcceptor(car2ArrayList);
 	  break;
+  case 16:
+	  String strRates = (String) recieved.getObject();
+	  Platform.runLater(() -> {
+		  MarketingManagerRateController.acainstance.status.setText(strRates + " Updated!");
+	    });
+	  break;
+  case 17:
+	  ArrayList<?> RatesArrayList =(ArrayList<?>)recieved.getObject();
+		 ArrayList<Rates> rates=(ArrayList<Rates>)RatesArrayList;
+		 NetworkManagerApproveRatesController.acainstance.RatesAcceptor(rates);
+	  break;
 	  }
+
   }
+  
 
 
   /**

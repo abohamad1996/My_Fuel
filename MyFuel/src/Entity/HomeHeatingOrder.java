@@ -1,6 +1,8 @@
 package Entity;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class HomeHeatingOrder {
 	
@@ -23,8 +25,7 @@ public class HomeHeatingOrder {
 		this.Urgent = urgent;
 		this.Price = price;
 		this.Status = status;
-		OrderID=HomeHeatingOrderID;
-		HomeHeatingOrderID++;
+		OrderID=HomeHeatingOrderID++;
 	}
 
 	public String getClientID() {
@@ -91,7 +92,7 @@ public class HomeHeatingOrder {
 		
 		double FinalPrice = quan * H_Rate ;
 		
-		if (quan > 600 && quan < 800) {
+		if (quan >= 600 && quan <= 800) {
 			FinalPrice = FinalPrice * 0.97;
 		}
 		else if (quan > 800) {
@@ -101,8 +102,6 @@ public class HomeHeatingOrder {
 		return FinalPrice;
 	}
 
+	
 
-	
-	
-	
 }

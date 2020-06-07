@@ -82,7 +82,6 @@ public  class EmployeeFrameController implements Initializable {
 		List.clear();
 		chat.accept(new Message(1, null));
 		table.setItems(List);
-		
 		}
 		
 	public void start(Stage primaryStage) throws Exception {	

@@ -19,9 +19,12 @@ import DBconnection.DBconnector;
 import Entity.Car;
 import Entity.CreditCard;
 import Entity.Inventory;
+import Entity.Rates;
 import Entity.User;
 import common.Message;
 import gui.Employee;
+import gui.MarketingManagerRateController;
+import gui.NetworkManagerApproveRatesController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import ocsf.server.*;
@@ -82,7 +85,6 @@ public class EchoServer extends AbstractServer {
 
 		Message recieved = (Message) msg;
 		System.out.println("Message received: " + recieved.getCode() + " from " + client);
-
 		switch (recieved.getCode()) {
 		case 1:// show emplouyee details
 			try {
@@ -270,6 +272,32 @@ public class EchoServer extends AbstractServer {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 16:// 
+		Rates rates=(Rates)recieved.getObject();;
+		String strRates=DBconnector.RatesRequest(rates);
+		try {
+			client.sendToClient(new Message(16, strRates));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 17:// InventoryDetails
+		try {
+			ArrayList<Rates> aa;
+			try {
+				aa = DBconnector.NewRatesRequest(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(17, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
