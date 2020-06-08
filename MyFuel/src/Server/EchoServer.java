@@ -18,6 +18,7 @@ import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import DBconnection.DBconnector;
 import Entity.Car;
 import Entity.CreditCard;
+import Entity.HomeHeatingOrder;
 import Entity.Inventory;
 import Entity.Rates;
 import Entity.User;
@@ -345,6 +346,61 @@ public class EchoServer extends AbstractServer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 22:// Rates Request Alert
+		try {
+			String aa;
+			try {
+				aa = DBconnector.getHomeHeatingRate(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(22, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 23:// HomeHeating
+		HomeHeatingOrder homeHeatingOrder=(HomeHeatingOrder)recieved.getObject();;
+		String strHomeHeating=DBconnector.HomeHeatingOrder(homeHeatingOrder);
+		try {
+			client.sendToClient(new Message(23, strHomeHeating));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 24:// HomeHeating Orders Owners
+		try {
+			ArrayList<String> aa;
+			try {
+				aa = DBconnector.getClientHomeHeatingOrders(DBconnector.getConnection(), iD);
+				Object bb = aa;
+				client.sendToClient(new Message(24, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 25:// HomeHeating Orders
+		try {
+			ArrayList<HomeHeatingOrder> aa = DBconnector.HomeHeatingOrders(DBconnector.getConnection(), iD);
+			Object bb = aa;
+			client.sendToClient(new Message(25, bb));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

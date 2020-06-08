@@ -1,5 +1,6 @@
 package Entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 /**
  * 
@@ -7,8 +8,12 @@ import java.sql.Date;
  *
  */
 
-public class Dulkan {
+public class Dulkan implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String clientID;
 	String GasStation;
 	String GasType;

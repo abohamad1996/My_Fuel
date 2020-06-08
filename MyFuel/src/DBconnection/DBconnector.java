@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import com.sun.corba.se.pept.transport.Connection;
 import com.sun.crypto.provider.RSACipher;
 
@@ -522,5 +524,113 @@ public static String SetNewRatesStatusNotConfirmed(Rates rates)
 	}
 	return null;
 }
-
+public static String getHomeHeatingRate(java.sql.Connection connection)
+{
+	Statement stmt;
+	String homeHeatingRate =new String();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT Price FROM my_fuel.rates where FuelType=\"Home Heating fuel\";";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+				 homeHeatingRate=rs.getString(1);
+			//System.out.println("rate="+homeHeatingRate);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return homeHeatingRate;
+	}
+	return homeHeatingRate;
+}
+public static String HomeHeatingOrder(Entity.HomeHeatingOrder homeHeating)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.homeheating values(?,?,?,?,?,?,?);";
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	  	String a=homeHeating.getClientID();
+	  	int b=homeHeating.getOrderID();
+	  	double c=homeHeating.getQuantity();
+	  	String d=homeHeating.getSupplyDate();
+	  	String e=homeHeating.getUrgent();
+	  	double f=homeHeating.getPrice();
+	  	String h=homeHeating.getStatus();
+		ps.setString(1,a); 
+		ps.setInt(2, b);
+		ps.setDouble(3, c);
+		ps.setString(4, d);
+		ps.setString(5, e);
+		ps.setDouble(6, f);
+		ps.setString(7, h);
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
+public static ArrayList<String> getClientHomeHeatingOrders(java.sql.Connection connection,String id)
+{
+ArrayList<String> arr = new ArrayList<String>();
+	Statement stmt;
+	try 
+	{
+		stmt = ((java.sql.Connection) connection).createStatement();
+		String query = "SELECT OrderID FROM my_fuel.homeheating WHERE ClientID=?;";
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		ResultSet rs = stmt.executeQuery("SELECT OrderID FROM my_fuel.homeheating;");
+		String a = id;
+		ps.setString(1,a); 
+		rs = ps.executeQuery();
+		System.out.println(""+rs.toString());
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			arr.add(rs.getString(1));
+ 		}
+		rs.close();
+	} catch (SQLException e) {e.printStackTrace();}
+	return arr;
+}
+public static ArrayList<Entity.HomeHeatingOrder> HomeHeatingOrders(java.sql.Connection connection,String id)
+{
+Entity.HomeHeatingOrder heatingOrder;
+Statement stmt;
+	ArrayList<Entity.HomeHeatingOrder> arr = new ArrayList<Entity.HomeHeatingOrder>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT ClientID,Quantity, SupplyDaty, Urgent,Price, OrderStatus\r\n" + 
+				"			FROM my_fuel.homeheating home , my_fuel.user user\r\n" + 
+				"				WHERE home.ClientID=user.ID and ClientID=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.homeheating;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a = id;
+	      //String b=carnumber;
+		ps.setString(1,a); 
+	//	ps.setString(2,b); 
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			heatingOrder=new Entity.HomeHeatingOrder(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getDouble(5), rs.getString(6));
+			arr.add(heatingOrder);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
 }

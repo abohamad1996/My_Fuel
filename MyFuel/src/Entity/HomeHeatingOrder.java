@@ -1,22 +1,145 @@
 package Entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class HomeHeatingOrder {
+public class HomeHeatingOrder implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	static Integer HomeHeatingOrderID=1;
 	
 	String clientID;
-	Integer OrderID;
-	Integer quantity;
-	Date SupplyDate;
+	public static Integer getHomeHeatingOrderID() {
+		return HomeHeatingOrderID;
+	}
+
+
+
+
+	
+
+
+
+
+	public String getClientID() {
+		return clientID;
+	}
+
+
+
+
+	public void setClientID(String clientID) {
+		this.clientID = clientID;
+	}
+
+
+
+
+	public int getOrderID() {
+		return OrderID;
+	}
+
+
+
+
+	public void setOrderID(int orderID) {
+		OrderID = orderID;
+	}
+
+
+
+
+	public double getQuantity() {
+		return quantity;
+	}
+
+
+
+
+	public void setQuantity(double quantity) {
+		this.quantity = quantity;
+	}
+
+
+
+
+	public String getSupplyDate() {
+		return SupplyDate;
+	}
+
+
+
+
+	public void setSupplyDate(String supplyDate) {
+		SupplyDate = supplyDate;
+	}
+
+
+
+
+	public String getUrgent() {
+		return Urgent;
+	}
+
+
+
+
+	public void setUrgent(String urgent) {
+		Urgent = urgent;
+	}
+
+
+
+
+	public double getPrice() {
+		return Price;
+	}
+
+
+
+
+	public void setPrice(double price) {
+		Price = price;
+	}
+
+
+
+
+	public String getStatus() {
+		return Status;
+	}
+
+
+
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
+
+	int OrderID;
+	double quantity;
+	String SupplyDate;
 	String Urgent;
-	Double Price;
+	double Price;
 	String Status;
 
-	public HomeHeatingOrder(String clientID, Integer quantity, Date supplyDate, String urgent, Double price,
+	public HomeHeatingOrder(String clientID, double quantity, String supplyDate, String urgent, double price,
 			String status) {
 		super();
 		this.clientID = clientID;
@@ -28,65 +151,10 @@ public class HomeHeatingOrder {
 		OrderID=HomeHeatingOrderID++;
 	}
 
-	public String getClientID() {
-		return clientID;
-	}
-
-	public void setClientID(String clientID) {
-		this.clientID = clientID;
-	}
-
-	public Integer getOrderID() {
-		return OrderID;
-	}
-
-	public void setOrderID(Integer orderID) {
-		OrderID = orderID;
-	}
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-
-	public Date getSupplyDate() {
-		return SupplyDate;
-	}
-
-	public void setSupplyDate(Date supplyDate) {
-		SupplyDate = supplyDate;
-	}
-
-	public String getUrgent() {
-		return Urgent;
-	}
-
-	public void setUrgent(String urgent) {
-		Urgent = urgent;
-	}
-
-	public Double getPrice() {
-		return Price;
-	}
-
-	public void setPrice(Double price) {
-		Price = price;
-	}
-
-	public String getStatus() {
-		return Status;
-	}
-
-	public void setStatus(String status) {
-		Status = status;
-	}
 
 	
-	public double Calculate_Price_HomeHeating(Integer quan, String urg,double H_Rate) {
-		if (urg.equals("yes")) {
+	public double Calculate_Price_HomeHeating(double quan, String urg,double H_Rate) {
+		if (urg.equals("Yes")) {
 			H_Rate = H_Rate * 1.2;
 		}
 		

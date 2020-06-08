@@ -9,6 +9,8 @@ import client.*;
 import common.ChatIF;
 import common.Message;
 import gui.EmployeeFrameController;
+import gui.HomeHeatingOrderController;
+import gui.HomeHeatingOrderTrackController;
 import gui.LoginController;
 import gui.MarketingManagerController;
 import gui.MarketingManagerRateController;
@@ -47,6 +49,7 @@ import java.util.ArrayList;
 
 import DBconnection.DBconnector;
 import Entity.Car;
+import Entity.HomeHeatingOrder;
 import Entity.Inventory;
 import Entity.Rates;
 import Entity.User;
@@ -287,10 +290,30 @@ public class ChatClient extends AbstractClient
 		 ArrayList<Rates> ratesAlert=(ArrayList<Rates>)RatesArrayListAlert;
 		NetworkManagerController.acainstance.RatesAcceptor(ratesAlert);
 		 break;
+  case 22:
+	 String homeHeatingStringRate=(String)recieved.getObject();
+	 //System.out.println("home:"+homeHeatingStringRate);
+		HomeHeatingOrderController.acainstance.HomeHeatingRatesAcceptor(homeHeatingStringRate);
+		 break;
+  case 23:
+	  String strHomeHeating = (String) recieved.getObject();
+	  Platform.runLater(() -> {
+		  HomeHeatingOrderController.acainstance.status.setText(strHomeHeating + " Updated!");
+	    });
+	  break;
+  case 24:
+	  ArrayList<?> HomeHeatingOrderArrayList =(ArrayList<?>)recieved.getObject();
+		 ArrayList<String> bbbb=(ArrayList<String>)HomeHeatingOrderArrayList;
+		 HomeHeatingOrderTrackController.acainstance.HomeHeatingOrderAcceptor(bbbb);
+	  break;
+  case 25:
+	ArrayList<HomeHeatingOrder>  HomeheatingArrayList =(ArrayList<HomeHeatingOrder>)recieved.getObject();
+	ArrayList<HomeHeatingOrder> Homeheatingarr=(ArrayList<HomeHeatingOrder>)HomeheatingArrayList;
+	HomeHeatingOrderTrackController.acainstance.HomeHeatingOrderAccept(Homeheatingarr);
+	  break;
 	  }
   }
   
-
   /**
    * This method handles all data coming from the UI            
    *

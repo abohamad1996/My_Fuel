@@ -29,7 +29,7 @@
          </font>
       </Text>
       <TextField fx:id="txtQuantity" layoutX="210.0" layoutY="174.0" styleClass="root4" />
-      <ComboBox fx:id="comboChooseOrder" layoutX="50.0" layoutY="110.0" prefWidth="150.0" promptText="Choose Order" styleClass="combo" />
+      <ComboBox fx:id="comboChooseOrder" layoutX="50.0" layoutY="110.0" onAction="#ShowDetails" prefWidth="150.0" promptText="Choose Order" styleClass="combo" />
       <TextField fx:id="txtStatus" layoutX="210.0" layoutY="328.0" styleClass="root4" />
       <TextField fx:id="txtPrice" layoutX="210.0" layoutY="290.0" styleClass="root4" />
       <TextField fx:id="txtUrgent" layoutX="210.0" layoutY="252.0" styleClass="root4" />
