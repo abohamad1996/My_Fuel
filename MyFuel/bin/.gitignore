@@ -1,6 +1,5 @@
-/DBconnection/
-/Entity/
-/Server/
-/client/
-/common/
 /gui/
+/images/
+/client/
+/Server/
+/DBconnection/

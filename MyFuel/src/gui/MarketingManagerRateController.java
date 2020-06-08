@@ -68,7 +68,7 @@ public class MarketingManagerRateController implements Initializable {
     void SendToApprove(ActionEvent event) {
     	Rates rates=new Rates(comboFuelType.getValue(), txtRate.getText());
     	MarketingManagerRateController.acainstance.chat.accept(new Message(16, rates));
-    }
+    	}
 	@SuppressWarnings("unused")
 	private void runLater(Func f) {
 		f.call();

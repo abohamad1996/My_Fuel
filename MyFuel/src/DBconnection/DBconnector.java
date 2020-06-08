@@ -522,4 +522,5 @@ public static String SetNewRatesStatusNotConfirmed(Rates rates)
 	}
 	return null;
 }
+
 }

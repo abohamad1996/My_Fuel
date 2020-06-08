@@ -25,6 +25,7 @@ import common.Message;
 import gui.Employee;
 import gui.MarketingManagerRateController;
 import gui.NetworkManagerApproveRatesController;
+import gui.NetworkManagerController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import ocsf.server.*;
@@ -277,7 +278,7 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
-	case 16:// 
+	case 16:// rates
 		Rates rates=(Rates)recieved.getObject();;
 		String strRates=DBconnector.RatesRequest(rates);
 		try {
@@ -287,7 +288,7 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
-	case 17:// InventoryDetails
+	case 17:// Rates Request
 		try {
 			ArrayList<Rates> aa;
 			try {
@@ -328,6 +329,22 @@ public class EchoServer extends AbstractServer {
 		String strSetRatesNotConfirm=DBconnector.SetNewRatesStatusNotConfirmed(newRatesNotConfirm);
 		try {
 			client.sendToClient(new Message(20, strSetRatesNotConfirm));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 21:// Rates Request Alert
+		try {
+			ArrayList<Rates> aa;
+			try {
+				aa = DBconnector.NewRatesRequest(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(21, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

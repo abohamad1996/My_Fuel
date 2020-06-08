@@ -27,6 +27,7 @@ import gui.Employee;
 import gui.UpdateRoleController;
 import gui.UserHomeController;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -262,7 +263,7 @@ public class ChatClient extends AbstractClient
 	  ArrayList<?> RatesArrayList =(ArrayList<?>)recieved.getObject();
 		 ArrayList<Rates> rates=(ArrayList<Rates>)RatesArrayList;
 		 NetworkManagerApproveRatesController.acainstance.RatesAcceptor(rates);
-	  break;
+		 break;
   case 18:
 	  String strNewRates = (String) recieved.getObject();
 	  Platform.runLater(() -> {
@@ -281,10 +282,14 @@ public class ChatClient extends AbstractClient
 		  NetworkManagerApproveRatesController.acainstance.status.setText("");
 	    });
 	  break;
+  case 21:
+	  ArrayList<?> RatesArrayListAlert =(ArrayList<?>)recieved.getObject();
+		 ArrayList<Rates> ratesAlert=(ArrayList<Rates>)RatesArrayListAlert;
+		NetworkManagerController.acainstance.RatesAcceptor(ratesAlert);
+		 break;
 	  }
   }
   
-
 
   /**
    * This method handles all data coming from the UI            

@@ -1,31 +1,43 @@
 package gui;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.mysql.cj.LicenseConfiguration;
 import com.sun.scenario.effect.impl.prism.PrImage;
 
 import javafx.fxml.Initializable;
+import Entity.Rates;
 import Entity.User;
+import client.ChatClient;
+import client.ClientConsole;
 import client.Func;
+import common.Message;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class NetworkManagerController implements Initializable {
-	
-	    @FXML
-	    private SplitPane splitpane;
+
+	public static NetworkManagerController acainstance;
+		@FXML
+		private MenuButton notificationMenu;
+;
 
 	    @FXML
 	    private Button btnHome;
@@ -47,7 +59,9 @@ public class NetworkManagerController implements Initializable {
 
 	    @FXML
 	    private MenuItem Rank;
-
+	    
+	    @FXML
+	    public ImageView notificationAlert;
 	    @FXML
 	    private Button btnRank;
 
@@ -58,6 +72,42 @@ public class NetworkManagerController implements Initializable {
 	    private Button btnLogout;
 
 	    @FXML
+	    private MenuItem notification;
+	    @FXML
+	    private Button btnNotification;
+	  
+	    ObservableList<Rates> List =FXCollections.observableArrayList(); 
+	private static User user;
+    @FXML
+    private SplitPane splitpane;
+	public static Stage primaryStage;
+	public static ProfileSettingsController ProfileSetting;
+	public static AboutController About;
+	public static HomePage HomePage;
+	public static  NetworkManagerReciveReportsController reciveReports;
+	public static NetworkManagerApproveRatesController approveRates;
+	public void start(User user) {
+		this.user = user;
+		primaryStage = LoginController.primaryStage;
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					Parent root;
+					root = FXMLLoader.load(getClass().getResource("/gui/NetworkManager.fxml"));
+					Scene scene = new Scene(root);
+					scene.getStylesheets().add(getClass().getResource("/gui/css2.css").toExternalForm());
+					primaryStage.setScene(scene);
+					primaryStage.setResizable(false);
+					primaryStage.setTitle("Home");
+					primaryStage.show();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	  @FXML
 	    void ApproveRatesbutton(ActionEvent event) {
 	    	approveRates = new NetworkManagerApproveRatesController();
 	    	runLater(() -> {
@@ -103,39 +153,32 @@ public class NetworkManagerController implements Initializable {
 		    		About.start(splitpane, user, "User");
 		});
 	    }
+	    @SuppressWarnings("unlikely-arg-type")
+		@FXML
+	    void RatesApprove(ActionEvent event) {
+	    	if(btnNotification.getText().equals("There is no notifications"))
+	    	{
+	    		Alert alert = new Alert(AlertType.ERROR);
+				alert.setAlertType(AlertType.ERROR); 
+				alert.setContentText("There is no Updates!!!");
+				alert.show(); 
+	    	}
+	    	else {
+	      	approveRates = new NetworkManagerApproveRatesController();
+	    	runLater(() -> {
+	    		approveRates.start(splitpane, user, "User");
+	});}
+	    }
+	    @FXML
+	    void NotificationBarAction(ActionEvent event) {
+	    			Alert(false);
+	    			System.out.println("aaaa");
+	    }
+	    @FXML
+	    void NotificationBarClick(MouseEvent event) {
+	    	Alert(false);
+	    }
 
-
-	public static ClientRegisterController register;
-	public static NetworkManagerController s;
-	private static User user;
-	public static Stage primaryStage;
-	public static ProfileSettingsController ProfileSetting;
-	public static AboutController About;
-	public static HomePage HomePage;
-public static  NetworkManagerReciveReportsController reciveReports;
-public static NetworkManagerApproveRatesController approveRates;
-	public void start(User user) {
-		this.user = user;
-		s = this;
-		primaryStage = LoginController.primaryStage;
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					Parent root;
-					root = FXMLLoader.load(getClass().getResource("/gui/NetworkManager.fxml"));
-					Scene scene = new Scene(root);
-					scene.getStylesheets().add(getClass().getResource("/gui/css2.css").toExternalForm());
-					primaryStage.setScene(scene);
-					primaryStage.setResizable(false);
-					primaryStage.setTitle("Home");
-					primaryStage.show();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
@@ -149,10 +192,33 @@ public static NetworkManagerApproveRatesController approveRates;
 			}
 		});
 	}
+	void Alert(boolean a) {
+		notificationAlert.setVisible(a);
+	}
+	public void RatesAcceptor(ArrayList<Rates> ratesArray) {
+		List.addAll(ratesArray);
+		System.out.println(List);
+		if(List.size()!=0)
+		{
+			btnNotification.setText("There is new rates request");
+			Alert(true);
+		}
+		else {
+			System.out.println("null");
+		}
+		}
+
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		acainstance=this;
+		 ClientConsole details= new ClientConsole("localhost", 5555);
+		 details.accept(new Message(21, null));
 		btnRank.setText(user.getRank());
 	    Rank=new MenuItem(user.getRank());
 	       UserMenu.setText(user.getFirstname());
 	}
+
 }

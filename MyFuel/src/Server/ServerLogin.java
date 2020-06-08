@@ -27,26 +27,9 @@ public class ServerLogin extends AbstractServer{
 	protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 		Message recieved = (Message) msg;
 		System.out.println("Message received: " + recieved.getCode() + " from " + client);
-		switch (recieved.getCode()) {
-		case 1:
-			String[] loginMessage = (String[]) recieved.getObject();
-			System.out.println("Username:"+loginMessage[1]+" Password:"+loginMessage[2]);	
-			Connection connection;
-			//System.out.println(""+a.getId()+" "+a.getFirstname()+" "+a.getLastname()+" "+a.getEmail()+" "+a.getUsername()+" "+a.getPassword()+" "+a.getRank()+" "+a.getStatus());
-			try {
-					connection = DBconnector.getConnection();
-					User user=DBconnector.isInDB(connection, loginMessage[1], loginMessage[2]);
-					client.sendToClient(new Message(3, user));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	break;
+	
 }
-	}
+	
 	
 	
 	

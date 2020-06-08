@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Cell;
 import javafx.scene.control.Label;
@@ -75,6 +76,7 @@ public class NetworkManagerApproveRatesController implements Initializable {
 			e.printStackTrace();
 	}		
 }
+	
 	public void RatesAcceptor(ArrayList<Rates> ratesArray) {
 		List.addAll(ratesArray);
 		System.out.println(List);
@@ -105,6 +107,7 @@ public class NetworkManagerApproveRatesController implements Initializable {
 		clmPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
 		addConfirmButtonToTable();
 		addNotConfirmButtonToTable();
+		
 	}
 	
     private void addConfirmButtonToTable() {
