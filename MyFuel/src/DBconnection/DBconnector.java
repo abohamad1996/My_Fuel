@@ -609,9 +609,9 @@ Statement stmt;
 	ArrayList<Entity.HomeHeatingOrder> arr = new ArrayList<Entity.HomeHeatingOrder>();
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "SELECT ClientID,Quantity, SupplyDaty, Urgent,Price, OrderStatus\r\n" + 
-				"			FROM my_fuel.homeheating home , my_fuel.user user\r\n" + 
-				"				WHERE home.ClientID=user.ID and ClientID=?;";
+		String query = "SELECT OrderID,ClientID,Quantity, SupplyDate, Urgent,Price, OrderStatus\r\n" + 
+				"							FROM my_fuel.homeheating home , my_fuel.user user\r\n" + 
+				"								WHERE home.ClientID=user.ID and ClientID=?";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.homeheating;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 	      String a = id;
@@ -622,9 +622,9 @@ Statement stmt;
 		while(rs.next())
  		{
 			System.out.println(""+ps.toString());
-			//heatingOrder=new Entity.HomeHeatingOrder(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getDouble(5), rs.getString(6));
-		//	arr.add(heatingOrder);
-			System.out.println(arr);
+			heatingOrder=new Entity.HomeHeatingOrder(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getString(7));
+			arr.add(heatingOrder);
+		//	System.out.println(arr);
  		}
 		rs.close();
 	} catch (SQLException e) {

@@ -161,6 +161,15 @@ public class HomeHeatingOrder implements Serializable{
 		return FinalPrice;
 	}
 
+
+
+
+	@Override
+	public String toString() {
+		return "HomeHeatingOrder [OrderID=" + OrderID + ", ownerID=" + ownerID + ", quantity=" + quantity
+				+ ", SupplyDate=" + SupplyDate + ", Urgent=" + Urgent + ", Price=" + Price + ", Status=" + Status + "]";
+	}
+
 	
 
 }

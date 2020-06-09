@@ -92,12 +92,21 @@ public class HomeHeatingOrderTrackController implements Initializable{
 	
     @FXML
     void ShowDetails(ActionEvent event) {
-    	Integer index;
+    	int index;
     	String OrderID=comboChooseOrder.getValue();
     	int i=Integer.parseInt(OrderID); 
-    	
-    
-    	System.out.println("Quantity="+HomeHeating.get(1).getQuantity());
+    	System.out.println("i="+i);
+    	 index=getOrderIDPos(i);
+    	System.out.println(index);
+    	String quantity = String.valueOf(HomeHeating.get(index).getQuantity()); 
+    	String price = String.valueOf(HomeHeating.get(index).getPrice()); 
+
+    	txtQuantity.setText(quantity);
+    	txtSypplyDate.setText(HomeHeating.get(index).getSupplyDate());
+    	txtUrgent.setText(HomeHeating.get(index).getUrgent());
+    	txtPrice.setText(price);
+    	txtStatus.setText(HomeHeating.get(index).getStatus());
+    	//System.out.println("Quantity="+HomeHeating.get(0).getQuantity());
     }
 	
 	
