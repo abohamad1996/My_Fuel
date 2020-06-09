@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -28,7 +29,8 @@ public class ProfileSettingsController implements Initializable{
     public static ProfileSettingsController acainstance;
 	  @FXML
 	    private TextField txtFirstName;
-
+	    @FXML
+	    private ImageView imageProfile;
 	    @FXML
 	    private TextField txtLastName;
 

@@ -98,7 +98,9 @@ public class ClientRegisterController implements Initializable{
 	    ObservableList<String> TypeList =FXCollections.observableArrayList(); 
 
 		ArrayList<String> TypeValues=new ArrayList<String>();
-	    
+		private	FileInputStream fis;
+	private 	File file;
+
 		public ClientConsole chat= new ClientConsole("localhost", 5555);
 	private FXMLLoader loader;	
 	public static Stage primaryStage;
@@ -147,13 +149,18 @@ public class ClientRegisterController implements Initializable{
 	}
     @FXML
     void AddImage(ActionEvent event) {
-
 				FileChooser chooser=new FileChooser();
 		    	Stage stage=(Stage) splitpane.getScene().getWindow();
-		    	File file=chooser.showOpenDialog(stage);
+		    	 file=chooser.showOpenDialog(stage);
 				    javafx.scene.image.Image image=new javafx.scene.image.Image(file.toURI().toString());
 			    	imageProfile.setImage(image);
 		    	System.out.println(file.getPath().toString());
+		    	try {
+					fis=new FileInputStream(file);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
     }
 	
 	@Override

@@ -77,7 +77,6 @@ public class CarRegisterController implements Initializable{
     public Label status;
     
     ObservableList<String> List =FXCollections.observableArrayList(); 
-
 	public ClientConsole chat= new ClientConsole("localhost", 5555);
 	private FXMLLoader loader;	
 	public static Stage primaryStage;

@@ -3,6 +3,7 @@ package DBconnection;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -147,6 +148,8 @@ public static String UpdateUser(User user)
 public static String ClientRegisterUserDetails(User user)
 {
 	Statement stmt;
+	FileInputStream fis;
+	File file = new File("C:\\Users\\Abu Hamad\\Desktop\\sky.jpg");
 	try {
 		stmt = DBconnector.getConnection().createStatement();
 		String query = "insert into my_fuel.user values(?,?,?,?,?,?,?,?,?,?);";
@@ -160,7 +163,7 @@ public static String ClientRegisterUserDetails(User user)
 		String g = user.getRank();
 		String h = user.getClientType();
 		Integer k = user.getStatus();
-		Integer i =0;
+		int i=0;
 		ps.setString(1,a); 
 		ps.setString(2,b); 	
 		ps.setString(3,c); 	

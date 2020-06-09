@@ -1,6 +1,7 @@
 package Entity;
 
 import java.io.File;
+import java.io.InputStream;
 import java.io.Serializable;
 
 import common.MyFile;
