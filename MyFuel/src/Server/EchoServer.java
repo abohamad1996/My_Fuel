@@ -407,13 +407,29 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
-	case 26:// Rates Request
+	case 26:// Order Request
 		try {
 			ArrayList<OrderConfirmation> aa;
 			try {
 				aa = DBconnector.OrderConfirmation(DBconnector.getConnection());
 				Object bb = aa;
 				client.sendToClient(new Message(26, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 27:// Order Request Alert
+		try {
+			ArrayList<OrderConfirmation> aa;
+			try {
+				aa = DBconnector.OrderConfirmation(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(27, bb));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

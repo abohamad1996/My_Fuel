@@ -77,7 +77,7 @@
       <AnchorPane prefHeight="44.0" prefWidth="875.0">
          <children>
             <Label layoutX="185.0" layoutY="-2.0" prefHeight="46.0" prefWidth="679.0" styleClass="root3" stylesheets="@css2.css" text="My Fuel-&gt;Home" />
-            <MenuButton fx:id="UserMenu" layoutX="731.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="144.0" styleClass="root4" stylesheets="@css2.css">
+            <MenuButton fx:id="UserMenu" layoutX="731.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="144.0" styleClass="combo2" stylesheets="@css2.css">
                <items>
                   <MenuItem fx:id="Rank" mnemonicParsing="false">
                      <graphic>
@@ -90,6 +90,22 @@
                      </graphic>
                   </MenuItem>
                </items>
+            </MenuButton>
+            <MenuButton fx:id="notificationMenu" layoutX="588.0" mnemonicParsing="false" onAction="#NotificationBarAction" onMouseClicked="#NotificationBarClick" prefHeight="29.0" prefWidth="144.0" styleClass="combo2" stylesheets="@css2.css" text="Notification">
+               <items>
+                  <MenuItem fx:id="notification" mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="btnNotification" mnemonicParsing="false" onAction="#OrderApprove" styleClass="root4" stylesheets="@css2.css" text="There is no notifications" />
+                     </graphic>
+                  </MenuItem>
+               </items>
+               <graphic>
+                  <ImageView fx:id="notificationAlert" fitHeight="15.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/redcircle.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </MenuButton>
          </children>
       </AnchorPane>

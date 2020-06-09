@@ -7,20 +7,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="orderconfirmationtable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StationManagerOrderConfirmationController">
+<AnchorPane fx:id="orderconfirmationtable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StationManagerOrderConfirmationController">
    <children>
       <Text layoutX="245.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Confirmation" wrappingWidth="218.0">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <TableView fx:id="orderConfirmationTable" layoutX="57.0" layoutY="111.0" prefHeight="304.0" prefWidth="575.0">
+      <TableView fx:id="orderConfirmationTable" layoutX="57.0" layoutY="111.0" prefHeight="304.0" prefWidth="575.0" styleClass="root2" stylesheets="@css2.css">
         <columns>
           <TableColumn fx:id="clmOrderNumber" prefWidth="116.0" text="Ordrer Number " />
           <TableColumn fx:id="clmType" prefWidth="101.0" text="Type" />
             <TableColumn fx:id="clmQuantity" minWidth="8.0" prefWidth="119.0" text="Quantity" />
         </columns>
       </TableView>
-      <Button fx:id="btnShowOrder" layoutX="319.0" layoutY="423.0" mnemonicParsing="false" onAction="#ShowOrder" styleClass="root4" stylesheets="@css2.css" text="Show Orders" />
+      <Button fx:id="btnShowOrder" layoutX="319.0" layoutY="423.0" mnemonicParsing="false" onAction="#ShowOrder" styleClass="root2" stylesheets="@css2.css" text="Show Orders" />
    </children>
 </AnchorPane>

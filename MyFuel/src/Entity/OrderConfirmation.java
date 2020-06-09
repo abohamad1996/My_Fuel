@@ -8,7 +8,7 @@ public class OrderConfirmation implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-		String orderNumber;
+		int orderNumber;
 		String type;
 		String quantity;
 		
@@ -16,16 +16,16 @@ public class OrderConfirmation implements Serializable {
 		
 		
 	
-		public OrderConfirmation(String orderNumber, String type, String quantity) {
+		public OrderConfirmation(int orderNumber, String type, String quantity) {
 			super();
 			this.orderNumber = orderNumber;
 			this.type = type;
 			this.quantity = quantity;
 		}
-		public String getOrderNumber() {
+		public int getOrderNumber() {
 			return orderNumber;
 		}
-		public void setOrderNumber(String orderNumber) {
+		public void setOrderNumber(int orderNumber) {
 			this.orderNumber = orderNumber;
 		}
 		public String getType() {

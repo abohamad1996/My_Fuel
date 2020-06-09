@@ -641,11 +641,11 @@ public static String orderconfirmation(Entity.OrderConfirmation orderConfirmatio
 		stmt = DBconnector.getConnection().createStatement();
 		String query = "insert into my_fuel.orderconfirmation values(?,?,?,?);";
 	    PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
-	  	String a = orderConfirmation.getOrderNumber();
+	  	int a = orderConfirmation.getOrderNumber();
 	    String b = orderConfirmation.getType();
 	    String e= orderConfirmation.getQuantity();
 		int c=-1;
-		ps.setString(1,a);
+		ps.setInt(1, a);
 		ps.setString(2,b); 	
 		ps.setInt(4,c);
 		ps.setString(5, e);
@@ -665,14 +665,14 @@ public static ArrayList<Entity.OrderConfirmation> OrderConfirmation(java.sql.Con
 	ArrayList<OrderConfirmation> arr = new ArrayList<OrderConfirmation>();
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "select *FROM my_fuel.orderconfirmation WHERE status=-1;";
+		String query = "select *FROM my_fuel.orderconfirmation WHERE OrderStatus=-1;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.orderconfirmation;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 		rs = ps.executeQuery();
 		while(rs.next())
  		{
 			System.out.println(""+ps.toString());
-			orderConfirmation=new OrderConfirmation(rs.getString(1), rs.getString(2), rs.getString(3));
+			orderConfirmation=new OrderConfirmation(rs.getInt(1), rs.getString(2), rs.getString(3));
 			arr.add(orderConfirmation);
 			System.out.println(arr);
  		}

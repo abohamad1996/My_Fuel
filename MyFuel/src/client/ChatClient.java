@@ -319,6 +319,11 @@ public class ChatClient extends AbstractClient
 	 // System.out.println(""+orderconfirmatioArrayList.get(0));
 	  StationManagerOrderConfirmationController.acainstance.OrderConfirmationAcceptor(orderConfirmations);
 	  break;
+  case 27:
+	  ArrayList<?> OrderArrayListAlert =(ArrayList<?>)recieved.getObject();
+		 ArrayList<OrderConfirmation> OrderAlert=(ArrayList<OrderConfirmation>)OrderArrayListAlert;
+		 StaionManagerController.acainstance.OrderAcceptor(OrderAlert);
+		 break;
 	  }
   }
   
