@@ -144,6 +144,15 @@ public class ClientController implements Initializable{
 					primaryStage.setResizable(false);
 					primaryStage.setTitle("Home");
 					primaryStage.show();
+					primaryStage.setOnCloseRequest(event -> {
+						try {
+						DBconnector.StatusLogoutUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						System.exit(0);
+					});
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

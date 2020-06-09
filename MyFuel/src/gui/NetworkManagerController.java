@@ -1,12 +1,14 @@
 package gui;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.mysql.cj.LicenseConfiguration;
 import com.sun.scenario.effect.impl.prism.PrImage;
 
+import DBconnection.DBconnector;
 import javafx.fxml.Initializable;
 import Entity.Rates;
 import Entity.User;
@@ -101,6 +103,15 @@ public class NetworkManagerController implements Initializable {
 					primaryStage.setResizable(false);
 					primaryStage.setTitle("Home");
 					primaryStage.show();
+					primaryStage.setOnCloseRequest(event -> {
+						try {
+						DBconnector.StatusLogoutUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						System.exit(0);
+					});
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -127,7 +138,14 @@ public class NetworkManagerController implements Initializable {
 	    void Logout(ActionEvent event) {
 	    	System.out.println("Logout");
 			LogoutController logout=new LogoutController();
+			
 			logout.start(primaryStage, user);
+			try {
+				user=DBconnector.StatusLogoutUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    }
 
 	    @FXML
