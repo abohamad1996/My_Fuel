@@ -99,7 +99,7 @@ public class StaionManagerController implements Initializable {
 	    }
 	    @FXML
 	    void OrderConfirmation(ActionEvent event) {
-	    	confirmation=new StationManagerOrderConfirmation();
+	    	confirmation=new StationManagerOrderConfirmationController();
 	    	confirmation.start(splitpane, user, "User");
 	    }
 
@@ -135,7 +135,7 @@ public class StaionManagerController implements Initializable {
 	public static HomePage HomePage;
 	public static StationManagerInventoryController inventory;
 	public static StationManagerReportController reports;
-	public static StationManagerOrderConfirmation confirmation;
+	public static StationManagerOrderConfirmationController confirmation;
 
 	public void start(User user) {
 		this.user = user;

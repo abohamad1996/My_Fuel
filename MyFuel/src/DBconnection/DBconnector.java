@@ -18,6 +18,7 @@ import com.sun.crypto.provider.RSACipher;
 import Entity.Car;
 import Entity.CreditCard;
 import Entity.Inventory;
+import Entity.OrderConfirmation;
 import Entity.Rates;
 import Entity.User;
 import gui.Employee;
@@ -555,15 +556,15 @@ public static String HomeHeatingOrder(Entity.HomeHeatingOrder homeHeating)
 		stmt = DBconnector.getConnection().createStatement();
 		String query = "insert into my_fuel.homeheating values(?,?,?,?,?,?,?);";
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
-	  	String a=homeHeating.getClientID();
-	  	int b=homeHeating.getOrderID();
+	      int a=0;
+	      String b=homeHeating.getOwnerID();
 	  	double c=homeHeating.getQuantity();
 	  	String d=homeHeating.getSupplyDate();
 	  	String e=homeHeating.getUrgent();
 	  	double f=homeHeating.getPrice();
 	  	String h=homeHeating.getStatus();
-		ps.setString(1,a); 
-		ps.setInt(2, b);
+		ps.setInt(1, a);
+		ps.setString(2,b); 
 		ps.setDouble(3, c);
 		ps.setString(4, d);
 		ps.setString(5, e);
@@ -621,8 +622,58 @@ Statement stmt;
 		while(rs.next())
  		{
 			System.out.println(""+ps.toString());
-			heatingOrder=new Entity.HomeHeatingOrder(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getDouble(5), rs.getString(6));
-			arr.add(heatingOrder);
+			//heatingOrder=new Entity.HomeHeatingOrder(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getDouble(5), rs.getString(6));
+		//	arr.add(heatingOrder);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
+public static String orderconfirmation(Entity.OrderConfirmation orderConfirmation)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.orderconfirmation values(?,?,?,?);";
+	    PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	  	String a = orderConfirmation.getOrderNumber();
+	    String b = orderConfirmation.getType();
+	    String e= orderConfirmation.getQuantity();
+		int c=-1;
+		ps.setString(1,a);
+		ps.setString(2,b); 	
+		ps.setInt(4,c);
+		ps.setString(5, e);
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
+public static ArrayList<Entity.OrderConfirmation> OrderConfirmation(java.sql.Connection connection)
+{
+	OrderConfirmation orderConfirmation;
+	Statement stmt;
+	ArrayList<OrderConfirmation> arr = new ArrayList<OrderConfirmation>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "select *FROM my_fuel.orderconfirmation WHERE status=-1;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.orderconfirmation;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			orderConfirmation=new OrderConfirmation(rs.getString(1), rs.getString(2), rs.getString(3));
+			arr.add(orderConfirmation);
 			System.out.println(arr);
  		}
 		rs.close();

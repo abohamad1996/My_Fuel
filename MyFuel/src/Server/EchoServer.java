@@ -20,6 +20,7 @@ import Entity.Car;
 import Entity.CreditCard;
 import Entity.HomeHeatingOrder;
 import Entity.Inventory;
+import Entity.OrderConfirmation;
 import Entity.Rates;
 import Entity.User;
 import common.Message;
@@ -401,6 +402,22 @@ public class EchoServer extends AbstractServer {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 26:// Rates Request
+		try {
+			ArrayList<OrderConfirmation> aa;
+			try {
+				aa = DBconnector.OrderConfirmation(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(26, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

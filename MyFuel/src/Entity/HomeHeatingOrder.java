@@ -12,30 +12,28 @@ public class HomeHeatingOrder implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	static Integer HomeHeatingOrderID=1;
 	
-	String clientID;
-	public static Integer getHomeHeatingOrderID() {
-		return HomeHeatingOrderID;
-	}
-
+	int OrderID;
+	String ownerID;
+	double quantity;
+	String SupplyDate;
+	String Urgent;
+	double Price;
+	String Status;
 
 
 
 	
-
-
-
-
-	public String getClientID() {
-		return clientID;
-	}
-
-
-
-
-	public void setClientID(String clientID) {
-		this.clientID = clientID;
+	public HomeHeatingOrder(int orderID, String ownerID, double quantity, String supplyDate, String urgent,
+			double price, String status) {
+		super();
+		OrderID = orderID;
+		this.ownerID = ownerID;
+		this.quantity = quantity;
+		SupplyDate = supplyDate;
+		Urgent = urgent;
+		Price = price;
+		Status = status;
 	}
 
 
@@ -50,6 +48,20 @@ public class HomeHeatingOrder implements Serializable{
 
 	public void setOrderID(int orderID) {
 		OrderID = orderID;
+	}
+
+
+
+
+	public String getOwnerID() {
+		return ownerID;
+	}
+
+
+
+
+	public void setOwnerID(String ownerID) {
+		this.ownerID = ownerID;
 	}
 
 
@@ -132,27 +144,6 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
-	int OrderID;
-	double quantity;
-	String SupplyDate;
-	String Urgent;
-	double Price;
-	String Status;
-
-	public HomeHeatingOrder(String clientID, double quantity, String supplyDate, String urgent, double price,
-			String status) {
-		super();
-		this.clientID = clientID;
-		this.quantity = quantity;
-		this.SupplyDate = supplyDate;
-		this.Urgent = urgent;
-		this.Price = price;
-		this.Status = status;
-		OrderID=HomeHeatingOrderID++;
-	}
-
-
-	
 	public double Calculate_Price_HomeHeating(double quan, String urg,double H_Rate) {
 		if (urg.equals("Yes")) {
 			H_Rate = H_Rate * 1.2;

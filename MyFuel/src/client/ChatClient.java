@@ -22,6 +22,7 @@ import gui.PurchasePlanController;
 import gui.RefuelingController;
 import gui.StaionManagerController;
 import gui.StationManagerInventoryController;
+import gui.StationManagerOrderConfirmationController;
 import gui.CarRegisterController;
 import gui.ClientController;
 import gui.ClientRegisterController;
@@ -51,6 +52,7 @@ import DBconnection.DBconnector;
 import Entity.Car;
 import Entity.HomeHeatingOrder;
 import Entity.Inventory;
+import Entity.OrderConfirmation;
 import Entity.Rates;
 import Entity.User;
 
@@ -310,6 +312,12 @@ public class ChatClient extends AbstractClient
 	ArrayList<HomeHeatingOrder>  HomeheatingArrayList =(ArrayList<HomeHeatingOrder>)recieved.getObject();
 	ArrayList<HomeHeatingOrder> Homeheatingarr=(ArrayList<HomeHeatingOrder>)HomeheatingArrayList;
 	HomeHeatingOrderTrackController.acainstance.HomeHeatingOrderAccept(Homeheatingarr);
+	  break;
+  case 26:
+	  ArrayList<?> orderconfirmatioArrayList =(ArrayList<?>)recieved.getObject();
+	  ArrayList<OrderConfirmation> orderConfirmations=(ArrayList<OrderConfirmation>)orderconfirmatioArrayList;
+	 // System.out.println(""+orderconfirmatioArrayList.get(0));
+	  StationManagerOrderConfirmationController.acainstance.OrderConfirmationAcceptor(orderConfirmations);
 	  break;
 	  }
   }

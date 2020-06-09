@@ -99,7 +99,7 @@ public class HomeHeatingOrderController implements Initializable{
 	    	  date=dateSelect.getValue().toString();
 			   quantity=Double.parseDouble(btnQuantity.getText());
 			   urgent=txtUrgent.getValue();
-			   heatingOrder=new HomeHeatingOrder("318615499", quantity, date, urgent, price, "In");
+			   heatingOrder=new HomeHeatingOrder(0, user.getId(), quantity, date, urgent, price, "in");
 			 price =   heatingOrder.Calculate_Price_HomeHeating(quantity, urgent, rates);
 			 heatingOrder.setPrice(price);
 			finalPrice=String.valueOf(price);
