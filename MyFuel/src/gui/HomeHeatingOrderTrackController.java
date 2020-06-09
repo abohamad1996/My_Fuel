@@ -106,7 +106,6 @@ public class HomeHeatingOrderTrackController implements Initializable{
     	txtUrgent.setText(HomeHeating.get(index).getUrgent());
     	txtPrice.setText(price);
     	txtStatus.setText(HomeHeating.get(index).getStatus());
-    	//System.out.println("Quantity="+HomeHeating.get(0).getQuantity());
     }
 	
 	
