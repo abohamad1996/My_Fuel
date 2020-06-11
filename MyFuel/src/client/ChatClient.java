@@ -20,6 +20,8 @@ import gui.NetworkManagerController;
 import gui.ProfileSettingsController;
 import gui.PurchasePlanController;
 import gui.RefuelingController;
+import gui.RepresentativeTransportController;
+import gui.RepresentativeTransportSetMaxPrice;
 import gui.StaionManagerController;
 import gui.StationManagerInventoryController;
 import gui.StationManagerOrderConfirmationController;
@@ -191,6 +193,17 @@ public class ChatClient extends AbstractClient
 				e.printStackTrace();
 			}
 	  break;
+		case "Representative Transport":
+			System.out.println("Representative Transport");
+			RepresentativeTransportController RepresentativeTransport=new RepresentativeTransportController();
+			RepresentativeTransport.start(user);
+			try {
+				user=DBconnector.StatusLoginUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	  break;
 	  }
 	  case 4:
 		 User userArrayList =(User)recieved.getObject();
@@ -324,6 +337,17 @@ public class ChatClient extends AbstractClient
 		 ArrayList<OrderConfirmation> OrderAlert=(ArrayList<OrderConfirmation>)OrderArrayListAlert;
 		 StaionManagerController.acainstance.OrderAcceptor(OrderAlert);
 		 break;
+  case 28:
+	  Rates strMaxPrice = (Rates) recieved.getObject();
+	  Platform.runLater(() -> {
+		  RepresentativeTransportSetMaxPrice.acainstance.status.setText("Done"+strMaxPrice);
+	    });
+	  break;
+  case 29:
+	  ArrayList<?> MaxPriceArrayList =(ArrayList<?>)recieved.getObject();
+		 ArrayList<Rates> MaxPrice=(ArrayList<Rates>)MaxPriceArrayList;
+		 RepresentativeTransportSetMaxPrice.acainstance.RatesAcceptor(MaxPrice);
+	  break;
 	  }
   }
   

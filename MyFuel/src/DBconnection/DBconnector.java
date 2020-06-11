@@ -687,4 +687,50 @@ public static ArrayList<Entity.OrderConfirmation> OrderConfirmation(java.sql.Con
 	}
 	return arr;
 }
+public static Rates SetMaxPrice(Rates rate)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.maximumrates SET Price=? WHERE FuelType=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a = rate.getPrice();
+		String b = rate.getFuelType();
+		ps.setString(1,a); 
+		ps.setString(2,b); 	
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
+public static ArrayList<Rates> MaxRatesDetails(java.sql.Connection connection)
+{
+	Rates rates;
+	Statement stmt;
+	ArrayList<Rates> arr = new ArrayList<Rates>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT * FROM my_fuel.maximumrates;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.maximumrates;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+				rates=new Rates(rs.getString(1), rs.getString(2));
+			arr.add(rates);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
 }

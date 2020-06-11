@@ -257,7 +257,7 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
-	case 14:// 
+	case 14:// Inventory
 		Inventory inv=(Inventory)recieved.getObject();;
 		Inventory strInv=DBconnector.UpdateInventoryLevel(inv);
 		try {
@@ -439,7 +439,34 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
+	case 28:// set max rates
+		Rates maxRates=(Rates)recieved.getObject();;
+		Rates strMaxRates=DBconnector.SetMaxPrice(maxRates);
+		try {
+			client.sendToClient(new Message(28, strMaxRates));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		break;
+	case 29:// Max Price Details
+		try {
+			ArrayList<Rates> aa;
+			try {
+				aa = DBconnector.MaxRatesDetails(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(29, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+		}
+		
 		}
 	/**
 	 * This method overrides the one in the superclass. Called when the server
