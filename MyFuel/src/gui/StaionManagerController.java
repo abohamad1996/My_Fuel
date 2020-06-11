@@ -28,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
@@ -86,9 +87,12 @@ public class StaionManagerController implements Initializable {
 
 	    @FXML
 	    private Button btnLogout;
-
+	    @FXML
+	    private Label DiroctoryBar;
 	    @FXML
 	    void HomeButton(ActionEvent event) {
+			  DiroctoryBar.setText("My Fuel->Home");
+
 	    	HomePage = new HomePage();
 	    	runLater(() -> {
 	    		HomePage.start(splitpane, user, "User");
@@ -97,6 +101,8 @@ public class StaionManagerController implements Initializable {
 
 	    @FXML
 	    void Inventory(ActionEvent event) {
+			  DiroctoryBar.setText("My Fuel->Inventory Managment");
+
 	    	 inventory=new StationManagerInventoryController();
 	    	 inventory.start(splitpane, user, "User");
 	    }
@@ -117,6 +123,8 @@ public class StaionManagerController implements Initializable {
 
 	    @FXML
 	    void NewReports(ActionEvent event) {
+			  DiroctoryBar.setText("My Fuel->Reports");
+
 	    	reports = new StationManagerReportController();
 	    	runLater(() -> {
 	    		reports.start(splitpane, user, "User");
@@ -124,12 +132,16 @@ public class StaionManagerController implements Initializable {
 	    }
 	    @FXML
 	    void OrderConfirmation(ActionEvent event) {
+			  DiroctoryBar.setText("My Fuel->Order Confirmation");
+
 	    	confirmation=new StationManagerOrderConfirmationController();
 	    	confirmation.start(splitpane, user, "User");
 	    }
 
 	    @FXML
 	    void ProfileSettingButton(ActionEvent event) {
+			  DiroctoryBar.setText("My Fuel->Profile Settings");
+
 	    	ProfileSetting = new ProfileSettingsController();
 	    	runLater(() -> {
 	    		ProfileSetting.start(splitpane, user, "User");
@@ -138,6 +150,8 @@ public class StaionManagerController implements Initializable {
 
 	    @FXML
 	    void btnAbout(ActionEvent event) {
+			  DiroctoryBar.setText("My Fuel->About");
+
 	     	About = new AboutController();
 	    	runLater(() -> {
 	    		About.start(splitpane, user, "User");

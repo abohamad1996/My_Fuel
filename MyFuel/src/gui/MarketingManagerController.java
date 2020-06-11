@@ -145,7 +145,7 @@ public class MarketingManagerController implements Initializable{
 
     @FXML
     void Sales(ActionEvent event) {
-    	DiroctoryBar.setText("My Fuel->Rates");
+    	DiroctoryBar.setText("My Fuel->Sales");
     	sales= new MarketingManagerSaleController();
     	runLater(() -> {
     		sales.start(splitpane, user, "User");

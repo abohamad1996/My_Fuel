@@ -15,12 +15,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
 
 public class ClientController implements Initializable{
+    @FXML
+    private Label DiroctoryBar;
 
     @FXML
     private SplitPane splitpane;
@@ -60,6 +63,7 @@ public class ClientController implements Initializable{
 
     @FXML
     void HomeButton(ActionEvent event) {
+     	DiroctoryBar.setText("My Fuel->Home");
     	HomePage = new HomePage();
     	runLater(() -> {
     		HomePage.start(splitpane, user, "User");
@@ -68,6 +72,7 @@ public class ClientController implements Initializable{
 
     @FXML
     void HomeHeatingButton(ActionEvent event) {
+    	DiroctoryBar.setText("My Fuel->Hoome Heating");
     	homeHeating =new HomeHeatingController();
     	runLater(() -> {
     		homeHeating.start(splitpane, user, "User");
@@ -89,6 +94,7 @@ public class ClientController implements Initializable{
 
     @FXML
     void ProfileSettingButton(ActionEvent event) {
+    	DiroctoryBar.setText("My Fuel->Profile Settings");
     	ProfileSetting = new ProfileSettingsController();
     	runLater(() -> {
     		ProfileSetting.start(splitpane, user, "User");
@@ -97,6 +103,7 @@ public class ClientController implements Initializable{
 
     @FXML
     void PurchasePlanButton(ActionEvent event) {
+    	DiroctoryBar.setText("My Fuel->Purchase Plan");
     	pController=new PurchasePlanController();
     	runLater(() -> {
     		pController.start(splitpane, user, "User");
@@ -105,6 +112,7 @@ public class ClientController implements Initializable{
 
     @FXML
     void RefulingButton(ActionEvent event) {
+    	DiroctoryBar.setText("My Fuel->Refueling");
     	refueling=new RefuelingController();
     	runLater(() -> {
     		refueling.start(splitpane, user, "User");
@@ -113,6 +121,7 @@ public class ClientController implements Initializable{
 
     @FXML
     void btnAbout(ActionEvent event) {
+    	DiroctoryBar.setText("My Fuel->About");
     	About = new AboutController();
     	runLater(() -> {
     		About.start(splitpane, user, "User");
