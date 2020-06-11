@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="671.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ClientRefuelingDetailsController">
+   <children>
+      <Text layoutX="225.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Refueling Details">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Button layoutX="289.0" layoutY="451.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="95.0" styleClass="root4" text="Finish" />
+      <Text layoutX="47.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Car number">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="48.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Price">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="47.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Quantity">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="47.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Rate For Liter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="46.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Gas Type">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="47.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Gas Station">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="48.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Date/Time">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField layoutX="185.0" layoutY="128.0" styleClass="root4" />
+      <TextField layoutX="185.0" layoutY="362.0" styleClass="root4" />
+      <TextField layoutX="185.0" layoutY="323.0" styleClass="root4" />
+      <TextField layoutX="185.0" layoutY="284.0" styleClass="root4" />
+      <TextField layoutX="185.0" layoutY="245.0" styleClass="root4" />
+      <TextField layoutX="185.0" layoutY="206.0" styleClass="root4" />
+      <TextField layoutX="185.0" layoutY="167.0" styleClass="root4" />
+      <Label layoutX="338.0" layoutY="284.0" styleClass="root3" stylesheets="@css2.css" text="Liter" textFill="#111010" />
+      <Label layoutX="338.0" layoutY="323.0" styleClass="root3" stylesheets="@css2.css" text="NIS" textFill="#111010" />
+   </children>
+</AnchorPane>
