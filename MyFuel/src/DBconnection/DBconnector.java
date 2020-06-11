@@ -733,4 +733,24 @@ public static ArrayList<Rates> MaxRatesDetails(java.sql.Connection connection)
 	}
 	return arr;
 }
+public static Inventory UpdateInventoryAfterOrder(Inventory inv)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.inventory SET Quantity=? WHERE FuelType=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a = inv.getQuantity();
+		String b = inv.getFuelType();
+		ps.setString(1,a); 
+		ps.setString(2,b); 	
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
 }

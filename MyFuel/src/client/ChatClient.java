@@ -353,6 +353,17 @@ public class ChatClient extends AbstractClient
 		 ArrayList<Rates> MaxPriceMarkiting=(ArrayList<Rates>)MaxPriceArrayListMarkiting;
 		 MarketingManagerRateController.acainstance.RatesAcceptor(MaxPriceMarkiting);
 		 break;
+  case 31:
+	  ArrayList<?> InventoryOrdersArrayList =(ArrayList<?>)recieved.getObject();
+		 ArrayList<Inventory> InvOrders=(ArrayList<Inventory>)InventoryOrdersArrayList;
+		 HomeHeatingOrderController.acainstance.FuelAcceptor(InvOrders);
+	  break;
+  case 32:
+	  Inventory strHomeHeatingOrderInv = (Inventory) recieved.getObject();
+	  Platform.runLater(() -> {
+		//  StationManagerInventoryController.acainstance.NewFuelAcceptor(stInv);
+	    });
+	  break;
 	  }
   }
   

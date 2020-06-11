@@ -481,8 +481,33 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
+	case 31:// InventoryDetails For Orders
+		try {
+			ArrayList<Inventory> aa;
+			try {
+				aa = DBconnector.inventoryDetails(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(31, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
+		break;
+	case 32:// Inventory update after home heating order
+		Inventory HomeHeatingOrderinv=(Inventory)recieved.getObject();;
+		Inventory strHomeHeatingOrderInv=DBconnector.UpdateInventoryAfterOrder(HomeHeatingOrderinv);
+		try {
+			client.sendToClient(new Message(32, strHomeHeatingOrderInv));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+		}
 		}
 	/**
 	 * This method overrides the one in the superclass. Called when the server

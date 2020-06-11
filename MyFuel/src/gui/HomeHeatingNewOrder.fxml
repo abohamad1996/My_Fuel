@@ -16,7 +16,7 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Button fx:id="btnAddOrder" layoutX="222.0" layoutY="329.0" mnemonicParsing="false" onAction="#AddNewOrder" styleClass="root4" text="Add Order" />
+      <Button fx:id="btnAddOrder" layoutX="222.0" layoutY="329.0" mnemonicParsing="false" onAction="#AddNewOrder" styleClass="root4" text="Add Order" visible="false" />
       <Text layoutX="41.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Quantity" wrappingWidth="100.490234375">
          <font>
             <Font size="15.0" />

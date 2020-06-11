@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Entity.HomeHeatingOrder;
+import Entity.Inventory;
 import Entity.Rates;
 import Entity.User;
 import client.ClientConsole;
@@ -67,7 +68,10 @@ public class HomeHeatingOrderController implements Initializable{
 	double price;
 	String urgent;
 	String date;
+	double inventory;
+	double newInventory;
 	public String finalPrice;
+	public Inventory Gasoline,Diesel,Scotter,HomeHeating;
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -82,6 +86,12 @@ public class HomeHeatingOrderController implements Initializable{
 	}		
 }
 	
+	public void FuelAcceptor(ArrayList<Inventory> inv) {
+		HomeHeating=new Inventory(inv.get(2).getFuelType(), inv.get(2).getQuantity(), inv.get(2).getLevel());
+		System.out.println(HomeHeating.toString());
+		}
+	
+	
 	public void HomeHeatingRatesAcceptor(String rate) {
 		homeHeatingRate=rate;
 		System.out.println("new rate:"+rate);
@@ -90,10 +100,15 @@ public class HomeHeatingOrderController implements Initializable{
 	
 	   @FXML
 	    void AddNewOrder(ActionEvent event) {
-		
-		HomeHeatingOrderController.acainstance.details.accept(new Message(23, heatingOrder));
+		   inventory=Double.parseDouble(HomeHeating.getQuantity());
+		   newInventory=inventory-quantity;
+		   String Inventory=String.valueOf(newInventory); 
+		   HomeHeating=new Inventory(HomeHeating.getFuelType(), Inventory, null);
+		//System.out.println(newInventory);
+		//System.out.println(Inventory);
+			HomeHeatingOrderController.acainstance.details.accept(new Message(23, heatingOrder));
+		   HomeHeatingOrderController.acainstance.details.accept(new Message(32, HomeHeating));
 	    }
-	
 	    @FXML
 	    void Calculate(ActionEvent event) {
 	    	  date=dateSelect.getValue().toString();
@@ -105,6 +120,7 @@ public class HomeHeatingOrderController implements Initializable{
 			finalPrice=String.valueOf(price);
 			labelPrice.setVisible(true);
 			labelPrice.setText(finalPrice);
+			btnAddOrder.setVisible(true);
 	    }
 	    @FXML
 	    void CalculatePrice(KeyEvent event) {
@@ -114,6 +130,7 @@ public class HomeHeatingOrderController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance=this;
 		details.accept(new Message(22, null));
+		details.accept(new Message(31, null));
 		labelRate.setVisible(true);
 		labelRate.setText(homeHeatingRate);
 		urgenttypeValues.add("Yes");

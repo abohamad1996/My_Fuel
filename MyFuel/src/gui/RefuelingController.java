@@ -1,28 +1,48 @@
 package gui;
 
 import java.net.URL;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 import Entity.Car;
+import Entity.Refueling;
 import Entity.User;
 import client.ClientConsole;
+import client.Func;
 import common.Message;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
+import jdk.internal.dynalink.beans.StaticClass;
 
 public class RefuelingController implements Initializable{
 	
+	public int j;
     public static RefuelingController acainstance;
 
+    @FXML
+    private Label labelQuantity;
 	 @FXML
 	    private Button btnStart;
 
@@ -33,15 +53,19 @@ public class RefuelingController implements Initializable{
 
 	    @FXML
 	    private Label labelGasStation;
-
+	    @FXML
+	    private Button brnDetails;
 	    @FXML
 	    private Label labelPump;
+	    @FXML
+	    private ProgressBar RefuelingPrgeess;
 	@FXML
 	private static SplitPane splitpane;
 	private FXMLLoader loader;	
 	private static User user;
 	private static String userrank;
 	public static ProfileSettingsController ProfileSetting;
+	public static  ClientRefuelingDetailsController clientRefuelingDetails;
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
 	public ClientConsole details= new ClientConsole("localhost", 5555);
@@ -62,15 +86,56 @@ public class RefuelingController implements Initializable{
 	}		
 }
 	
-
+    @FXML
+    void SeeDetails(ActionEvent event) {
+    	clientRefuelingDetails = new ClientRefuelingDetailsController();
+    	runLater(() -> {
+    		clientRefuelingDetails.start(splitpane, user, "User");
+});
+    }
+	        
 	public void CarAcceptor(ArrayList<Car> car) {
 		car2.addAll(car);
 		//CarList.addAll(car);
 	}
+
     @FXML
     void StartRefueilng(ActionEvent event) {
-    	
-    }
+    	Refueling refueling;
+		refueling=new Refueling(labelCarNumber.getText(), labelGasStation.getText(), labelFuelTyple.getText(), null, labelQuantity.getText(), null, null, labelPump.getText());
+    	  Task <Void> t = new Task <Void> () {
+    		    protected Void call() throws Exception {
+    		     for (int i = 0; i < 10; i++) {
+    		      updateProgress(i, 9);
+    		      Thread.sleep(500);
+    		      if(i==9)
+    		      {
+    		    	  brnDetails.setVisible(true);
+    		    	  System.out.println(refueling);
+    		      }
+    		     }
+    		     return null;
+    		    }
+    		   };
+    		   RefuelingPrgeess.progressProperty().bind(t.progressProperty());
+    		   //new Thread(t).run(); // wrong
+    		   new Thread(t).start(); // right
+}
+	
+    
+    private void runLater(Func f) {
+		f.call();
+		Platform.runLater(() -> {
+			try {
+				Thread.sleep(10);
+				f.call();
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+	}
 	
 	
 	
@@ -86,6 +151,12 @@ public class RefuelingController implements Initializable{
 		int range = maximum - minimum + 1;
 		int randomNum =  rn.nextInt(range) + minimum;
 		String s=String.valueOf(randomNum+1);
+		Random rn2 = new Random();
+		int maximum2 =100;
+		int minimum2=20;
+		int range2 = maximum2 - minimum2 + 1;
+		int randomNum2 =  rn2.nextInt(range2) + minimum2;
+		String s2=String.valueOf(randomNum2);
 		labelCarNumber.setText(car2.get(randomNum).getCarNumber());
 		labelCarNumber.setVisible(true);
 		labelFuelTyple.setText(car2.get(randomNum).getGastype());
@@ -94,5 +165,7 @@ public class RefuelingController implements Initializable{
 		labelGasStation.setVisible(true);
 		labelPump.setText(s);
 		labelPump.setVisible(true);
+		labelQuantity.setText(s2);
+		//labelQuantity.setVisible(true);
 		}
 }
