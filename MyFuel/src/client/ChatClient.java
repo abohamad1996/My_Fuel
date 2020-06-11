@@ -347,7 +347,12 @@ public class ChatClient extends AbstractClient
 	  ArrayList<?> MaxPriceArrayList =(ArrayList<?>)recieved.getObject();
 		 ArrayList<Rates> MaxPrice=(ArrayList<Rates>)MaxPriceArrayList;
 		 RepresentativeTransportSetMaxPrice.acainstance.RatesAcceptor(MaxPrice);
-	  break;
+		 break;
+  case 30:
+	  ArrayList<?> MaxPriceArrayListMarkiting =(ArrayList<?>)recieved.getObject();
+		 ArrayList<Rates> MaxPriceMarkiting=(ArrayList<Rates>)MaxPriceArrayListMarkiting;
+		 MarketingManagerRateController.acainstance.RatesAcceptor(MaxPriceMarkiting);
+		 break;
 	  }
   }
   

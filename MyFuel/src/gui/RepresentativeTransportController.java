@@ -66,7 +66,6 @@ public class RepresentativeTransportController implements Initializable{
 	    void Logout(ActionEvent event) {
 	    	System.out.println("Logout");
 			LogoutController logout=new LogoutController();
-			
 			logout.start(primaryStage, user);
 			try {
 				user=DBconnector.StatusLogoutUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());

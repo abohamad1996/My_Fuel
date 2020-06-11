@@ -71,3 +71,10 @@
 	-fx-background-color: #01509f;
 	-fx-text-fill: #000000; 
 }
+.blacklabel {
+	/*-fx-background-color: skyblue;*/
+	-fx-text-fill: #000000;
+	-fx-padding: 6 6 6 6;
+	-fx-border-radius: 8;
+	-fx-font-weight : bold;
+}

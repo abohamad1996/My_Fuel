@@ -449,13 +449,29 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
-	case 29:// Max Price Details
+	case 29:// Max Price Details 
 		try {
 			ArrayList<Rates> aa;
 			try {
 				aa = DBconnector.MaxRatesDetails(DBconnector.getConnection());
 				Object bb = aa;
 				client.sendToClient(new Message(29, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 30:// Max Price Details Marketing manager
+		try {
+			ArrayList<Rates> aa;
+			try {
+				aa = DBconnector.MaxRatesDetails(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(30, bb));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
