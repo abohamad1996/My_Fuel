@@ -152,9 +152,9 @@ public class MarketingManagerRateController implements Initializable {
     	    	Platform.runLater(new Runnable() {
     				@Override
     				public void run() {
-    					Alert alert = new Alert(AlertType.ERROR);
-    					alert.setAlertType(AlertType.ERROR); 
-    					alert.setContentText("Rate changed successfully!!!");
+    					Alert alert = new Alert(AlertType.INFORMATION);
+    					alert.setAlertType(AlertType.INFORMATION); 
+    					alert.setContentText("Rate send to Network Manager to Approve!");
     					alert.show(); 
     				}
     			});

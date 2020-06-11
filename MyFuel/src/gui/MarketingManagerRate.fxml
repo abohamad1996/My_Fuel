@@ -54,22 +54,22 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="545.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shekel">
+      <Text layoutX="545.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="550.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shekel">
+      <Text layoutX="550.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="551.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shekel" wrappingWidth="43.23486618697643">
+      <Text layoutX="551.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS" wrappingWidth="43.23486618697643">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="551.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shekel" wrappingWidth="43.23486618697643">
+      <Text layoutX="551.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS" wrappingWidth="43.23486618697643">
          <font>
             <Font size="15.0" />
          </font>
