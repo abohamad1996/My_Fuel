@@ -1,8 +1,12 @@
 package gui;
 
 import java.net.URL;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
@@ -30,6 +34,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
@@ -40,9 +45,9 @@ public class RefuelingController implements Initializable{
 	
 	public int j;
     public static RefuelingController acainstance;
-
     @FXML
-    private Label labelQuantity;
+    private TextField txtQuantity;
+
 	 @FXML
 	    private Button btnStart;
 
@@ -98,12 +103,17 @@ public class RefuelingController implements Initializable{
 		car2.addAll(car);
 		//CarList.addAll(car);
 	}
-
     @FXML
     void StartRefueilng(ActionEvent event) {
+    	Calendar rightNow = Calendar.getInstance();
+        int y = rightNow.get(Calendar.YEAR);
+        int m = rightNow.get(Calendar.MONTH) + 1;
+        int d = rightNow.get(Calendar.DAY_OF_MONTH);
+        System.out.println(y+"-"+m+"-"+d);
+        String date=y+"-"+m+"-"+d;
     	Refueling refueling;
-		refueling=new Refueling(labelCarNumber.getText(), labelGasStation.getText(), labelFuelTyple.getText(), null, labelQuantity.getText(), null, null, labelPump.getText());
-    	  Task <Void> t = new Task <Void> () {
+		refueling=new Refueling(labelCarNumber.getText(), labelGasStation.getText(), labelFuelTyple.getText(), null, txtQuantity.getText(), null, date, labelPump.getText());
+		Task <Void> t = new Task <Void> () {
     		    protected Void call() throws Exception {
     		     for (int i = 0; i < 10; i++) {
     		      updateProgress(i, 9);
@@ -136,10 +146,6 @@ public class RefuelingController implements Initializable{
 			}
 		});
 	}
-	
-	
-	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;		
@@ -151,12 +157,6 @@ public class RefuelingController implements Initializable{
 		int range = maximum - minimum + 1;
 		int randomNum =  rn.nextInt(range) + minimum;
 		String s=String.valueOf(randomNum+1);
-		Random rn2 = new Random();
-		int maximum2 =100;
-		int minimum2=20;
-		int range2 = maximum2 - minimum2 + 1;
-		int randomNum2 =  rn2.nextInt(range2) + minimum2;
-		String s2=String.valueOf(randomNum2);
 		labelCarNumber.setText(car2.get(randomNum).getCarNumber());
 		labelCarNumber.setVisible(true);
 		labelFuelTyple.setText(car2.get(randomNum).getGastype());
@@ -165,7 +165,6 @@ public class RefuelingController implements Initializable{
 		labelGasStation.setVisible(true);
 		labelPump.setText(s);
 		labelPump.setVisible(true);
-		labelQuantity.setText(s2);
 		//labelQuantity.setVisible(true);
 		}
 }

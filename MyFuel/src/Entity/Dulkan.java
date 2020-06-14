@@ -107,7 +107,7 @@ public class Dulkan implements Serializable{
 	 * @param rate
 	 * @return
 	 */
-	public Double Calculate_Price(Integer quan,Double rate) {
+	public Double Calculate_Price(Double quan,Double rate) {
 		return quan*rate;
 	}
 	

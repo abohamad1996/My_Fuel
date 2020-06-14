@@ -136,7 +136,6 @@ public class HomeHeatingOrderController implements Initializable{
 			HomeHeatingOrderController.acainstance.details.accept(new Message(23, heatingOrder));
 		   HomeHeatingOrderController.acainstance.details.accept(new Message(32, stationsInventory));
 			//System.out.println(stationsInventory);
-			
 	    }
 	    @FXML
 	    void Calculate(ActionEvent event) {
