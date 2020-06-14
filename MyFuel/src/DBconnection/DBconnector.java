@@ -86,17 +86,17 @@ public static User isInDB(java.sql.Connection connection, String username, Strin
 		ps.setString(2,b); 
 		System.out.println(""+ps.toString());
 		rs=ps.executeQuery();
-		if (!rs.next())
-			return null;
-			else {
+		if (rs.next()==true) {
  			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),rs.getInt(9),rs.getInt(10));
- 			return user;
-			}
+ 			return user;}
+		else {
+			return null;
+		}
 	} catch (SQLException e) {
 		//TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	return user;
+	return null;
 }
 public static User userDetails(java.sql.Connection connection, String username)
 {

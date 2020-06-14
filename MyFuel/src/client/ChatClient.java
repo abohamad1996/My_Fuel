@@ -125,9 +125,11 @@ public class ChatClient extends AbstractClient
 		    });
 		  break;
 	  case 3:
-	 	  User user=(User) recieved.getObject();	 	  
+	 	  User user=(User) recieved.getObject();
 	 	  if(user==null)
 	 	  {
+	 		 System.out.println(user); 	 
+	 		 System.out.println("aaaaaaaaaaaaa");
 	 			Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
@@ -138,6 +140,7 @@ public class ChatClient extends AbstractClient
 					}
 				});
 	 	  }
+	
 	 	  switch (user.getRank()) {
 		case "Marketing Manager":
 			System.out.println("Marketing Manager");

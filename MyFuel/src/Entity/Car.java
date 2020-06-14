@@ -87,7 +87,4 @@ public class Car implements Serializable{
 		return serialVersionUID;
 	}
 	
-
-
-
 }

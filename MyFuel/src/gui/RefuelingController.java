@@ -109,7 +109,6 @@ public class RefuelingController implements Initializable{
         int y = rightNow.get(Calendar.YEAR);
         int m = rightNow.get(Calendar.MONTH) + 1;
         int d = rightNow.get(Calendar.DAY_OF_MONTH);
-        System.out.println(y+"-"+m+"-"+d);
         String date=y+"-"+m+"-"+d;
     	Refueling refueling;
 		refueling=new Refueling(labelCarNumber.getText(), labelGasStation.getText(), labelFuelTyple.getText(), null, txtQuantity.getText(), null, date, labelPump.getText());
