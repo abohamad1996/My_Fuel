@@ -164,7 +164,6 @@ public class CarRegisterController implements Initializable{
 		serviceValues.add("Full monthly");
 		gasValues.add("Paz Station");
 		gasValues.add("Yellow Station");
-		gasValues.add("Sonol Station");
 		gasValues.add("Ten Station");
 		gastypeValues.add("Gasoline 95");
 		gastypeValues.add("Diesel fuel");

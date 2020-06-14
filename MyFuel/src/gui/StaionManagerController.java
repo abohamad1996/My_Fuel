@@ -13,6 +13,7 @@ import DBconnection.DBconnector;
 import javafx.fxml.Initializable;
 import Entity.OrderConfirmation;
 import Entity.Rates;
+import Entity.StationsInventory;
 import Entity.User;
 import client.ClientConsole;
 import client.Func;
@@ -41,7 +42,11 @@ import javafx.stage.Stage;
 public class StaionManagerController implements Initializable {
     ObservableList<OrderConfirmation> List =FXCollections.observableArrayList(); 
 	public static StaionManagerController acainstance;
+    @FXML
+    private MenuItem StationName;
 
+    @FXML
+    private Button btnStationName;
 	   @FXML
 	    private SplitPane splitpane;
 	    @FXML
@@ -89,6 +94,29 @@ public class StaionManagerController implements Initializable {
 	    private Button btnLogout;
 	    @FXML
 	    private Label DiroctoryBar;
+		public StationsInventory stationsInventory;
+
+		public void FuelAcceptor(ArrayList<StationsInventory> inv) {
+			stationsInventory=null;
+			/*Diesel=new Inventory(inv.get(0).getFuelType(), inv.get(0).getQuantity(), inv.get(0).getLevel());
+			Gasoline=new Inventory(inv.get(1).getFuelType(), inv.get(1).getQuantity(), inv.get(1).getLevel());
+			Scotter=new Inventory(inv.get(3).getFuelType(), inv.get(3).getQuantity(), inv.get(3).getLevel());
+			HomeHeating=new Inventory(inv.get(2).getFuelType(), inv.get(2).getQuantity(), inv.get(2).getLevel());
+			System.out.println(Gasoline.toString());
+			System.out.println(Diesel.toString());
+			System.out.println(Scotter.toString());
+			System.out.println(HomeHeating.toString());*/
+			for(StationsInventory temp:inv)
+			{
+				if(temp.getManagerIDString().equals(user.getId()))
+				{
+					stationsInventory=temp;
+				}
+			}
+				System.out.println(stationsInventory);
+			}
+	    
+	    
 	    @FXML
 	    void HomeButton(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->Home");
@@ -198,16 +226,29 @@ public class StaionManagerController implements Initializable {
 			else {
 				System.out.println("null");
 			}
+			
 			}
+	    @FXML
+	    void Station(ActionEvent event) {
+	    	  DiroctoryBar.setText("My Fuel->Station Details");
+
+	    	  stationDetailsController = new StationDetailsController();
+		    	runLater(() -> {
+		    		stationDetailsController.start(splitpane, user, "User");
+		});
+	    }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance=this;
 		 ClientConsole details= new ClientConsole("localhost", 5555);
 		 details.accept(new Message(27, null));
+		 details.accept(new Message(33, null));
+		 btnStationName.setText(stationsInventory.getStationName());
 		btnRank.setText(user.getRank());
 	    Rank=new MenuItem(user.getRank());
 	       UserMenu.setText(user.getFirstname());
 	}
+	public static StationDetailsController stationDetailsController;
 	public static ClientRegisterController register;
 	public static StaionManagerController s;
 	private static User user;

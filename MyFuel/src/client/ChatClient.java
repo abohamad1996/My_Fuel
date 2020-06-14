@@ -23,6 +23,7 @@ import gui.RefuelingController;
 import gui.RepresentativeTransportController;
 import gui.RepresentativeTransportSetMaxPrice;
 import gui.StaionManagerController;
+import gui.StationDetailsController;
 import gui.StationManagerInventoryController;
 import gui.StationManagerOrderConfirmationController;
 import gui.CarRegisterController;
@@ -56,6 +57,7 @@ import Entity.HomeHeatingOrder;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
+import Entity.StationsInventory;
 import Entity.User;
 
 /**
@@ -257,7 +259,7 @@ public class ChatClient extends AbstractClient
 	  break;
   case 13:
 	  ArrayList<?> InventoryArrayList =(ArrayList<?>)recieved.getObject();
-		 ArrayList<Inventory> Inv=(ArrayList<Inventory>)InventoryArrayList;
+		 ArrayList<StationsInventory> Inv=(ArrayList<StationsInventory>)InventoryArrayList;
 		 StationManagerInventoryController.acainstance.FuelAcceptor(Inv);
 	  break;
   case 14:
@@ -355,7 +357,7 @@ public class ChatClient extends AbstractClient
 		 break;
   case 31:
 	  ArrayList<?> InventoryOrdersArrayList =(ArrayList<?>)recieved.getObject();
-		 ArrayList<Inventory> InvOrders=(ArrayList<Inventory>)InventoryOrdersArrayList;
+		 ArrayList<StationsInventory> InvOrders=(ArrayList<StationsInventory>)InventoryOrdersArrayList;
 		 HomeHeatingOrderController.acainstance.FuelAcceptor(InvOrders);
 	  break;
   case 32:
@@ -363,6 +365,16 @@ public class ChatClient extends AbstractClient
 	  Platform.runLater(() -> {
 		//  StationManagerInventoryController.acainstance.NewFuelAcceptor(stInv);
 	    });
+	  break;
+  case 33:
+	  ArrayList<?> InventoryArrayListStationManager =(ArrayList<?>)recieved.getObject();
+		 ArrayList<StationsInventory> InvStationManager=(ArrayList<StationsInventory>)InventoryArrayListStationManager;
+		 StaionManagerController.acainstance.FuelAcceptor(InvStationManager);
+	  break;
+  case 34:
+	  ArrayList<?> InventoryArrayListStationManagerList =(ArrayList<?>)recieved.getObject();
+		 ArrayList<StationsInventory> InvStationManagerList=(ArrayList<StationsInventory>)InventoryArrayListStationManagerList;
+		 StationDetailsController.acainstance.FuelAcceptor(InvStationManagerList);
 	  break;
 	  }
   }

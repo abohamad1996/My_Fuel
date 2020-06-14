@@ -4,7 +4,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import org.omg.CORBA.PRIVATE_MEMBER;
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import Entity.Inventory;
+import Entity.StationsInventory;
 import Entity.User;
 import client.ClientConsole;
 import common.Message;
@@ -21,6 +25,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import jdk.internal.dynalink.beans.StaticClass;
 
 public class StationManagerInventoryController implements Initializable{
     public static StationManagerInventoryController acainstance;
@@ -36,8 +41,6 @@ public class StationManagerInventoryController implements Initializable{
     @FXML
     private TextField txtScooter;
 
-    @FXML
-    private TextField txtHomeHeating;
 
     @FXML
     private TextField txtGasolineInv;
@@ -62,9 +65,13 @@ public class StationManagerInventoryController implements Initializable{
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
 	public ClientConsole details= new ClientConsole("localhost", 5555);
-	public Inventory Gasoline,Diesel,Scotter,HomeHeating;
+	public StationsInventory gasStationsInventory;
+	public StationsInventory gasStationsInventoryUpdate;
+	public StationsInventory stationsInventory;
+
+
 	String status;
-public void start(SplitPane splitpane, User user,String userJob) {
+	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
 		this.userrank=userJob;
@@ -80,15 +87,24 @@ public void start(SplitPane splitpane, User user,String userJob) {
 	
 	
 	
-	public void FuelAcceptor(ArrayList<Inventory> inv) {
-		Diesel=new Inventory(inv.get(0).getFuelType(), inv.get(0).getQuantity(), inv.get(0).getLevel());
+	public void FuelAcceptor(ArrayList<StationsInventory> inv) {
+		stationsInventory=null;
+		/*Diesel=new Inventory(inv.get(0).getFuelType(), inv.get(0).getQuantity(), inv.get(0).getLevel());
 		Gasoline=new Inventory(inv.get(1).getFuelType(), inv.get(1).getQuantity(), inv.get(1).getLevel());
 		Scotter=new Inventory(inv.get(3).getFuelType(), inv.get(3).getQuantity(), inv.get(3).getLevel());
 		HomeHeating=new Inventory(inv.get(2).getFuelType(), inv.get(2).getQuantity(), inv.get(2).getLevel());
 		System.out.println(Gasoline.toString());
 		System.out.println(Diesel.toString());
 		System.out.println(Scotter.toString());
-		System.out.println(HomeHeating.toString());
+		System.out.println(HomeHeating.toString());*/
+		for(StationsInventory temp:inv)
+		{
+			if(temp.getManagerIDString().equals(user.getId()))
+			{
+				stationsInventory=temp;
+			}
+		}
+			System.out.println(stationsInventory);
 		}
 	
 	public void NewFuelAcceptor(Inventory inv) {
@@ -98,7 +114,7 @@ public void start(SplitPane splitpane, User user,String userJob) {
 	
     @FXML
     void SetLevel(ActionEvent event) {
-    	Gasoline=new Inventory(Gasoline.getFuelType(), Gasoline.getQuantity(), Gasoline.getLevel());
+    /*	Gasoline=new Inventory(Gasoline.getFuelType(), Gasoline.getQuantity(), Gasoline.getLevel());
 		Gasoline.setLevel(txtGasoline.getText());
 		Diesel=new Inventory(Diesel.getFuelType(), Diesel.getQuantity(), Diesel.getLevel());
 		Diesel.setLevel(txtDiesel.getText());
@@ -109,9 +125,12 @@ public void start(SplitPane splitpane, User user,String userJob) {
     	StationManagerInventoryController.acainstance.details.accept(new Message(14, Gasoline));
     	StationManagerInventoryController.acainstance.details.accept(new Message(14, Diesel));
     	StationManagerInventoryController.acainstance.details.accept(new Message(14, Scotter));
-    	StationManagerInventoryController.acainstance.details.accept(new Message(14, HomeHeating));
-       	Alert alert = new Alert(AlertType.CONFIRMATION);
-    			alert.setAlertType(AlertType.CONFIRMATION); 
+    	StationManagerInventoryController.acainstance.details.accept(new Message(14, HomeHeating));*/
+    	gasStationsInventoryUpdate =new StationsInventory(stationsInventory.getStationID(), stationsInventory.getStationName(), stationsInventory.getStationAddress(),  stationsInventory.getGasolineQuantity(), stationsInventory.getDieselQuantity(), stationsInventory.getScooterQuantity(), stationsInventory.getHomeHeatingQuantity(), txtGasoline.getText(), txtDiesel.getText(), txtScooter.getText(), stationsInventory.getManagerIDString());
+     	StationManagerInventoryController.acainstance.details.accept(new Message(14, gasStationsInventoryUpdate));
+    	System.out.println(gasStationsInventoryUpdate);
+    			Alert alert = new Alert(AlertType.INFORMATION);
+    			alert.setAlertType(AlertType.INFORMATION); 
     			alert.setContentText("ThresholdLevel changes successfully!!");
     			alert.show(); 
     }
@@ -121,13 +140,13 @@ public void start(SplitPane splitpane, User user,String userJob) {
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;		
 		details.accept(new Message(13, null));
-		txtGasolineInv.setText(Gasoline.getQuantity());
-		txtGasoline.setText(Gasoline.getLevel());
-		txtDieselInv.setText(Diesel.getQuantity());
-		txtDiesel.setText(Diesel.getLevel());
-		txtScooter.setText(Scotter.getLevel());
-		txtScooterInv.setText(Scotter.getQuantity());
-		txtHomeHeatingInv.setText(HomeHeating.getQuantity());
-		txtHomeHeating.setText(HomeHeating.getLevel());
+		txtGasolineInv.setText(stationsInventory.getGasolineQuantity());
+		txtGasoline.setText(stationsInventory.getGasolineThresholdLevel());
+		txtDieselInv.setText(stationsInventory.getDieselQuantity());
+		txtDiesel.setText(stationsInventory.getDieselThresholdLevel());
+		txtScooter.setText(stationsInventory.getScooterThresholdLevel());
+		txtScooterInv.setText(stationsInventory.getScooterQuantity());
+		txtHomeHeatingInv.setText(stationsInventory.getHomeHeatingQuantity());
+		
 	}
 }

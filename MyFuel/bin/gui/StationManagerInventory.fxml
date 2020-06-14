@@ -28,11 +28,6 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="43.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Heating :">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
       <Text layoutX="257.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter">
          <font>
             <Font size="15.0" />
@@ -44,11 +39,6 @@
          </font>
       </Text>
       <Text layoutX="256.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter" wrappingWidth="35.068359375">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text layoutX="255.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter" wrappingWidth="35.068359375">
          <font>
             <Font size="15.0" />
          </font>
@@ -102,7 +92,6 @@
       <TextField fx:id="txtGasoline" layoutX="148.0" layoutY="186.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
       <TextField fx:id="txtDiesel" layoutX="149.0" layoutY="236.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
       <TextField fx:id="txtScooter" layoutX="149.0" layoutY="286.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
-      <TextField fx:id="txtHomeHeating" layoutX="149.0" layoutY="341.0" prefHeight="29.0" prefWidth="101.0" styleClass="root4" stylesheets="@css2.css" />
       <Text layoutX="210.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory Managment" wrappingWidth="291.474609375">
          <font>
             <Font size="25.0" />

@@ -21,6 +21,7 @@ import Entity.CreditCard;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
+import Entity.StationsInventory;
 import Entity.User;
 import gui.Employee;
 import gui.UpdateRoleController;
@@ -378,21 +379,21 @@ public static User StatusLogoutUpdate(java.sql.Connection connection, String use
 	return user;
 }
 
-public static ArrayList<Inventory> inventoryDetails(java.sql.Connection connection)
+public static ArrayList<StationsInventory> stationInventoryDetails(java.sql.Connection connection)
 {
-	Inventory inventory;
+	StationsInventory inventory;
 	Statement stmt;
-	ArrayList<Inventory> arr = new ArrayList<Inventory>();
+	ArrayList<StationsInventory> arr = new ArrayList<StationsInventory>();
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "select *FROM my_fuel.inventory;";
-		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
+		String query = "select *FROM my_fuel.stations;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.stations;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 		rs = ps.executeQuery();
 		while(rs.next())
  		{
 			System.out.println(""+ps.toString());
-			inventory=new Inventory(rs.getString(1), rs.getString(2), rs.getString(3))	;
+			inventory=new StationsInventory(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getString(11));
 			arr.add(inventory);
 			System.out.println(arr);
  		}
@@ -404,18 +405,22 @@ public static ArrayList<Inventory> inventoryDetails(java.sql.Connection connecti
 	}
 	return arr;
 }
-public static Inventory UpdateInventoryLevel(Inventory inv)
+public static StationsInventory UpdateInventoryLevel(StationsInventory inv)
 {
 	Statement stmt;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "update my_fuel.inventory SET ThresholdLevel=? WHERE FuelType=?";
+		String query = "update  my_fuel.stations set GasolineThresholdLevel=?, DieselThresholdLevel=?,ScooterThresholdLevel=? where ManagerID=?;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
-	      String a = inv.getLevel();
-		String b = inv.getFuelType();
+	      String a = inv.getGasolineThresholdLevel();
+		String b = inv.getDieselThresholdLevel();
+		String c=inv.getScooterThresholdLevel();
+		String d =inv.getManagerIDString();
 		ps.setString(1,a); 
 		ps.setString(2,b); 	
+		ps.setString(3,c); 	
+		ps.setString(4,d); 	
 		System.out.println(""+ps.toString());
 		ps.executeUpdate();
 	} catch (SQLException e) {
@@ -733,16 +738,16 @@ public static ArrayList<Rates> MaxRatesDetails(java.sql.Connection connection)
 	}
 	return arr;
 }
-public static Inventory UpdateInventoryAfterOrder(Inventory inv)
+public static StationsInventory UpdateInventoryAfterOrder(StationsInventory inv)
 {
 	Statement stmt;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "update my_fuel.inventory SET Quantity=? WHERE FuelType=?;";
+		String query = "update my_fuel.stations set HomeHeatingQuantity=? where id=?;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
-	      String a = inv.getQuantity();
-		String b = inv.getFuelType();
+	      String a = inv.getHomeHeatingQuantity();
+		String b = inv.getStationID();
 		ps.setString(1,a); 
 		ps.setString(2,b); 	
 		System.out.println(""+ps.toString());

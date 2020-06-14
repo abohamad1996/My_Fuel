@@ -84,6 +84,11 @@
                         <Button fx:id="btnRank" mnemonicParsing="false" styleClass="root4" stylesheets="@css2.css" text="Button" />
                      </graphic>
                   </MenuItem>
+                  <MenuItem fx:id="StationName" mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="btnStationName" mnemonicParsing="false" onAction="#Station" styleClass="root4" stylesheets="@css2.css" text="Button" />
+                     </graphic>
+                  </MenuItem>
                   <MenuItem fx:id="Logout" mnemonicParsing="false">
                      <graphic>
                         <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#Logout" styleClass="root4" stylesheets="@css2.css" text="Logout" />

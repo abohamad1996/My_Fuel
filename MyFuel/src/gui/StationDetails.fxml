@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StationDetailsController">
+   <children>
+      <Text fx:id="GasolineFuel" layoutX="41.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasoline Fuel :" wrappingWidth="101.34765625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="44.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diesel Fuel :" wrappingWidth="81.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="44.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scooter Fuel :" wrappingWidth="95.068359375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="44.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Heating :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="257.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="256.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="256.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter" wrappingWidth="35.068359375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="256.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter" wrappingWidth="35.068359375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#0d0d0d" layoutX="570.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter" wrappingWidth="32.9443359375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#151715" layoutX="570.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Liter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#131413" layoutX="572.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="355.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasoline Fuel :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="362.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diesel Fuel :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="358.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scooter Fuel :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="263.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Station Details" wrappingWidth="164.474609375">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text fx:id="GasolineFuel1" layoutX="34.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manager Name :" wrappingWidth="113.34765625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="GasolineFuel11" layoutX="35.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manager ID :" wrappingWidth="113.34765625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="GasolineFuel12" layoutX="298.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Station ID :" wrappingWidth="113.34765625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="GasolineFuel121" layoutX="465.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Station Address :" wrappingWidth="113.34765625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="GasolineFuel2" layoutX="125.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="113.34765625">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <Text fx:id="GasolineFuel21" layoutX="401.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Threadhold Level" wrappingWidth="178.34765625">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <Text fx:id="GasolineFuel122" layoutX="298.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Station Name :" wrappingWidth="113.34765625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="labelManagerName" layoutX="161.0" layoutY="86.0" prefHeight="29.0" prefWidth="122.0" styleClass="root3" text="Label" />
+      <Label fx:id="labelManagerID" layoutX="161.0" layoutY="126.0" prefHeight="29.0" prefWidth="122.0" styleClass="root3" text="Label" />
+      <Label fx:id="labelStationID" layoutX="380.0" layoutY="86.0" prefHeight="29.0" prefWidth="79.0" styleClass="root3" text="Label" />
+      <Label fx:id="labelStationName" layoutX="404.0" layoutY="126.0" prefHeight="29.0" prefWidth="122.0" styleClass="root3" text="Label" />
+      <Label fx:id="labelStationAdreress" layoutX="579.0" layoutY="86.0" prefHeight="29.0" prefWidth="101.0" styleClass="root3" text="Label" />
+      <Label fx:id="labelGasolineQuantity" layoutX="139.0" layoutY="222.0" prefHeight="29.0" prefWidth="113.0" styleClass="root3" text="Label" />
+      <Label fx:id="labelDieselThreshold" layoutX="455.0" layoutY="271.0" prefHeight="29.0" prefWidth="113.0" styleClass="root3" text="Label" />
+      <Label fx:id="labelGasolinneThreshold" layoutX="459.0" layoutY="220.0" prefHeight="29.0" prefWidth="104.0" styleClass="root3" text="Label" />
+      <Label fx:id="labelHomeHearingQuantity" layoutX="151.0" layoutY="376.0" prefHeight="29.0" prefWidth="101.0" styleClass="root3" text="Label" />
+      <Label fx:id="labelScooterQuantity" layoutX="139.0" layoutY="324.0" prefHeight="29.0" prefWidth="113.0" styleClass="root3" text="Label" />
+      <Label fx:id="labelDieselQuantity" layoutX="133.0" layoutY="271.0" prefHeight="29.0" prefWidth="113.0" styleClass="root3" text="Label" />
+      <Label fx:id="labelScooterThreshold" layoutX="455.0" layoutY="323.0" prefHeight="29.0" prefWidth="113.0" styleClass="root3" text="Label" />
+   </children>
+</AnchorPane>

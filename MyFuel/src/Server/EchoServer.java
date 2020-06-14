@@ -22,6 +22,7 @@ import Entity.HomeHeatingOrder;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
+import Entity.StationsInventory;
 import Entity.User;
 import common.Message;
 import gui.Employee;
@@ -243,9 +244,9 @@ public class EchoServer extends AbstractServer {
 		break;
 	case 13:// InventoryDetails
 		try {
-			ArrayList<Inventory> aa;
+			ArrayList<StationsInventory> aa;
 			try {
-				aa = DBconnector.inventoryDetails(DBconnector.getConnection());
+				aa = DBconnector.stationInventoryDetails(DBconnector.getConnection());
 				Object bb = aa;
 				client.sendToClient(new Message(13, bb));
 			} catch (SQLException e) {
@@ -258,8 +259,8 @@ public class EchoServer extends AbstractServer {
 		}
 		break;
 	case 14:// Inventory
-		Inventory inv=(Inventory)recieved.getObject();;
-		Inventory strInv=DBconnector.UpdateInventoryLevel(inv);
+		StationsInventory inv=(StationsInventory)recieved.getObject();;
+		StationsInventory strInv=DBconnector.UpdateInventoryLevel(inv);
 		try {
 			client.sendToClient(new Message(14, strInv));
 		} catch (IOException e) {
@@ -483,9 +484,9 @@ public class EchoServer extends AbstractServer {
 		break;
 	case 31:// InventoryDetails For Orders
 		try {
-			ArrayList<Inventory> aa;
+			ArrayList<StationsInventory> aa;
 			try {
-				aa = DBconnector.inventoryDetails(DBconnector.getConnection());
+				aa = DBconnector.stationInventoryDetails(DBconnector.getConnection());
 				Object bb = aa;
 				client.sendToClient(new Message(31, bb));
 			} catch (SQLException e) {
@@ -498,10 +499,42 @@ public class EchoServer extends AbstractServer {
 		}
 		break;
 	case 32:// Inventory update after home heating order
-		Inventory HomeHeatingOrderinv=(Inventory)recieved.getObject();;
-		Inventory strHomeHeatingOrderInv=DBconnector.UpdateInventoryAfterOrder(HomeHeatingOrderinv);
+		StationsInventory HomeHeatingOrderinv=(StationsInventory)recieved.getObject();;
+		StationsInventory strHomeHeatingOrderInv=DBconnector.UpdateInventoryAfterOrder(HomeHeatingOrderinv);
 		try {
 			client.sendToClient(new Message(32, strHomeHeatingOrderInv));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 33:// InventoryDetailsfor station manager controller
+		try {
+			ArrayList<StationsInventory> aa;
+			try {
+				aa = DBconnector.stationInventoryDetails(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(33, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 34:// InventoryDetailsfor station manager controller for button
+		try {
+			ArrayList<StationsInventory> aa;
+			try {
+				aa = DBconnector.stationInventoryDetails(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(34, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

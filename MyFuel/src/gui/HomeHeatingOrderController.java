@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import Entity.HomeHeatingOrder;
 import Entity.Inventory;
 import Entity.Rates;
+import Entity.StationsInventory;
 import Entity.User;
 import client.ClientConsole;
 import common.Message;
@@ -29,7 +30,8 @@ import javafx.stage.Stage;
 
 public class HomeHeatingOrderController implements Initializable{
 	public static HomeHeatingOrderController acainstance;
-
+    @FXML
+    private ComboBox<String> comboGasStation;
 
     @FXML
     public Label status;
@@ -71,7 +73,10 @@ public class HomeHeatingOrderController implements Initializable{
 	double inventory;
 	double newInventory;
 	public String finalPrice;
-	public Inventory Gasoline,Diesel,Scotter,HomeHeating;
+	public StationsInventory stationsInventory;
+	ArrayList<StationsInventory> inven;
+    ObservableList<String> List =FXCollections.observableArrayList(); 
+    ObservableList<String> GasList =FXCollections.observableArrayList(); 
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -86,28 +91,52 @@ public class HomeHeatingOrderController implements Initializable{
 	}		
 }
 	
-	public void FuelAcceptor(ArrayList<Inventory> inv) {
-		HomeHeating=new Inventory(inv.get(2).getFuelType(), inv.get(2).getQuantity(), inv.get(2).getLevel());
-		System.out.println(HomeHeating.toString());
+	public void FuelAcceptorQuantity(ArrayList<StationsInventory> inv) {
+		stationsInventory=null;
+		
 		}
 	
+	
+	public void FuelAcceptor(ArrayList<StationsInventory> inv) {
+		inven = (ArrayList<StationsInventory>)inv.clone();
+		int size=inv.size();
+		String [] gasStation;
+		gasStation=new String[size];
+		for(int i=0;i<inv.size();i++)
+		{
+			
+		gasStation[i]=inv.get(i).getStationID()+","+inv.get(i).getStationName()+","+inv.get(i).getStationAddress()+","+inv.get(i).getHomeHeatingQuantity()+" Liter";
+		List.add(gasStation[i]);
+		}
+	}
 	
 	public void HomeHeatingRatesAcceptor(String rate) {
 		homeHeatingRate=rate;
 		System.out.println("new rate:"+rate);
 		  rates = Double.parseDouble(rate);
 		}
-	
+    @FXML
+    void SelectGasStation(ActionEvent event) {
+    	String input = comboGasStation.getValue();;
+    	String output = input.substring(0, input.indexOf(','));
+    	int index=Integer.parseInt(output)-1;
+    	System.out.println("index is:"+index);
+    	//	System.out.println(inven.get(index).getStationID());
+    		//System.out.println(inven.get(index).toString());
+    	stationsInventory=inven.get(index);
+    }
 	   @FXML
 	    void AddNewOrder(ActionEvent event) {
-		   inventory=Double.parseDouble(HomeHeating.getQuantity());
+		   inventory=Double.parseDouble(stationsInventory.getHomeHeatingQuantity());
 		   newInventory=inventory-quantity;
 		   String Inventory=String.valueOf(newInventory); 
-		   HomeHeating=new Inventory(HomeHeating.getFuelType(), Inventory, null);
+		   stationsInventory=new StationsInventory(stationsInventory.getStationID(), null, null, null, null, null, Inventory, null, null, null, null);
 		//System.out.println(newInventory);
 		//System.out.println(Inventory);
 			HomeHeatingOrderController.acainstance.details.accept(new Message(23, heatingOrder));
-		   HomeHeatingOrderController.acainstance.details.accept(new Message(32, HomeHeating));
+		   HomeHeatingOrderController.acainstance.details.accept(new Message(32, stationsInventory));
+			//System.out.println(stationsInventory);
+			
 	    }
 	    @FXML
 	    void Calculate(ActionEvent event) {
@@ -137,6 +166,7 @@ public class HomeHeatingOrderController implements Initializable{
 		urgenttypeValues.add("No");
 		urgentList.addAll(urgenttypeValues);
 		txtUrgent.setItems(urgentList);
+		comboGasStation.setItems(List);
 	}
 
 }
