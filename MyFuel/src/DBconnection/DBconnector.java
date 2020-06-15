@@ -22,6 +22,7 @@ import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
 import Entity.Refueling;
+import Entity.Sales;
 import Entity.StationsInventory;
 import Entity.User;
 import gui.Employee;
@@ -960,5 +961,33 @@ public static StationsInventory UpdateInventoryAfterRefuelingOrderScooter(Statio
 		e.printStackTrace();
 	}
 	return null;
+}
+
+public static String sales(Sales sales) {
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.sales values(?,?,?,?,?,?);";
+	    PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	    int a = sales.getIDsales();
+	  	String b = sales.getFuelType();
+	    String c = sales.getDiscount();
+	    String d = sales.getDate().toString();
+	    String e = sales.getFormHour();
+	    String f = sales.getToHout();
+		ps.setInt(1,a); 
+		ps.setString(2,b); 	
+		ps.setString(3,c); 
+		ps.setString(4,d);
+		ps.setString(5,e); 
+		ps.setString(6,f); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
 }
 }

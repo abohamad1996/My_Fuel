@@ -14,6 +14,7 @@ import gui.HomeHeatingOrderTrackController;
 import gui.LoginController;
 import gui.MarketingManagerController;
 import gui.MarketingManagerRateController;
+import gui.MarketingManagerSaleController;
 import gui.MarketingRepresentativeController;
 import gui.NetworkManagerApproveRatesController;
 import gui.NetworkManagerController;
@@ -58,6 +59,7 @@ import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
 import Entity.Refueling;
+import Entity.Sales;
 import Entity.StationsInventory;
 import Entity.User;
 
@@ -420,6 +422,12 @@ public class ChatClient extends AbstractClient
 			//  StationManagerInventoryController.acainstance.NewFuelAcceptor(stInv);
 		    });
 		  break;
+		  case 42:
+			  ArrayList<?> salesmarketingmanagerArrayList =(ArrayList<?>)recieved.getObject();
+				 ArrayList<Sales>  salmarketingmanagerList=(ArrayList<Sales>)salesmarketingmanagerArrayList;
+				 MarketingManagerSaleController.acainstance.FuelAcceptor(salmarketingmanagerList);
+			  break;
+
   }
   }
   

@@ -23,6 +23,7 @@ import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
 import Entity.Refueling;
+import Entity.Sales;
 import Entity.StationsInventory;
 import Entity.User;
 import common.Message;
@@ -626,6 +627,17 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
+	case 42:// sales
+		Sales sales=(Sales)recieved.getObject();;
+		String strSales=DBconnector.sales(sales);
+		try {
+			client.sendToClient(new Message(42, strSales));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+
 		}
 		}
 	/**
