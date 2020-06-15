@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Entity.Car;
+import Entity.Rates;
+import Entity.StationsInventory;
 import Entity.User;
 import client.ClientConsole;
 import client.Func;
@@ -30,10 +32,12 @@ public class CarRegisterController implements Initializable{
     ObservableList<String> serviceList =FXCollections.observableArrayList(); 
     ObservableList<String> gasList =FXCollections.observableArrayList(); 
     ObservableList<String> gastypeList =FXCollections.observableArrayList(); 
+    ObservableList<String> paylist =FXCollections.observableArrayList(); 
 	ArrayList<String> gasValues=new ArrayList<String>();
 	ArrayList<String> planValues=new ArrayList<String>();
 	ArrayList<String> serviceValues=new ArrayList<String>();
 	ArrayList<String> gastypeValues=new ArrayList<String>();
+	ArrayList<String> pay=new ArrayList<String>();
     @FXML
     private ComboBox<String> comboID;
 	@FXML
@@ -66,7 +70,8 @@ public class CarRegisterController implements Initializable{
 
 	    @FXML
 	    private Label star2;
-
+	    @FXML
+	    private ComboBox<String> comboPrePaying;
 	    @FXML
 	    private Label gasLabel2;
 	    @FXML
@@ -81,6 +86,7 @@ public class CarRegisterController implements Initializable{
 	private FXMLLoader loader;	
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
+	public ArrayList<Rates> ratesUpdateArrayList;
 	public void start(SplitPane splitpane, User user,String userJob) {
 	this.splitpane=splitpane;
 	primaryStage=LoginController.primaryStage;
@@ -97,14 +103,87 @@ public class CarRegisterController implements Initializable{
 		List.addAll(bb);		
 	}
 	
-
+	public void RatesAcceptor(ArrayList<Rates> rates) {
+		ratesUpdateArrayList = (ArrayList<Rates>)rates.clone();
+		}
 	
     @FXML
     void Next(ActionEvent event) {
-    	Car car=new Car(comboID.getValue(), txtCarNumber.getText(), comboPlan.getValue(), comboServices.getValue(),comboGastype.getValue(), comboStation.getValue(), comboStation2.getValue(), comboStation3.getValue());
+    	String gastype;
+    	Car car ;
+    	String Services,Rate=null;
+    	car=new Car(comboID.getValue(), txtCarNumber.getText(), comboPlan.getValue(), comboServices.getValue(),comboGastype.getValue(), comboStation.getValue(), comboStation2.getValue(), comboStation3.getValue(),Rate);
+    	double rateNew = 0;
+    	gastype=comboGastype.getValue();
+    	Services=comboServices.getValue();
+    	System.out.println(Services);
+    	System.out.println(ratesUpdateArrayList);
+    	if(comboServices.getValue().equals("Casual fueling"))
+    	{
+    		for(int i=0;i<4;i++)
+    		{
+    			 if(comboGastype.getValue().equals(ratesUpdateArrayList.get(i).getFuelType())){
+    			Rate=ratesUpdateArrayList.get(i).getPrice();
+    			}
+    		}
+    		double d=Double.parseDouble(Rate);
+    		
+    			rateNew=d;
+    	}
+    	else if(comboServices.getValue().equals("Regular monthly 1 car"))
+    	{
+    		for(int i=0;i<4;i++)
+    		{
+    			 if(comboGastype.getValue().equals(ratesUpdateArrayList.get(i).getFuelType())){
+    			Rate=ratesUpdateArrayList.get(i).getPrice();
+    			}
+    		}
+    		double d=Double.parseDouble(Rate);
+    		double newRate=car.calculate_car_rate(d, "Regular monthly 1 car", null);
+    			rateNew=newRate;
+    	}
+    	else if(comboServices.getValue().equals("Regular monthly +1"))
+    	{
+
+    		for(int i=0;i<4;i++)
+    		{
+    			 if(comboGastype.getValue().equals(ratesUpdateArrayList.get(i).getFuelType())){
+    			Rate=ratesUpdateArrayList.get(i).getPrice();
+    			}
+    		}
+    		double d=Double.parseDouble(Rate);
+    		double newRate=car.calculate_car_rate(d, "Regular monthly +1", null);
+    		rateNew=newRate;
+    	}
+    	else if(comboServices.getValue().equals("Full monthly"))
+    	{
+
+    		for(int i=0;i<4;i++)
+    		{
+    			 if(comboGastype.getValue().equals(ratesUpdateArrayList.get(i).getFuelType())){
+    			Rate=ratesUpdateArrayList.get(i).getPrice();
+    			}
+    		}
+    		double d=Double.parseDouble(Rate);
+    		double newRate=car.calculate_car_rate(d, "Full monthly", comboPrePaying.getValue());
+    		rateNew=newRate;
+    	}
+    	System.out.println(rateNew);
+    	String s=String.valueOf(rateNew);  
+    	car.setRateForCar(s);
+    	System.out.println(car);
     	CarRegisterController.acainstance.chat.accept(new Message(8, car));
     }
-    
+    @FXML
+    void DisplayPrePaying(ActionEvent event) {
+    	if(comboServices.getValue().equals("Full monthly"))
+    	{
+    		
+    		System.out.println("aaaa");
+    		comboPrePaying.setVisible(true);
+    	}
+    	
+    }
     
     @FXML
     void PlanChoose(ActionEvent event) {
@@ -121,7 +200,7 @@ public class CarRegisterController implements Initializable{
     	gasLabel2.setVisible(false);
     	star.setVisible(false);
     	}
-    	else if(currentLevel.equals("Level 2"))
+    	else if(currentLevel.equals("Level 2 (2-3 Gas stations)"))
     	{
      		comboStation.setVisible(true);
         	gasLabel.setVisible(true);
@@ -155,9 +234,10 @@ public class CarRegisterController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		acainstance = this;
 		chat.accept(new Message(9, null));
+		chat.accept(new Message(35, null));
 		comboID.setItems(List);
 		planValues.add("Level 1");
-		planValues.add("Level 2");
+		planValues.add("Level 2 (2-3 Gas stations)");
 		serviceValues.add("Casual fueling");
 		serviceValues.add("Regular monthly 1 car");
 		serviceValues.add("Regular monthly +1");
@@ -178,6 +258,10 @@ public class CarRegisterController implements Initializable{
 		comboStation2.setItems(gasList);
 		comboStation3.setItems(gasList);
 		comboGastype.setItems(gastypeList);
+		pay.add("Yes");
+		pay.add("No");
+		paylist.addAll(pay);
+		comboPrePaying.setItems(paylist);
 	}
 
 

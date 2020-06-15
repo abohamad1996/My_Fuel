@@ -540,6 +540,22 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
+	case 35:// InventoryDetails
+		try {
+			ArrayList<Rates> aa;
+			try {
+				aa = DBconnector.rates(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(35, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
 		}
 		}
 	/**

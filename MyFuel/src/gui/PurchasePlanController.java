@@ -26,6 +26,8 @@ public class PurchasePlanController implements Initializable{
 	
     @FXML
     private Label labelIDD;
+    @FXML
+    private TextField txtRate;
 
 	 @FXML
 	    private ComboBox<String> comboCar;
@@ -107,6 +109,7 @@ public class PurchasePlanController implements Initializable{
 				txtServices.setText(car2.get(index).getServices());
 				txtGastype.setText(car2.get(index).getGastype());
 				txtCarnumber.setText(car2.get(index).getCarNumber());
+				txtRate.setText(car2.get(index).getRateForCar());
 	        }
 	    
 	    private int getCarNumberPos(String carnumber) {

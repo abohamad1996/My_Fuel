@@ -215,7 +215,7 @@ public static String ClientAddCars(Car car)
 	Statement stmt;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "insert into my_fuel.car values(?,?,?,?,?,?,?,?);";
+		String query = "insert into my_fuel.car values(?,?,?,?,?,?,?,?,?);";
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 	  	String a = car.getOwnerID();
 	      String b = car.getCarNumber();
@@ -225,6 +225,7 @@ public static String ClientAddCars(Car car)
 		String f = car.getGasStation1();
 		String g =car.getGasStation2();
 		String h=car.getGasStation3();
+		String i=car.getRateForCar();
 		ps.setString(1,a); 
 		ps.setString(2,b); 	
 		ps.setString(3,c); 	
@@ -233,6 +234,7 @@ public static String ClientAddCars(Car car)
 		ps.setString(6,f); 
 		ps.setString(7,g); 
 		ps.setString(8,h); 
+		ps.setString(9,i); 
 		System.out.println(""+ps.toString());
 		ps.executeUpdate();
 		return "success";
@@ -290,9 +292,9 @@ public static ArrayList<Car> PurchasePlanDetails(java.sql.Connection connection,
 	ArrayList<Car> arr = new ArrayList<Car>();
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "SELECT OwnerID, carnumber, purchaseplan, services, gastype,gasstation1, gasstation2, gasstation3\r\n" + 
+		String query = "SELECT OwnerID, carnumber, purchaseplan, services, gastype,gasstation1, gasstation2, gasstation3,rate\r\n" + 
 				"FROM my_fuel.car car , my_fuel.user user\r\n" + 
-				"WHERE car.OwnerID=user.ID and OwnerID=?";
+				"				WHERE car.OwnerID=user.ID and OwnerID=?;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.car;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 	      String a = id;
@@ -303,7 +305,7 @@ public static ArrayList<Car> PurchasePlanDetails(java.sql.Connection connection,
 		while(rs.next())
  		{
 			System.out.println(""+ps.toString());
-			car=new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)) ;	
+			car=new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),rs.getString(9)) ;	
 			arr.add(car);
 			System.out.println(arr);
  		}
@@ -757,5 +759,31 @@ public static StationsInventory UpdateInventoryAfterOrder(StationsInventory inv)
 		e.printStackTrace();
 	}
 	return null;
+}
+public static ArrayList<Rates> rates(java.sql.Connection connection)
+{
+	Rates rates;
+	Statement stmt;
+	ArrayList<Rates> arr = new ArrayList<Rates>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT * FROM my_fuel.rates";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.rates");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			rates=new Rates(rs.getString(1), rs.getString(2));
+			arr.add(rates);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
 }
 }

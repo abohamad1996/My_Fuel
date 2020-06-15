@@ -379,6 +379,11 @@ public class ChatClient extends AbstractClient
 		 ArrayList<StationsInventory> InvStationManagerList=(ArrayList<StationsInventory>)InventoryArrayListStationManagerList;
 		 StationDetailsController.acainstance.FuelAcceptor(InvStationManagerList);
 	  break;
+  case 35:
+	  ArrayList<?> RatesArray =(ArrayList<?>)recieved.getObject();
+		 ArrayList<Rates> rate=(ArrayList<Rates>)RatesArray;
+		 CarRegisterController.acainstance.RatesAcceptor(rate);
+	  break;
 	  }
   }
   

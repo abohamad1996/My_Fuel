@@ -46,8 +46,6 @@ public class MarketingManagerSaleController implements Initializable{
 	
 	
 	
-	
-	
 	@FXML
 	private static SplitPane splitpane;
 	private FXMLLoader loader;	

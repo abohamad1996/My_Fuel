@@ -19,17 +19,17 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="36.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="root2" text="Gas Sataion3">
+      <Text layoutX="37.0" layoutY="503.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="root2" text="Gas Sataion3">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="37.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="root2" text="Gas Sataion2">
+      <Text layoutX="38.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="root2" text="Gas Sataion2">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="37.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="root2" text="Gas Sataion1">
+      <Text layoutX="38.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="root2" text="Gas Sataion1">
          <font>
             <Font size="15.0" />
          </font>
@@ -45,8 +45,8 @@
          </font>
       </Text>
       <TextField fx:id="txtPurchaseplan" layoutX="177.0" layoutY="217.0" styleClass="root4" />
-      <TextField fx:id="txtGasStation" layoutX="177.0" layoutY="373.0" styleClass="root4" />
-      <TextField fx:id="txtGasStation2" layoutX="177.0" layoutY="412.0" styleClass="root4" />
+      <TextField fx:id="txtGasStation" layoutX="178.0" layoutY="406.0" styleClass="root4" />
+      <TextField fx:id="txtGasStation2" layoutX="178.0" layoutY="445.0" styleClass="root4" />
       <TextField fx:id="txtServices" layoutX="177.0" layoutY="334.0" prefHeight="29.0" prefWidth="157.0" styleClass="root4" />
       <TextField fx:id="txtGastype" layoutX="177.0" layoutY="295.0" styleClass="root4" />
       <TextField fx:id="txtCarnumber" layoutX="177.0" layoutY="256.0" styleClass="root4" />
@@ -55,12 +55,18 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="txtGasStation3" layoutX="177.0" layoutY="450.0" styleClass="root4" />
+      <TextField fx:id="txtGasStation3" layoutX="178.0" layoutY="483.0" styleClass="root4" />
       <Text layoutX="36.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="root2" text="Client ID">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
       <TextField fx:id="txtID" layoutX="177.0" layoutY="178.0" styleClass="root4" />
+      <Text layoutX="38.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="root2" text="Rate">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtRate" layoutX="178.0" layoutY="368.0" styleClass="root4" />
    </children>
 </AnchorPane>

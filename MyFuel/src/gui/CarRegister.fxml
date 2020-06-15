@@ -24,7 +24,7 @@
       <Label layoutX="14.0" layoutY="221.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
       <TextField fx:id="txtCarNumber" layoutX="154.0" layoutY="168.0" prefHeight="31.0" prefWidth="215.0" styleClass="root4" stylesheets="@css2.css" />
       <ComboBox fx:id="comboPlan" layoutX="153.0" layoutY="71.0" onAction="#PlanChoose" prefHeight="41.0" prefWidth="215.0" promptText="Choose a purchase plan" styleClass="root4" stylesheets="@css2.css" />
-      <ComboBox fx:id="comboServices" layoutX="154.0" layoutY="211.0" prefHeight="40.0" prefWidth="215.0" promptText="Select a service" styleClass="root4" stylesheets="@css2.css" />
+      <ComboBox fx:id="comboServices" layoutX="154.0" layoutY="211.0" onAction="#DisplayPrePaying" prefHeight="40.0" prefWidth="215.0" promptText="Select a service" styleClass="root4" stylesheets="@css2.css" />
       <Label layoutX="36.0" layoutY="121.0" prefHeight="31.0" prefWidth="128.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Client ID:" />
       <Label layoutX="14.0" layoutY="122.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
       <Text layoutX="25.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gas station" textAlignment="CENTER">
@@ -45,5 +45,6 @@
       <Label layoutX="37.0" layoutY="264.0" prefHeight="31.0" prefWidth="128.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Gas Type:" />
       <Label layoutX="14.0" layoutY="268.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
       <ComboBox fx:id="comboGastype" layoutX="154.0" layoutY="258.0" prefHeight="40.0" prefWidth="215.0" promptText="Select a Gas type" styleClass="root4" stylesheets="@css2.css" />
+      <ComboBox fx:id="comboPrePaying" layoutX="380.0" layoutY="213.0" prefHeight="36.0" prefWidth="150.0" promptText="pre paying?" styleClass="combo" stylesheets="@css2.css" visible="false" />
    </children>
 </AnchorPane>
