@@ -104,7 +104,6 @@ public class HomeHeatingOrderController implements Initializable{
 		gasStation=new String[size];
 		for(int i=0;i<inv.size();i++)
 		{
-			
 		gasStation[i]=inv.get(i).getStationID()+","+inv.get(i).getStationName()+","+inv.get(i).getStationAddress()+","+inv.get(i).getHomeHeatingQuantity()+" Liter";
 		List.add(gasStation[i]);
 		}

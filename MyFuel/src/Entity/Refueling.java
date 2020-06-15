@@ -13,29 +13,38 @@ public class Refueling  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	String CarNumber;
 	String GasStation;
+	String address;
 	String GasType;
 	String RateForLiter;
 	String Qunatity;
 	String Price;
 	String Date;
 	String pumpNumber;
-	
+	String rate;
 	
 
+
+
+
 	
-	
-	public Refueling(String carNumber, String gasStation, String gasType, String rateForLiter, String qunatity,
-			String price, String date, String pumpNumber) {
+
+
+	public Refueling(String carNumber, String gasStation, String address, String gasType, String rateForLiter,
+			String qunatity, String price, String date, String pumpNumber, String rate) {
 		super();
 		CarNumber = carNumber;
 		GasStation = gasStation;
+		this.address = address;
 		GasType = gasType;
 		RateForLiter = rateForLiter;
 		Qunatity = qunatity;
 		Price = price;
 		Date = date;
 		this.pumpNumber = pumpNumber;
+		this.rate = rate;
 	}
+
+
 
 
 
@@ -48,10 +57,12 @@ public class Refueling  implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Refueling [CarNumber=" + CarNumber + ", GasStation=" + GasStation + ", GasType=" + GasType
-				+ ", RateForLiter=" + RateForLiter + ", Qunatity=" + Qunatity + ", Price=" + Price + ", Date=" + Date
-				+ ", pumpNumber=" + pumpNumber + "]";
+		return "Refueling [CarNumber=" + CarNumber + ", GasStation=" + GasStation + ", address=" + address
+				+ ", GasType=" + GasType + ", RateForLiter=" + RateForLiter + ", Qunatity=" + Qunatity + ", Price="
+				+ Price + ", Date=" + Date + ", pumpNumber=" + pumpNumber + ", rate=" + rate + "]";
 	}
+
+
 
 
 
@@ -75,9 +86,13 @@ public class Refueling  implements Serializable{
 
 
 
+
+
 	public void setCarNumber(String carNumber) {
 		CarNumber = carNumber;
 	}
+
+
 
 
 
@@ -101,9 +116,43 @@ public class Refueling  implements Serializable{
 
 
 
+
+
 	public void setGasStation(String gasStation) {
 		GasStation = gasStation;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
 
 
 
@@ -127,9 +176,13 @@ public class Refueling  implements Serializable{
 
 
 
+
+
 	public void setGasType(String gasType) {
 		GasType = gasType;
 	}
+
+
 
 
 
@@ -153,9 +206,13 @@ public class Refueling  implements Serializable{
 
 
 
+
+
 	public void setRateForLiter(String rateForLiter) {
 		RateForLiter = rateForLiter;
 	}
+
+
 
 
 
@@ -179,9 +236,13 @@ public class Refueling  implements Serializable{
 
 
 
+
+
 	public void setQunatity(String qunatity) {
 		Qunatity = qunatity;
 	}
+
+
 
 
 
@@ -205,9 +266,13 @@ public class Refueling  implements Serializable{
 
 
 
+
+
 	public void setPrice(String price) {
 		Price = price;
 	}
+
+
 
 
 
@@ -231,9 +296,13 @@ public class Refueling  implements Serializable{
 
 
 
+
+
 	public void setDate(String date) {
 		Date = date;
 	}
+
+
 
 
 
@@ -257,9 +326,58 @@ public class Refueling  implements Serializable{
 
 
 
+
+
 	public void setPumpNumber(String pumpNumber) {
 		this.pumpNumber = pumpNumber;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public String getRate() {
+		return rate;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 
 
 

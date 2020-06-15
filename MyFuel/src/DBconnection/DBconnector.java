@@ -21,6 +21,7 @@ import Entity.CreditCard;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
+import Entity.Refueling;
 import Entity.StationsInventory;
 import Entity.User;
 import gui.Employee;
@@ -785,5 +786,179 @@ public static ArrayList<Rates> rates(java.sql.Connection connection)
 		return null;
 	}
 	return arr;
+}
+public static ArrayList<Car> CarRates(java.sql.Connection connection,String id)
+{
+	Car car ;
+	Statement stmt;
+	ArrayList<Car> arr = new ArrayList<Car>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT OwnerID, carnumber, purchaseplan, services, gastype,gasstation1, gasstation2, gasstation3,rate\r\n" + 
+				"FROM my_fuel.car car , my_fuel.user user\r\n" + 
+				"				WHERE car.OwnerID=user.ID and OwnerID=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.car;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a = id;
+	      //String b=carnumber;
+		ps.setString(1,a); 
+	//	ps.setString(2,b); 
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			car=new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),rs.getString(9)) ;	
+			arr.add(car);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
+public static ArrayList<StationsInventory> GasStations(java.sql.Connection connection)
+{
+	StationsInventory stations;
+	Statement stmt;
+	ArrayList<StationsInventory> arr = new ArrayList<StationsInventory>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT * FROM my_fuel.stations;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.stations;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			stations=new StationsInventory(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11));
+			arr.add(stations);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
+public static ArrayList<String> GasStationsAddress(java.sql.Connection connection,String id)
+{
+	Statement stmt;
+	ArrayList<String> arr = new ArrayList<String>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT Name Address FROM my_fuel.stations where ;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.stations;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a = id;
+			ps.setString(1,a); 
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			arr.add(rs.getString(1));
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
+
+public static String GasStationsID(Refueling ref) // select id
+{
+	Statement stmt;
+	String iDString = null;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT ID FROM my_fuel.stations where NAME=? and Address=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.stations;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a = ref.getGasStation();
+	      String b=ref.getAddress();
+			ps.setString(1,a); 
+			ps.setString(2, b);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			iDString=rs.getString(1);
+			return iDString;
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return iDString;
+}
+
+public static StationsInventory UpdateInventoryAfterRefuelingOrderGasoline(StationsInventory station)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.stations set GasolineQuantity=? where ID=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a =station.getGasolineQuantity();
+	      String b=station.getStationID();
+		ps.setString(1,a); 
+		ps.setString(2,b); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
+public static StationsInventory UpdateInventoryAfterRefuelingOrderDeisel(StationsInventory station)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.stations set DieselQuantity=? where ID=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a =station.getDieselQuantity();
+	      String b=station.getStationID();
+		ps.setString(1,a); 
+		ps.setString(2,b); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
+public static StationsInventory UpdateInventoryAfterRefuelingOrderScooter(StationsInventory station)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.stations set ScooterQuantity=? where ID=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a =station.getScooterQuantity();
+	      String b=station.getStationID();
+		ps.setString(1,a); 
+		ps.setString(2,b); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
 }
 }

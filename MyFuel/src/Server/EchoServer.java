@@ -22,6 +22,7 @@ import Entity.HomeHeatingOrder;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
+import Entity.Refueling;
 import Entity.StationsInventory;
 import Entity.User;
 import common.Message;
@@ -540,7 +541,7 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
-	case 35:// InventoryDetails
+	case 35:// rates details
 		try {
 			ArrayList<Rates> aa;
 			try {
@@ -551,6 +552,75 @@ public class EchoServer extends AbstractServer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 36:// rates for cars
+		try {
+			ArrayList<Car> aa = DBconnector.CarRates(DBconnector.getConnection(), iD);
+			Object bb = aa;
+			client.sendToClient(new Message(36, bb));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 37:// stations details
+		try {
+			ArrayList<StationsInventory> aa;
+			try {
+				aa = DBconnector.GasStations(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(37, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 38:// Gas station id
+		Refueling gasstationID=(Refueling)recieved.getObject();;
+		String strGasstation=DBconnector.GasStationsID(gasstationID);
+		try {
+			client.sendToClient(new Message(38, strGasstation));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 39:// Inventory update after gasoline
+		StationsInventory Gasoline=(StationsInventory)recieved.getObject();;
+		StationsInventory Gasolinestr=DBconnector.UpdateInventoryAfterRefuelingOrderGasoline(Gasoline);
+		try {
+			client.sendToClient(new Message(39, Gasolinestr));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 40:// Inventory update after gasoline
+		StationsInventory Deisel=(StationsInventory)recieved.getObject();;
+		StationsInventory Deiselstr=DBconnector.UpdateInventoryAfterRefuelingOrderDeisel(Deisel);
+		try {
+			client.sendToClient(new Message(40, Deiselstr));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 41:// Inventory update after gasoline
+		StationsInventory Scooter=(StationsInventory)recieved.getObject();;
+		StationsInventory Scooterstr=DBconnector.UpdateInventoryAfterRefuelingOrderScooter(Scooter);
+		try {
+			client.sendToClient(new Message(41, Scooterstr));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

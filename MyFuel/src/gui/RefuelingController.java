@@ -14,8 +14,11 @@ import java.util.concurrent.ExecutionException;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 import Entity.Car;
+import Entity.Rates;
 import Entity.Refueling;
+import Entity.StationsInventory;
 import Entity.User;
+import client.ChatClient;
 import client.ClientConsole;
 import client.Func;
 import common.Message;
@@ -47,15 +50,23 @@ public class RefuelingController implements Initializable{
     public static RefuelingController acainstance;
     @FXML
     private TextField txtQuantity;
+    @FXML
+    private Label labelRate;
 
+    @FXML
+    private Label labelID;
+    	@FXML
+    	private Label labelPrice;
 	 @FXML
 	    private Button btnStart;
-
+	   @FXML
+	    private Label labelAddress;
 	    @FXML
 	    private Label labelCarNumber;
 	    @FXML
 	    private Label labelFuelTyple;
-
+	    @FXML
+	    private Button btnCalculate;
 	    @FXML
 	    private Label labelGasStation;
 	    @FXML
@@ -73,9 +84,22 @@ public class RefuelingController implements Initializable{
 	public static  ClientRefuelingDetailsController clientRefuelingDetails;
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
+	String CurrentRate;
+	String gasStationString;
+	String Price;
+	String currentAddress;
 	public ClientConsole details= new ClientConsole("localhost", 5555);
 	ArrayList<User> userdetails= new ArrayList<User>();
+	public ArrayList<StationsInventory> stationsInventories;
+	public ArrayList<String> Address= new ArrayList<String>();;
+	int size;
 	User detailsUser;
+	double inventory;
+	double newInventory;
+	double quantity;
+	String Quantity;
+	String gasStationID;
+	StationsInventory currentStations;
 	ArrayList<Car> car2=new ArrayList<Car>();
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
@@ -90,7 +114,26 @@ public class RefuelingController implements Initializable{
 			e.printStackTrace();
 	}		
 }
-	
+    @FXML
+    void Calculate(ActionEvent event) {
+		double	dd=Double.parseDouble(CurrentRate);
+		double	f=Double.parseDouble(txtQuantity.getText());
+		double price=dd*f;
+		 Price=String.valueOf(price);  
+		labelPrice.setText(Price);
+		btnStart.setVisible(true);
+		Calendar rightNow = Calendar.getInstance();
+        int y = rightNow.get(Calendar.YEAR);
+        int m = rightNow.get(Calendar.MONTH) + 1;
+        int d = rightNow.get(Calendar.DAY_OF_MONTH);
+        String date=y+"-"+m+"-"+d;
+    	Refueling refueling;
+		refueling=new Refueling(labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText(),labelRate.getText());
+		RefuelingController.acainstance.details.accept(new Message(38, refueling));
+		//System.out.println(refueling);
+		Quantity=txtQuantity.getText();
+		quantity=Double.parseDouble(Quantity);
+    }
     @FXML
     void SeeDetails(ActionEvent event) {
     	clientRefuelingDetails = new ClientRefuelingDetailsController();
@@ -98,20 +141,59 @@ public class RefuelingController implements Initializable{
     		clientRefuelingDetails.start(splitpane, user, "User");
 });
     }
-	        
+	public void StationAcceptor(ArrayList<StationsInventory> station) {
+		stationsInventories = (ArrayList<StationsInventory>)station.clone();
+		}
 	public void CarAcceptor(ArrayList<Car> car) {
 		car2.addAll(car);
+	//	System.out.println(car2.get(0).getOwnerID());
 		//CarList.addAll(car);
+	}
+	public void StationIDAcceptor(String ID) {
+		gasStationID=ID;
+		//System.out.println("Gas Station ID:"+gasStationID);
+	}
+	public void StationToUpdate(StationsInventory station) {
+		System.out.println(station);
 	}
     @FXML
     void StartRefueilng(ActionEvent event) {
-    	Calendar rightNow = Calendar.getInstance();
-        int y = rightNow.get(Calendar.YEAR);
-        int m = rightNow.get(Calendar.MONTH) + 1;
-        int d = rightNow.get(Calendar.DAY_OF_MONTH);
-        String date=y+"-"+m+"-"+d;
-    	Refueling refueling;
-		refueling=new Refueling(labelCarNumber.getText(), labelGasStation.getText(), labelFuelTyple.getText(), null, txtQuantity.getText(), null, date, labelPump.getText());
+		 for(int i=0;i<stationsInventories.size();i++)
+			{
+			 System.out.println((stationsInventories.get(i).getStationID()));
+				if(stationsInventories.get(i).getStationID().equals(gasStationID))
+					currentStations=stationsInventories.get(i);
+			}
+		if(labelFuelTyple.getText().equals("Gasoline 95"))
+		{
+			   inventory=Double.parseDouble(currentStations.getGasolineQuantity());
+			   newInventory=inventory-quantity;
+			   String Inventory=String.valueOf(newInventory);
+			   currentStations.setGasolineQuantity(Inventory);
+			   System.out.println(currentStations);
+			   RefuelingController.acainstance.details.accept(new Message(39, currentStations));
+
+		}
+		else if(labelFuelTyple.getText().equals("Diesel fuel"))
+		{
+			 inventory=Double.parseDouble(currentStations.getDieselQuantity());
+			   newInventory=inventory-quantity;
+			   String Inventory=String.valueOf(newInventory);
+			   System.out.println(Inventory);
+			   currentStations.setDieselQuantity(Inventory);
+			   System.out.println(currentStations);
+			   RefuelingController.acainstance.details.accept(new Message(40, currentStations));
+		}
+		else if(labelFuelTyple.getText().equals("Scooters fuel"))
+		{
+			inventory=Double.parseDouble(currentStations.getScooterQuantity());
+			   newInventory=inventory-quantity;
+			   String Inventory=String.valueOf(newInventory);
+			   System.out.println(Inventory);
+			currentStations.setScooterQuantity(Inventory);
+			   System.out.println(currentStations);
+			   RefuelingController.acainstance.details.accept(new Message(41, currentStations));
+		}
 		Task <Void> t = new Task <Void> () {
     		    protected Void call() throws Exception {
     		     for (int i = 0; i < 10; i++) {
@@ -120,7 +202,6 @@ public class RefuelingController implements Initializable{
     		      if(i==9)
     		      {
     		    	  brnDetails.setVisible(true);
-    		    	  System.out.println(refueling);
     		      }
     		     }
     		     return null;
@@ -130,8 +211,6 @@ public class RefuelingController implements Initializable{
     		   //new Thread(t).run(); // wrong
     		   new Thread(t).start(); // right
 }
-	
-    
     private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
@@ -149,6 +228,7 @@ public class RefuelingController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;		
 		details.accept(new Message(15, null));
+		details.accept(new Message(37, null));
 		Random rn = new Random();
 		int maximum =(car2.size()-1);
 		System.out.println(maximum);
@@ -156,6 +236,7 @@ public class RefuelingController implements Initializable{
 		int range = maximum - minimum + 1;
 		int randomNum =  rn.nextInt(range) + minimum;
 		String s=String.valueOf(randomNum+1);
+		labelID.setText(car2.get(randomNum).getOwnerID());
 		labelCarNumber.setText(car2.get(randomNum).getCarNumber());
 		labelCarNumber.setVisible(true);
 		labelFuelTyple.setText(car2.get(randomNum).getGastype());
@@ -164,6 +245,27 @@ public class RefuelingController implements Initializable{
 		labelGasStation.setVisible(true);
 		labelPump.setText(s);
 		labelPump.setVisible(true);
-		//labelQuantity.setVisible(true);
+		labelRate.setText(car2.get(randomNum).getRateForCar());
+		CurrentRate=car2.get(randomNum).getRateForCar();
+		gasStationString=car2.get(randomNum).getGasStation1();
+	
+		for(int i=0;i<stationsInventories.size();i++)
+		{
+			if(stationsInventories.get(i).getStationName().equals(gasStationString))
+			{
+				System.out.println(gasStationString);
+				String gaString;
+				gaString=stationsInventories.get(i).getStationAddress();
+				Address.add(stationsInventories.get(i).getStationAddress());
+	
+			}
+		}
+		Random rn2 = new Random();
+		int maximum2 =(Address.size()-1);
+		int minimum2=0;
+		int range2 = maximum2 - minimum2 + 1;
+		int randomNum2 =  rn2.nextInt(range2) + minimum2;
+		labelAddress.setText(Address.get(randomNum2));
+		currentAddress=Address.get(randomNum2);;
 		}
 }

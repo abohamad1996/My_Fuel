@@ -57,6 +57,7 @@ import Entity.HomeHeatingOrder;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
+import Entity.Refueling;
 import Entity.StationsInventory;
 import Entity.User;
 
@@ -384,7 +385,42 @@ public class ChatClient extends AbstractClient
 		 ArrayList<Rates> rate=(ArrayList<Rates>)RatesArray;
 		 CarRegisterController.acainstance.RatesAcceptor(rate);
 	  break;
-	  }
+  case 36:
+	ArrayList<Car>  carArrayRates =(ArrayList<Car>)recieved.getObject();
+	ArrayList<Car> CARRates=(ArrayList<Car>)carArrayRates;
+		PurchasePlanController.acainstance.CarAcceptor(CARRates);
+	  break;
+	  
+  case 37:
+	  ArrayList<?> StationArray =(ArrayList<?>)recieved.getObject();
+		 ArrayList<StationsInventory> station=(ArrayList<StationsInventory>)StationArray;
+		 RefuelingController.acainstance.StationAcceptor(station);
+	  break;
+  case 38:
+	  String GasStationID = (String) recieved.getObject();
+	  Platform.runLater(() -> {
+		  RefuelingController.acainstance.StationIDAcceptor(GasStationID);
+	    });
+	  break;
+	  case 39:
+		  Inventory Gasoline = (Inventory) recieved.getObject();
+		  Platform.runLater(() -> {
+			//  StationManagerInventoryController.acainstance.NewFuelAcceptor(stInv);
+		    });
+		  break;
+	  case 40:
+		  Inventory Deisel = (Inventory) recieved.getObject();
+		  Platform.runLater(() -> {
+			//  StationManagerInventoryController.acainstance.NewFuelAcceptor(stInv);
+		    });
+		  break;
+	  case 41:
+		  Inventory Scooter = (Inventory) recieved.getObject();
+		  Platform.runLater(() -> {
+			//  StationManagerInventoryController.acainstance.NewFuelAcceptor(stInv);
+		    });
+		  break;
+  }
   }
   
   /**

@@ -120,6 +120,7 @@ public class CarRegisterController implements Initializable{
     	System.out.println(ratesUpdateArrayList);
     	if(comboServices.getValue().equals("Casual fueling"))
     	{
+    		comboPrePaying.setVisible(false);
     		for(int i=0;i<4;i++)
     		{
     			 if(comboGastype.getValue().equals(ratesUpdateArrayList.get(i).getFuelType())){
@@ -132,6 +133,8 @@ public class CarRegisterController implements Initializable{
     	}
     	else if(comboServices.getValue().equals("Regular monthly 1 car"))
     	{
+    		comboPrePaying.setVisible(false);
+
     		for(int i=0;i<4;i++)
     		{
     			 if(comboGastype.getValue().equals(ratesUpdateArrayList.get(i).getFuelType())){
@@ -144,7 +147,7 @@ public class CarRegisterController implements Initializable{
     	}
     	else if(comboServices.getValue().equals("Regular monthly +1"))
     	{
-
+    		comboPrePaying.setVisible(false);
     		for(int i=0;i<4;i++)
     		{
     			 if(comboGastype.getValue().equals(ratesUpdateArrayList.get(i).getFuelType())){
@@ -157,7 +160,6 @@ public class CarRegisterController implements Initializable{
     	}
     	else if(comboServices.getValue().equals("Full monthly"))
     	{
-
     		for(int i=0;i<4;i++)
     		{
     			 if(comboGastype.getValue().equals(ratesUpdateArrayList.get(i).getFuelType())){
@@ -178,11 +180,12 @@ public class CarRegisterController implements Initializable{
     void DisplayPrePaying(ActionEvent event) {
     	if(comboServices.getValue().equals("Full monthly"))
     	{
-    		
     		System.out.println("aaaa");
     		comboPrePaying.setVisible(true);
     	}
-    	
+    	else {
+    		comboPrePaying.setVisible(false);
+		}
     }
     
     @FXML
