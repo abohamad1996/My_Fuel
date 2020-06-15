@@ -637,7 +637,16 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
-
+	case 43:// HomeHeating
+		Refueling refueling=(Refueling)recieved.getObject();;
+		String strrefueling=DBconnector.RefuelinggOrder(refueling);
+		try {
+			client.sendToClient(new Message(43, strrefueling));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
 		}
 		}
 	/**

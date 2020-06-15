@@ -100,6 +100,7 @@ public class RefuelingController implements Initializable{
 	String Quantity;
 	String gasStationID;
 	StationsInventory currentStations;
+	Refueling refueling;
 	ArrayList<Car> car2=new ArrayList<Car>();
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
@@ -127,8 +128,7 @@ public class RefuelingController implements Initializable{
         int m = rightNow.get(Calendar.MONTH) + 1;
         int d = rightNow.get(Calendar.DAY_OF_MONTH);
         String date=y+"-"+m+"-"+d;
-    	Refueling refueling;
-		refueling=new Refueling(labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText(),labelRate.getText());
+		refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText());
 		RefuelingController.acainstance.details.accept(new Message(38, refueling));
 		//System.out.println(refueling);
 		Quantity=txtQuantity.getText();
@@ -172,7 +172,7 @@ public class RefuelingController implements Initializable{
 			   currentStations.setGasolineQuantity(Inventory);
 			   System.out.println(currentStations);
 			   RefuelingController.acainstance.details.accept(new Message(39, currentStations));
-
+			   System.out.println(refueling);
 		}
 		else if(labelFuelTyple.getText().equals("Diesel fuel"))
 		{
@@ -183,6 +183,8 @@ public class RefuelingController implements Initializable{
 			   currentStations.setDieselQuantity(Inventory);
 			   System.out.println(currentStations);
 			   RefuelingController.acainstance.details.accept(new Message(40, currentStations));
+			   System.out.println(refueling);
+
 		}
 		else if(labelFuelTyple.getText().equals("Scooters fuel"))
 		{
@@ -193,7 +195,9 @@ public class RefuelingController implements Initializable{
 			currentStations.setScooterQuantity(Inventory);
 			   System.out.println(currentStations);
 			   RefuelingController.acainstance.details.accept(new Message(41, currentStations));
+			   System.out.println(refueling);
 		}
+		   RefuelingController.acainstance.details.accept(new Message(43, refueling));
 		Task <Void> t = new Task <Void> () {
     		    protected Void call() throws Exception {
     		     for (int i = 0; i < 10; i++) {

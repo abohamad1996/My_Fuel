@@ -990,4 +990,42 @@ public static String sales(Sales sales) {
 		return "error";
 	}
 }
+public static String RefuelinggOrder(Refueling ref)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.refueling values(?,?,?,?,?,?,?,?,?,?,?);";
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      int a=0;
+	      String k=ref.getOwnerID();
+	     String b=ref.getCarNumber();
+	     String c=ref.getGasStation();
+	     String d=ref.getAddress();
+	     String e=ref.getGasType();
+	     String f=ref.getRateForLiter();
+	     String g=ref.getQunatity();
+	     String h=ref.getPrice();
+	     String i=ref.getDate();
+	     String j=ref.getPumpNumber();
+	 	ps.setInt(1,a);
+	 	ps.setString(2, k);
+		ps.setString(3,b); 
+		ps.setString(4,c); 
+		ps.setString(5,d); 
+		ps.setString(6,e); 
+		ps.setString(7,f); 
+		ps.setString(8,g); 
+		ps.setString(9,h); 
+		ps.setString(10,i); 
+		ps.setString(11,j); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
 }

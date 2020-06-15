@@ -427,7 +427,12 @@ public class ChatClient extends AbstractClient
 				 ArrayList<Sales>  salmarketingmanagerList=(ArrayList<Sales>)salesmarketingmanagerArrayList;
 				 MarketingManagerSaleController.acainstance.FuelAcceptor(salmarketingmanagerList);
 			  break;
-
+		  case 43:
+			  String Refuling = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				  //HomeHeatingOrderController.acainstance.status.setText(Refuling + " Updated!");
+			    });
+			  break;
   }
   }
   
