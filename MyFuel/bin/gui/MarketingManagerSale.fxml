@@ -8,33 +8,30 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MarketingManagerSaleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MarketingManagerSaleController">
    <children>
-      <Text layoutX="90.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date" wrappingWidth="100.99999999999989">
+      <Text layoutX="90.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="100.99999999999989">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Button layoutX="307.0" layoutY="364.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" styleClass="root2" stylesheets="@../../git/My_Fuel/MyFuel/src/gui/css2.css" text="START" />
+      <Button fx:id="btnStart" layoutX="307.0" layoutY="364.0" mnemonicParsing="false" onAction="#Start" prefHeight="25.0" prefWidth="101.0" styleClass="root4" stylesheets="@../../git/My_Fuel/MyFuel/src/gui/css2.css" text="START" />
       <Text layoutX="90.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Type" wrappingWidth="119.0">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="90.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date" wrappingWidth="100.99999999999989">
+      <Text layoutX="90.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" wrappingWidth="100.99999999999989">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <ComboBox layoutX="227.0" layoutY="155.0" prefWidth="150.0" promptText="Select Fuel Type" styleClass="combo" />
-      <DatePicker layoutX="227.0" layoutY="233.0" prefHeight="25.0" prefWidth="150.0" />
-      <DatePicker layoutX="227.0" layoutY="268.0" prefHeight="25.0" prefWidth="150.0" />
+      <ComboBox fx:id="comboFuelType" layoutX="227.0" layoutY="155.0" prefHeight="29.0" prefWidth="150.0" promptText="Select Fuel Type" styleClass="combo2" />
       <Text layoutX="90.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discount" wrappingWidth="100.99999999999989">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <TextField layoutX="228.0" layoutY="192.0" prefHeight="29.0" prefWidth="126.0" styleClass="root4" />
       <Text layoutX="356.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="21.0">
          <font>
             <Font size="20.0" />
@@ -45,5 +42,14 @@
             <Font size="39.0" />
          </font>
       </Text>
+      <TextField fx:id="txtDiscout" layoutX="228.0" layoutY="196.0" prefHeight="25.0" prefWidth="119.0" styleClass="root4" stylesheets="@css2.css" />
+      <TextField fx:id="txtFrom" layoutX="141.0" layoutY="274.0" prefHeight="25.0" prefWidth="119.0" styleClass="root4" stylesheets="@css2.css" />
+      <Text layoutX="272.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" wrappingWidth="31.999999999999886">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtTo" layoutX="298.0" layoutY="274.0" prefHeight="25.0" prefWidth="119.0" styleClass="root4" stylesheets="@css2.css" />
+      <DatePicker fx:id="txtDate" layoutX="229.0" layoutY="234.0" prefHeight="25.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
