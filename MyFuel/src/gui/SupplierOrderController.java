@@ -4,11 +4,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
-import Entity.OrderConfirmation;
-import Entity.Rates;
-import Entity.OrderConfirmation;
 import Entity.OrderConfirmation;
 import Entity.User;
 import client.ClientConsole;
@@ -24,43 +19,57 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class StationManagerOrderConfirmationController implements Initializable {
-
-	public static StationManagerOrderConfirmationController acainstance;
+public class SupplierOrderController implements Initializable{
+	public static SupplierOrderController acainstance;
 	public ClientConsole details= new ClientConsole("localhost", 5555);
+    @FXML
+    private TableView<OrderConfirmation> orderConfirmationTable;
 
-		@FXML
-    	private TableView<OrderConfirmation> orderConfirmationTable;
+    @FXML
+    private TableColumn<OrderConfirmation, String> clmOrderNumber;
 
-    	@FXML
-	    private TableColumn<OrderConfirmation, String> clmOrderNumber;
+    @FXML
+    private TableColumn<OrderConfirmation, String> clmType;
 
-	    @FXML
-	    private TableColumn<OrderConfirmation, String> clmType;
+    @FXML
+    private TableColumn<OrderConfirmation, String> clmQuantity;
 
-	    @FXML
-	    private TableColumn<OrderConfirmation, String> clmQuantity;
-	    @FXML
-	    private TableColumn<OrderConfirmation, String> clmStatus;
+    @FXML
+    private TableColumn<OrderConfirmation, String> clmStatus;
 
-	    @FXML
-	    private TableColumn<OrderConfirmation, String> clmStation;
+    @FXML
+    private TableColumn<OrderConfirmation, String> clmStation;
 
-	    @FXML
-	    private TableColumn<OrderConfirmation, String> clmAddress;
+    @FXML
+    private TableColumn<OrderConfirmation, String> clmAddress;
 
-	    @FXML
-	    private TableColumn<OrderConfirmation, String> clmDate;
+    @FXML
+    private TableColumn<OrderConfirmation, String> clmDate;
 
-	    @FXML
-	    private Button btnShowOrder;
-	
+    @FXML
+    private TableColumn<OrderConfirmation, String> clmManagerID;
+
+    @FXML
+    private Button btnShowOrders;
+    
+    
+	public void OrderConfirmationAcceptor(ArrayList<OrderConfirmation> odcon) {
+		List.addAll(odcon);
+		System.out.println(List);
+		}
+    
+    @FXML
+    void ShowOrders(ActionEvent event) {
+    	  orderConfirmationTable.setItems(List);
+		 
+    }
+    
+   
 	@FXML
 	private static SplitPane splitpane;
 	private FXMLLoader loader;	
@@ -78,27 +87,20 @@ public class StationManagerOrderConfirmationController implements Initializable 
 		this.userrank=userJob;
 		primaryStage=LoginController.primaryStage;
 		try{	
-			loader = new FXMLLoader(getClass().getResource("/gui/StationManagerOrderConfirmation.fxml"));
+			loader = new FXMLLoader(getClass().getResource("/gui/SupplyOrder.fxml"));
 			lowerAnchorPane = loader.load();
 			splitpane.getItems().set(1, lowerAnchorPane);
 		} catch(Exception e) {
 			e.printStackTrace();
 	}
 }
-	public void OrderConfirmationAcceptor(ArrayList<OrderConfirmation> odcon) {
-		List.addAll(odcon);
-		System.out.println(List);
-		}
-	  @FXML
-	    void ShowOrder(ActionEvent event) {
-		  orderConfirmationTable.setItems(List);
-		//  System.out.println(""+List.size());
-	//	  System.out.println(List.get(0).getQuantity());
-	    }
+	
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;		
-		details.accept(new Message(26, null));
+		details.accept(new Message(45, null));
 		clmOrderNumber.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
 		clmOrderNumber.setCellValueFactory(new PropertyValueFactory<>("OrderNumber"));
 		clmType.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
@@ -114,6 +116,8 @@ public class StationManagerOrderConfirmationController implements Initializable 
 		clmAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
 		clmDate.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
 		clmDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
+		clmManagerID.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+		clmManagerID.setCellValueFactory(new PropertyValueFactory<>("ManagerID"));
 		addConfirmButtonToTable();
 		addNotConfirmButtonToTable();
 	}
@@ -132,9 +136,32 @@ public class StationManagerOrderConfirmationController implements Initializable 
 	                        	OrderConfirmation order =new OrderConfirmation(data.getOrderNumber(), data.getType(), data.getQuantity(),data.getStatus(),data.getStationName(),data.getAddress(),data.getDate(),data.getManagerID());
 	                           System.out.println(order.getOrderNumber()+" " +order.getType()+" "+order.getQuantity());
 	                       System.out.println("confirm");
-	                       StationManagerOrderConfirmationController.acainstance.details.accept(new Message(46, order));
-	                           //   NetworkManagerApproveRatesController.acainstance.details.accept(new Message(18, newRates));
+                              SupplierOrderController.acainstance.details.accept(new Message(49, order));
+
+                              
+                              //   NetworkManagerApproveRatesController.acainstance.details.accept(new Message(18, newRates));
 	                     //      NetworkManagerApproveRatesController.acainstance.details.accept(new Message(19, newRates));
+	                      String gasType;
+	                      gasType=order.getType();
+	                      if(gasType.equals("Gasoline 95"))
+	                      {
+	                    	  System.out.println("1");
+                              SupplierOrderController.acainstance.details.accept(new Message(51, order));
+
+	                      }
+	                      else if(gasType.equals("Diesel fuel"))
+	                      {
+	                    	  System.out.println("2");
+                              SupplierOrderController.acainstance.details.accept(new Message(52, order));
+
+	                      }
+	                      else if(gasType.equals("Scooters fuel"))
+	                      {
+	                    	  System.out.println("3");
+                              SupplierOrderController.acainstance.details.accept(new Message(53, order));
+
+	                      }
+                              System.out.println("this is the order:"+order);
 	                        });
 	                    }
 	                    public void updateItem(String item, boolean empty) {
@@ -169,8 +196,7 @@ public class StationManagerOrderConfirmationController implements Initializable 
 	                        	OrderConfirmation order =new OrderConfirmation(data.getOrderNumber(), data.getType(), data.getQuantity(),data.getStatus(),data.getStationName(),data.getAddress(),data.getDate(),data.getManagerID());
 	                           System.out.println(order.getOrderNumber()+" " +order.getType()+" "+order.getQuantity());
 	                           System.out.println("not cinfirm");
-		                       StationManagerOrderConfirmationController.acainstance.details.accept(new Message(47, order));
-
+	                              SupplierOrderController.acainstance.details.accept(new Message(50, order));
 	                           // NetworkManagerApproveRatesController.acainstance.details.accept(new Message(20, newRates));
 	                           // System.out.println("selectedData: " + data);
 	                        });

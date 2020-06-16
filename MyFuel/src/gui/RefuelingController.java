@@ -187,7 +187,7 @@ public class RefuelingController implements Initializable{
 				   System.out.println(newInventory);
 				   String NewInventory=String.valueOf(newInventory);
 				   	System.out.println(NewInventory);
-				   	order=new OrderConfirmation(0, refueling.getGasType(), NewInventory, "-1", refueling.getGasStation(), refueling.getAddress(), refueling.getDate(), currentStations.getManagerIDString());
+				   	order=new OrderConfirmation(0, refueling.getGasType(), NewInventory, "Waiting for Station Manager Confirm", refueling.getGasStation(), refueling.getAddress(), refueling.getDate(), currentStations.getManagerIDString());
 					   RefuelingController.acainstance.details.accept(new Message(44, order));
 					   System.out.println(order);
 
@@ -219,7 +219,7 @@ public class RefuelingController implements Initializable{
 				   System.out.println("alert"); 
 				   String NewInventory=String.valueOf(newInventory);
 				   	System.out.println(NewInventory);
-					   order=new OrderConfirmation(0, refueling.getGasType(), NewInventory, "-1", refueling.getGasStation(), refueling.getAddress(), refueling.getDate(), currentStations.getManagerIDString());
+					   order=new OrderConfirmation(0, refueling.getGasType(), NewInventory, "Waiting for Station Manager Confirm", refueling.getGasStation(), refueling.getAddress(), refueling.getDate(), currentStations.getManagerIDString());
 					   RefuelingController.acainstance.details.accept(new Message(44, order));
 					   System.out.println(order);
 			   }
@@ -235,7 +235,7 @@ public class RefuelingController implements Initializable{
 			   newInventory=inventory-quantity;
 			   String Inventory=String.valueOf(newInventory);
 			   System.out.println(Inventory);
-			currentStations.setScooterQuantity(Inventory);
+			   currentStations.setScooterQuantity(Inventory);
 			   System.out.println(currentStations);
 			   RefuelingController.acainstance.details.accept(new Message(41, currentStations));
 			   System.out.println(refueling);
@@ -249,10 +249,9 @@ public class RefuelingController implements Initializable{
 				   System.out.println("alert"); 
 				   String NewInventory=String.valueOf(newInventory);
 				   	System.out.println(NewInventory);
-				   	order=new OrderConfirmation(0, refueling.getGasType(), NewInventory, "-1", refueling.getGasStation(), refueling.getAddress(), refueling.getDate(), currentStations.getManagerIDString());
+				   	order=new OrderConfirmation(0, refueling.getGasType(), NewInventory, "Waiting for Station Manager Confirm", refueling.getGasStation(), refueling.getAddress(), refueling.getDate(), currentStations.getManagerIDString());
 					   RefuelingController.acainstance.details.accept(new Message(44, order));
 					   System.out.println(order);
-
 			   }
 			   else {
 					System.out.println("Quantity good!");

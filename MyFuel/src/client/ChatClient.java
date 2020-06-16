@@ -27,6 +27,8 @@ import gui.StaionManagerController;
 import gui.StationDetailsController;
 import gui.StationManagerInventoryController;
 import gui.StationManagerOrderConfirmationController;
+import gui.SupplierController;
+import gui.SupplierOrderController;
 import gui.CarRegisterController;
 import gui.ClientController;
 import gui.ClientRegisterController;
@@ -205,6 +207,17 @@ public class ChatClient extends AbstractClient
 			System.out.println("Representative Transport");
 			RepresentativeTransportController RepresentativeTransport=new RepresentativeTransportController();
 			RepresentativeTransport.start(user);
+			try {
+				user=DBconnector.StatusLoginUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	  break;
+		case "Supplier":
+			System.out.println("Supplier");
+			SupplierController supplier=new SupplierController();
+			supplier.start(user);
 			try {
 				user=DBconnector.StatusLoginUpdate(DBconnector.getConnection(), user.getUsername(), user.getPassword());
 			} catch (SQLException e) {
@@ -437,6 +450,59 @@ public class ChatClient extends AbstractClient
 			  String Order = (String) recieved.getObject();
 			  Platform.runLater(() -> {
 				 // ClientRegisterController.acainstance.status.setText(Order + " Updated!");
+			    });
+			  break;
+		  case 45:
+			  ArrayList<?> OrderConfirmSupplier =(ArrayList<?>)recieved.getObject();
+			  ArrayList<OrderConfirmation> orderConfirmation=(ArrayList<OrderConfirmation>)OrderConfirmSupplier;
+			 // System.out.println(""+orderconfirmatioArrayList.get(0));
+			  SupplierOrderController.acainstance.OrderConfirmationAcceptor(orderConfirmation);
+			  break;
+		  case 46:
+			  String StationManagerConfirm = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				 // NetworkManagerApproveRatesController.acainstance.status.setText("");
+			    });
+			  break;
+		  case 47:
+			  String StationManagerNotConfirm = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				 // NetworkManagerApproveRatesController.acainstance.status.setText("");
+			    });
+			  break;
+		  case 48:
+			  ArrayList<?> OrderRefuelingArrayListAlert =(ArrayList<?>)recieved.getObject();
+				 ArrayList<OrderConfirmation> OrderRefuelingAlert=(ArrayList<OrderConfirmation>)OrderRefuelingArrayListAlert;
+				 SupplierController.acainstance.OrderAcceptor(OrderRefuelingAlert);
+				 break;
+		  case 49:
+			  String SupplierConfirm = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				 // NetworkManagerApproveRatesController.acainstance.status.setText("");
+			    });
+			  break;
+		  case 50:
+			  String SupplierNotConfirm = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				 // NetworkManagerApproveRatesController.acainstance.status.setText("");
+			    });
+			  break;
+		  case 51:
+			  String GasolineThreshould = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				//  StationManagerInventoryController.acainstance.NewFuelAcceptor(stInv);
+			    });
+			  break;
+		  case 52:
+			  String DeiselThreshould = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				//  StationManagerInventoryController.acainstance.NewFuelAcceptor(stInv);
+			    });
+			  break;
+		  case 53:
+			  String ScooterThreshould = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				//  StationManagerInventoryController.acainstance.NewFuelAcceptor(stInv);
 			    });
 			  break;
   }

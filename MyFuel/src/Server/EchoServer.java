@@ -607,7 +607,7 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
-	case 40:// Inventory update after gasoline
+	case 40:// Inventory update after deisel
 		StationsInventory Deisel=(StationsInventory)recieved.getObject();;
 		StationsInventory Deiselstr=DBconnector.UpdateInventoryAfterRefuelingOrderDeisel(Deisel);
 		try {
@@ -617,7 +617,7 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
-	case 41:// Inventory update after gasoline
+	case 41:// Inventory update after scooter
 		StationsInventory Scooter=(StationsInventory)recieved.getObject();;
 		StationsInventory Scooterstr=DBconnector.UpdateInventoryAfterRefuelingOrderScooter(Scooter);
 		try {
@@ -652,6 +652,108 @@ public class EchoServer extends AbstractServer {
 		String Orderstr=DBconnector.SystemNewOrder(order);
 		try {
 			client.sendToClient(new Message(44, Orderstr));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 45:// Order Request
+		try {
+			ArrayList<OrderConfirmation> aa;
+			try {
+				aa = DBconnector.OrderConfirmationSupplier(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(45, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 46:// update status from station manager to supllier confirm
+		OrderConfirmation StationManagerConfirm=(OrderConfirmation) recieved.getObject();
+		String strStationManagerConfirm=DBconnector.UpdateStatusStationManagerConfirm(StationManagerConfirm);
+		try {
+			client.sendToClient(new Message(46, strStationManagerConfirm));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 47:// update status from station manager to supllier not confirm
+		OrderConfirmation StationManagerNotConfirm=(OrderConfirmation) recieved.getObject();
+		String strStationManagerNotConfirm=DBconnector.UpdateStatusStationManagerNotConfirm(StationManagerNotConfirm);
+		try {
+			client.sendToClient(new Message(47, strStationManagerNotConfirm));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 48:// Order Request Alert
+		try {
+			ArrayList<OrderConfirmation> aa;
+			try {
+				aa = DBconnector.OrderConfirmationSupplierAlert(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(48, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 49:// update status toe order done supplier
+		OrderConfirmation SupplierrConfirm=(OrderConfirmation) recieved.getObject();
+		String strSupplierConfirm=DBconnector.UpdateStatusSupplierConfirm(SupplierrConfirm);
+		try {
+			client.sendToClient(new Message(49, strSupplierConfirm));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 50:// update status from station manager to supllier not confirm
+		OrderConfirmation SupplierNotConfirm=(OrderConfirmation) recieved.getObject();
+		String strSupplierNotConfirm=DBconnector.UpdateStatusSupplierNotConfirm(SupplierNotConfirm);
+		try {
+			client.sendToClient(new Message(50, strSupplierNotConfirm));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 51:// Inventory update after gasoline
+		OrderConfirmation GasolineThreshould=(OrderConfirmation)recieved.getObject();;
+		String GasolineThreshouldstr=DBconnector.UpdateGasolineQuantity(GasolineThreshould);
+		try {
+			client.sendToClient(new Message(51, GasolineThreshouldstr));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 52:// Inventory update after gasoline
+		OrderConfirmation DeiselThreshould=(OrderConfirmation)recieved.getObject();;
+		String DeiselThreshouldstr=DBconnector.UpdateDeiselQuantity(DeiselThreshould);
+		try {
+			client.sendToClient(new Message(52, DeiselThreshouldstr));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 53:// Inventory update after gasoline
+		OrderConfirmation ScooterThreshould=(OrderConfirmation)recieved.getObject();;
+		String ScooterThreshouldstr=DBconnector.UpdateScooterQuantity(ScooterThreshould);
+		try {
+			client.sendToClient(new Message(53, ScooterThreshouldstr));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

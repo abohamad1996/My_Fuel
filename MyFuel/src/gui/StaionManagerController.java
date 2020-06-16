@@ -219,7 +219,7 @@ public class StaionManagerController implements Initializable {
 			System.out.println(List.size());
 			if(List.size()!=0)
 			{
-				btnNotification.setText("There is new rates request");
+				btnNotification.setText("Threshold level low!!");
 				Alert(true);
 				
 			}
