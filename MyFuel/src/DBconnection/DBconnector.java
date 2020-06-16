@@ -1192,7 +1192,7 @@ public static String UpdateGasolineQuantity(OrderConfirmation order)
 		String query = "update my_fuel.stations set GasolineQuantity=? where Name=? and Address=?;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
-	      String a =order.getQuantity();
+	      String a ="5000";
 	      String b =order.getStationName();
 	      String c =order.getAddress();
 	     ps.setString(1, a);
@@ -1214,7 +1214,7 @@ public static String UpdateDeiselQuantity(OrderConfirmation order)
 		String query = "update my_fuel.stations set DieselQuantity=? where Name=? and Address=?;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
-	      String a =order.getQuantity();
+	      String a ="5000";
 	      String b =order.getStationName();
 	      String c =order.getAddress();
 	     ps.setString(1, a);
@@ -1236,7 +1236,7 @@ public static String UpdateScooterQuantity(OrderConfirmation order)
 		String query = "update my_fuel.stations set ScooterQuantity=? where Name=? and Address=?;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
-	      String a =order.getQuantity();
+	      String a ="5000";
 	      String b =order.getStationName();
 	      String c =order.getAddress();
 	     ps.setString(1, a);
