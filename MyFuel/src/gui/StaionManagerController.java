@@ -41,6 +41,8 @@ import javafx.stage.Stage;
 
 public class StaionManagerController implements Initializable {
     ObservableList<OrderConfirmation> List =FXCollections.observableArrayList(); 
+    ObservableList<OrderConfirmation> List2 =FXCollections.observableArrayList(); 
+
 	public static StaionManagerController acainstance;
     @FXML
     private MenuItem StationName;
@@ -77,7 +79,10 @@ public class StaionManagerController implements Initializable {
 
 	    @FXML
 	    private Button btnOrderConfirmation;
-
+	    @FXML
+	    private Button btnOrderCompleted;
+	    @FXML
+	    private MenuItem notificationOrder;
 	    @FXML
 	    private MenuButton UserMenu;
 
@@ -228,6 +233,20 @@ public class StaionManagerController implements Initializable {
 			}
 			
 			}
+	    public void OrderDoneAcceptor(ArrayList<OrderConfirmation> orderArray) {
+			List2.addAll(orderArray);
+			System.out.println(List2);
+			System.out.println("size:"+List2.size());
+			if(List2.size()!=0)
+			{
+				btnOrderCompleted.setText("There is order Done!");
+				Alert(true);
+			}
+			else {
+				System.out.println("null");
+			}
+			
+			}
 	    @FXML
 	    void Station(ActionEvent event) {
 	    	  DiroctoryBar.setText("My Fuel->Station Details");
@@ -237,17 +256,27 @@ public class StaionManagerController implements Initializable {
 		    		stationDetailsController.start(splitpane, user, "User");
 		});
 	    }
+	    @FXML
+	    void OrderCompleted(ActionEvent event) {
+	    	 DiroctoryBar.setText("My Fuel->Order Completed");
+	    	 ordercompleted = new StationManagerOrderCompletedController();
+		    	runLater(() -> {
+		    		ordercompleted.start(splitpane, user, "User");
+		});
+	    }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance=this;
 		 ClientConsole details= new ClientConsole("localhost", 5555);
 		 details.accept(new Message(27, null));
 		 details.accept(new Message(33, null));
+		 details.accept(new Message(54, null));
 		 btnStationName.setText(stationsInventory.getStationName());
 		btnRank.setText(user.getRank());
 	    Rank=new MenuItem(user.getRank());
 	       UserMenu.setText(user.getFirstname());
 	}
+	public static StationManagerOrderCompletedController ordercompleted;
 	public static StationDetailsController stationDetailsController;
 	public static ClientRegisterController register;
 	public static StaionManagerController s;

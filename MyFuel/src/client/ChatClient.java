@@ -26,6 +26,7 @@ import gui.RepresentativeTransportSetMaxPrice;
 import gui.StaionManagerController;
 import gui.StationDetailsController;
 import gui.StationManagerInventoryController;
+import gui.StationManagerOrderCompletedController;
 import gui.StationManagerOrderConfirmationController;
 import gui.SupplierController;
 import gui.SupplierOrderController;
@@ -503,6 +504,22 @@ public class ChatClient extends AbstractClient
 			  String ScooterThreshould = (String) recieved.getObject();
 			  Platform.runLater(() -> {
 				//  StationManagerInventoryController.acainstance.NewFuelAcceptor(stInv);
+			    });
+			  break;
+		  case 54:
+			  ArrayList<?> OrderDoneArrayListAlert =(ArrayList<?>)recieved.getObject();
+				 ArrayList<OrderConfirmation> OrderDoneAlert=(ArrayList<OrderConfirmation>)OrderDoneArrayListAlert;
+				 StaionManagerController.acainstance.OrderDoneAcceptor(OrderDoneAlert);
+				 break;
+		  case 55:
+			  ArrayList<?> OrderDoneArrayListTable =(ArrayList<?>)recieved.getObject();
+				 ArrayList<OrderConfirmation> OrderDoneTable=(ArrayList<OrderConfirmation>)OrderDoneArrayListTable;
+				 StationManagerOrderCompletedController.acainstance.OrderDoneAcceptor(OrderDoneTable);
+				 break;
+		  case 56:
+			  String StationManagerSeen = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				 // NetworkManagerApproveRatesController.acainstance.status.setText("");
 			    });
 			  break;
   }

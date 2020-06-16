@@ -759,6 +759,48 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
+	case 54:// Order Done Alert
+		try {
+			ArrayList<OrderConfirmation> aa;
+			try {
+				aa = DBconnector.OrderConfirmationDoneAlert(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(54, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 55:// Order Done Alert Table
+		try {
+			ArrayList<OrderConfirmation> aa;
+			try {
+				aa = DBconnector.OrderConfirmationDoneAlert(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(55, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
+	case 56:// update status from station manager to supllier confirm
+		OrderConfirmation StationManagerSeen=(OrderConfirmation) recieved.getObject();
+		String strStationManagerSeen=DBconnector.UpdateStatusStationManagerSeen(StationManagerSeen);
+		try {
+			client.sendToClient(new Message(56, strStationManagerSeen));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
 		}
 		}
 	/**

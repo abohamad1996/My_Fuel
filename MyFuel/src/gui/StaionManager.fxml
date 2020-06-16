@@ -103,6 +103,11 @@
                         <Button fx:id="btnNotification" mnemonicParsing="false" onAction="#OrderApprove" styleClass="root4" stylesheets="@css2.css" text="There is no notifications" />
                      </graphic>
                   </MenuItem>
+                  <MenuItem fx:id="notificationOrder" mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="btnOrderCompleted" mnemonicParsing="false" onAction="#OrderCompleted" styleClass="root4" stylesheets="@css2.css" text="There is no orders completed!" />
+                     </graphic>
+                  </MenuItem>
                </items>
                <graphic>
                   <ImageView fx:id="notificationAlert" fitHeight="15.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" visible="false">

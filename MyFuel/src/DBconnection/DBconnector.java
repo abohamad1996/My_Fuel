@@ -1250,4 +1250,48 @@ public static String UpdateScooterQuantity(OrderConfirmation order)
 	}
 	return null;
 }
+public static ArrayList<Entity.OrderConfirmation> OrderConfirmationDoneAlert(java.sql.Connection connection)
+{
+	OrderConfirmation orderConfirmation;
+	Statement stmt;
+	ArrayList<OrderConfirmation> arr = new ArrayList<OrderConfirmation>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "select * FROM my_fuel.orderconfirmation WHERE OrderStatus=\"Order Done\";";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.orderconfirmation;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			orderConfirmation=new OrderConfirmation(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
+			arr.add(orderConfirmation);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
+public static String UpdateStatusStationManagerSeen(OrderConfirmation order)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.orderconfirmation set OrderStatus=\"Seen\" where OrderNumber=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.inventory;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      int a =order.getOrderNumber();
+	      ps.setInt(1, a);
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
 }
