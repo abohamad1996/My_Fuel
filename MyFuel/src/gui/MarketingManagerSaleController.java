@@ -58,8 +58,6 @@ public class MarketingManagerSaleController implements Initializable{
     private TextField txtTo;
 
 	
-	
-	
 	@FXML
 	private static SplitPane splitpane;
 	public ClientConsole chat= new ClientConsole("localhost", 5555);

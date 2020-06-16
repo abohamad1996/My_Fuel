@@ -21,18 +21,16 @@ import javafx.stage.Stage;
 
 public class StationManagerReportController implements Initializable {
 	
+
     @FXML
     private ComboBox<String> comboReportType;
 
-    @FXML
-    private TextField txtReportNumber;
-
-    @FXML
-    private TextField txtReport;
+ 
 
     @FXML
     private Button btnSend;
-	
+	ArrayList<String> ReportValues=new ArrayList<String>();
+    ObservableList<String> Report =FXCollections.observableArrayList(); 
 	@FXML
 	private static SplitPane splitpane;
 	private FXMLLoader loader;	
@@ -63,15 +61,33 @@ public class StationManagerReportController implements Initializable {
 	
     @FXML
     void SendReport(ActionEvent event) {
-    	
+    
     }
-	
-	
-	
+
+    @FXML
+    void SelectReport(ActionEvent event) {
+    		if(comboReportType.getValue().equals("Quarterly Revenue Report"))
+    		{
+    			System.out.println("1");
+    		}
+    		else if(comboReportType.getValue().equals("Purchases Report"))
+    		{
+    			
+    			System.out.println("2");
+    		}
+    		else if(comboReportType.getValue().equals("Quantity in stock Report"))
+    		{
+    			System.out.println("3");
+    			}
+    }
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		ReportType.add("Quarterly Revenue Report");
+		ReportType.add("Purchases Report");
+		ReportType.add("Quantity in stock Report");
+		Report.addAll(ReportType);
+		comboReportType.setItems(Report);
 		}
 
 }
