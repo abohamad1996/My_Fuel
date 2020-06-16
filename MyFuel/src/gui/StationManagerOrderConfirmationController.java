@@ -46,6 +46,17 @@ public class StationManagerOrderConfirmationController implements Initializable 
 
 	    @FXML
 	    private TableColumn<OrderConfirmation, String> clmQuantity;
+	    @FXML
+	    private TableColumn<OrderConfirmation, String> clmStatus;
+
+	    @FXML
+	    private TableColumn<OrderConfirmation, String> clmStation;
+
+	    @FXML
+	    private TableColumn<OrderConfirmation, String> clmAddress;
+
+	    @FXML
+	    private TableColumn<OrderConfirmation, String> clmDate;
 
 	    @FXML
 	    private Button btnShowOrder;
@@ -95,6 +106,14 @@ public class StationManagerOrderConfirmationController implements Initializable 
 		clmType.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
 		clmQuantity.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
 		clmQuantity.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
+		clmStatus.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+		clmStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+		clmStation.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+		clmStation.setCellValueFactory(new PropertyValueFactory<>("StationName"));
+		clmAddress.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+		clmAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
+		clmDate.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+		clmDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
 		addConfirmButtonToTable();
 		addNotConfirmButtonToTable();
 	}
@@ -110,7 +129,7 @@ public class StationManagerOrderConfirmationController implements Initializable 
 	                    {
 	                        btn.setOnAction((ActionEvent event) -> {
 	                        	OrderConfirmation data = getTableView().getItems().get(getIndex());
-	                        	OrderConfirmation order =new OrderConfirmation(data.getOrderNumber(), data.getType(), data.getQuantity());
+	                        	OrderConfirmation order =new OrderConfirmation(data.getOrderNumber(), data.getType(), data.getQuantity(),data.getStatus(),data.getStationName(),data.getAddress(),data.getDate(),data.getManagerID());
 	                           System.out.println(order.getOrderNumber()+" " +order.getType()+" "+order.getQuantity());
 	                       System.out.println("confirm");
 	                           //   NetworkManagerApproveRatesController.acainstance.details.accept(new Message(18, newRates));
@@ -146,7 +165,7 @@ public class StationManagerOrderConfirmationController implements Initializable 
 	                    {
 	                        btn.setOnAction((ActionEvent event) -> {
 	                        	OrderConfirmation data = getTableView().getItems().get(getIndex());
-	                        	OrderConfirmation order =new OrderConfirmation(data.getOrderNumber(), data.getType(), data.getQuantity());
+	                        	OrderConfirmation order =new OrderConfirmation(data.getOrderNumber(), data.getType(), data.getQuantity(),data.getStatus(),data.getStationName(),data.getAddress(),data.getDate(),data.getManagerID());
 	                           System.out.println(order.getOrderNumber()+" " +order.getType()+" "+order.getQuantity());
 	                           System.out.println("not cinfirm");
 	                           // NetworkManagerApproveRatesController.acainstance.details.accept(new Message(20, newRates));

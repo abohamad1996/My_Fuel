@@ -14,11 +14,15 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <TableView fx:id="orderConfirmationTable" layoutX="57.0" layoutY="111.0" prefHeight="304.0" prefWidth="575.0" styleClass="root2" stylesheets="@css2.css">
+      <TableView fx:id="orderConfirmationTable" layoutX="4.0" layoutY="111.0" prefHeight="304.0" prefWidth="684.0" styleClass="root2" stylesheets="@css2.css">
         <columns>
-          <TableColumn fx:id="clmOrderNumber" prefWidth="116.0" text="Ordrer Number " />
-          <TableColumn fx:id="clmType" prefWidth="101.0" text="Type" />
-            <TableColumn fx:id="clmQuantity" minWidth="8.0" prefWidth="119.0" text="Quantity" />
+          <TableColumn fx:id="clmOrderNumber" prefWidth="40.0" text="ID" />
+          <TableColumn fx:id="clmType" prefWidth="110.0" text="Type" />
+            <TableColumn fx:id="clmQuantity" minWidth="8.0" prefWidth="84.0" text="Quantity" />
+            <TableColumn fx:id="clmStatus" minWidth="8.0" prefWidth="126.0" text="Status" />
+            <TableColumn fx:id="clmStation" minWidth="8.0" prefWidth="105.0" text="Station" />
+            <TableColumn fx:id="clmAddress" minWidth="8.0" prefWidth="100.0" text="Address" />
+            <TableColumn fx:id="clmDate" minWidth="8.0" prefWidth="95.0" text="Date" />
         </columns>
       </TableView>
       <Button fx:id="btnShowOrder" layoutX="319.0" layoutY="423.0" mnemonicParsing="false" onAction="#ShowOrder" styleClass="root2" stylesheets="@css2.css" text="Show Orders" />

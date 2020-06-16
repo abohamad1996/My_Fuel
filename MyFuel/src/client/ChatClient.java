@@ -433,6 +433,12 @@ public class ChatClient extends AbstractClient
 				  //HomeHeatingOrderController.acainstance.status.setText(Refuling + " Updated!");
 			    });
 			  break;
+		  case 44:
+			  String Order = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				 // ClientRegisterController.acainstance.status.setText(Order + " Updated!");
+			    });
+			  break;
   }
   }
   

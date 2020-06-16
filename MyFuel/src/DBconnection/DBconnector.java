@@ -684,7 +684,7 @@ public static ArrayList<Entity.OrderConfirmation> OrderConfirmation(java.sql.Con
 		while(rs.next())
  		{
 			System.out.println(""+ps.toString());
-			orderConfirmation=new OrderConfirmation(rs.getInt(1), rs.getString(2), rs.getString(3));
+			orderConfirmation=new OrderConfirmation(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
 			arr.add(orderConfirmation);
 			System.out.println(arr);
  		}
@@ -1019,6 +1019,38 @@ public static String RefuelinggOrder(Refueling ref)
 		ps.setString(9,h); 
 		ps.setString(10,i); 
 		ps.setString(11,j); 
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
+public static String SystemNewOrder(OrderConfirmation order)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.orderconfirmation values(?,?,?,?,?,?,?,?);";
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	  	int a=0;
+	      String b = order.getType();
+		String c =order.getQuantity();
+		String d = order.getStatus();
+		String e = order.getStationName();
+		String f = order.getAddress();
+		String g = order.getDate();
+		String h = order.getManagerID();
+		ps.setInt(1, a);
+		ps.setString(2,b); 	
+		ps.setString(3,c); 	
+		ps.setString(4,d); 	
+		ps.setString(5,e); 
+		ps.setString(6,f); 
+		ps.setString(7,g); 
+		ps.setString(8,h); 
 		System.out.println(""+ps.toString());
 		ps.executeUpdate();
 		return "success";

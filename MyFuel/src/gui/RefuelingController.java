@@ -14,6 +14,7 @@ import java.util.concurrent.ExecutionException;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 import Entity.Car;
+import Entity.OrderConfirmation;
 import Entity.Rates;
 import Entity.Refueling;
 import Entity.StationsInventory;
@@ -164,8 +165,11 @@ public class RefuelingController implements Initializable{
 				if(stationsInventories.get(i).getStationID().equals(gasStationID))
 					currentStations=stationsInventories.get(i);
 			}
+		 OrderConfirmation order;
 		if(labelFuelTyple.getText().equals("Gasoline 95"))
 		{
+			String Threshold;
+			double threshold;
 			   inventory=Double.parseDouble(currentStations.getGasolineQuantity());
 			   newInventory=inventory-quantity;
 			   String Inventory=String.valueOf(newInventory);
@@ -173,9 +177,30 @@ public class RefuelingController implements Initializable{
 			   System.out.println(currentStations);
 			   RefuelingController.acainstance.details.accept(new Message(39, currentStations));
 			   System.out.println(refueling);
+			   Threshold=currentStations.getGasolineThresholdLevel();
+			   threshold=Double.parseDouble(Threshold);
+			   System.out.println("Gasloine Threshold:"+threshold+" "+newInventory);
+			   if(newInventory<threshold)
+			   {
+				   System.out.println("alert");
+				   newInventory=5000-newInventory;
+				   System.out.println(newInventory);
+				   String NewInventory=String.valueOf(newInventory);
+				   	System.out.println(NewInventory);
+				   	order=new OrderConfirmation(0, refueling.getGasType(), NewInventory, "-1", refueling.getGasStation(), refueling.getAddress(), refueling.getDate(), currentStations.getManagerIDString());
+					   RefuelingController.acainstance.details.accept(new Message(44, order));
+					   System.out.println(order);
+
+			   }
+			   else {
+				System.out.println("Quantity good!");
+			}
+			   
 		}
 		else if(labelFuelTyple.getText().equals("Diesel fuel"))
 		{
+			String Threshold;
+			double threshold;
 			 inventory=Double.parseDouble(currentStations.getDieselQuantity());
 			   newInventory=inventory-quantity;
 			   String Inventory=String.valueOf(newInventory);
@@ -184,10 +209,28 @@ public class RefuelingController implements Initializable{
 			   System.out.println(currentStations);
 			   RefuelingController.acainstance.details.accept(new Message(40, currentStations));
 			   System.out.println(refueling);
-
+			   Threshold=currentStations.getDieselThresholdLevel();
+			   threshold=Double.parseDouble(Threshold);
+			   System.out.println("Deisel Threshold:"+threshold+" "+newInventory);
+			   if(newInventory<threshold)
+			   {
+				   newInventory=5000-newInventory;
+				   System.out.println(newInventory);
+				   System.out.println("alert"); 
+				   String NewInventory=String.valueOf(newInventory);
+				   	System.out.println(NewInventory);
+					   order=new OrderConfirmation(0, refueling.getGasType(), NewInventory, "-1", refueling.getGasStation(), refueling.getAddress(), refueling.getDate(), currentStations.getManagerIDString());
+					   RefuelingController.acainstance.details.accept(new Message(44, order));
+					   System.out.println(order);
+			   }
+			   else {
+					System.out.println("Quantity good!");
+				}
 		}
 		else if(labelFuelTyple.getText().equals("Scooters fuel"))
 		{
+			String Threshold;
+			double threshold;
 			inventory=Double.parseDouble(currentStations.getScooterQuantity());
 			   newInventory=inventory-quantity;
 			   String Inventory=String.valueOf(newInventory);
@@ -196,6 +239,24 @@ public class RefuelingController implements Initializable{
 			   System.out.println(currentStations);
 			   RefuelingController.acainstance.details.accept(new Message(41, currentStations));
 			   System.out.println(refueling);
+			   Threshold=currentStations.getScooterThresholdLevel();
+			   threshold=Double.parseDouble(Threshold);
+			   System.out.println("Scooter Threshold:"+threshold+" "+newInventory);
+			   if(newInventory<threshold)
+			   {
+				   newInventory=5000-newInventory;
+				   System.out.println(newInventory);
+				   System.out.println("alert"); 
+				   String NewInventory=String.valueOf(newInventory);
+				   	System.out.println(NewInventory);
+				   	order=new OrderConfirmation(0, refueling.getGasType(), NewInventory, "-1", refueling.getGasStation(), refueling.getAddress(), refueling.getDate(), currentStations.getManagerIDString());
+					   RefuelingController.acainstance.details.accept(new Message(44, order));
+					   System.out.println(order);
+
+			   }
+			   else {
+					System.out.println("Quantity good!");
+				}
 		}
 		   RefuelingController.acainstance.details.accept(new Message(43, refueling));
 		Task <Void> t = new Task <Void> () {

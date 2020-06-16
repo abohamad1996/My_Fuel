@@ -647,6 +647,16 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
+	case 44:// new order system
+		OrderConfirmation order=(OrderConfirmation) recieved.getObject();
+		String Orderstr=DBconnector.SystemNewOrder(order);
+		try {
+			client.sendToClient(new Message(44, Orderstr));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		break;
 		}
 		}
 	/**
