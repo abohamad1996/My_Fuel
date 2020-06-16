@@ -64,6 +64,7 @@ public class StationManagerReportController implements Initializable {
     
     }
 
+    
     @FXML
     void SelectReport(ActionEvent event) {
     		if(comboReportType.getValue().equals("Quarterly Revenue Report"))
