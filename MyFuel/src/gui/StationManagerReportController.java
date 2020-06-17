@@ -1,8 +1,14 @@
 package gui;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -10,12 +16,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import DBconnection.DBconnector;
+import Entity.OrderConfirmation;
 import Entity.Rates;
 import Entity.Refueling;
+import Entity.StationsInventory;
 import Entity.User;
 import client.ClientConsole;
 import common.Message;
+import common.MyFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,6 +60,8 @@ public class StationManagerReportController implements Initializable {
 	ArrayList<String> ReportValues=new ArrayList<String>();
 	ArrayList<String> Dates=new ArrayList<String>();
 	public ArrayList<Refueling> refuelings;
+	public ArrayList<StationsInventory> stations;
+
     ObservableList<String> Report =FXCollections.observableArrayList(); 
 	ArrayList<String> Quarter=new ArrayList<String>();
     ObservableList<String> QuarterList =FXCollections.observableArrayList(); 
@@ -65,6 +80,12 @@ public class StationManagerReportController implements Initializable {
 	ArrayList<String> ReportType=new ArrayList<String>();
 	 ObservableList<String> ReportList =FXCollections.observableArrayList(); 
 	User detailsUser;
+	String gasolineQuantity,gasolinePrices;
+	double GasolineQuantity,GasolinePrices;
+	String deiselQuantity,deiselPrices;
+	double DeiselQuantity,DeiselPrices;
+	String scooterQuantity,scooterPrices;
+	double ScooterQuantity,ScooterPrices;
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -83,15 +104,125 @@ public class StationManagerReportController implements Initializable {
 		refuelings = (ArrayList<Refueling>)ref.clone();
 		//System.out.println(refuelings);
 		}
+	public void StationAcceptor(ArrayList<StationsInventory> station) {
+		stations = (ArrayList<StationsInventory>)station.clone();
+		System.out.println(stations);
+		}
     @FXML
     void SendReport(ActionEvent event) {
-    			
+        try {
+	        Path path = Paths.get("C:\\MyFuel\\");
+	        Path Sendpath = Paths.get("C:\\MyFuel\\Send\\");
+	        Path Recivepath = Paths.get("C:\\MyFuel\\Recieve\\");
+			Files.createDirectories(path);
+			Files.createDirectories(Sendpath);
+			Files.createDirectories(Recivepath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        //////////////////////////////////////////////////////////////////////////////
     			if(comboReportType.getValue().equals("Quarterly Revenue Report"))
         		{
-        			System.out.println(refuelings.get(0).getQunatity());
-        			String path = System.getProperty("user.dir")+"/config.xml";
-        			File myObj = new File(path);
-        		      try {
+    				File myObj = new File("");
+        		      FileWriter myWriter;
+  					try {
+  						myWriter = new FileWriter("C:\\MyFuel\\Send\\Quarterly Revenue Report.txt");
+	  					 myWriter.write("\n-----------------------------------------------------------------------------------");
+
+  					  myWriter.write("\nGasoline 95 Details\n");
+  						for(int i=0;i<refuelings.size();i++)
+  	        			{
+  	        				if(refuelings.get(i).getGasType().equals("Gasoline 95")) {
+    							
+  	        				gasolineQuantity=refuelings.get(i).getQunatity();
+  	        				double d=Double.parseDouble(gasolineQuantity);
+  	        				GasolineQuantity+=d;
+  	        				gasolineQuantity=String.valueOf(GasolineQuantity); 
+  	        				gasolinePrices=refuelings.get(i).getPrice();
+  	        				double d2=Double.parseDouble(gasolinePrices);
+  	        				GasolinePrices+=d2;
+  	        				gasolinePrices=String.valueOf(GasolinePrices); 
+  							  myWriter.write("OrderID:"+refuelings.get(i).getOrderID()+" "+" Car Number::"+refuelings.get(i).getCarNumber()+" "+" Gas Station:"+refuelings.get(i).getGasStation()+" "+" Address:"+refuelings.get(i).getAddress()+" "+" Gas Type::"+refuelings.get(i).getGasType()+" "+" Quantity:"+refuelings.get(i).getQunatity()+" "+" Price:"+refuelings.get(i).getPrice()+" Date:"+refuelings.get(i).getDate()+"\n");  	        			
+  	        				}
+  	        			}
+	  					  myWriter.write("Gasoline Qunatity is:"+gasolineQuantity);
+	  					 myWriter.write("\nGasoline Prices is:"+gasolinePrices);
+	  					 myWriter.write("\n-----------------------------------------------------------------------------------");
+	  					  myWriter.write("\n\nDeisel Fuel Details\n");
+
+  						for(int i=0;i<refuelings.size();i++)
+  	        			{
+  							 if(refuelings.get(i).getGasType().equals("Diesel fuel")) {
+  		      					myWriter.write("Deisel Fuel Details");
+  		          				deiselQuantity=refuelings.get(i).getQunatity();
+  		          				double d=Double.parseDouble(deiselQuantity);
+  		          				DeiselQuantity+=d;
+  		          				deiselQuantity=String.valueOf(DeiselQuantity);  
+  		          			deiselPrices=refuelings.get(i).getPrice();
+  	        				double d2=Double.parseDouble(deiselPrices);
+  	        				DeiselPrices+=d2;
+  	        				deiselPrices=String.valueOf(DeiselPrices); 
+  								  myWriter.write("OrderID:"+refuelings.get(i).getOrderID()+" "+" Car Number::"+refuelings.get(i).getCarNumber()+" "+" Gas Station:"+refuelings.get(i).getGasStation()+" "+" Address:"+refuelings.get(i).getAddress()+" "+" Gas Type::"+refuelings.get(i).getGasType()+" "+" Quantity:"+refuelings.get(i).getQunatity()+" "+" Price:"+refuelings.get(i).getPrice()+" Date:"+refuelings.get(i).getDate()+"\n");  	        			  
+  		      				}
+  	        			}
+	
+	  					  myWriter.write("Deisel Qunatity is:"+deiselQuantity);
+	  					 myWriter.write("\nDeisel Prices is:"+deiselPrices);
+	  					 myWriter.write("\n-----------------------------------------------------------------------------------");
+
+	  					  myWriter.write("\n\nScooter Fuel Details\n");
+
+	  						for(int i=0;i<refuelings.size();i++)
+	  	        			{
+	  							 if(refuelings.get(i).getGasType().equals("Scooters fuel")) {
+	  		      					myWriter.write("Scooters fuel Fuel Details");
+	  		          				scooterQuantity=refuelings.get(i).getQunatity();
+	  		          				double d=Double.parseDouble(scooterQuantity);
+	  		          				ScooterQuantity+=d;
+	  		          				scooterQuantity=String.valueOf(ScooterQuantity);  
+	  		          			scooterPrices=refuelings.get(i).getPrice();
+	  	        				double d2=Double.parseDouble(scooterPrices);
+	  	        				ScooterPrices+=d2;
+	  	        				scooterPrices=String.valueOf(ScooterPrices); 
+	  								  myWriter.write("OrderID:"+refuelings.get(i).getOrderID()+" "+" Car Number::"+refuelings.get(i).getCarNumber()+" "+" Gas Station:"+refuelings.get(i).getGasStation()+" "+" Address:"+refuelings.get(i).getAddress()+" "+" Gas Type::"+refuelings.get(i).getGasType()+" "+" Quantity:"+refuelings.get(i).getQunatity()+" "+" Price:"+refuelings.get(i).getPrice()+" Date:"+refuelings.get(i).getDate()+"\n");  	        			  
+	  		      				}
+	  	        			}
+		  					  myWriter.write("Scooter Qunatity is:"+scooterQuantity);
+		  					 myWriter.write("\nScooter Prices is:"+scooterPrices);
+		  					 double allprices;
+		  					 allprices=DeiselPrices+GasolinePrices+ScooterPrices;
+		  					 
+		  					 myWriter.write("\n\n\nAll Prices is:"+allprices);
+  		        		      myWriter.close();
+  		        		      //////////////////////////send file
+  		        		     MyFile msg= new MyFile(comboReportType.getValue()+".txt");
+  							  try{
+  								      File newFile = new File (myObj.getPath());      
+  								      System.out.println(newFile.getPath().toString());
+  								      byte [] mybytearray  = new byte [(int)newFile.length()];
+  								      FileInputStream fis = new FileInputStream(newFile);
+  								      BufferedInputStream bis = new BufferedInputStream(fis);			  
+  								      msg.initArray(mybytearray.length);
+  								      msg.setSize(mybytearray.length);
+  								      bis.read(msg.getMybytearray(),0,mybytearray.length);
+  								    }
+  								catch (Exception e) {
+  									System.out.println("Error send (Files)msg) to Server");
+  								}
+  								 //StationManagerReportController.acainstance.details.accept(new Message(58, msg));
+  					} catch (IOException e) {
+  						// TODO Auto-generated catch block
+  						e.printStackTrace();
+  					}  
+        		
+        			 
+        		}
+        		
+        		else if(comboReportType.getValue().equals("Purchases Report"))
+        		{
+        			File myObj = new File("");
+      		      try {
 						if (myObj.createNewFile()) {
 						    System.out.println("File created: " + myObj.getName());
 						  } else {
@@ -101,20 +232,68 @@ public class StationManagerReportController implements Initializable {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+      		      FileWriter myWriter;
+					try {
+						myWriter = new FileWriter("C:\\MyFuel\\Send\\Purchases Report.txt");
+						for(int i=0;i<refuelings.size();i++) {
+						   myWriter.write("OrderID:"+refuelings.get(i).getOrderID()+" "+" Car Number::"+refuelings.get(i).getCarNumber()+" "+" Gas Station:"+refuelings.get(i).getGasStation()+" "+" Address:"+refuelings.get(i).getAddress()+" "+" Gas Type::"+refuelings.get(i).getGasType()+" "+" Rate:"+refuelings.get(i).getRateForLiter()+" "+" Quantity:"+refuelings.get(i).getOwnerID()+" "+" Price:"+refuelings.get(i).getPrice()+" Date:"+refuelings.get(i).getDate()+" "+" Pump:"+refuelings.get(i).getPumpNumber()+"\n");
+									}
+		        		      myWriter.close();
+		        		      System.out.println("Successfully wrote to the file.");
+		        		      MyFile msg= new MyFile("Purchases Report.txt");
+							  try{
+								      File newFile = new File (myObj.getPath());      
+								      byte [] mybytearray  = new byte [(int)newFile.length()];
+								      FileInputStream fis = new FileInputStream(newFile);
+								      BufferedInputStream bis = new BufferedInputStream(fis);			  
+								      msg.initArray(mybytearray.length);
+								      msg.setSize(mybytearray.length);
+								      bis.read(msg.getMybytearray(),0,mybytearray.length);
+								    }
+								catch (Exception e) {
+									System.out.println("Error send (Files)msg) to Server");
+								}
+								// StationManagerReportController.acainstance.details.accept(new Message(58, msg));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}  
+					
 
-        		}
-        		else if(comboReportType.getValue().equals("Purchases Report"))
-        		{
-        			
-        			System.out.println("2");
-        		}
+					}
         		else if(comboReportType.getValue().equals("Quantity in stock Report"))
         		{
-        			System.out.println("3");
+        			 String Gasoline,Deisel,Scooter,StationName,StationAddress;
+        			for(int i=0;i<stations.size();i++)
+        			{
+        				if(stations.get(i).getManagerIDString().equals(user.getId()))
+        				{
+        					Gasoline=stations.get(i).getGasolineQuantity();
+        					Deisel=stations.get(i).getDieselQuantity();
+        					Scooter=stations.get(i).getScooterQuantity();
+        					StationName=stations.get(i).getStationName();
+        					StationAddress=stations.get(i).getStationAddress();
+        				 try {
+        	      		    	File myObj = new File("");
+        	        		      FileWriter myWriter;
+        							myWriter = new FileWriter("C:\\MyFuel\\Send\\Quantity in stock Report.txt");
+        						myWriter.write("Quantity in stock Report\n");
+        						myWriter.write("\nStation Name is:"+StationName);
+        						myWriter.write("\nStation Address is:"+StationAddress);
+        						myWriter.write("\nGasoline:"+ Gasoline+" Liters");
+        						myWriter.write("\nDeisel:"+ Deisel+" Liters");
+        						myWriter.write("\nScooter:"+ Scooter+" Liters");
+        					    myWriter.close();
+        					} catch (IOException e) {
+        						// TODO Auto-generated catch block
+        						e.printStackTrace();
+        					}
+        				}
+        	        			}
         			}
-    }
+        			}
+   
 
-  
     @FXML
     void SelectReport(ActionEvent event) {
     	
@@ -157,6 +336,7 @@ public class StationManagerReportController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance=this;
+		details.accept(new Message(59, null));
 		ReportType.add("Quarterly Revenue Report");
 		ReportType.add("Purchases Report");
 		ReportType.add("Quantity in stock Report");

@@ -8,6 +8,7 @@ import ocsf.client.*;
 import client.*;
 import common.ChatIF;
 import common.Message;
+import common.MyFile;
 import gui.EmployeeFrameController;
 import gui.HomeHeatingOrderController;
 import gui.HomeHeatingOrderTrackController;
@@ -529,7 +530,31 @@ public class ChatClient extends AbstractClient
 				  StationManagerReportController.acainstance.RefuelingAcceptor(Ref);
 			    });
 			  break;
-		
+		  case 58:
+			  MyFile file;
+				file=(MyFile) recieved.getObject();
+			  String LocalfilePath="C:\\MyFuel\\Send\\Quarterly Revenue Report.txt";
+				String filename=file.getFileName();
+				  // System.out.println(file);
+			  try{
+				      File newFile = new File (LocalfilePath);      
+				      byte [] mybytearray  = new byte [(int)newFile.length()];
+				      FileInputStream fis = new FileInputStream(newFile);
+				      BufferedInputStream bis = new BufferedInputStream(fis);			  
+				      file.initArray(mybytearray.length);
+				      file.setSize(mybytearray.length);
+				      bis.read(file.getMybytearray(),0,mybytearray.length);
+				      sendToServer(file);		      
+				    }
+				catch (Exception e) {
+					System.out.println("Error send (Files)msg) to Server");
+				}
+			break;
+		  case 59:
+			  ArrayList<?> StationDetails =(ArrayList<?>)recieved.getObject();
+				 ArrayList<StationsInventory> stationdetails=(ArrayList<StationsInventory>)StationDetails;
+				 StationManagerReportController.acainstance.StationAcceptor(stationdetails);
+				 break;
   }
   }
   

@@ -27,6 +27,7 @@ import Entity.Sales;
 import Entity.StationsInventory;
 import Entity.User;
 import common.Message;
+import common.MyFile;
 import gui.Employee;
 import gui.MarketingManagerRateController;
 import gui.NetworkManagerApproveRatesController;
@@ -801,9 +802,8 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
-	case 57:// add car 
+	case 57:// date select
 		ArrayList<String> Dates=new ArrayList<String>();
-
 		Dates=(ArrayList<String>) recieved.getObject();
 			ArrayList<Refueling> Ref;
 			try {
@@ -818,6 +818,42 @@ public class EchoServer extends AbstractServer {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+		break;
+	case 58:// recive file
+		MyFile file;
+		file=(MyFile) recieved.getObject();
+		  int fileSize =((MyFile)file).getSize(); 
+		  String LocalfilePath="C:\\MyFuel\\Recieve\\";
+		  String filelocation=LocalfilePath.concat(file.getFileName());
+		  System.out.println(filelocation);
+		      File newFile = new File (filelocation);     
+		      OutputStream fis;
+				try {
+					System.out.println(fileSize);
+					fis =new FileOutputStream(newFile);
+					BufferedOutputStream bis = new BufferedOutputStream(fis);
+					System.out.println(file.getSize());
+						bis.write(file.getMybytearray(),0, file.getSize());
+				} catch (  IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		break;
+	case 59:// Order Done Alert Table
+		try {
+			ArrayList<StationsInventory> aa;
+			try {
+				aa = DBconnector.StationDetails(DBconnector.getConnection());
+				Object bb = aa;
+				client.sendToClient(new Message(59, bb));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		break;
 		}
 		}

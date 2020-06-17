@@ -1329,4 +1329,31 @@ public static ArrayList<Entity.Refueling> RefuelingDateSelect(java.sql.Connectio
 	}
 	return arr;
 }
+public static ArrayList<Entity.StationsInventory> StationDetails(java.sql.Connection connection)
+{
+	StationsInventory station;
+	Statement stmt;
+	ArrayList<StationsInventory> arr = new ArrayList<StationsInventory>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT * FROM my_fuel.stations;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.stations;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	   
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			station=new StationsInventory(rs.getString(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11));
+			arr.add(station);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
 }
