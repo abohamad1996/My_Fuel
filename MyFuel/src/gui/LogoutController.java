@@ -33,6 +33,7 @@ public class LogoutController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 					
 	
+		
 	
 	}
 	
