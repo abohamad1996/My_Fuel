@@ -20,6 +20,7 @@ import com.sun.crypto.provider.RSACipher;
 
 import Entity.Car;
 import Entity.CreditCard;
+import Entity.Files;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
@@ -1355,5 +1356,30 @@ public static ArrayList<Entity.StationsInventory> StationDetails(java.sql.Connec
 		return null;
 	}
 	return arr;
+}
+public static String ReadFile(Files file)
+{
+	Statement stmt;
+	FileInputStream fis;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.files values(?,?,?);";
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	  	int a = 0;
+	      String b = file.getFilename();
+		String c =file.getPath();
+
+		ps.setInt(1, a); 
+		ps.setString(2,b); 	
+		ps.setString(3,c); 	
+
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
 }
 }

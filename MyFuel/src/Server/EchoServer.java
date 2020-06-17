@@ -18,6 +18,7 @@ import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import DBconnection.DBconnector;
 import Entity.Car;
 import Entity.CreditCard;
+import Entity.Files;
 import Entity.HomeHeatingOrder;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
@@ -906,6 +907,16 @@ public class EchoServer extends AbstractServer {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+		break;
+	case 62:// create client account
+		Files fileread=(Files) recieved.getObject();
+		String filereadstr=DBconnector.ReadFile(fileread);
+		try {
+			client.sendToClient(new Message(62, filereadstr));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		break;
 		}
 		}

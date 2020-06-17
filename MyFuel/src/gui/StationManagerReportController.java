@@ -196,6 +196,7 @@ public class StationManagerReportController implements Initializable {
   		        		      myWriter.close();
   		        		      //////////////////////////send file
   		        		     MyFile msg= new MyFile(comboReportType.getValue()+".txt");
+  		        		     Entity.Files f=new Entity.Files(0, msg.getFileName(), myObj.getPath());
   							  try{
   								      File newFile = new File (myObj.getPath());      
   								      System.out.println(newFile.getPath().toString());
@@ -205,8 +206,11 @@ public class StationManagerReportController implements Initializable {
   								      msg.initArray(mybytearray.length);
   								      msg.setSize(mybytearray.length);
   								      bis.read(msg.getMybytearray(),0,mybytearray.length);
+  		  		        		     System.out.println(f.toString());
+
   	  								 StationManagerReportController.acainstance.details.accept(new Message(61, msg));
-  	   		        
+  	  								// StationManagerReportController.acainstance.details.accept(new Message(62, f));
+
   	   		        		
   								    }
   								catch (Exception e) {
@@ -242,6 +246,7 @@ public class StationManagerReportController implements Initializable {
 		        		      myWriter.close();
 		        		      System.out.println("Successfully wrote to the file.");
 		        		      MyFile msg= new MyFile("Purchases Report.txt");
+		        		      Entity.Files f=new Entity.Files(0, msg.getFileName(), myObj.getPath());
 							  try{
 								      File newFile = new File (myObj.getPath());      
 								      byte [] mybytearray  = new byte [(int)newFile.length()];
@@ -251,6 +256,8 @@ public class StationManagerReportController implements Initializable {
 								      msg.setSize(mybytearray.length);
 								      bis.read(msg.getMybytearray(),0,mybytearray.length);
 	  								StationManagerReportController.acainstance.details.accept(new Message(60, msg));
+	  								StationManagerReportController.acainstance.details.accept(new Message(62, f));
+
 								    }
 								catch (Exception e) {
 									System.out.println("Error send (Files)msg) to Server");
@@ -286,6 +293,8 @@ public class StationManagerReportController implements Initializable {
         						myWriter.write("\nScooter:"+ Scooter+" Liters");
         					    myWriter.close();
         					    MyFile msg= new MyFile("Quantity in stock Report.txt");
+  		        		      Entity.Files f=new Entity.Files(0, msg.getFileName(), myObj.getPath());
+
   							  try{
   								      File newFile = new File (myObj.getPath());      
   								      byte [] mybytearray  = new byte [(int)newFile.length()];
@@ -295,7 +304,7 @@ public class StationManagerReportController implements Initializable {
   								      msg.setSize(mybytearray.length);
   								      bis.read(msg.getMybytearray(),0,mybytearray.length);
   									 StationManagerReportController.acainstance.details.accept(new Message(58, msg));
-  									
+  									 StationManagerReportController.acainstance.details.accept(new Message(62, f));
   							  }
   								catch (Exception e) {
   									System.out.println("Error send (Files)msg) to Server");

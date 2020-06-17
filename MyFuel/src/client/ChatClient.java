@@ -593,6 +593,12 @@ public class ChatClient extends AbstractClient
 							e.printStackTrace();
 						}
 			break;
+		  case 62:
+			  String filereader = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				//  ClientRegisterController.acainstance.status.setText(filereader + " Updated!");
+			    });
+			  break;
   }
   }
   
