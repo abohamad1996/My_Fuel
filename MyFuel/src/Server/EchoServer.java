@@ -825,15 +825,17 @@ public class EchoServer extends AbstractServer {
 		  int fileSize =((MyFile)file).getSize(); 
 		  String LocalfilePath="C:\\MyFuel\\Recieve\\";
 		  String filelocation=LocalfilePath.concat(file.getFileName());
-		  System.out.println(filelocation);
-		      File newFile = new File (filelocation);     
-		      OutputStream fis;
+		      File newFile = new File (filelocation); 
+		      System.out.println(filelocation);
+		      System.out.println(fileSize);
+		      System.out.println(file.getMybytearray().length);
+		      FileOutputStream fis;
 				try {
-					System.out.println(fileSize);
 					fis =new FileOutputStream(newFile);
 					BufferedOutputStream bis = new BufferedOutputStream(fis);
-					System.out.println(file.getSize());
-						bis.write(file.getMybytearray(),0, file.getSize());
+						bis.write(file.getMybytearray(),0, fileSize);
+						bis.flush();
+						fis.flush();
 				} catch (  IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -854,6 +856,52 @@ public class EchoServer extends AbstractServer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		break;
+	case 60:// recive file
+		MyFile file2;
+		file2=(MyFile) recieved.getObject();
+		  int fileSize2 =((MyFile)file2).getSize(); 
+		  String LocalfilePath2="C:\\MyFuel\\Recieve\\";
+		  String filelocation2=LocalfilePath2.concat(file2.getFileName());
+		  System.out.println(filelocation2);
+		      File newFile2 = new File (filelocation2); 
+		      System.out.println(filelocation2);
+		      System.out.println(fileSize2);
+		      System.out.println(file2.getMybytearray().length);
+		      FileOutputStream fis2;
+				try {
+					fis2 =new FileOutputStream(newFile2);
+					BufferedOutputStream bis2 = new BufferedOutputStream(fis2);
+						bis2.write(file2.getMybytearray(),0, fileSize2);
+						bis2.flush();
+						fis2.flush();
+				} catch (  IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		break;
+	case 61:// recive file
+		MyFile file3;
+		file3=(MyFile) recieved.getObject();
+		  int fileSize3 =((MyFile)file3).getSize(); 
+		  String LocalfilePath3="C:\\MyFuel\\Recieve\\";
+		  String filelocation3=LocalfilePath3.concat(file3.getFileName());
+		  System.out.println(filelocation3);
+		      File newFile3 = new File (filelocation3); 
+		      System.out.println(filelocation3);
+		      System.out.println(fileSize3);
+		      System.out.println(file3.getMybytearray().length);
+		      FileOutputStream fis3;
+				try {
+					fis3 =new FileOutputStream(newFile3);
+					BufferedOutputStream bis3 = new BufferedOutputStream(fis3);
+						bis3.write(file3.getMybytearray(),0, fileSize3);
+						bis3.flush();
+						fis3.flush();
+				} catch (  IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		break;
 		}
 		}

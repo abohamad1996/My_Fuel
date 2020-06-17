@@ -124,7 +124,7 @@ public class StationManagerReportController implements Initializable {
         //////////////////////////////////////////////////////////////////////////////
     			if(comboReportType.getValue().equals("Quarterly Revenue Report"))
         		{
-    				File myObj = new File("");
+    				File myObj = new File("C:\\MyFuel\\Send\\Quarterly Revenue Report.txt");
         		      FileWriter myWriter;
   					try {
   						myWriter = new FileWriter("C:\\MyFuel\\Send\\Quarterly Revenue Report.txt");
@@ -206,11 +206,12 @@ public class StationManagerReportController implements Initializable {
   								      msg.initArray(mybytearray.length);
   								      msg.setSize(mybytearray.length);
   								      bis.read(msg.getMybytearray(),0,mybytearray.length);
+  	  								 StationManagerReportController.acainstance.details.accept(new Message(61, msg));
+
   								    }
   								catch (Exception e) {
   									System.out.println("Error send (Files)msg) to Server");
   								}
-  								 //StationManagerReportController.acainstance.details.accept(new Message(58, msg));
   					} catch (IOException e) {
   						// TODO Auto-generated catch block
   						e.printStackTrace();
@@ -221,7 +222,7 @@ public class StationManagerReportController implements Initializable {
         		
         		else if(comboReportType.getValue().equals("Purchases Report"))
         		{
-        			File myObj = new File("");
+        			File myObj = new File("C:\\MyFuel\\Send\\Purchases Report.txt");
       		      try {
 						if (myObj.createNewFile()) {
 						    System.out.println("File created: " + myObj.getName());
@@ -249,11 +250,11 @@ public class StationManagerReportController implements Initializable {
 								      msg.initArray(mybytearray.length);
 								      msg.setSize(mybytearray.length);
 								      bis.read(msg.getMybytearray(),0,mybytearray.length);
+	  								StationManagerReportController.acainstance.details.accept(new Message(60, msg));
 								    }
 								catch (Exception e) {
 									System.out.println("Error send (Files)msg) to Server");
 								}
-								// StationManagerReportController.acainstance.details.accept(new Message(58, msg));
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -274,7 +275,7 @@ public class StationManagerReportController implements Initializable {
         					StationName=stations.get(i).getStationName();
         					StationAddress=stations.get(i).getStationAddress();
         				 try {
-        	      		    	File myObj = new File("");
+        	      		    	File myObj = new File("C:\\MyFuel\\Send\\Quantity in stock Report.txt");
         	        		      FileWriter myWriter;
         							myWriter = new FileWriter("C:\\MyFuel\\Send\\Quantity in stock Report.txt");
         						myWriter.write("Quantity in stock Report\n");
@@ -284,6 +285,20 @@ public class StationManagerReportController implements Initializable {
         						myWriter.write("\nDeisel:"+ Deisel+" Liters");
         						myWriter.write("\nScooter:"+ Scooter+" Liters");
         					    myWriter.close();
+        					    MyFile msg= new MyFile("Quantity in stock Report.txt");
+  							  try{
+  								      File newFile = new File (myObj.getPath());      
+  								      byte [] mybytearray  = new byte [(int)newFile.length()];
+  								      FileInputStream fis = new FileInputStream(newFile);
+  								      BufferedInputStream bis = new BufferedInputStream(fis);			  
+  								      msg.initArray(mybytearray.length);
+  								      msg.setSize(mybytearray.length);
+  								      bis.read(msg.getMybytearray(),0,mybytearray.length);
+  									 StationManagerReportController.acainstance.details.accept(new Message(58, msg));
+  								    }
+  								catch (Exception e) {
+  									System.out.println("Error send (Files)msg) to Server");
+  								}
         					} catch (IOException e) {
         						// TODO Auto-generated catch block
         						e.printStackTrace();
@@ -292,8 +307,7 @@ public class StationManagerReportController implements Initializable {
         	        			}
         			}
         			}
-   
-
+  
     @FXML
     void SelectReport(ActionEvent event) {
     	

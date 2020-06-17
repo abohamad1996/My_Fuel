@@ -533,28 +533,66 @@ public class ChatClient extends AbstractClient
 		  case 58:
 			  MyFile file;
 				file=(MyFile) recieved.getObject();
-			  String LocalfilePath="C:\\MyFuel\\Send\\Quarterly Revenue Report.txt";
-				String filename=file.getFileName();
-				  // System.out.println(file);
-			  try{
-				      File newFile = new File (LocalfilePath);      
-				      byte [] mybytearray  = new byte [(int)newFile.length()];
-				      FileInputStream fis = new FileInputStream(newFile);
-				      BufferedInputStream bis = new BufferedInputStream(fis);			  
-				      file.initArray(mybytearray.length);
-				      file.setSize(mybytearray.length);
-				      bis.read(file.getMybytearray(),0,mybytearray.length);
-				      sendToServer(file);		      
-				    }
-				catch (Exception e) {
-					System.out.println("Error send (Files)msg) to Server");
-				}
+				  int fileSize =((MyFile)file).getSize(); 
+				  String LocalfilePath="C:\\MyFuel\\Recieve\\";
+				  String filelocation=LocalfilePath.concat(file.getFileName());
+				      File newFile = new File (filelocation); 
+				      System.out.println(filelocation);
+				      System.out.println(fileSize);
+				      System.out.println(file.getMybytearray().length);
+				      OutputStream fis;
+						try {
+							fis =new FileOutputStream(newFile);
+							BufferedOutputStream bis = new BufferedOutputStream(fis);
+								bis.write(file.getMybytearray(),0, fileSize);
+						} catch (  IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 			break;
 		  case 59:
 			  ArrayList<?> StationDetails =(ArrayList<?>)recieved.getObject();
 				 ArrayList<StationsInventory> stationdetails=(ArrayList<StationsInventory>)StationDetails;
 				 StationManagerReportController.acainstance.StationAcceptor(stationdetails);
 				 break;
+		  case 60:
+			  MyFile file2;
+				file2=(MyFile) recieved.getObject();
+				  int fileSize2 =((MyFile)file2).getSize(); 
+				  String LocalfilePath2="C:\\MyFuel\\Recieve\\";
+				  String filelocation2=LocalfilePath2.concat(file2.getFileName());
+				      File newFile2 = new File (filelocation2); 
+				      System.out.println(filelocation2);
+				      System.out.println(fileSize2);
+				      System.out.println(file2.getMybytearray().length);
+				      OutputStream fis2;
+						try {
+							fis2 =new FileOutputStream(newFile2);
+							BufferedOutputStream bis2 = new BufferedOutputStream(fis2);
+								bis2.write(file2.getMybytearray(),0, fileSize2);
+						} catch (  IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+			break;
+		  case 61:
+			  MyFile file3;
+				file3=(MyFile) recieved.getObject();
+				  int fileSize3 =((MyFile)file3).getSize(); 
+				  String LocalfilePath3="C:\\MyFuel\\Recieve\\";
+				  String filelocation3=LocalfilePath3.concat(file3.getFileName());
+				      File newFile3 = new File (filelocation3); 
+				     
+				      OutputStream fis3;
+						try {
+							fis3 =new FileOutputStream(newFile3);
+							BufferedOutputStream bis3 = new BufferedOutputStream(fis3);
+								bis3.write(file3.getMybytearray(),0, fileSize3);
+						} catch (  IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+			break;
   }
   }
   
