@@ -150,7 +150,6 @@ public class StationManagerReportController implements Initializable {
 	  					 myWriter.write("\nGasoline Prices is:"+gasolinePrices);
 	  					 myWriter.write("\n-----------------------------------------------------------------------------------");
 	  					  myWriter.write("\n\nDeisel Fuel Details\n");
-
   						for(int i=0;i<refuelings.size();i++)
   	        			{
   							 if(refuelings.get(i).getGasType().equals("Diesel fuel")) {
@@ -207,7 +206,8 @@ public class StationManagerReportController implements Initializable {
   								      msg.setSize(mybytearray.length);
   								      bis.read(msg.getMybytearray(),0,mybytearray.length);
   	  								 StationManagerReportController.acainstance.details.accept(new Message(61, msg));
-
+  	   		        
+  	   		        		
   								    }
   								catch (Exception e) {
   									System.out.println("Error send (Files)msg) to Server");
@@ -295,7 +295,8 @@ public class StationManagerReportController implements Initializable {
   								      msg.setSize(mybytearray.length);
   								      bis.read(msg.getMybytearray(),0,mybytearray.length);
   									 StationManagerReportController.acainstance.details.accept(new Message(58, msg));
-  								    }
+  									
+  							  }
   								catch (Exception e) {
   									System.out.println("Error send (Files)msg) to Server");
   								}

@@ -29,6 +29,9 @@ public class MarketingManagerController implements Initializable{
 	    private SplitPane splitpane;
 
 	    @FXML
+	    private Button btnSystem;
+
+	    @FXML
 	    private Button btnHome;
 
 	    @FXML
@@ -76,7 +79,7 @@ public class MarketingManagerController implements Initializable{
 	public static HomePage HomePage;
 	public static MarketingManagerRateController rates;
 	public static MarketingManagerSaleController sales;
-
+	public static AnalayticSystemController system;
 	public void start(User user) {
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -195,7 +198,13 @@ public class MarketingManagerController implements Initializable{
 	
 	
 	
-	
+	   @FXML
+	    void System(ActionEvent event) {
+		   DiroctoryBar.setText("My Fuel->Analaytic System");
+		   system = new AnalayticSystemController();
+	    	runLater(() -> {
+	    		system.start(splitpane, user, "User");
+	});	    }
 	
 	
 	@Override

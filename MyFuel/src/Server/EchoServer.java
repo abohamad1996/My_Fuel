@@ -836,6 +836,7 @@ public class EchoServer extends AbstractServer {
 						bis.write(file.getMybytearray(),0, fileSize);
 						bis.flush();
 						fis.flush();
+						client.sendToClient(new Message(58, null));
 				} catch (  IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -875,6 +876,8 @@ public class EchoServer extends AbstractServer {
 						bis2.write(file2.getMybytearray(),0, fileSize2);
 						bis2.flush();
 						fis2.flush();
+						client.sendToClient(new Message(60, null));
+
 				} catch (  IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -898,6 +901,7 @@ public class EchoServer extends AbstractServer {
 						bis3.write(file3.getMybytearray(),0, fileSize3);
 						bis3.flush();
 						fis3.flush();
+						client.sendToClient(new Message(61, null));
 				} catch (  IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
