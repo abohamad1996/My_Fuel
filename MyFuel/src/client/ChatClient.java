@@ -28,6 +28,7 @@ import gui.StationDetailsController;
 import gui.StationManagerInventoryController;
 import gui.StationManagerOrderCompletedController;
 import gui.StationManagerOrderConfirmationController;
+import gui.StationManagerReportController;
 import gui.SupplierController;
 import gui.SupplierOrderController;
 import gui.CarRegisterController;
@@ -522,6 +523,13 @@ public class ChatClient extends AbstractClient
 				 // NetworkManagerApproveRatesController.acainstance.status.setText("");
 			    });
 			  break;
+		  case 57:
+			  ArrayList<Refueling> Ref = (ArrayList<Refueling>) recieved.getObject();
+			  Platform.runLater(() -> {
+				  StationManagerReportController.acainstance.RefuelingAcceptor(Ref);
+			    });
+			  break;
+		
   }
   }
   

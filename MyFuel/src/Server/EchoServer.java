@@ -801,6 +801,24 @@ public class EchoServer extends AbstractServer {
 			e.printStackTrace();
 		}
 		break;
+	case 57:// add car 
+		ArrayList<String> Dates=new ArrayList<String>();
+
+		Dates=(ArrayList<String>) recieved.getObject();
+			ArrayList<Refueling> Ref;
+			try {
+				Ref = DBconnector.RefuelingDateSelect(DBconnector.getConnection(), Dates.get(0), Dates.get(1));
+				try {
+					client.sendToClient(new Message(57, Ref));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		break;
 		}
 		}
 	/**

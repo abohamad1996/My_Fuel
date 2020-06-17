@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
@@ -1293,5 +1295,38 @@ public static String UpdateStatusStationManagerSeen(OrderConfirmation order)
 		e.printStackTrace();
 	}
 	return null;
+}
+public static ArrayList<Entity.Refueling> RefuelingDateSelect(java.sql.Connection connection,String From,String To)
+{
+	Refueling refueling;
+	Statement stmt;
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+   
+	ArrayList<Refueling> arr = new ArrayList<Refueling>();
+	try {
+
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "select * from my_fuel.refueling where my_fuel.refueling.date between ? and ?;";
+		ResultSet rs = stmt.executeQuery("select * from my_fuel.refueling");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      String a =From;
+	      String b =To;
+	   ps.setString(1, a);
+	   ps.setString(2, b);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			refueling=new Refueling(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11));
+					arr.add(refueling);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
 }
 }
