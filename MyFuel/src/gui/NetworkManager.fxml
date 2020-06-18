@@ -92,6 +92,11 @@
                         <Button fx:id="btnNotification" mnemonicParsing="false" onAction="#RatesApprove" styleClass="root4" stylesheets="@css2.css" text="There is no notifications" />
                      </graphic>
                   </MenuItem>
+                  <MenuItem fx:id="Files" mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="btnFiles" mnemonicParsing="false" onAction="#FilesReiceved" styleClass="root4" stylesheets="@css2.css" text="There is no recieved files" />
+                     </graphic>
+                  </MenuItem>
                </items>
                <graphic>
                   <ImageView fx:id="notificationAlert" fitHeight="15.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" visible="false">

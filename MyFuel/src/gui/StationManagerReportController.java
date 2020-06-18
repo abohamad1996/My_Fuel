@@ -76,6 +76,8 @@ public class StationManagerReportController implements Initializable {
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
 	public ClientConsole details= new ClientConsole("localhost", 5555);
+	public ClientConsole chat= new ClientConsole("localhost", 5555);
+
 	ArrayList<User> userdetails= new ArrayList<User>();
 	ArrayList<String> ReportType=new ArrayList<String>();
 	 ObservableList<String> ReportList =FXCollections.observableArrayList(); 
@@ -165,13 +167,12 @@ public class StationManagerReportController implements Initializable {
   								  myWriter.write("OrderID:"+refuelings.get(i).getOrderID()+" "+" Car Number::"+refuelings.get(i).getCarNumber()+" "+" Gas Station:"+refuelings.get(i).getGasStation()+" "+" Address:"+refuelings.get(i).getAddress()+" "+" Gas Type::"+refuelings.get(i).getGasType()+" "+" Quantity:"+refuelings.get(i).getQunatity()+" "+" Price:"+refuelings.get(i).getPrice()+" Date:"+refuelings.get(i).getDate()+"\n");  	        			  
   		      				}
   	        			}
-	
+  						
 	  					  myWriter.write("Deisel Qunatity is:"+deiselQuantity);
 	  					 myWriter.write("\nDeisel Prices is:"+deiselPrices);
 	  					 myWriter.write("\n-----------------------------------------------------------------------------------");
 
 	  					  myWriter.write("\n\nScooter Fuel Details\n");
-
 	  						for(int i=0;i<refuelings.size();i++)
 	  	        			{
 	  							 if(refuelings.get(i).getGasType().equals("Scooters fuel")) {
@@ -196,7 +197,6 @@ public class StationManagerReportController implements Initializable {
   		        		      myWriter.close();
   		        		      //////////////////////////send file
   		        		     MyFile msg= new MyFile(comboReportType.getValue()+".txt");
-  		        		     Entity.Files f=new Entity.Files(0, msg.getFileName(), myObj.getPath());
   							  try{
   								      File newFile = new File (myObj.getPath());      
   								      System.out.println(newFile.getPath().toString());
@@ -206,12 +206,14 @@ public class StationManagerReportController implements Initializable {
   								      msg.initArray(mybytearray.length);
   								      msg.setSize(mybytearray.length);
   								      bis.read(msg.getMybytearray(),0,mybytearray.length);
-  		  		        		     System.out.println(f.toString());
-
   	  								 StationManagerReportController.acainstance.details.accept(new Message(61, msg));
-  	  								// StationManagerReportController.acainstance.details.accept(new Message(62, f));
+  	  								 String location="C:\\MyFuel\\Recieve\\";
+  	  								 String reclocation=location.concat(myObj.getName());
+  	  		        		     Entity.Files f=new Entity.Files(0, msg.getFileName(), reclocation,"Not Readed");
+  			        		     System.out.println(f.toString());
 
-  	   		        		
+  	  								 StationManagerReportController.acainstance.chat.accept(new Message(62, f));
+
   								    }
   								catch (Exception e) {
   									System.out.println("Error send (Files)msg) to Server");
@@ -220,7 +222,8 @@ public class StationManagerReportController implements Initializable {
   						// TODO Auto-generated catch block
   						e.printStackTrace();
   					}  
-        		
+	        		   
+
         			 
         		}
         		
@@ -246,7 +249,9 @@ public class StationManagerReportController implements Initializable {
 		        		      myWriter.close();
 		        		      System.out.println("Successfully wrote to the file.");
 		        		      MyFile msg= new MyFile("Purchases Report.txt");
-		        		      Entity.Files f=new Entity.Files(0, msg.getFileName(), myObj.getPath());
+		        		 	 String location="C:\\MyFuel\\Recieve\\";
+								 String reclocation=location.concat(myObj.getName());
+		        		      Entity.Files f=new Entity.Files(0, msg.getFileName(), reclocation,"Not Readed");
 							  try{
 								      File newFile = new File (myObj.getPath());      
 								      byte [] mybytearray  = new byte [(int)newFile.length()];
@@ -256,7 +261,7 @@ public class StationManagerReportController implements Initializable {
 								      msg.setSize(mybytearray.length);
 								      bis.read(msg.getMybytearray(),0,mybytearray.length);
 	  								StationManagerReportController.acainstance.details.accept(new Message(60, msg));
-	  								StationManagerReportController.acainstance.details.accept(new Message(62, f));
+ 	  								 StationManagerReportController.acainstance.chat.accept(new Message(62, f));
 
 								    }
 								catch (Exception e) {
@@ -293,7 +298,9 @@ public class StationManagerReportController implements Initializable {
         						myWriter.write("\nScooter:"+ Scooter+" Liters");
         					    myWriter.close();
         					    MyFile msg= new MyFile("Quantity in stock Report.txt");
-  		        		      Entity.Files f=new Entity.Files(0, msg.getFileName(), myObj.getPath());
+        					 	 String location="C:\\MyFuel\\Recieve\\";
+								 String reclocation=location.concat(myObj.getName());
+  		        		      Entity.Files f=new Entity.Files(0, msg.getFileName(), reclocation,"Not Readed");
 
   							  try{
   								      File newFile = new File (myObj.getPath());      
@@ -304,7 +311,7 @@ public class StationManagerReportController implements Initializable {
   								      msg.setSize(mybytearray.length);
   								      bis.read(msg.getMybytearray(),0,mybytearray.length);
   									 StationManagerReportController.acainstance.details.accept(new Message(58, msg));
-  									 StationManagerReportController.acainstance.details.accept(new Message(62, f));
+  	  								 StationManagerReportController.acainstance.chat.accept(new Message(62, f));
   							  }
   								catch (Exception e) {
   									System.out.println("Error send (Files)msg) to Server");

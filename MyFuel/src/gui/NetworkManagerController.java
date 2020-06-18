@@ -10,6 +10,7 @@ import com.sun.scenario.effect.impl.prism.PrImage;
 
 import DBconnection.DBconnector;
 import javafx.fxml.Initializable;
+import Entity.Files;
 import Entity.Rates;
 import Entity.User;
 import client.ChatClient;
@@ -40,7 +41,11 @@ public class NetworkManagerController implements Initializable {
 	public static NetworkManagerController acainstance;
 		@FXML
 		private MenuButton notificationMenu;
-;
+	    @FXML
+	    private MenuItem Files;
+
+	    @FXML
+	    private Button btnFiles;
 
 	    @FXML
 	    private Button btnHome;
@@ -79,8 +84,11 @@ public class NetworkManagerController implements Initializable {
 	    private MenuItem notification;
 	    @FXML
 	    private Button btnNotification;
-	  
+		public ArrayList<Files> filesarr;
+
 	    ObservableList<Rates> List =FXCollections.observableArrayList(); 
+	    ObservableList<Files> List2 =FXCollections.observableArrayList(); 
+
 	private static User user;
     @FXML
     private SplitPane splitpane;
@@ -90,6 +98,7 @@ public class NetworkManagerController implements Initializable {
 	public static HomePage HomePage;
 	public static  NetworkManagerReciveReportsController reciveReports;
 	public static NetworkManagerApproveRatesController approveRates;
+	public static NetworkManagerReciveReportsController reports;
 	public void start(User user) {
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -235,7 +244,38 @@ public class NetworkManagerController implements Initializable {
 			System.out.println("null");
 		}
 		}
-
+	
+	public void FilesAcceptor(ArrayList<Files> files) {
+		filesarr = (ArrayList<Files>)files.clone();
+		System.out.println(filesarr);
+		List2.addAll(files);
+		System.out.println(List2);
+		if(List2.size()!=0)
+		{
+			btnFiles.setText("There is new report files");
+			Alert(true);
+			
+		}
+		else {
+			System.out.println("null");
+		}
+		}
+    @FXML
+    void FilesReiceved(ActionEvent event) {
+    	if(btnFiles.getText().equals("There is no recieved files"))
+    	{
+    		Alert alert = new Alert(AlertType.ERROR);
+			alert.setAlertType(AlertType.ERROR); 
+			alert.setContentText("There is no Updates!!!");
+			alert.show(); 
+    	}
+    	else {
+  	reports = new NetworkManagerReciveReportsController();
+  	runLater(() -> {
+  		reports.start(splitpane, user, "User");
+  		});   
+  	}
+    }
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
@@ -244,6 +284,7 @@ public class NetworkManagerController implements Initializable {
 		acainstance=this;
 		 ClientConsole details= new ClientConsole("localhost", 5555);
 		 details.accept(new Message(21, null));
+		 details.accept(new Message(64, null));
 		btnRank.setText(user.getRank());
 	    Rank=new MenuItem(user.getRank());
 	       UserMenu.setText(user.getFirstname());

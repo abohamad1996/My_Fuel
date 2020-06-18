@@ -19,6 +19,7 @@ import gui.MarketingManagerSaleController;
 import gui.MarketingRepresentativeController;
 import gui.NetworkManagerApproveRatesController;
 import gui.NetworkManagerController;
+import gui.NetworkManagerReciveReportsController;
 import gui.ProfileSettingsController;
 import gui.PurchasePlanController;
 import gui.RefuelingController;
@@ -59,6 +60,7 @@ import java.util.ArrayList;
 
 import DBconnection.DBconnector;
 import Entity.Car;
+import Entity.Files;
 import Entity.HomeHeatingOrder;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
@@ -597,6 +599,24 @@ public class ChatClient extends AbstractClient
 			  String filereader = (String) recieved.getObject();
 			  Platform.runLater(() -> {
 				//  ClientRegisterController.acainstance.status.setText(filereader + " Updated!");
+			    });
+			  break;
+		  case 63:
+			  ArrayList<Files> files = (ArrayList<Files>) recieved.getObject();
+			  Platform.runLater(() -> {
+				  NetworkManagerReciveReportsController.acainstance.FilesAcceptor(files);
+			    });
+			  break;
+		  case 64:
+			  ArrayList<Files> filesdetect = (ArrayList<Files>) recieved.getObject();
+			  Platform.runLater(() -> {
+				  NetworkManagerController.acainstance.FilesAcceptor(filesdetect);
+			    });
+			  break;
+		  case 65:
+			  String readedfile = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				 // NetworkManagerApproveRatesController.acainstance.status.setText("");
 			    });
 			  break;
   }

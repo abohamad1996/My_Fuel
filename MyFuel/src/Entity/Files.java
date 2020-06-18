@@ -11,18 +11,10 @@ public class Files implements Serializable{
 	int id;
 	String filename;
 	String path;
-	
-	
-	
+	String status;
 	@Override
 	public String toString() {
-		return "Files [id=" + id + ", filename=" + filename + ", path=" + path + "]";
-	}
-	public Files(int id, String filename, String path) {
-		super();
-		this.id = id;
-		this.filename = filename;
-		this.path = path;
+		return "Files [id=" + id + ", filename=" + filename + ", path=" + path + ", status=" + status + "]";
 	}
 	public int getId() {
 		return id;
@@ -42,9 +34,23 @@ public class Files implements Serializable{
 	public void setPath(String path) {
 		this.path = path;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getStatus() {
+		return status;
 	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public Files(int id, String filename, String path, String status) {
+		super();
+		this.id = id;
+		this.filename = filename;
+		this.path = path;
+		this.status = status;
+	}
+	
+	
+	
+	
 	
 
 }

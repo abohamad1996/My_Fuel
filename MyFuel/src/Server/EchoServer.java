@@ -916,8 +916,52 @@ public class EchoServer extends AbstractServer {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
 		break;
+		}
+		case 63:// detect files
+			ArrayList<Files> files=new ArrayList<Files>();
+			files=(ArrayList<Files>) recieved.getObject();
+				ArrayList<Files> filesarr;
+				try {
+					filesarr = DBconnector.DetectFiles(DBconnector.getConnection());
+					try {
+						client.sendToClient(new Message(63, filesarr));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			break;
+		case 64:// detect files
+			ArrayList<Files> filesdetect=new ArrayList<Files>();
+			filesdetect=(ArrayList<Files>) recieved.getObject();
+				ArrayList<Files> filesarrdetect;
+				try {
+					filesarrdetect = DBconnector.DetectFiles(DBconnector.getConnection());
+					try {
+						client.sendToClient(new Message(64, filesarrdetect));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			break;
+		case 65:// update status readed file
+			Files filestatus=(Files) recieved.getObject();
+			String FilesOpen=DBconnector.UpdateStatusStationManagerReaded(filestatus);
+			try {
+				client.sendToClient(new Message(65, FilesOpen));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
 		}
 		}
 	/**
