@@ -1098,6 +1098,23 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+			case 75:// get sales
+				try {
+					ArrayList<Sales> aa;
+					try {
+						aa = DBconnector.GetallSales(DBconnector.getConnection());
+						Object bb = aa;
+						client.sendToClient(new Message(75, bb));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			
 		}
 	}
 		

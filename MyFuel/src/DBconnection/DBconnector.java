@@ -1631,4 +1631,30 @@ public static String endSale(Sales sale)
 		return "error";
 	}
 }
+public static ArrayList<Sales> GetallSales(java.sql.Connection connection)
+{
+	Sales sales;
+	Statement stmt;
+	ArrayList<Sales> arr = new ArrayList<Sales>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT * FROM my_fuel.sales;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.sales;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+				sales=new Sales(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
+			arr.add(sales);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
 }

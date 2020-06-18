@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 import Entity.Rates;
 import Entity.Refueling;
+import Entity.Sales;
 import Entity.User;
 import client.ClientConsole;
 import common.Message;
@@ -52,9 +53,13 @@ public class MarketingManagerNewReports implements Initializable{
 	private AnchorPane lowerAnchorPane;
 	public ClientConsole details= new ClientConsole("localhost", 5555);
 	public ClientConsole chat= new ClientConsole("localhost", 5555);
+	public ClientConsole sales= new ClientConsole("localhost", 5555);
+
 	ArrayList<String> Report=new ArrayList<String>();
 	ArrayList<User> userdetails= new ArrayList<User>();
 	ArrayList<String> ReportType=new ArrayList<String>();
+	ArrayList<Refueling> ref=new ArrayList<Refueling>();
+
 	 ObservableList<String> ReportList =FXCollections.observableArrayList(); 
 	User detailsUser;
 	String gasolineQuantity,gasolinePrices;
@@ -65,8 +70,11 @@ public class MarketingManagerNewReports implements Initializable{
 	double ScooterQuantity,ScooterPrices;
 	public ArrayList<Refueling> refuelings;
 	public ArrayList<User> userClient;
+	public ArrayList<Sales> getSaless;
+	String ID;
 
     ObservableList<User> List =FXCollections.observableArrayList(); 
+    ObservableList<Sales> ListSales =FXCollections.observableArrayList(); 
 
     public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
@@ -84,11 +92,16 @@ public class MarketingManagerNewReports implements Initializable{
 	
 	
 	
+    public void SalesAcceptor(ArrayList<Sales> salse) {
+    	getSaless = (ArrayList<Sales>)salse.clone();
+    	System.out.println(getSaless);
+    	ListSales.addAll(getSaless);
+		}
+    
     public void UserClientAcceptor(ArrayList<User> cleints) {
     	userClient = (ArrayList<User>)cleints.clone();
-    	System.out.println(userClient);
+    	//System.out.println(userClient);
 		List.addAll(cleints);
-	
 		}
 	
 	public void RefuelingAcceptor(ArrayList<Refueling> ref) {
@@ -96,11 +109,14 @@ public class MarketingManagerNewReports implements Initializable{
 		System.out.println(refuelings);
 		}
 	
-  
-
+ 
     @FXML
     void SelectReport(ActionEvent event) {
-
+    	for(int i=0;i<refuelings.size();i++)
+    	{
+    		System.out.println(	refuelings.get(i).toString());
+    
+    	}
     }
 
     @FXML
@@ -131,17 +147,68 @@ public class MarketingManagerNewReports implements Initializable{
 				e.printStackTrace();
 			}
 		      FileWriter myWriter;
+		      int saleid;
+		      int count=0;
+				double Total=0;
+				double TotalClient=0;
 			try {
 				myWriter = new FileWriter("C:\\MyFuel\\MyFuelMarketingManagerReports\\Send\\Comments Report for Marketing Campaign.txt");
-				/*for(int i=0;i<refuelings.size();i++) {
-				   myWriter.write("OrderID:"+refuelings.get(i).getOrderID()+" "+" Car Number::"+refuelings.get(i).getCarNumber()+" "+" Gas Station:"+refuelings.get(i).getGasStation()+" "+" Address:"+refuelings.get(i).getAddress()+" "+" Gas Type::"+refuelings.get(i).getGasType()+" "+" Rate:"+refuelings.get(i).getRateForLiter()+" "+" Quantity:"+refuelings.get(i).getOwnerID()+" "+" Price:"+refuelings.get(i).getPrice()+" Date:"+refuelings.get(i).getDate()+" "+" Pump:"+refuelings.get(i).getPumpNumber()+"\n");
-							}*/
+				for(int i=0;i<getSaless.size();i++) {
+					myWriter.write("-----------------------------------------------------------------------------------\n");
+					myWriter.write("-----------------------------------------------------------------------------------");
+					myWriter.write("\nSales Number" +getSaless.get(i).getIDsales()+"\n\n");
+					for(int j=0;j<refuelings.size();j++) {
+						double d=Double.parseDouble(refuelings.get(j).getPrice());
+
+					//System.out.println(refuelings.get(j).getSaleID());
+					saleid=Integer.valueOf(refuelings.get(j).getSaleID());
+				//System.out.println(saleid);
+					if(saleid==getSaless.get(i).getIDsales())
+					{
+						count++;
+						Total+=d;
+					}
+					}
+						myWriter.write("Number of customers in this sale:"+count+"\n");		
+						myWriter.write("Total money in ths sale:"+Total+"\n");	
+						myWriter.write("-----------------------------------------------------------------------------------\n");
+						Total=0;
+						count=0;
+						}
+				/////////////////
+				double Pay = 0,b;
+				String saleid2;
+					for(int i=0;i<getSaless.size();i++)
+					{
+						saleid2=String.valueOf(getSaless.get(i).getIDsales());
+						for(int j=0;j<refuelings.size();j++)
+						{
+
+							if(saleid2.equals(refuelings.get(j).getSaleID()))
+							{
+								ref.add(refuelings.get(j));
+							
+
+							}
+						}
+						System.out.println("               "+ref);
+					}
+
+				
+				
+				
+				
+					myWriter.write("ID:"+ID+" "+"Number of customers in this sale:"+Pay+"\n");
+						Pay=0;
+				
         		      myWriter.close();
         		      System.out.println("Successfully wrote to the file.");
-        		      MyFile msg= new MyFile("Comments Report for Marketing Campaign");
+        		      MyFile msg= new MyFile("Comments Report for Marketing Campaign.txt");
         		 	 String location="C:\\MyFuel\\MyFuelMarketingManagerReports\\Recieve\\";
 						 String reclocation=location.concat(myObj.getName());
-        		      Entity.Files f=new Entity.Files(0, msg.getFileName(), reclocation,"Not Readed");
+        		      Entity.Files f=new Entity.Files(0, msg.getFileName(), reclocation,"Not Readed Marketing");
+        		      MarketingManagerNewReports.acainstance.details.accept(new Message(69, f));
+
 					  try{
 						      File newFile = new File (myObj.getPath());      
 						      byte [] mybytearray  = new byte [(int)newFile.length()];
@@ -150,8 +217,7 @@ public class MarketingManagerNewReports implements Initializable{
 						      msg.initArray(mybytearray.length);
 						      msg.setSize(mybytearray.length);
 						      bis.read(msg.getMybytearray(),0,mybytearray.length);
-									//StationManagerReportController.acainstance.details.accept(new Message(60, msg));
-									//StationManagerReportController.acainstance.chat.accept(new Message(62, f));
+						      MarketingManagerNewReports.acainstance.details.accept(new Message(68, msg));
 						    }
 						catch (Exception e) {
 							System.out.println("Error send (Files)msg) to Server");
@@ -212,6 +278,7 @@ public class MarketingManagerNewReports implements Initializable{
 		acainstance=this;
 		chat.accept(new Message(66, null));
 		chat.accept(new Message(67, null));
+		chat.accept(new Message(75, null));
 			Report.add("Comments Report for Marketing Campaign");
 			Report.add("Customer Periodic Characterization Report");
 			ReportList.addAll(Report);

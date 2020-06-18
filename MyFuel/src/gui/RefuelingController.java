@@ -152,9 +152,7 @@ public class RefuelingController implements Initializable{
     	System.out.println(sales.getFuelType().compareTo(car2.get(r).getGastype())==0);
     	System.out.println((now.compareTo(sales.getFormHour())>0));
     	System.out.println(sales.getFormHour());*/
-    	
     	//System.out.println((now.compareTo(sales.getToHout())<0));
-    	
     	if (sales==null) {
 			System.out.println("there is no sale at this time");
 			now="10:00";
@@ -200,7 +198,7 @@ public class RefuelingController implements Initializable{
 		refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText(),labelServices.getText(), now2, salesID);
 		}
 		else {
-			refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText(),labelServices.getText(), now2, "");
+			refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText(),labelServices.getText(), now2, "0");
 		}
 		RefuelingController.acainstance.details.accept(new Message(38, refueling));
 		Quantity=txtQuantity.getText();

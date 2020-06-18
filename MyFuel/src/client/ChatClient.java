@@ -689,6 +689,11 @@ public class ChatClient extends AbstractClient
 				 
 			    });
 			  break;
+		  case 75:
+			  ArrayList<?> getSales =(ArrayList<?>)recieved.getObject();
+				 ArrayList<Sales> sales=(ArrayList<Sales>)getSales;
+				 MarketingManagerNewReports.acainstance.SalesAcceptor(sales);
+				 break;
   }
 
   }
