@@ -102,12 +102,10 @@ public class RefuelingController implements Initializable{
 	    int d = rightNow.get(Calendar.DAY_OF_MONTH);
 	    String date=y+"-"+m+"-"+d;
 	   
-        
-
+       
 	    Date loc_Time=new Date();
 	    DateFormat dateFormat = new SimpleDateFormat("hh:mm");
 	 	boolean saleOn=false;
-	 	
 	    double discount ;
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -151,26 +149,28 @@ public class RefuelingController implements Initializable{
     void Calculate(ActionEvent event) {
     	String now=dateFormat.format(loc_Time);
     	System.out.println(now);
-    /*	if (sales==null) {
-			System.out.println("there is no sale at this time ");
+    	System.out.println(sales.getFuelType().compareTo(car2.get(r).getGastype())==0);
+    	System.out.println((now.compareTo(sales.getFormHour())>0));
+    	System.out.println(sales.getFormHour());
+    	
+    	System.out.println((now.compareTo(sales.getToHout())<0));
+    	if (sales==null) {
+			System.out.println("there is no sale at this time");
 		}
     	else {	
     		if (sales.getFuelType().compareTo(car2.get(r).getGastype())==0   &&(now.compareTo(sales.getFormHour())>0)   &&(now.compareTo(sales.getToHout())<0)) {
-        		
+        		System.out.println("aaaaaaaa");
         		discount=Double.valueOf(sales.getDiscount());
-            	
         		saleOn=true;
             	discount=discount/100;
             	discount=1-discount;
-            	
-        	
     		}
 		
-    	}*/
-    	/* if (now.compareTo(sales.getToHout())>=0) {
+    	}
+    	if (now.compareTo(sales.getToHout())>=0) {
     		System.out.println("hello");
-    		RefuelingController.acainstance.details.accept(new Message(59, sales));
-		}*/
+    		RefuelingController.acainstance.details.accept(new Message(74, sales));
+		}
     		
     	
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -217,6 +217,7 @@ public class RefuelingController implements Initializable{
 		}
 	public void checkForSaleAcceptor(Sales sale) {
 		sales = sale;
+		System.out.println(sales);
 		}
 	public void CarAcceptor(ArrayList<Car> car) {
 		car2.addAll(car);
