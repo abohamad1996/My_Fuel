@@ -972,7 +972,7 @@ public static String RefuelinggOrder(Refueling ref)
 	Statement stmt;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "insert into my_fuel.refueling values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String query = "insert into my_fuel.refueling values(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 	      int a=0;
 	      String k=ref.getOwnerID();
@@ -987,6 +987,7 @@ public static String RefuelinggOrder(Refueling ref)
 	     String j=ref.getPumpNumber();
 	     String l=ref.getService();
 	     String m=ref.getTime();
+	     String n=ref.getSaleID();
 	 	ps.setInt(1,a);
 	 	ps.setString(2, k);
 		ps.setString(3,b); 
@@ -1000,6 +1001,7 @@ public static String RefuelinggOrder(Refueling ref)
 		ps.setString(11,j); 
 		ps.setString(12,l); 
 		ps.setString(13,m); 
+		ps.setString(14,n); 
 		System.out.println(""+ps.toString());
 		ps.executeUpdate();
 		return "success";
@@ -1296,7 +1298,7 @@ public static ArrayList<Entity.Refueling> RefuelingDateSelect(java.sql.Connectio
 		while(rs.next())
  		{
 			System.out.println(""+ps.toString());
-			refueling=new Refueling(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11),rs.getString(12),rs.getString(13));
+			refueling=new Refueling(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14));
 					arr.add(refueling);
 			System.out.println(arr);
  		}
@@ -1444,7 +1446,7 @@ public static ArrayList<Entity.Refueling> RefuelingFromDB(java.sql.Connection co
 		while(rs.next())
  		{
 			System.out.println(""+ps.toString());
-			refueling=new Refueling(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13));
+			refueling=new Refueling(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14));
 			arr.add(refueling);
 			System.out.println(arr);
  		}

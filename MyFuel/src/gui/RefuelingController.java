@@ -165,13 +165,11 @@ public class RefuelingController implements Initializable{
             	discount=discount/100;
             	discount=1-discount;
     		}
-		
     	}
     	if (now.compareTo(sales.getToHout())>=0) {
     		System.out.println("hello");
     		RefuelingController.acainstance.details.accept(new Message(74, sales));
 		}
-    		
     	
 //////////////////////////////////////////////////////////////////////////////////////////
     	
@@ -198,8 +196,9 @@ public class RefuelingController implements Initializable{
 		
 		labelPrice.setText(Price);
 		btnStart.setVisible(true);
-		
-		refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText(),labelServices.getText(), now);
+		String salesID=String.valueOf(sales.getIDsales());  
+
+		refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText(),labelServices.getText(), now, salesID);
 		RefuelingController.acainstance.details.accept(new Message(38, refueling));
 		Quantity=txtQuantity.getText();
 		quantity=Double.parseDouble(Quantity);

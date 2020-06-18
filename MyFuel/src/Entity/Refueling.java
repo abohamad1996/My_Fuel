@@ -24,6 +24,33 @@ public class Refueling  implements Serializable{
 	String pumpNumber;
 	String service;
 	String time;
+	String saleID;
+	public Refueling(int orderID, String ownerID, String carNumber, String gasStation, String address, String gasType,
+			String rateForLiter, String qunatity, String price, String date, String pumpNumber, String service,
+			String time, String saleID) {
+		super();
+		OrderID = orderID;
+		this.ownerID = ownerID;
+		CarNumber = carNumber;
+		GasStation = gasStation;
+		this.address = address;
+		GasType = gasType;
+		RateForLiter = rateForLiter;
+		Qunatity = qunatity;
+		Price = price;
+		Date = date;
+		this.pumpNumber = pumpNumber;
+		this.service = service;
+		this.time = time;
+		this.saleID = saleID;
+	}
+	@Override
+	public String toString() {
+		return "Refueling [OrderID=" + OrderID + ", ownerID=" + ownerID + ", CarNumber=" + CarNumber + ", GasStation="
+				+ GasStation + ", address=" + address + ", GasType=" + GasType + ", RateForLiter=" + RateForLiter
+				+ ", Qunatity=" + Qunatity + ", Price=" + Price + ", Date=" + Date + ", pumpNumber=" + pumpNumber
+				+ ", service=" + service + ", time=" + time + ", saleID=" + saleID + "]";
+	}
 	public int getOrderID() {
 		return OrderID;
 	}
@@ -102,33 +129,14 @@ public class Refueling  implements Serializable{
 	public void setTime(String time) {
 		this.time = time;
 	}
+	public String getSaleID() {
+		return saleID;
+	}
+	public void setSaleID(String saleID) {
+		this.saleID = saleID;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-	@Override
-	public String toString() {
-		return "Refueling [OrderID=" + OrderID + ", ownerID=" + ownerID + ", CarNumber=" + CarNumber + ", GasStation="
-				+ GasStation + ", address=" + address + ", GasType=" + GasType + ", RateForLiter=" + RateForLiter
-				+ ", Qunatity=" + Qunatity + ", Price=" + Price + ", Date=" + Date + ", pumpNumber=" + pumpNumber
-				+ ", service=" + service + ", time=" + time + "]";
-	}
-	public Refueling(int orderID, String ownerID, String carNumber, String gasStation, String address, String gasType,
-			String rateForLiter, String qunatity, String price, String date, String pumpNumber, String service,
-			String time) {
-		super();
-		OrderID = orderID;
-		this.ownerID = ownerID;
-		CarNumber = carNumber;
-		GasStation = gasStation;
-		this.address = address;
-		GasType = gasType;
-		RateForLiter = rateForLiter;
-		Qunatity = qunatity;
-		Price = price;
-		Date = date;
-		this.pumpNumber = pumpNumber;
-		this.service = service;
-		this.time = time;
 	}
 
 
