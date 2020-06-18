@@ -824,7 +824,7 @@ public class EchoServer extends AbstractServer {
 		MyFile file;
 		file=(MyFile) recieved.getObject();
 		  int fileSize =((MyFile)file).getSize(); 
-		  String LocalfilePath="C:\\MyFuelStationManagerReports\\Recieve\\";
+		  String LocalfilePath="C:\\MyFuel\\MyFuelStationManagerReports\\Recieve\\";
 		  String filelocation=LocalfilePath.concat(file.getFileName());
 		      File newFile = new File (filelocation); 
 		      System.out.println(filelocation);
@@ -863,7 +863,7 @@ public class EchoServer extends AbstractServer {
 		MyFile file2;
 		file2=(MyFile) recieved.getObject();
 		  int fileSize2 =((MyFile)file2).getSize(); 
-		  String LocalfilePath2="C:\\MyFuelStationManagerReports\\Recieve\\";
+		  String LocalfilePath2="C:\\MyFuel\\MyFuelStationManagerReports\\Recieve\\";
 		  String filelocation2=LocalfilePath2.concat(file2.getFileName());
 		  System.out.println(filelocation2);
 		      File newFile2 = new File (filelocation2); 
@@ -888,7 +888,7 @@ public class EchoServer extends AbstractServer {
 		MyFile file3;
 		file3=(MyFile) recieved.getObject();
 		  int fileSize3 =((MyFile)file3).getSize(); 
-		  String LocalfilePath3="C:\\MyFuelStationManagerReports\\Recieve\\";
+		  String LocalfilePath3="C:\\MyFuel\\MyFuelStationManagerReports\\Recieve\\";
 		  String filelocation3=LocalfilePath3.concat(file3.getFileName());
 		  System.out.println(filelocation3);
 		      File newFile3 = new File (filelocation3); 
@@ -908,7 +908,7 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 		break;
-	case 62:// create client account
+	case 62:// create files 
 		Files fileread=(Files) recieved.getObject();
 		String filereadstr=DBconnector.ReadFile(fileread);
 		try {
@@ -962,8 +962,104 @@ public class EchoServer extends AbstractServer {
 				e.printStackTrace();
 			}
 			break;
+		case 66:// clients from database
+			ArrayList<User> clientsDB=new ArrayList<User>();
+			clientsDB=(ArrayList<User>) recieved.getObject();
+				ArrayList<User> clientsDBarr;
+				try {
+					clientsDBarr = DBconnector.Clients(DBconnector.getConnection());
+					try {
+						client.sendToClient(new Message(66, clientsDBarr));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			break;
+		case 67:// refueling db
+			ArrayList<String> Refueling=new ArrayList<String>();
+			Refueling=(ArrayList<String>) recieved.getObject();
+				ArrayList<Refueling> Refue;
+				try {
+					Refue = DBconnector.RefuelingFromDB(DBconnector.getConnection());
+					try {
+						client.sendToClient(new Message(67, Refue));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			break;
+		case 68:// recive file marketing
+			MyFile file4;
+			file4=(MyFile) recieved.getObject();
+			  int fileSize4 =((MyFile)file4).getSize(); 
+			  String LocalfilePath4="C:\\MyFuel\\MyFuelMarketingManagerReports\\Recieve\\";
+			  String filelocation4=LocalfilePath4.concat(file4.getFileName());
+			      File newFile4 = new File (filelocation4); 
+			      System.out.println(filelocation4);
+			      System.out.println(fileSize4);
+			      System.out.println(file4.getMybytearray().length);
+			      FileOutputStream fis4;
+					try {
+						fis4 =new FileOutputStream(newFile4);
+						BufferedOutputStream bis4 = new BufferedOutputStream(fis4);
+							bis4.write(file4.getMybytearray(),0, fileSize4);
+							bis4.flush();
+							fis4.flush();
+							client.sendToClient(new Message(68, null));
+					} catch (  IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			break;
+		case 69:// create files marketing 
+			Files filereadMarketing=(Files) recieved.getObject();
+			String filereadMarketingstr=DBconnector.ReadFileMarketingManager(filereadMarketing);
+			try {
+				client.sendToClient(new Message(69, filereadMarketingstr));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+			case 70:// detect files marketing manager
+				ArrayList<Files> filesMarketing=new ArrayList<Files>();
+				filesMarketing=(ArrayList<Files>) recieved.getObject();
+					ArrayList<Files> filesMarketingarr;
+					try {
+						filesMarketingarr = DBconnector.DetectFilesMarketingManager(DBconnector.getConnection());
+						try {
+							client.sendToClient(new Message(70, filesMarketingarr));
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				break;
+			case 71:// update status readed file
+				Files filestatusMarketing=(Files) recieved.getObject();
+				String FilesOpenMarketing=DBconnector.UpdateStatusMarketingManagerReaded(filestatusMarketing);
+				try {
+					client.sendToClient(new Message(71, FilesOpenMarketing));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
 		}
 		}
+	
+		
 	/**
 	 * This method overrides the one in the superclass. Called when the server
 	 * starts listening for connections.

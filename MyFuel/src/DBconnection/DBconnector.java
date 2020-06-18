@@ -1426,4 +1426,125 @@ public static String UpdateStatusStationManagerReaded(Files file)
 	}
 	return null;
 }
+public static ArrayList<Entity.User> Clients(java.sql.Connection connection)
+{
+	User user;
+	Statement stmt;
+	ArrayList<User> arr = new ArrayList<User>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT * FROM my_fuel.user where UserRank=\"Client\" or UserRank=\"Client\";";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.user;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			user=new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10));
+			arr.add(user);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
+public static ArrayList<Entity.Refueling> RefuelingFromDB(java.sql.Connection connection)
+{
+	Refueling refueling;
+	Statement stmt;
+	ArrayList<Refueling> arr = new ArrayList<Refueling>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT * FROM my_fuel.refueling;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.user;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			refueling=new Refueling(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getString(11));
+			arr.add(refueling);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
+public static String ReadFileMarketingManager(Files file)
+{
+	Statement stmt;
+	FileInputStream fis;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.files values(?,?,?,?);";
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	  	int a = 0;
+	      String b = file.getFilename();
+		String c =file.getPath();
+		String d=file.getStatus();
+		ps.setInt(1, a); 
+		ps.setString(2,b); 	
+		ps.setString(3,c); 	
+		ps.setString(4, d);
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
+public static ArrayList<Entity.Files> DetectFilesMarketingManager(java.sql.Connection connection)
+{
+	Files files;
+	Statement stmt;
+	ArrayList<Files> arr = new ArrayList<Files>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "select * FROM my_fuel.files WHERE status=\"Not Readed Marketing\";";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.files;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			files=new Files(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+			arr.add(files);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
+public static String UpdateStatusMarketingManagerReaded(Files file)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.files set status=\"Readed\" where id=?;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.files;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	      int a =file.getId();
+	      ps.setInt(1, a);
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
 }

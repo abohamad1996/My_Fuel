@@ -8,10 +8,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Entity.Files;
-import Entity.OrderConfirmation;
-import Entity.StationsInventory;
 import Entity.User;
-import client.ChatClient;
 import client.ClientConsole;
 import common.Message;
 import javafx.collections.FXCollections;
@@ -30,7 +27,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class NetworkManagerReciveReportsController implements Initializable {
+public class MarketingManagerRecieveReports implements Initializable{
+
+	
+	
 	 ObservableList<Files> FilesList =FXCollections.observableArrayList(); 
 
 	  @FXML
@@ -45,11 +45,11 @@ public class NetworkManagerReciveReportsController implements Initializable {
 	    private TableColumn<Files, String> clmStatus;
 
 	public ArrayList<Files> filesarr;
-	public static NetworkManagerReciveReportsController acainstance;
+	public static MarketingManagerRecieveReports acainstance;
 	public ClientConsole details= new ClientConsole("localhost", 5555);
 
-    @FXML
-    private Button btnShowReports;
+   @FXML
+   private Button btnShowReports;
 	@FXML
 	private static SplitPane splitpane;
 	private FXMLLoader loader;	
@@ -60,7 +60,7 @@ public class NetworkManagerReciveReportsController implements Initializable {
 		this.splitpane=splitpane;
 		primaryStage=LoginController.primaryStage;
 		try{	
-			loader = new FXMLLoader(getClass().getResource("/gui/NetworkManagerReciveReports.fxml"));
+			loader = new FXMLLoader(getClass().getResource("/gui/MarketingManagerReciveReports.fxml"));
 			lowerAnchorPane = loader.load();
 			splitpane.getItems().set(1, lowerAnchorPane);
 		} catch(Exception e) {
@@ -72,22 +72,33 @@ public class NetworkManagerReciveReportsController implements Initializable {
 		FilesList.addAll(files);
 		}
 	
-    @FXML
-    void Reports(ActionEvent event) {
-    		System.out.println("List:"+FilesList);
-    		filestable.setItems(FilesList);
-    }
-
+   @FXML
+   void Reports(ActionEvent event) {
+   		System.out.println("List:"+FilesList);
+   		filestable.setItems(FilesList);
+   }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	acainstance=this;
-	details.accept(new Message(63, null));
-	clmName.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
-	clmName.setCellValueFactory(new PropertyValueFactory<>("Filename"));
-	clmStatus.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
-	clmStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-	addOpenButtonToTable();
+		acainstance=this;
+		details.accept(new Message(70, null));
+		clmName.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+		clmName.setCellValueFactory(new PropertyValueFactory<>("Filename"));
+		clmStatus.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+		clmStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+		addOpenButtonToTable();		
 	}
 	private void addOpenButtonToTable() {
         TableColumn<Files, String> colBtn = new TableColumn("ConfirmOrder");
@@ -102,8 +113,9 @@ public class NetworkManagerReciveReportsController implements Initializable {
                         	Files data = getTableView().getItems().get(getIndex());
                         	Files order =new Files(data.getId(),data.getFilename(),data.getPath(),data.getStatus());
                            System.out.println(order.getId()+" " +order.getFilename()+" "+order.getStatus());
-                           NetworkManagerReciveReportsController.acainstance.details.accept(new Message(65, order));
+                           MarketingManagerRecieveReports.acainstance.details.accept(new Message(71, order));
                        System.out.println("Open");
+                       System.out.println(order.getPath());
                        File file = new File(order.getPath());  
                        Desktop desktop = Desktop.getDesktop();  
                        try {

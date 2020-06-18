@@ -10,6 +10,12 @@ public class User implements Serializable{
 
 
 	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", Firstname=" + Firstname + ", Lastname=" + Lastname + ", email=" + email
+				+ ", Username=" + Username + ", Password=" + Password + ", Rank=" + Rank + ", ClientType=" + ClientType
+				+ ", Status=" + Status + ", Image=" + Image + "]";
+	}
 	public User(String id, String firstname, String lastname, String email, String username, String password,
 			String rank, String clientType, Integer status, Integer image) {
 		super();

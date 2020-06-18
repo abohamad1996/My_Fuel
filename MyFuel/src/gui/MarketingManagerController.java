@@ -4,7 +4,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import DBconnection.DBconnector;
 import Entity.User;
 import client.Func;
@@ -66,7 +65,8 @@ public class MarketingManagerController implements Initializable{
 
 	    @FXML
 	    private Label DiroctoryBar;
-	
+	    @FXML
+	    private Button btnRecievrReport;
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
@@ -80,6 +80,8 @@ public class MarketingManagerController implements Initializable{
 	public static MarketingManagerRateController rates;
 	public static MarketingManagerSaleController sales;
 	public static AnalayticSystemController system;
+	public static MarketingManagerNewReports report;
+	public static MarketingManagerRecieveReports reportFile;
 	public void start(User user) {
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -121,7 +123,14 @@ public class MarketingManagerController implements Initializable{
 });
     }
 
-  
+    @FXML
+    void RecieveReports(ActionEvent event) {
+      	DiroctoryBar.setText("My Fuel->Reports Recieved");
+    	reportFile = new  MarketingManagerRecieveReports();
+    	runLater(() -> {
+    		reportFile.start(splitpane, user, "User");
+});
+    }
 
     @FXML
     void Logout(ActionEvent event) {
@@ -153,14 +162,18 @@ public class MarketingManagerController implements Initializable{
     	runLater(() -> {
     		sales.start(splitpane, user, "User");
 });
+    
     	
-    	
-    	
-   
+    
     }
     @FXML
     void NewReports(ActionEvent event) {
-    	
+    	DiroctoryBar.setText("My Fuel->Reports");
+    	report= new MarketingManagerNewReports();
+    	runLater(() -> {
+    		report.start(splitpane, user, "User");
+    	});
+        
     }
 
     @FXML
@@ -180,6 +193,7 @@ public class MarketingManagerController implements Initializable{
     		About.start(splitpane, user, "User");
 });
     }
+	
 	
 	private void runLater(Func f) {
 		f.call();

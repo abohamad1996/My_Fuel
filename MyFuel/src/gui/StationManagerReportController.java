@@ -113,9 +113,9 @@ public class StationManagerReportController implements Initializable {
     @FXML
     void SendReport(ActionEvent event) {
         try {
-	        Path path = Paths.get("C:\\MyFuelStationManagerReports\\");
-	        Path Sendpath = Paths.get("C:\\MyFuelStationManagerReports\\Send\\");
-	        Path Recivepath = Paths.get("C:\\MyFuelStationManagerReports\\Recieve\\");
+	        Path path = Paths.get("C:\\MyFuel\\MyFuelStationManagerReports\\");
+	        Path Sendpath = Paths.get("C:\\MyFuel\\MyFuelStationManagerReports\\Send\\");
+	        Path Recivepath = Paths.get("C:\\MyFuel\\MyFuelStationManagerReports\\Recieve\\");
 			Files.createDirectories(path);
 			Files.createDirectories(Sendpath);
 			Files.createDirectories(Recivepath);
@@ -126,10 +126,10 @@ public class StationManagerReportController implements Initializable {
         //////////////////////////////////////////////////////////////////////////////
     			if(comboReportType.getValue().equals("Quarterly Revenue Report"))
         		{
-    				File myObj = new File("C:\\MyFuelStationManagerReports\\Send\\Quarterly Revenue Report.txt");
+    				File myObj = new File("C:\\MyFuel\\MyFuelStationManagerReports\\Send\\Quarterly Revenue Report.txt");
         		      FileWriter myWriter;
   					try {
-  						myWriter = new FileWriter("C:\\MyFuelStationManagerReports\\Send\\Quarterly Revenue Report.txt");
+  						myWriter = new FileWriter("C:\\MyFuel\\MyFuelStationManagerReports\\Send\\Quarterly Revenue Report.txt");
 	  					 myWriter.write("\n-----------------------------------------------------------------------------------");
 
   					  myWriter.write("\nGasoline 95 Details\n");
@@ -207,7 +207,7 @@ public class StationManagerReportController implements Initializable {
   								      msg.setSize(mybytearray.length);
   								      bis.read(msg.getMybytearray(),0,mybytearray.length);
   	  								 StationManagerReportController.acainstance.details.accept(new Message(61, msg));
-  	  								 String location="C:\\MyFuelStationManagerReports\\Recieve\\";
+  	  								 String location="C:\\MyFuel\\MyFuelStationManagerReports\\Recieve\\";
   	  								 String reclocation=location.concat(myObj.getName());
   	  		        		     Entity.Files f=new Entity.Files(0, msg.getFileName(), reclocation,"Not Readed");
   			        		     System.out.println(f.toString());
@@ -229,7 +229,7 @@ public class StationManagerReportController implements Initializable {
         		
         		else if(comboReportType.getValue().equals("Purchases Report"))
         		{
-        			File myObj = new File("C:\\MyFuelStationManagerReports\\Send\\Purchases Report.txt");
+        			File myObj = new File("C:\\MyFuel\\MyFuelStationManagerReports\\Send\\Purchases Report.txt");
       		      try {
 						if (myObj.createNewFile()) {
 						    System.out.println("File created: " + myObj.getName());
@@ -242,14 +242,14 @@ public class StationManagerReportController implements Initializable {
 					}
       		      FileWriter myWriter;
 					try {
-						myWriter = new FileWriter("C:\\MyFuelStationManagerReports\\Send\\Purchases Report.txt");
+						myWriter = new FileWriter("C:\\MyFuel\\MyFuelStationManagerReports\\Send\\Purchases Report.txt");
 						for(int i=0;i<refuelings.size();i++) {
 						   myWriter.write("OrderID:"+refuelings.get(i).getOrderID()+" "+" Car Number::"+refuelings.get(i).getCarNumber()+" "+" Gas Station:"+refuelings.get(i).getGasStation()+" "+" Address:"+refuelings.get(i).getAddress()+" "+" Gas Type::"+refuelings.get(i).getGasType()+" "+" Rate:"+refuelings.get(i).getRateForLiter()+" "+" Quantity:"+refuelings.get(i).getOwnerID()+" "+" Price:"+refuelings.get(i).getPrice()+" Date:"+refuelings.get(i).getDate()+" "+" Pump:"+refuelings.get(i).getPumpNumber()+"\n");
 									}
 		        		      myWriter.close();
 		        		      System.out.println("Successfully wrote to the file.");
 		        		      MyFile msg= new MyFile("Purchases Report.txt");
-		        		 	 String location="C:\\MyFuelStationManagerReports\\Recieve\\";
+		        		 	 String location="C:\\MyFuel\\MyFuelStationManagerReports\\Recieve\\";
 								 String reclocation=location.concat(myObj.getName());
 		        		      Entity.Files f=new Entity.Files(0, msg.getFileName(), reclocation,"Not Readed");
 							  try{
@@ -260,9 +260,8 @@ public class StationManagerReportController implements Initializable {
 								      msg.initArray(mybytearray.length);
 								      msg.setSize(mybytearray.length);
 								      bis.read(msg.getMybytearray(),0,mybytearray.length);
-	  								StationManagerReportController.acainstance.details.accept(new Message(60, msg));
- 	  								 StationManagerReportController.acainstance.chat.accept(new Message(62, f));
-
+	  									StationManagerReportController.acainstance.details.accept(new Message(60, msg));
+	  									StationManagerReportController.acainstance.chat.accept(new Message(62, f));
 								    }
 								catch (Exception e) {
 									System.out.println("Error send (Files)msg) to Server");
@@ -271,8 +270,6 @@ public class StationManagerReportController implements Initializable {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}  
-					
-
 					}
         		else if(comboReportType.getValue().equals("Quantity in stock Report"))
         		{
@@ -287,9 +284,9 @@ public class StationManagerReportController implements Initializable {
         					StationName=stations.get(i).getStationName();
         					StationAddress=stations.get(i).getStationAddress();
         				 try {
-        	      		    	File myObj = new File("C:\\MyFuelStationManagerReports\\Send\\Quantity in stock Report.txt");
+        	      		    	File myObj = new File("C:\\MyFuel\\MyFuelStationManagerReports\\Send\\Quantity in stock Report.txt");
         	        		      FileWriter myWriter;
-        							myWriter = new FileWriter("C:\\MyFuelStationManagerReports\\Send\\Quantity in stock Report.txt");
+        							myWriter = new FileWriter("C:\\MyFuel\\MyFuelStationManagerReports\\Send\\Quantity in stock Report.txt");
         						myWriter.write("Quantity in stock Report\n");
         						myWriter.write("\nStation Name is:"+StationName);
         						myWriter.write("\nStation Address is:"+StationAddress);
@@ -298,10 +295,9 @@ public class StationManagerReportController implements Initializable {
         						myWriter.write("\nScooter:"+ Scooter+" Liters");
         					    myWriter.close();
         					    MyFile msg= new MyFile("Quantity in stock Report.txt");
-        					 	 String location="C:\\MyFuelStationManagerReports\\Recieve\\";
+        					 	 String location="C:\\MyFuel\\MyFuelStationManagerReports\\Recieve\\";
 								 String reclocation=location.concat(myObj.getName());
   		        		      Entity.Files f=new Entity.Files(0, msg.getFileName(), reclocation,"Not Readed");
-
   							  try{
   								      File newFile = new File (myObj.getPath());      
   								      byte [] mybytearray  = new byte [(int)newFile.length()];
@@ -384,5 +380,4 @@ public class StationManagerReportController implements Initializable {
 		QuarterList.addAll(Quarter);
 		comboQuartet.setItems(QuarterList);
 		}
-
 }

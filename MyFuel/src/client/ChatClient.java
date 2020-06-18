@@ -14,7 +14,9 @@ import gui.HomeHeatingOrderController;
 import gui.HomeHeatingOrderTrackController;
 import gui.LoginController;
 import gui.MarketingManagerController;
+import gui.MarketingManagerNewReports;
 import gui.MarketingManagerRateController;
+import gui.MarketingManagerRecieveReports;
 import gui.MarketingManagerSaleController;
 import gui.MarketingRepresentativeController;
 import gui.NetworkManagerApproveRatesController;
@@ -615,6 +617,56 @@ public class ChatClient extends AbstractClient
 			  break;
 		  case 65:
 			  String readedfile = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				 // NetworkManagerApproveRatesController.acainstance.status.setText("");
+			    });
+			  break;
+		  case 66:
+			  ArrayList<User> clientDB = (ArrayList<User>) recieved.getObject();
+			  Platform.runLater(() -> {
+				  MarketingManagerNewReports.acainstance.UserClientAcceptor(clientDB);
+			    });
+			  break;
+		  case 67:
+			  ArrayList<Refueling> Refueling = (ArrayList<Refueling>) recieved.getObject();
+			  Platform.runLater(() -> {
+				  MarketingManagerNewReports.acainstance.RefuelingAcceptor(Refueling);
+			    });
+			  break;
+		  case 68:
+			  MyFile file4;
+				file4=(MyFile) recieved.getObject();
+				  int fileSize4 =((MyFile)file4).getSize(); 
+				  String LocalfilePath4="C:\\MyFuel\\Recieve\\";
+				  String filelocation4=LocalfilePath4.concat(file4.getFileName());
+				      File newFile4 = new File (filelocation4); 
+				      System.out.println(filelocation4);
+				      System.out.println(fileSize4);
+				      System.out.println(file4.getMybytearray().length);
+				      OutputStream fis4;
+						try {
+							fis4 =new FileOutputStream(newFile4);
+							BufferedOutputStream bis4 = new BufferedOutputStream(fis4);
+								bis4.write(file4.getMybytearray(),0, fileSize4);
+						} catch (  IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+			break;
+		  case 69:
+			  String filereaderMarketing = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				//  ClientRegisterController.acainstance.status.setText(filereader + " Updated!");
+			    });
+			  break;
+		  case 70:
+			  ArrayList<Files> filesMarketing = (ArrayList<Files>) recieved.getObject();
+			  Platform.runLater(() -> {
+				  MarketingManagerRecieveReports.acainstance.FilesAcceptor(filesMarketing);
+			    });
+			  break;
+		  case 71:
+			  String readedfileMarketing = (String) recieved.getObject();
 			  Platform.runLater(() -> {
 				 // NetworkManagerApproveRatesController.acainstance.status.setText("");
 			    });
