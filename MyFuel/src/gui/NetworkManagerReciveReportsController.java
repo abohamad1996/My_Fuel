@@ -104,7 +104,6 @@ public class NetworkManagerReciveReportsController implements Initializable {
                         	Files order =new Files(data.getId(),data.getFilename(),data.getPath(),data.getStatus());
                            System.out.println(order.getId()+" " +order.getFilename()+" "+order.getStatus());
                            NetworkManagerReciveReportsController.acainstance.details.accept(new Message(65, order));
-
                        System.out.println("Open");
                        File file = new File(order.getPath());  
                        Desktop desktop = Desktop.getDesktop();  
@@ -138,5 +137,4 @@ public class NetworkManagerReciveReportsController implements Initializable {
         colBtn.setStyle("-fx-background-color: #01509f; -fx-text-fill: white;");
         filestable.getColumns().add(colBtn);
     }
-
 }

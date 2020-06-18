@@ -824,7 +824,7 @@ public class EchoServer extends AbstractServer {
 		MyFile file;
 		file=(MyFile) recieved.getObject();
 		  int fileSize =((MyFile)file).getSize(); 
-		  String LocalfilePath="C:\\MyFuel\\Recieve\\";
+		  String LocalfilePath="C:\\MyFuelStationManagerReports\\Recieve\\";
 		  String filelocation=LocalfilePath.concat(file.getFileName());
 		      File newFile = new File (filelocation); 
 		      System.out.println(filelocation);
@@ -863,7 +863,7 @@ public class EchoServer extends AbstractServer {
 		MyFile file2;
 		file2=(MyFile) recieved.getObject();
 		  int fileSize2 =((MyFile)file2).getSize(); 
-		  String LocalfilePath2="C:\\MyFuel\\Recieve\\";
+		  String LocalfilePath2="C:\\MyFuelStationManagerReports\\Recieve\\";
 		  String filelocation2=LocalfilePath2.concat(file2.getFileName());
 		  System.out.println(filelocation2);
 		      File newFile2 = new File (filelocation2); 
@@ -888,7 +888,7 @@ public class EchoServer extends AbstractServer {
 		MyFile file3;
 		file3=(MyFile) recieved.getObject();
 		  int fileSize3 =((MyFile)file3).getSize(); 
-		  String LocalfilePath3="C:\\MyFuel\\Recieve\\";
+		  String LocalfilePath3="C:\\MyFuelStationManagerReports\\Recieve\\";
 		  String filelocation3=LocalfilePath3.concat(file3.getFileName());
 		  System.out.println(filelocation3);
 		      File newFile3 = new File (filelocation3); 
