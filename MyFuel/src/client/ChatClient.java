@@ -671,8 +671,28 @@ public class ChatClient extends AbstractClient
 				 // NetworkManagerApproveRatesController.acainstance.status.setText("");
 			    });
 			  break;
+		  case 72:
+			  ArrayList<?> actualPriceArrayListMarkiting =(ArrayList<?>)recieved.getObject();
+				 ArrayList<Rates> actualPriceMarkiting=(ArrayList<Rates>)actualPriceArrayListMarkiting;
+				 MarketingManagerRateController.acainstance.actualRatesAcceptor(actualPriceMarkiting);
+				 break;
+				 
+		  case 73:
+			  Sales offer =(Sales)recieved.getObject();
+			  Sales SALE=(Sales)offer;
+				 RefuelingController.acainstance.checkForSaleAcceptor(SALE);
+			  break;
+			  
+		  case 74:
+			  String strEndSale = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				 
+			    });
+			  break;
   }
+
   }
+  
   
   /**
    * This method handles all data coming from the UI            

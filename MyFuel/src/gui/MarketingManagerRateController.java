@@ -31,6 +31,10 @@ import javafx.stage.Stage;
 public class MarketingManagerRateController implements Initializable {
 	public static MarketingManagerRateController acainstance;
   
+	
+	
+	//MarketingManagerController Mark_Manag_con=new MarketingManagerController();
+	
     @FXML
     private Label labelGasoline;
 
@@ -46,15 +50,38 @@ public class MarketingManagerRateController implements Initializable {
 	public Label status;
     @FXML
     private ComboBox<String> comboFuelType;
+    
+    
+    @FXML
+    private Label labelGasolineactual;
+
+    @FXML
+    private Label labelDieselactual;
+
+    @FXML
+    private Label labelScooteractual;
+
+    @FXML
+    private Label labelHomeHeatingactual;
+    
 
     @FXML
     private TextField txtRate;
     @FXML
     private Button btnSend;
+    
+    @FXML
+    private Button btnRefrsh;
+
+    
 	@FXML
 	private static SplitPane splitpane;
+	
+	public static MarketingManagerRateController rates;
+	
     public ClientConsole chat= new ClientConsole("localhost", 5555);
 	Rates Gasoline,Diesel,Scotter,HomeHeating;
+	Rates actualGasoline,actualDiesel,actualScotter,actualHomeHeating;
 	private FXMLLoader loader;	
 	private static User user;
 	private static String userrank;
@@ -66,6 +93,13 @@ public class MarketingManagerRateController implements Initializable {
 	double priceDiesel;
 	double priceScooter;
 	double priceHomeHeating;
+	
+	///actul price
+	double actual_priceGasoline;
+	double actual_priceDiesel;
+	double actual_priceScooter;
+	double actual_priceHomeHeating;
+	
     ObservableList<String> gastypeList =FXCollections.observableArrayList(); 	
 		ArrayList<String> gastypeValues=new ArrayList<String>();
 	public void start(SplitPane splitpane, User user,String userJob) {
@@ -92,6 +126,32 @@ public class MarketingManagerRateController implements Initializable {
 		priceHomeHeating=Double.parseDouble(HomeHeating.getPrice());
 		System.out.println(""+priceGasoline+priceDiesel+priceScooter+priceHomeHeating);
 		}
+	
+	public void actualRatesAcceptor(ArrayList<Rates> actualPrice) {
+		actualDiesel=new Rates(actualPrice.get(1).getFuelType(), actualPrice.get(1).getPrice());
+		actualGasoline=new Rates(actualPrice.get(0).getFuelType(), actualPrice.get(0).getPrice());
+		actualHomeHeating=new Rates(actualPrice.get(3).getFuelType(), actualPrice.get(3).getPrice());
+		actualScotter=new Rates(actualPrice.get(2).getFuelType(), actualPrice.get(2).getPrice());
+		
+		actual_priceGasoline=Double.parseDouble(actualGasoline.getPrice());
+		actual_priceDiesel=Double.parseDouble(actualDiesel.getPrice());
+		actual_priceScooter=Double.parseDouble(actualScotter.getPrice());
+		actual_priceHomeHeating=Double.parseDouble(actualHomeHeating.getPrice());
+		System.out.println(""+actual_priceGasoline+actual_priceDiesel+actual_priceScooter+actual_priceHomeHeating);
+		}
+
+	 
+	 @FXML
+	    void Refresh(ActionEvent event) {
+		 rates= new MarketingManagerRateController();
+	    	runLater(() -> {
+	    		rates.start(splitpane, user, "User");
+	});
+	    	
+	    }
+	
+	
+	
 		
     @FXML
     void SendToApprove(ActionEvent event) {
@@ -161,6 +221,12 @@ public class MarketingManagerRateController implements Initializable {
         	}
     
     	}
+    
+    
+    
+    
+    
+    
 	@SuppressWarnings("unused")
 	private void runLater(Func f) {
 		f.call();
@@ -180,16 +246,25 @@ public class MarketingManagerRateController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		acainstance=this;		
 		 chat.accept(new Message(30, null));
+		 chat.accept(new Message(72, null));
 		gastypeValues.add("Gasoline 95");
 		gastypeValues.add("Diesel fuel");
 		gastypeValues.add("Scooters fuel");
 		gastypeValues.add("Home Heating fuel");
 		gastypeList.addAll(gastypeValues);
 		comboFuelType.setItems(gastypeList);
+		
+		
 		labelGasoline.setText(Gasoline.getPrice());
 		labelDiesel.setText(Diesel.getPrice());
 		labelScooter.setText(Scotter.getPrice());
 		labelHomeHeating.setText(HomeHeating.getPrice());
+		
+		
+		labelGasolineactual.setText(actualGasoline.getPrice());
+		labelDieselactual.setText(actualDiesel.getPrice());
+		labelScooteractual.setText(actualScotter.getPrice());
+		labelHomeHeatingactual.setText(actualHomeHeating.getPrice());  
 	}
 
 

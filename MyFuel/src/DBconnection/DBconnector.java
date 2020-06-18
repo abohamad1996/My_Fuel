@@ -966,33 +966,7 @@ public static StationsInventory UpdateInventoryAfterRefuelingOrderScooter(Statio
 	return null;
 }
 
-public static String sales(Sales sales) {
-	Statement stmt;
-	try {
-		stmt = DBconnector.getConnection().createStatement();
-		String query = "insert into my_fuel.sales values(?,?,?,?,?,?);";
-	    PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
-	    int a = sales.getIDsales();
-	  	String b = sales.getFuelType();
-	    String c = sales.getDiscount();
-	    String d = sales.getDate().toString();
-	    String e = sales.getFormHour();
-	    String f = sales.getToHout();
-		ps.setInt(1,a); 
-		ps.setString(2,b); 	
-		ps.setString(3,c); 
-		ps.setString(4,d);
-		ps.setString(5,e); 
-		ps.setString(6,f); 
-		System.out.println(""+ps.toString());
-		ps.executeUpdate();
-		return "success";
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		return "error";
-	}
-}
+
 public static String RefuelinggOrder(Refueling ref)
 {
 	Statement stmt;
@@ -1546,5 +1520,109 @@ public static String UpdateStatusMarketingManagerReaded(Files file)
 		e.printStackTrace();
 	}
 	return null;
+}
+public static String sales(Sales sales) {
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.sales values(?,?,?,?,?,?);";
+	    PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	    int a = sales.getIDsales();
+	  	String b = sales.getFuelType();
+	    String c = sales.getDiscount();
+
+	    String e = sales.getFormHour();
+	    String f = sales.getToHout();
+	    int g=-1;
+		ps.setInt(1,a); 
+		ps.setString(2,b); 	
+		ps.setString(3,c); 
+		ps.setString(4,e);
+		ps.setString(5,f); 
+		ps.setInt(6, g);
+	
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
+public static ArrayList<Rates> actualRatesDetails(java.sql.Connection connection)
+{
+	Rates rates;
+	Statement stmt;
+	ArrayList<Rates> arr = new ArrayList<Rates>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT * FROM my_fuel.rates;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.rates;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+				rates=new Rates(rs.getString(1), rs.getString(2));
+			arr.add(rates);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
+public static Sales getSale(java.sql.Connection connection)
+{
+	Sales sale = null;
+	Statement stmt;
+	//ArrayList<StationsInventory> arr = new ArrayList<StationsInventory>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "SELECT * FROM my_fuel.sales where saleStutus =-1;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.sales ");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			sale=new Sales(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(6));
+			
+			System.out.println(sale);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return sale;
+}
+public static String endSale(Sales sale)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.sales SET  saleStutus=? WHERE ID=?";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.sales;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		int a =0;
+		int b =sale.getIDsales();
+		ps.setInt(1, a);
+		ps.setInt(2, b);
+	
+		 	
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
 }
 }

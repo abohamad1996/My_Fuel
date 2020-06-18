@@ -8,10 +8,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MarketingManagerRateController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MarketingManagerRateController">
    <children>
-      <ComboBox fx:id="comboFuelType" layoutX="155.0" layoutY="133.0" prefWidth="150.0" styleClass="combo" />
-      <Text layoutX="11.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Fuel Type">
+      <ComboBox fx:id="comboFuelType" layoutX="148.0" layoutY="355.0" prefWidth="150.0" styleClass="combo" />
+      <Text layoutX="29.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Fuel Type">
          <font>
             <Font size="15.0" />
          </font>
@@ -21,62 +21,113 @@
             <Font size="32.0" />
          </font>
       </Text>
-      <Text layoutX="11.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new rate">
+      <Text layoutX="370.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new rate">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="txtRate" layoutX="155.0" layoutY="193.0" prefHeight="29.0" prefWidth="150.0" styleClass="root4" />
-      <Label fx:id="status" layoutX="466.0" layoutY="177.0" />
-      <Button fx:id="btnSend" layoutX="94.0" layoutY="333.0" mnemonicParsing="false" onAction="#SendToApprove" styleClass="root4" stylesheets="@css2.css" text="Send to approvment" />
+      <TextField fx:id="txtRate" layoutX="479.0" layoutY="354.0" prefHeight="29.0" prefWidth="150.0" styleClass="root4" />
+      <Label fx:id="status" layoutX="466.0" layoutY="152.0" />
+      <Button fx:id="btnSend" layoutX="270.0" layoutY="405.0" mnemonicParsing="false" onAction="#SendToApprove" styleClass="root4" stylesheets="@css2.css" text="Send to approvment" />
       <Text layoutX="398.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maxmimum Rate" wrappingWidth="249.271484375">
          <font>
             <Font size="32.0" />
          </font>
       </Text>
-      <Text layoutX="387.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasoline Fuel :" wrappingWidth="101.34765625">
+      <Text layoutX="387.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasoline Fuel :" wrappingWidth="101.34765625">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="390.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diesel Fuel :" wrappingWidth="81.0">
+      <Text layoutX="390.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diesel Fuel :" wrappingWidth="81.0">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="390.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scooter Fuel :" wrappingWidth="95.068359375">
+      <Text layoutX="390.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scooter Fuel :" wrappingWidth="95.068359375">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="389.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Heating :">
+      <Text layoutX="389.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Heating :">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="545.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS">
+      <Text layoutX="545.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="550.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS">
+      <Text layoutX="550.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="551.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS" wrappingWidth="43.23486618697643">
+      <Text layoutX="551.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS" wrappingWidth="43.23486618697643">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="551.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS" wrappingWidth="43.23486618697643">
+      <Text layoutX="551.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS" wrappingWidth="43.23486618697643">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Label fx:id="labelGasoline" layoutX="488.0" layoutY="129.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
-      <Label fx:id="labelDiesel" layoutX="488.0" layoutY="178.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
-      <Label fx:id="labelScooter" layoutX="488.0" layoutY="231.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
-      <Label fx:id="labelHomeHeating" layoutX="500.0" layoutY="285.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
+      <Label fx:id="labelGasoline" layoutX="488.0" layoutY="104.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
+      <Label fx:id="labelDiesel" layoutX="488.0" layoutY="144.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
+      <Label fx:id="labelScooter" layoutX="488.0" layoutY="192.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
+      <Label fx:id="labelHomeHeating" layoutX="500.0" layoutY="237.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
+      <Label fx:id="status1" layoutX="133.0" layoutY="148.0" />
+      <Text layoutX="54.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gasoline Fuel :" wrappingWidth="101.34765625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="57.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diesel Fuel :" wrappingWidth="81.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="57.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scooter Fuel :" wrappingWidth="95.068359375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="56.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Heating :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="212.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="217.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="218.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS" wrappingWidth="43.23486618697643">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="218.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIS" wrappingWidth="43.23486618697643">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="labelGasolineactual" layoutX="155.0" layoutY="100.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
+      <Label fx:id="labelDieselactual" layoutX="155.0" layoutY="140.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
+      <Label fx:id="labelScooteractual" layoutX="155.0" layoutY="188.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
+      <Label fx:id="labelHomeHeatingactual" layoutX="167.0" layoutY="233.0" styleClass="blacklabel" stylesheets="@css2.css" text="Label" />
+      <Text layoutX="259.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Rates" wrappingWidth="150.0">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnRefrsh" layoutX="84.0" layoutY="280.0" mnemonicParsing="false" onAction="#Refresh" styleClass="root4" stylesheets="@css2.css" text="Refresh" />
    </children>
 </AnchorPane>

@@ -8,28 +8,24 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
+
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
 import java.net.URL;
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
-import com.oracle.jrockit.jfr.TimedEvent;
 
-import Entity.Rates;
+
+
 import Entity.Sales;
 import Entity.User;
 import client.ClientConsole;
-import client.Func;
 import common.Message;
-import javafx.fxml.FXML;
+
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.SplitPane;
@@ -37,6 +33,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MarketingManagerSaleController implements Initializable{
+	
+	Calendar rightNow = Calendar.getInstance();
+    int hours=rightNow.get(Calendar.HOUR);
+    int minute=rightNow.get(Calendar.MINUTE);
+    
+    String currenttime=hours+":"+minute;
+	Sales offer; 
+
 	private static final int IDsales = 0;
 	public static MarketingManagerSaleController acainstance;
 	@FXML
@@ -52,12 +56,8 @@ public class MarketingManagerSaleController implements Initializable{
     private TextField txtFrom;
 
     @FXML
-    private DatePicker txtDate;
-
-    @FXML
     private TextField txtTo;
 
-	
 	@FXML
 	private static SplitPane splitpane;
 	public ClientConsole chat= new ClientConsole("localhost", 5555);
@@ -70,30 +70,19 @@ public class MarketingManagerSaleController implements Initializable{
 	public ClientConsole details= new ClientConsole("localhost", 5555);
 	ArrayList<User> userdetails= new ArrayList<User>();
 	double currentdiscount;
-	String from;
-	String date;
-	String totime;
-	Sales offer;
+
 	
-	LocalDate testDatePicker;
-	
-	Calendar rightNow = Calendar.getInstance();
-    int y = rightNow.get(Calendar.YEAR);
-    int m = rightNow.get(Calendar.MONTH) + 1;
-    int d = rightNow.get(Calendar.DAY_OF_MONTH);
-    int hours=rightNow.get(Calendar.HOUR);
-    int minute=rightNow.get(Calendar.MINUTE);
-    
-    String currentdate=y+"-"+m+"-"+d;
-    String currenttime=hours+":"+minute;
-    LocalDate currtdate=LocalDate.of(y, m, d); 
-	LocalTime curreTime=LocalTime.of(hours, minute);
-	
-	
+	 
+			 
 	ObservableList<String> gastypeList =FXCollections.observableArrayList(); 
 	ArrayList<String> gastypeValues=new ArrayList<String>();
 	
 	User detailsUser;
+	
+	
+	
+	
+	
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -110,30 +99,10 @@ public class MarketingManagerSaleController implements Initializable{
 		
 		
 	@FXML
-    void Start(ActionEvent event) {
-		currentdiscount=Double.parseDouble(txtDiscout.getText());
-		date=txtDate.getPromptText();
-		from=txtFrom.getText();
-		totime=txtTo.getText();
+    void Start(ActionEvent event) {	
 		
-		testDatePicker=txtDate.getValue();
-		
-		//System.out.println(testDatePicker);
-    	//System.out.println(currentprice);
-		if(!(testDatePicker.isAfter(currtdate)))
-    	{
-    		Platform.runLater(new Runnable() {
-				@Override
-				public void run() {
-					Alert alert = new Alert(AlertType.ERROR);
-					alert.setAlertType(AlertType.ERROR); 
-					alert.setContentText("You choose a date or time wrong!!");
-					alert.show(); 
-				}
-			});
-    	}
-    	else {
-	    	Sales sales=new Sales(IDsales, comboFuelType.getValue(), txtDiscout.getText(), txtDate.getValue(), txtFrom.getText(), txtTo.getText());
+
+	    	Sales sales=new Sales(IDsales, comboFuelType.getValue(), txtDiscout.getText(), txtFrom.getText(), txtTo.getText(),-1);
 	    	MarketingManagerSaleController.acainstance.chat.accept(new Message(42, sales));
 	    	Platform.runLater(new Runnable() {
 				@Override
@@ -144,7 +113,8 @@ public class MarketingManagerSaleController implements Initializable{
 					alert.show(); 
 				}
 			});
-    	}
+    	
+	  
 	}
 		
 	
@@ -153,11 +123,11 @@ public class MarketingManagerSaleController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		acainstance=this;		
-		//chat.accept(new Message(35, null));
+
 		gastypeValues.add("Gasoline 95");
 		gastypeValues.add("Diesel fuel");
 		gastypeValues.add("Scooters fuel");
-		gastypeValues.add("Home Heating fuel");
+
 		gastypeList.addAll(gastypeValues);
 		comboFuelType.setItems(gastypeList);
 
@@ -165,7 +135,7 @@ public class MarketingManagerSaleController implements Initializable{
 
 
 	public void FuelAcceptor(ArrayList<Sales> salmarketingmanagerList) {
-		offer=new Sales(salmarketingmanagerList.get(0).getIDsales(), salmarketingmanagerList.get(0).getFuelType(), salmarketingmanagerList.get(0).getDiscount(), salmarketingmanagerList.get(0).getDate(), salmarketingmanagerList.get(0).getFormHour(), salmarketingmanagerList.get(0).getToHout());
+		offer=new Sales(salmarketingmanagerList.get(0).getIDsales(), salmarketingmanagerList.get(0).getFuelType(), salmarketingmanagerList.get(0).getDiscount(), salmarketingmanagerList.get(0).getFormHour(), salmarketingmanagerList.get(0).getToHout(),salmarketingmanagerList.get(0).getStatus());
 		
 		
 	}

@@ -1,15 +1,20 @@
 package gui;
 
+
+
+
+
+
 import java.net.URL;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutionException;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 
@@ -17,6 +22,7 @@ import Entity.Car;
 import Entity.OrderConfirmation;
 import Entity.Rates;
 import Entity.Refueling;
+import Entity.Sales;
 import Entity.StationsInventory;
 import Entity.User;
 import client.ChatClient;
@@ -36,17 +42,19 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.Slider;
+
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.TilePane;
+
 import javafx.stage.Stage;
-import jdk.internal.dynalink.beans.StaticClass;
+
 
 public class RefuelingController implements Initializable{
 	
+	
+
 	public int j;
     public static RefuelingController acainstance;
     @FXML
@@ -81,6 +89,26 @@ public class RefuelingController implements Initializable{
 	private FXMLLoader loader;	
 	private static User user;
 	private static String userrank;
+	
+//////////////////////////////////////////////////////////////////////////////////////////
+
+	 int r;
+		
+		Calendar rightNow = Calendar.getInstance();
+	    int y = rightNow.get(Calendar.YEAR);
+	    int m = rightNow.get(Calendar.MONTH) + 1;
+	    int d = rightNow.get(Calendar.DAY_OF_MONTH);
+	    String date=y+"-"+m+"-"+d;
+	    
+
+
+	    Date loc_Time=new Date();
+	    DateFormat dateFormat = new SimpleDateFormat("hh:mm");
+	 	boolean saleOn=false;
+
+	    double discount ;
+//////////////////////////////////////////////////////////////////////////////////////////
+
 	public static ProfileSettingsController ProfileSetting;
 	public static  ClientRefuelingDetailsController clientRefuelingDetails;
 	public static Stage primaryStage;
@@ -94,6 +122,7 @@ public class RefuelingController implements Initializable{
 	public ArrayList<StationsInventory> stationsInventories;
 	public ArrayList<String> Address= new ArrayList<String>();;
 	int size;
+	Sales  sales;
 	User detailsUser;
 	double inventory;
 	double newInventory;
@@ -118,23 +147,63 @@ public class RefuelingController implements Initializable{
 }
     @FXML
     void Calculate(ActionEvent event) {
+    	String now=dateFormat.format(loc_Time);
+
+    /*	if (sales==null) {
+			System.out.println("there is no sale at this time ");
+		}
+    	else {	
+    		if (sales.getFuelType().compareTo(car2.get(r).getGastype())==0   &&(now.compareTo(sales.getFormHour())>0)   &&(now.compareTo(sales.getToHout())<0)) {
+        		
+        		discount=Double.valueOf(sales.getDiscount());
+            	
+        		saleOn=true;
+            	discount=discount/100;
+            	discount=1-discount;
+            	
+        	
+    		}
+		
+    	}*/
+    	/* if (now.compareTo(sales.getToHout())>=0) {
+    		System.out.println("hello");
+    		RefuelingController.acainstance.details.accept(new Message(59, sales));
+		}*/
+    		
+    	
+//////////////////////////////////////////////////////////////////////////////////////////
+    	
+    	
 		double	dd=Double.parseDouble(CurrentRate);
 		double	f=Double.parseDouble(txtQuantity.getText());
 		double price=dd*f;
+		if (saleOn) {
+			price=price*discount;
+			saleOn=false;
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setAlertType(AlertType.INFORMATION); 
+					alert.setContentText("You get a discount: "+ sales.getDiscount()+"%");
+					alert.show(); 
+				}
+			});
+		}
+		
 		 Price=String.valueOf(price);  
+		 
+		
 		labelPrice.setText(Price);
 		btnStart.setVisible(true);
-		Calendar rightNow = Calendar.getInstance();
-        int y = rightNow.get(Calendar.YEAR);
-        int m = rightNow.get(Calendar.MONTH) + 1;
-        int d = rightNow.get(Calendar.DAY_OF_MONTH);
-        String date=y+"-"+m+"-"+d;
+		
 		refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText());
 		RefuelingController.acainstance.details.accept(new Message(38, refueling));
 		//System.out.println(refueling);
 		Quantity=txtQuantity.getText();
 		quantity=Double.parseDouble(Quantity);
     }
+    
     @FXML
     void SeeDetails(ActionEvent event) {
     	clientRefuelingDetails = new ClientRefuelingDetailsController();
@@ -144,6 +213,9 @@ public class RefuelingController implements Initializable{
     }
 	public void StationAcceptor(ArrayList<StationsInventory> station) {
 		stationsInventories = (ArrayList<StationsInventory>)station.clone();
+		}
+	public void checkForSaleAcceptor(Sales sale) {
+		sales = sale;
 		}
 	public void CarAcceptor(ArrayList<Car> car) {
 		car2.addAll(car);
@@ -293,12 +365,16 @@ public class RefuelingController implements Initializable{
 		acainstance = this;		
 		details.accept(new Message(15, null));
 		details.accept(new Message(37, null));
+		details.accept(new Message(73, null));
 		Random rn = new Random();
 		int maximum =(car2.size()-1);
 		System.out.println(maximum);
+		
 		int minimum=0;
 		int range = maximum - minimum + 1;
 		int randomNum =  rn.nextInt(range) + minimum;
+		r=randomNum;
+
 		String s=String.valueOf(randomNum+1);
 		labelID.setText(car2.get(randomNum).getOwnerID());
 		labelCarNumber.setText(car2.get(randomNum).getCarNumber());
@@ -332,4 +408,5 @@ public class RefuelingController implements Initializable{
 		labelAddress.setText(Address.get(randomNum2));
 		currentAddress=Address.get(randomNum2);;
 		}
+	
 }

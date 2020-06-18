@@ -1056,8 +1056,54 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+			case 72:// Max Price Details Marketing manager
+				try {
+					ArrayList<Rates> aa;
+					try {
+						aa = DBconnector.actualRatesDetails(DBconnector.getConnection());
+						Object bb = aa;
+						client.sendToClient(new Message(72, bb));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case 73:// check for sales
+				try {
+					Sales aa;
+					try {
+						aa = DBconnector.getSale(DBconnector.getConnection());
+						Object bb = aa;
+						client.sendToClient(new Message(73, bb));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case 74:// update status from station manager to supllier confirm
+				Sales saleEnd=(Sales) recieved.getObject();
+				String strSaleEnd=DBconnector.endSale(saleEnd);
+				try {
+					client.sendToClient(new Message(74, strSaleEnd));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
 		}
-		}
+	}
+		
+	
+
+		
 	
 		
 	/**
