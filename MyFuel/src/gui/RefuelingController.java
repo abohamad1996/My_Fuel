@@ -83,6 +83,8 @@ public class RefuelingController implements Initializable{
 	    @FXML
 	    private Label labelPump;
 	    @FXML
+	    private Label labelServices;
+	    @FXML
 	    private ProgressBar RefuelingPrgeess;
 	@FXML
 	private static SplitPane splitpane;
@@ -99,13 +101,13 @@ public class RefuelingController implements Initializable{
 	    int m = rightNow.get(Calendar.MONTH) + 1;
 	    int d = rightNow.get(Calendar.DAY_OF_MONTH);
 	    String date=y+"-"+m+"-"+d;
-	    
-
+	   
+        
 
 	    Date loc_Time=new Date();
 	    DateFormat dateFormat = new SimpleDateFormat("hh:mm");
 	 	boolean saleOn=false;
-
+	 	
 	    double discount ;
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -148,7 +150,7 @@ public class RefuelingController implements Initializable{
     @FXML
     void Calculate(ActionEvent event) {
     	String now=dateFormat.format(loc_Time);
-
+    	System.out.println(now);
     /*	if (sales==null) {
 			System.out.println("there is no sale at this time ");
 		}
@@ -197,9 +199,8 @@ public class RefuelingController implements Initializable{
 		labelPrice.setText(Price);
 		btnStart.setVisible(true);
 		
-		refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText());
+		refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText(),labelServices.getText(), now);
 		RefuelingController.acainstance.details.accept(new Message(38, refueling));
-		//System.out.println(refueling);
 		Quantity=txtQuantity.getText();
 		quantity=Double.parseDouble(Quantity);
     }
@@ -228,6 +229,7 @@ public class RefuelingController implements Initializable{
 	}
 	public void StationToUpdate(StationsInventory station) {
 		System.out.println(station);
+		
 	}
     @FXML
     void StartRefueilng(ActionEvent event) {
@@ -382,13 +384,14 @@ public class RefuelingController implements Initializable{
 		labelFuelTyple.setText(car2.get(randomNum).getGastype());
 		labelFuelTyple.setVisible(true);
 		labelGasStation.setText(car2.get(randomNum).getGasStation1());
+		labelServices.setText(car2.get(randomNum).getServices());
 		labelGasStation.setVisible(true);
 		labelPump.setText(s);
 		labelPump.setVisible(true);
 		labelRate.setText(car2.get(randomNum).getRateForCar());
 		CurrentRate=car2.get(randomNum).getRateForCar();
 		gasStationString=car2.get(randomNum).getGasStation1();
-	
+		
 		for(int i=0;i<stationsInventories.size();i++)
 		{
 			if(stationsInventories.get(i).getStationName().equals(gasStationString))

@@ -73,5 +73,11 @@
          </font>
       </Text>
       <Label fx:id="labelAddress" layoutX="214.0" layoutY="262.0" styleClass="blacklabel" stylesheets="@css2.css" text="0" />
+      <Text layoutX="76.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Services" wrappingWidth="112.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Label fx:id="labelServices" layoutX="216.0" layoutY="180.0" styleClass="blacklabel" stylesheets="@css2.css" text="0" />
    </children>
 </AnchorPane>
