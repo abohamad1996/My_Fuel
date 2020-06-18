@@ -148,38 +148,40 @@ public class RefuelingController implements Initializable{
     @FXML
     void Calculate(ActionEvent event) {
     	String now=dateFormat.format(loc_Time);
-    	System.out.println(now);
+    /*	System.out.println(now);
     	System.out.println(sales.getFuelType().compareTo(car2.get(r).getGastype())==0);
     	System.out.println((now.compareTo(sales.getFormHour())>0));
-    	System.out.println(sales.getFormHour());
+    	System.out.println(sales.getFormHour());*/
     	
-    	System.out.println((now.compareTo(sales.getToHout())<0));
+    	//System.out.println((now.compareTo(sales.getToHout())<0));
+    	
     	if (sales==null) {
 			System.out.println("there is no sale at this time");
+			now="10:00";
+			sales=new Sales(1, "aaa", "aaa", "aaa", "12:00", 1);
 		}
-    	else {	
-    		if (sales.getFuelType().compareTo(car2.get(r).getGastype())==0   &&(now.compareTo(sales.getFormHour())>0)   &&(now.compareTo(sales.getToHout())<0)) {
-        		System.out.println("aaaaaaaa");
-        		discount=Double.valueOf(sales.getDiscount());
-        		saleOn=true;
-            	discount=discount/100;
-            	discount=1-discount;
-    		}
+    	else if (sales.getFuelType().compareTo(car2.get(r).getGastype())==0   &&(now.compareTo(sales.getFormHour())>0)   &&(now.compareTo(sales.getToHout())<0)) {
+    		discount=Double.valueOf(sales.getDiscount());
+    		saleOn=true;
+        	discount=discount/100;
+        	discount=1-discount;
     	}
-    	if (now.compareTo(sales.getToHout())>=0) {
+    	else if (now.compareTo(sales.getToHout())>0) {
     		System.out.println("hello");
     		RefuelingController.acainstance.details.accept(new Message(74, sales));
 		}
-    	
+    	String now2=dateFormat.format(loc_Time);
+
 //////////////////////////////////////////////////////////////////////////////////////////
     	
-    	
+    	boolean a=false;
 		double	dd=Double.parseDouble(CurrentRate);
 		double	f=Double.parseDouble(txtQuantity.getText());
 		double price=dd*f;
 		if (saleOn) {
 			price=price*discount;
 			saleOn=false;
+			a=true;
 			Platform.runLater(new Runnable() {
 				@Override
 				public void run() {
@@ -190,15 +192,16 @@ public class RefuelingController implements Initializable{
 				}
 			});
 		}
-		
 		 Price=String.valueOf(price);  
-		 
-		
 		labelPrice.setText(Price);
 		btnStart.setVisible(true);
 		String salesID=String.valueOf(sales.getIDsales());  
-
-		refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText(),labelServices.getText(), now, salesID);
+		if(a) {
+		refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText(),labelServices.getText(), now2, salesID);
+		}
+		else {
+			refueling=new Refueling(0,labelID.getText(),labelCarNumber.getText(), labelGasStation.getText(),currentAddress, labelFuelTyple.getText(), CurrentRate, txtQuantity.getText(), Price, date, labelPump.getText(),labelServices.getText(), now2, "");
+		}
 		RefuelingController.acainstance.details.accept(new Message(38, refueling));
 		Quantity=txtQuantity.getText();
 		quantity=Double.parseDouble(Quantity);
