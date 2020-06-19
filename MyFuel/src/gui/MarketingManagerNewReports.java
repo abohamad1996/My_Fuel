@@ -69,6 +69,8 @@ public class MarketingManagerNewReports implements Initializable{
 	String scooterQuantity,scooterPrices;
 	double ScooterQuantity,ScooterPrices;
 	public ArrayList<Refueling> refuelings;
+	Refueling refu;
+	
 	public ArrayList<User> userClient;
 	public ArrayList<Sales> getSaless;
 	String ID;
@@ -177,30 +179,39 @@ public class MarketingManagerNewReports implements Initializable{
 						}
 				/////////////////
 				double Pay = 0,b;
-				String saleid2;
-					for(int i=0;i<getSaless.size();i++)
+				String saleid2,id = null;
+				for(int i=0;i<getSaless.size();i++)
+				{
+					myWriter.write("\nSales Number" +getSaless.get(i).getIDsales()+"\n\n");
+					saleid2=String.valueOf(getSaless.get(i).getIDsales());
+			
+					for(int j=0;j<refuelings.size();j++)
 					{
-						saleid2=String.valueOf(getSaless.get(i).getIDsales());
-						for(int j=0;j<refuelings.size();j++)
+						
+						if(saleid2.equals(refuelings.get(j).getSaleID()))
 						{
-
-							if(saleid2.equals(refuelings.get(j).getSaleID()))
-							{
-								ref.add(refuelings.get(j));
+							refu=refuelings.get(j);
+							ref.add(refu);
+							System.out.println("-----"+refu);
+							b=Double.valueOf(refu.getPrice());
+							id=refuelings.get(j).getOwnerID();
 							
-
+							if(id.equals(refu.getOwnerID()))
+							{
+								Pay+=b;
 							}
+							myWriter.write("ID:"+id+" "+"Number of customers in this sale:"+Pay+"\n");
+							
 						}
-						System.out.println("               "+ref);
-					}
+						Pay=0;
+						}
+				}
+				
 
 				
 				
 				
-				
-					myWriter.write("ID:"+ID+" "+"Number of customers in this sale:"+Pay+"\n");
-						Pay=0;
-				
+	
         		      myWriter.close();
         		      System.out.println("Successfully wrote to the file.");
         		      MyFile msg= new MyFile("Comments Report for Marketing Campaign.txt");
@@ -229,18 +240,38 @@ public class MarketingManagerNewReports implements Initializable{
 			}
 		else if(comboReportType.getValue().equals("Customer Periodic Characterization Report"))
 		{
-			 String Gasoline,Deisel,Scooter,StationName,StationAddress;
-			for(int i=0;i<userClient.size();i++)
-			{
-				if(userClient.get(i).getId().equals(refuelings.get(i).getOwnerID()))
-				{
 				 try {
+					 String iDString = null,id = null,station = null;
+					 double pay = 0;
 	      		    	File myObj = new File("C:\\MyFuel\\MyFuelMarketingManagerReports\\Send\\Customer Periodic Characterization Report.txt");
 	        		      FileWriter myWriter;
 							myWriter = new FileWriter("C:\\MyFuel\\MyFuelMarketingManagerReports\\Send\\Customer Periodic Characterization Report.txt");
 						myWriter.write("Customer Periodic Characterization Report\n");
-						myWriter.write("\nStation Name is:"+refuelings.get(i).getOrderID()+"\n");
-					    myWriter.close();
+						for(int m=0;m<refuelings.size()-1;m++)
+							{
+							iDString=refuelings.get(m).getOwnerID();
+							int count=0;
+						if(refuelings.get(m).getGasStation().equals("Yellow Station") && iDString.equals(refuelings.get(m+1).getOwnerID())) {
+							station="Yellow Station";
+								for(int z=0;z<refuelings.size()-1;z++)
+								{
+									if(iDString.equals(refuelings.get(z+1).getOwnerID()))
+									count++;
+									refuelings.remove(z);
+								}
+							System.out.println(count);
+							count=0;
+						}
+							}
+						
+
+						
+						
+						
+						//////////////////////////////////////////////////////////////////////////////
+						
+						
+						myWriter.close();
 					    MyFile msg= new MyFile("Customer Periodic Characterization Report.txt");
 					 	 String location="C:\\MyFuel\\MyFuelMarketingManagerReports\\Recieve\\";
 						 String reclocation=location.concat(myObj.getName());
@@ -254,7 +285,7 @@ public class MarketingManagerNewReports implements Initializable{
 							      msg.initArray(mybytearray.length);
 							      msg.setSize(mybytearray.length);
 							      bis.read(msg.getMybytearray(),0,mybytearray.length);
-							      MarketingManagerNewReports.acainstance.details.accept(new Message(68, msg));
+							     MarketingManagerNewReports.acainstance.details.accept(new Message(68, msg));
 								 
 						  }
 							catch (Exception e) {
@@ -264,13 +295,11 @@ public class MarketingManagerNewReports implements Initializable{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				}
-	        			}
+				
+	        			
 		}
     }
     
-	
-	
 	
 	
 	@Override
