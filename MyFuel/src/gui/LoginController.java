@@ -10,15 +10,18 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 import client.ClientConsole;
 import client.ClientLogin;
 import common.Message;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -27,6 +30,8 @@ public class LoginController implements Initializable {
 	@FXML    
 	private TextField Username;
 
+    @FXML
+    private Button btnForget;
 	    @FXML
 	    private TextField Password;
 
@@ -43,6 +48,22 @@ public class LoginController implements Initializable {
 	}
 
 
+    @FXML
+    void Forget(ActionEvent event) {
+    	Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setAlertType(AlertType.INFORMATION); 
+				alert.setContentText("Send An Email to Marketing Representative \n Email:bshara.b94@gmail.com");
+				alert.show(); 
+			}
+		});
+    	
+    }
+    	
+    	
+    
 	@FXML
     void LoginAction(ActionEvent event) {
     	String username = Username.getText();

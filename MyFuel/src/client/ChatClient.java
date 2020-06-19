@@ -35,6 +35,7 @@ import gui.StationManagerOrderConfirmationController;
 import gui.StationManagerReportController;
 import gui.SupplierController;
 import gui.SupplierOrderController;
+import gui.AnalayticSystemController;
 import gui.CarRegisterController;
 import gui.ClientController;
 import gui.ClientRegisterController;
@@ -61,12 +62,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import DBconnection.DBconnector;
+import Entity.AnalyticSystem;
 import Entity.Car;
 import Entity.Files;
 import Entity.HomeHeatingOrder;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
+import Entity.Rating;
 import Entity.Refueling;
 import Entity.Sales;
 import Entity.StationsInventory;
@@ -693,9 +696,18 @@ public class ChatClient extends AbstractClient
 			  ArrayList<?> getSales =(ArrayList<?>)recieved.getObject();
 				 ArrayList<Sales> sales=(ArrayList<Sales>)getSales;
 				 MarketingManagerNewReports.acainstance.SalesAcceptor(sales);
+				 break;	 
+		  case 76:
+			  ArrayList<?> analyticsystem =(ArrayList<?>)recieved.getObject();
+				 ArrayList<AnalyticSystem> analyticSystems=(ArrayList<AnalyticSystem>)analyticsystem;
+				 AnalayticSystemController.acainstance.AnalayticSystemAcceptor(analyticSystems);
+				 break;
+		  case 77:
+			  ArrayList<?> ratArrayList =(ArrayList<?>)recieved.getObject();
+				 ArrayList<Rating> rating=(ArrayList<Rating>)ratArrayList;
+				 AnalayticSystemController.acainstance.RatingAcceptor(rating);
 				 break;
   }
-
   }
   
   

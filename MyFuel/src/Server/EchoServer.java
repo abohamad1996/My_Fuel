@@ -16,6 +16,7 @@ import java.util.Vector;
 import com.sun.org.apache.bcel.internal.generic.AALOAD;
 
 import DBconnection.DBconnector;
+import Entity.AnalyticSystem;
 import Entity.Car;
 import Entity.CreditCard;
 import Entity.Files;
@@ -23,6 +24,7 @@ import Entity.HomeHeatingOrder;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
+import Entity.Rating;
 import Entity.Refueling;
 import Entity.Sales;
 import Entity.StationsInventory;
@@ -1114,8 +1116,40 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
-			
+			case 76:// Rates Request Alert
+				try {
+					ArrayList<AnalyticSystem> aa;
+					try {
+						aa = DBconnector.analyticsystem(DBconnector.getConnection());
+						Object bb = aa;
+						client.sendToClient(new Message(76, bb));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case 77:// Rates Request Alert
+				try {
+					ArrayList<Rating> aa;
+					try {
+						aa = DBconnector.rating(DBconnector.getConnection());
+						Object bb = aa;
+						client.sendToClient(new Message(77, bb));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
 		}
+		
 	}
 		
 	

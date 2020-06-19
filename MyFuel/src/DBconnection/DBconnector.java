@@ -18,12 +18,14 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 import com.sun.corba.se.pept.transport.Connection;
 import com.sun.crypto.provider.RSACipher;
 
+import Entity.AnalyticSystem;
 import Entity.Car;
 import Entity.CreditCard;
 import Entity.Files;
 import Entity.Inventory;
 import Entity.OrderConfirmation;
 import Entity.Rates;
+import Entity.Rating;
 import Entity.Refueling;
 import Entity.Sales;
 import Entity.StationsInventory;
@@ -1647,6 +1649,58 @@ public static ArrayList<Sales> GetallSales(java.sql.Connection connection)
 			System.out.println(""+ps.toString());
 				sales=new Sales(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
 			arr.add(sales);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
+public static ArrayList<AnalyticSystem> analyticsystem(java.sql.Connection connection)
+{
+	AnalyticSystem analyticsystem;
+	Statement stmt;
+	ArrayList<AnalyticSystem> arr = new ArrayList<AnalyticSystem>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "select orderid,ownerid,gastype,date,services,time from my_fuel.refueling;";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.refueling;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			analyticsystem=new AnalyticSystem(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6));
+			arr.add(analyticsystem);
+			System.out.println(arr);
+ 		}
+		rs.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return null;
+	}
+	return arr;
+}
+public static ArrayList<Rating> rating(java.sql.Connection connection)
+{
+	Rating rate;
+	Statement stmt;
+	ArrayList<Rating> arr = new ArrayList<Rating>();
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "select id,image  from my_fuel.user where UserRank=\"Client\";";
+		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.user");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		rs = ps.executeQuery();
+		while(rs.next())
+ 		{
+			System.out.println(""+ps.toString());
+			rate=new Rating(rs.getString(1), rs.getString(2));
+			arr.add(rate);
 			System.out.println(arr);
  		}
 		rs.close();
