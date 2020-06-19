@@ -15,6 +15,7 @@ import Entity.Rates;
 import Entity.Refueling;
 import Entity.Sales;
 import Entity.User;
+import Entity.maxbuy;
 import client.ClientConsole;
 import common.Message;
 import common.MyFile;
@@ -70,7 +71,10 @@ public class MarketingManagerNewReports implements Initializable{
 	double ScooterQuantity,ScooterPrices;
 	public ArrayList<Refueling> refuelings;
 	Refueling refu;
-	
+ArrayList<maxbuy> max=new ArrayList<maxbuy>();
+ArrayList<maxbuy> max2=new ArrayList<maxbuy>();
+	maxbuy teMaxbuy ;
+
 	public ArrayList<User> userClient;
 	public ArrayList<Sales> getSaless;
 	String ID;
@@ -247,23 +251,53 @@ public class MarketingManagerNewReports implements Initializable{
 	        		      FileWriter myWriter;
 							myWriter = new FileWriter("C:\\MyFuel\\MyFuelMarketingManagerReports\\Send\\Customer Periodic Characterization Report.txt");
 						myWriter.write("Customer Periodic Characterization Report\n");
-						for(int m=0;m<refuelings.size()-1;m++)
-							{
+						int count=0;
+						station="Yellow Station";
+						for(int m=0;m<refuelings.size();m++) {
 							iDString=refuelings.get(m).getOwnerID();
-							int count=0;
-						if(refuelings.get(m).getGasStation().equals("Yellow Station") && iDString.equals(refuelings.get(m+1).getOwnerID())) {
-							station="Yellow Station";
-								for(int z=0;z<refuelings.size()-1;z++)
+							if (refuelings.get(m).getGasStation().equals(station))
+							{	
+								count++;
+								for(int z=m+1;z<refuelings.size();z++)
 								{
-									if(iDString.equals(refuelings.get(z+1).getOwnerID()))
-									count++;
-									refuelings.remove(z);
+									if (iDString.equals(refuelings.get(z).getOwnerID())&&refuelings.get(z).getGasStation().equals(station)) {
+										count++;
+										//refuelings.remove(z);
+									}
 								}
-							System.out.println(count);
-							count=0;
-						}
+								
+								//System.out.println(iDString);
+								teMaxbuy=new maxbuy(iDString, count);
+							//	System.out.println(teMaxbuy);
+								max.add(teMaxbuy);
 							}
-					
+							count=0;
+							}
+						//System.out.println(max);
+						//System.out.println(max);
+						int z=0;
+						for(int l=0;l<max.size()-1;l++)
+						{
+							String idstring=max.get(l).getId();
+							
+							for(int k=1;k<max.size()-1;k++)
+							{
+								if(idstring.equals(max.get(k).getId()))
+								{
+									max.remove(k);
+									z=z-k;
+								}
+								else {
+									
+									k=k+1;
+								}
+								
+							}
+						
+						}
+						System.out.println(z);
+					    System.out.println(max);
+				
 						//////////////////////////////////////////////////////////////////////////////
 						
 						
