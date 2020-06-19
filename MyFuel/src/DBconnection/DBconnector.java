@@ -1369,7 +1369,7 @@ public static ArrayList<Entity.Files> DetectFiles(java.sql.Connection connection
 	ArrayList<Files> arr = new ArrayList<Files>();
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "select * FROM my_fuel.files WHERE status=\"Not Readed\";";
+		String query = "select * FROM my_fuel.files WHERE status=\"Not Readed\" or status=\"Readed Station\";";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.files;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 		rs = ps.executeQuery();
@@ -1393,7 +1393,7 @@ public static String UpdateStatusStationManagerReaded(Files file)
 	Statement stmt;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "update my_fuel.files set status=\"Readed\" where id=?;";
+		String query = "update my_fuel.files set status=\"Readed Station\" where id=?;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.files;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 	      int a =file.getId();
@@ -1490,7 +1490,7 @@ public static ArrayList<Entity.Files> DetectFilesMarketingManager(java.sql.Conne
 	ArrayList<Files> arr = new ArrayList<Files>();
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "select * FROM my_fuel.files WHERE status=\"Not Readed Marketing\";";
+		String query = "select * FROM my_fuel.files WHERE status=\"Not Readed Marketing\"  or status=\"Readed Marketing\";";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.files;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 		rs = ps.executeQuery();
@@ -1514,7 +1514,7 @@ public static String UpdateStatusMarketingManagerReaded(Files file)
 	Statement stmt;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "update my_fuel.files set status=\"Readed\" where id=?;";
+		String query = "update my_fuel.files set status=\"Readed Marketing\" where id=?;";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.files;");
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 	      int a =file.getId();

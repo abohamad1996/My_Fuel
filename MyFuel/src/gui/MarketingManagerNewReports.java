@@ -8,6 +8,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -100,7 +102,9 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
 	}		
 }
 	
-	
+    LocalDateTime now = LocalDateTime.now();  
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");  
+    String formatDateTime = now.format(format);
 	
     public void SalesAcceptor(ArrayList<Sales> salse) {
     	getSaless = (ArrayList<Sales>)salse.clone();
@@ -145,7 +149,11 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
            //////////////////////////////////////////////////////////////////////////////
     	if(comboReportType.getValue().equals("Comments Report for Marketing Campaign"))
 		{
-			File myObj = new File("C:\\MyFuel\\MyFuelMarketingManagerReports\\Send\\Comments Report for Marketing Campaign.txt");
+    		String path="C:\\MyFuel\\MyFuelMarketingManagerReports\\Send\\";
+			String filename="Comments Report for Marketing Campaign";
+			String nameString=path.concat(filename+" "+formatDateTime+".txt");
+			System.out.println("file name is:"+nameString);
+			File myObj = new File(nameString);
 		      try {
 				if (myObj.createNewFile()) {
 				    System.out.println("File created: " + myObj.getName());
@@ -162,7 +170,8 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
 				double Total=0;
 				double TotalClient=0;
 			try {
-				myWriter = new FileWriter("C:\\MyFuel\\MyFuelMarketingManagerReports\\Send\\Comments Report for Marketing Campaign.txt");
+				
+				myWriter = new FileWriter(nameString);
 				for(int i=0;i<getSaless.size();i++) {
 					myWriter.write("-----------------------------------------------------------------------------------\n");
 					myWriter.write("-----------------------------------------------------------------------------------");
@@ -222,9 +231,9 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
 	
         		      myWriter.close();
         		      System.out.println("Successfully wrote to the file.");
-        		      MyFile msg= new MyFile("Comments Report for Marketing Campaign.txt");
+        		      MyFile msg= new MyFile(filename+" "+formatDateTime+".txt");
         		 	 String location="C:\\MyFuel\\MyFuelMarketingManagerReports\\Recieve\\";
-						 String reclocation=location.concat(myObj.getName());
+						 String reclocation=location.concat(filename+" "+formatDateTime+".txt");
         		      Entity.Files f=new Entity.Files(0, msg.getFileName(), reclocation,"Not Readed Marketing");
         		      MarketingManagerNewReports.acainstance.details.accept(new Message(69, f));
 
@@ -249,11 +258,16 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
 		else if(comboReportType.getValue().equals("Customer Periodic Characterization Report"))
 		{
 				 try {
+						String path="C:\\\\MyFuel\\\\MyFuelMarketingManagerReports\\\\Send\\\\";
+	    				String filename="Customer Periodic Characterization Report";
+	    				String nameString=path.concat(filename+" "+formatDateTime+".txt");
+	    				System.out.println("file name is:"+nameString);
+	    				File myObj = new File(nameString);
+					 ///////////////////
 					 String iDString = null,id = null,station = null;
 					 double pay = 0;
-	      		    	File myObj = new File("C:\\MyFuel\\MyFuelMarketingManagerReports\\Send\\Customer Periodic Characterization Report.txt");
 	        		      FileWriter myWriter;
-							myWriter = new FileWriter("C:\\MyFuel\\MyFuelMarketingManagerReports\\Send\\Customer Periodic Characterization Report.txt");
+							myWriter = new FileWriter(nameString);
 						myWriter.write("Customer Periodic Characterization Report\n");
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /*Yellow Station*/
@@ -406,7 +420,7 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
 						
 						
 						myWriter.close();
-					    MyFile msg= new MyFile("Customer Periodic Characterization Report.txt");
+					    MyFile msg= new MyFile(filename+" "+formatDateTime+".txt");
 					 	 String location="C:\\MyFuel\\MyFuelMarketingManagerReports\\Recieve\\";
 						 String reclocation=location.concat(myObj.getName());
 	        		      Entity.Files f=new Entity.Files(0, msg.getFileName(), reclocation,"Not Readed Marketing");
