@@ -17,7 +17,7 @@ public class maxbuy	implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "maxbuy [id=" + id + ", max_reb=" + max_reb + "]";
+		return "Client ID=" + id + ", Purchase Times:=" + max_reb;
 	}
 	public String getId() {
 		return id;

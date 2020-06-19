@@ -71,8 +71,12 @@ public class MarketingManagerNewReports implements Initializable{
 	double ScooterQuantity,ScooterPrices;
 	public ArrayList<Refueling> refuelings;
 	Refueling refu;
+
+	ArrayList<maxbuy> maxP=new ArrayList<maxbuy>();
+	ArrayList<maxbuy> maxT=new ArrayList<maxbuy>();
+
 ArrayList<maxbuy> max=new ArrayList<maxbuy>();
-ArrayList<maxbuy> max2=new ArrayList<maxbuy>();
+
 	maxbuy teMaxbuy ;
 
 	public ArrayList<User> userClient;
@@ -251,53 +255,153 @@ ArrayList<maxbuy> max2=new ArrayList<maxbuy>();
 	        		      FileWriter myWriter;
 							myWriter = new FileWriter("C:\\MyFuel\\MyFuelMarketingManagerReports\\Send\\Customer Periodic Characterization Report.txt");
 						myWriter.write("Customer Periodic Characterization Report\n");
+//////////////////////////////////////////////////////////////////////////////////////////////////
+/*Yellow Station*/
+//////////////////////////////////////////////////////////////////////////////////////////////////
+						System.out.println("*********Yellow Station*********");
 						int count=0;
-						station="Yellow Station";
+						String stationY="Yellow Station";
 						for(int m=0;m<refuelings.size();m++) {
 							iDString=refuelings.get(m).getOwnerID();
-							if (refuelings.get(m).getGasStation().equals(station))
+							if (refuelings.get(m).getGasStation().equals(stationY))
 							{	
 								count++;
 								for(int z=m+1;z<refuelings.size();z++)
 								{
-									if (iDString.equals(refuelings.get(z).getOwnerID())&&refuelings.get(z).getGasStation().equals(station)) {
+									if (iDString.equals(refuelings.get(z).getOwnerID())&&refuelings.get(z).getGasStation().equals(stationY)) {
 										count++;
-										//refuelings.remove(z);
+	//refuelings.remove(z);
 									}
 								}
-								
+
 								//System.out.println(iDString);
 								teMaxbuy=new maxbuy(iDString, count);
-							//	System.out.println(teMaxbuy);
+								//	System.out.println(teMaxbuy);
 								max.add(teMaxbuy);
+
+
 							}
-							count=0;
-							}
-						//System.out.println(max);
-						//System.out.println(max);
-						int z=0;
-						for(int l=0;l<max.size()-1;l++)
-						{
-							String idstring=max.get(l).getId();
-							
-							for(int k=1;k<max.size()-1;k++)
-							{
-								if(idstring.equals(max.get(k).getId()))
-								{
-									max.remove(k);
-									z=z-k;
-								}
-								else {
-									
-									k=k+1;
-								}
-								
-							}
-						
+								//System.out.println(max);
+							count=0;					
 						}
-						System.out.println(z);
-					    System.out.println(max);
-				
+						//System.out.println(max);
+
+						for (int x = 0; x < max.size(); x++) {
+							id=max.get(x).getId();
+							for (int b = x+1; b < max.size(); b++) {
+								if (id.equals(max.get(b).getId())) {
+									max.remove(b);
+									b--;
+								}
+							}
+						}
+
+						System.out.println("******************");
+						System.out.println(max);
+						myWriter.write("-----------------------------------------------------"+stationY+"-----------------------------------------------------\n");
+						for(int r=0;r<max.size();r++)
+						{
+						myWriter.write(max.get(r).toString()+"\n");
+						}
+						myWriter.write("\n-----------------------------------------------------------------------------------------------------------------------\n");
+
+						//////////////////////////////////////////////////////////////////////////////////////////////////
+						/*Paz Station*/
+						//////////////////////////////////////////////////////////////////////////////////////////////////
+						System.out.println("*********Paz Station*********");
+						int countP=0;
+							String stationP="Paz Station";
+							for(int m=0;m<refuelings.size();m++) {
+								iDString=refuelings.get(m).getOwnerID();
+								if (refuelings.get(m).getGasStation().equals(stationP))
+								{	
+									countP++;
+									for(int z=m+1;z<refuelings.size();z++)
+									{
+										if (iDString.equals(refuelings.get(z).getOwnerID())&&refuelings.get(z).getGasStation().equals(stationP)) {
+											countP++;
+											//refuelings.remove(z);
+											}
+									}
+
+									//System.out.println(iDString);
+									teMaxbuy=new maxbuy(iDString, countP);
+									//	System.out.println(teMaxbuy);
+									maxP.add(teMaxbuy);
+
+
+								}
+								countP=0;
+								//System.out.println(max);
+
+							}
+							//	System.out.println(max);
+
+							for (int x = 0; x < maxP.size(); x++) {
+								id=maxP.get(x).getId();
+								for (int b = x+1; b < maxP.size(); b++) {
+									if (id.equals(maxP.get(b).getId())) {
+										maxP.remove(b);
+										b--;
+									}
+								}
+							}
+
+							System.out.println(maxP);
+							myWriter.write("-----------------------------------------------------"+stationP+"-----------------------------------------------------\n");
+							for(int y=0;y<maxP.size();y++)
+							{
+							myWriter.write(maxP.get(y).toString()+"\n");
+							}
+							myWriter.write("\n-----------------------------------------------------------------------------------------------------------------------\n");
+							
+							//////////////////////////////////////////////////////////////////////////////////////////////////
+							/*Ten  Station*/
+							//////////////////////////////////////////////////////////////////////////////////////////////////
+							System.out.println("*********Ten Station*********");
+							int countT=0;
+							String stationT="Ten Station";
+							for(int m=0;m<refuelings.size();m++) {
+								iDString=refuelings.get(m).getOwnerID();
+								if (refuelings.get(m).getGasStation().equals(stationT))
+								{	
+									countT++;
+									for(int z=m+1;z<refuelings.size();z++)
+									{
+										if (iDString.equals(refuelings.get(z).getOwnerID())&&refuelings.get(z).getGasStation().equals(stationT)) {
+											countT++;
+											//refuelings.remove(z);
+										}
+									}
+									//System.out.println(iDString);
+									teMaxbuy=new maxbuy(iDString, countT);
+									//	System.out.println(teMaxbuy);
+									maxT.add(teMaxbuy);
+								}
+								countT=0;
+								//System.out.println(max);
+
+							}
+							//System.out.println(max);
+
+							for (int x = 0; x < maxT.size(); x++) {
+								id=maxT.get(x).getId();
+								for (int b = x+1; b < maxT.size(); b++) {
+									if (id.equals(maxT.get(b).getId())) {
+										maxT.remove(b);
+										b--;
+									}
+								}
+							}
+
+							
+							System.out.println(maxT);
+							myWriter.write("\n-----------------------------------------------------"+stationT+"-----------------------------------------------------\n");
+							for(int z=0;z<maxT.size();z++)
+							{
+							myWriter.write(maxT.get(z).toString()+"\n");
+							}
+							myWriter.write("\n-----------------------------------------------------------------------------------------------------------------------\n");
 						//////////////////////////////////////////////////////////////////////////////
 						
 						
