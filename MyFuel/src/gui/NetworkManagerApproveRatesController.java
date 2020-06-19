@@ -26,6 +26,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -126,6 +127,10 @@ public class NetworkManagerApproveRatesController implements Initializable {
                        //    System.out.println(newRates.getFuelType() +" "+newRates.getPrice());
                            NetworkManagerApproveRatesController.acainstance.details.accept(new Message(18, newRates));
                            NetworkManagerApproveRatesController.acainstance.details.accept(new Message(19, newRates));
+                           Alert alert = new Alert(AlertType.INFORMATION);
+           				alert.setAlertType(AlertType.INFORMATION); 
+           				alert.setContentText("Rate changed successfully!");
+           				alert.show(); 
                         });
                     }
                     public void updateItem(String item, boolean empty) {
@@ -160,6 +165,10 @@ public class NetworkManagerApproveRatesController implements Initializable {
                             Rates newRates =new Rates(data.getFuelType(), data.getPrice());
                             System.out.println("aaaaaaaaaaaaaaaaaaaa");
                             NetworkManagerApproveRatesController.acainstance.details.accept(new Message(20, newRates));
+                            Alert alert = new Alert(AlertType.INFORMATION);
+               				alert.setAlertType(AlertType.INFORMATION); 
+               				alert.setContentText("Rate not changed!!");
+               				alert.show(); 
                            // System.out.println("selectedData: " + data);
                         });
                     }

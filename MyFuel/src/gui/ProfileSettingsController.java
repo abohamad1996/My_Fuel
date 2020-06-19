@@ -9,6 +9,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 import Entity.User;
 import client.ClientConsole;
 import common.Message;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -95,6 +96,15 @@ public class ProfileSettingsController implements Initializable{
     void UpdateDetails(ActionEvent event) {
     	User user=new User(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), null, null, null, null,null,null);
     	ProfileSettingsController.acainstance.details.accept(new Message(5, user));;
+    	Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setAlertType(AlertType.INFORMATION); 
+					alert.setContentText("Details updated!");
+					alert.show(); 
+				}
+			});
     }
 
     @FXML
@@ -115,8 +125,8 @@ public class ProfileSettingsController implements Initializable{
     	{
         	User user2=new User(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), null, txxPassword.getText(), null, null,null,null);
         	ProfileSettingsController.acainstance.details.accept(new Message(12, user2));;
-        	Alert alert = new Alert(AlertType.CONFIRMATION);
-			alert.setAlertType(AlertType.CONFIRMATION); 
+        	Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setAlertType(AlertType.INFORMATION); 
 			alert.setContentText("Password Changes Successfully!!");
 			alert.show(); 
     	}

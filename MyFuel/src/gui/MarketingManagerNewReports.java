@@ -23,15 +23,18 @@ import common.Message;
 import common.MyFile;
 import gui.LoginController;
 import gui.ProfileSettingsController;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -246,6 +249,15 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
 						      msg.setSize(mybytearray.length);
 						      bis.read(msg.getMybytearray(),0,mybytearray.length);
 						      MarketingManagerNewReports.acainstance.details.accept(new Message(68, msg));
+						      Platform.runLater(new Runnable() {
+									@Override
+									public void run() {
+										Alert alert = new Alert(AlertType.INFORMATION);
+										alert.setAlertType(AlertType.INFORMATION); 
+										alert.setContentText("Report send successfully!");
+										alert.show(); 
+									}
+								});
 						    }
 						catch (Exception e) {
 							System.out.println("Error send (Files)msg) to Server");
@@ -434,6 +446,15 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
 							      msg.setSize(mybytearray.length);
 							      bis.read(msg.getMybytearray(),0,mybytearray.length);
 							     MarketingManagerNewReports.acainstance.details.accept(new Message(68, msg));
+							     Platform.runLater(new Runnable() {
+										@Override
+										public void run() {
+											Alert alert = new Alert(AlertType.INFORMATION);
+											alert.setAlertType(AlertType.INFORMATION); 
+											alert.setContentText("Report send successfully!");
+											alert.show(); 
+										}
+									});
 								 
 						  }
 							catch (Exception e) {

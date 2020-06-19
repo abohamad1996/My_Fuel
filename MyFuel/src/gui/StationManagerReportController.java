@@ -31,16 +31,19 @@ import Entity.User;
 import client.ClientConsole;
 import common.Message;
 import common.MyFile;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -221,6 +224,15 @@ public class StationManagerReportController implements Initializable {
   	  		        		     Entity.Files f=new Entity.Files(0, msg.getFileName(), reclocation,"Not Readed");
   			        		     System.out.println(f.toString());
   	  								 StationManagerReportController.acainstance.chat.accept(new Message(62, f));
+  	  								Platform.runLater(new Runnable() {
+  										@Override
+  										public void run() {
+  											Alert alert = new Alert(AlertType.INFORMATION);
+  											alert.setAlertType(AlertType.INFORMATION); 
+  											alert.setContentText("Report send successfully!");
+  											alert.show(); 
+  										}
+  									});
   								    }
   								catch (Exception e) {
   									System.out.println("Error send (Files)msg) to Server");
@@ -333,6 +345,15 @@ public class StationManagerReportController implements Initializable {
 								      bis.read(msg.getMybytearray(),0,mybytearray.length);
 	  									StationManagerReportController.acainstance.details.accept(new Message(60, msg));
 	  									StationManagerReportController.acainstance.chat.accept(new Message(62, f));
+	  									Platform.runLater(new Runnable() {
+	  										@Override
+	  										public void run() {
+	  											Alert alert = new Alert(AlertType.INFORMATION);
+	  											alert.setAlertType(AlertType.INFORMATION); 
+	  											alert.setContentText("Report send successfully!");
+	  											alert.show(); 
+	  										}
+	  									});
 								    }
 								catch (Exception e) {
 									System.out.println("Error send (Files)msg) to Server");
@@ -386,6 +407,15 @@ public class StationManagerReportController implements Initializable {
   								      System.out.println(f.toString());
   									 StationManagerReportController.acainstance.details.accept(new Message(58, msg));
   	  								 StationManagerReportController.acainstance.chat.accept(new Message(62, f));
+  	  								Platform.runLater(new Runnable() {
+  										@Override
+  										public void run() {
+  											Alert alert = new Alert(AlertType.INFORMATION);
+  											alert.setAlertType(AlertType.INFORMATION); 
+  											alert.setContentText("Report send successfully!");
+  											alert.show(); 
+  										}
+  									});
   							  }
   								catch (Exception e) {
   									System.out.println("Error send (Files)msg) to Server");

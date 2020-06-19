@@ -55,7 +55,7 @@ public class LoginController implements Initializable {
 			public void run() {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setAlertType(AlertType.INFORMATION); 
-				alert.setContentText("Send An Email to Marketing Representative \n Email:bshara.b94@gmail.com");
+				alert.setContentText("Send An Email to Marketing Representative \nEmail:bshara.b94@gmail.com \nPhone Number:0521234567");
 				alert.show(); 
 			}
 		});

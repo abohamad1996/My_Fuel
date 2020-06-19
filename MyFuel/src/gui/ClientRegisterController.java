@@ -87,8 +87,7 @@ public class ClientRegisterController implements Initializable{
 	    @FXML
 	    private TextField txtPassword;
 
-	    @FXML
-	    private Button btnImage;
+	
 	    @FXML
 		public Label status;
 	    @FXML
@@ -147,21 +146,7 @@ public class ClientRegisterController implements Initializable{
 			}
 		});
 	}
-    @FXML
-    void AddImage(ActionEvent event) {
-				FileChooser chooser=new FileChooser();
-		    	Stage stage=(Stage) splitpane.getScene().getWindow();
-		    	 file=chooser.showOpenDialog(stage);
-				    javafx.scene.image.Image image=new javafx.scene.image.Image(file.toURI().toString());
-			    	imageProfile.setImage(image);
-		    	System.out.println(file.getPath().toString());
-		    	try {
-					fis=new FileInputStream(file);
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-    }
+
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

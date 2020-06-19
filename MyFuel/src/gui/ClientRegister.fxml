@@ -6,8 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -66,12 +64,6 @@
       <Label layoutX="30.0" layoutY="310.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Password:" />
       <Label layoutX="7.0" layoutY="312.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
       <TextField fx:id="txtPassword" layoutX="122.0" layoutY="311.0" prefHeight="26.0" prefWidth="130.0" styleClass="combo" stylesheets="@css2.css" />
-      <ImageView fx:id="imageProfile" fitHeight="99.0" fitWidth="107.0" layoutX="154.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/UserPhoto.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="btnImage" layoutX="22.0" layoutY="382.0" mnemonicParsing="false" onAction="#AddImage" prefHeight="32.0" prefWidth="107.0" styleClass="root4" stylesheets="@css2.css" text="Add image" />
       <Label fx:id="status" layoutX="440.0" layoutY="281.0" />
       <Label layoutX="30.0" layoutY="91.0" prefHeight="18.0" prefWidth="107.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Client Type:" />
       <ComboBox fx:id="comboType" layoutX="123.0" layoutY="82.0" prefHeight="44.0" prefWidth="130.0" promptText="Choose" styleClass="root4" stylesheets="@css2.css" />

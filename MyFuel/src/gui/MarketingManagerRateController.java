@@ -151,12 +151,11 @@ public class MarketingManagerRateController implements Initializable {
 	    }
 	
 	
-	
-		
     @FXML
     void SendToApprove(ActionEvent event) {
     	currentprice=Double.parseDouble(txtRate.getText());
     	//System.out.println(currentprice);
+    	
     	if(comboFuelType.getValue().equals("Gasoline 95")&&currentprice>priceGasoline)
     	{
     		Platform.runLater(new Runnable() {

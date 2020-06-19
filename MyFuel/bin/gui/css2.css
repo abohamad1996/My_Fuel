@@ -15,7 +15,7 @@
 	-fx-font-weight : bold;
 }
 .root4 {
-	-fx-background-color: #01509f;
+	-fx-background-color: #0E76DD;
 	/*-fx-background-color: skyblue;*/
 	-fx-text-fill: #ffffff;
 	-fx-padding: 6 6 6 6;
@@ -38,9 +38,9 @@
 -fx-text-fill: #ffffff;
 }
 .combo{
-	-fx-background-color: #01509f;
+	-fx-background-color: #0E76DD;
 	-fx-font-weight : bold;
-	-fx-text-fill: #000000;
+	 -fx-text-fill: #ffffff;
 }
 
 .root5{
@@ -69,7 +69,8 @@
 }
 .combo2{
 	-fx-background-color: #01509f;
-	-fx-text-fill: #000000; 
+	-fx-text-fill: red;
+	
 }
 .blacklabel {
 	/*-fx-background-color: skyblue;*/

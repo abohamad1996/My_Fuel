@@ -20,7 +20,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <ComboBox fx:id="comboFuelType" layoutX="227.0" layoutY="155.0" prefHeight="29.0" prefWidth="150.0" promptText="Select Fuel Type" styleClass="combo2" />
+      <ComboBox fx:id="comboFuelType" layoutX="227.0" layoutY="151.0" prefHeight="29.0" prefWidth="150.0" promptText="Select Fuel Type" styleClass="root4" />
       <Text layoutX="90.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discount" wrappingWidth="100.99999999999989">
          <font>
             <Font size="15.0" />
