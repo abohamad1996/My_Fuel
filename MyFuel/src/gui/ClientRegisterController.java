@@ -29,11 +29,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.ImageInput;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -119,19 +121,34 @@ public class ClientRegisterController implements Initializable{
     void Register(ActionEvent event) {
     	Integer status=0;
     	String rank="Client";
-    	User user = new User(txtID.getText(), txtxFirstname.getText(), txtLastname.getText(), txtEmail.getText(), txtUsername.getText(), txtPassword.getText(), rank,comboType.getValue(), status,null);
-    	ClientRegisterController.acainstance.chat.accept(new Message(6, user));
+    	User user = new User(txtID.getText(), txtxFirstname.getText(), txtLastname.getText(), txtEmail.getText(), txtUsername.getText(), txtPassword.getText(), rank,comboType.getValue(), status,0);
+
+    	if(txtID.getText().isEmpty() || txtxFirstname.getText().isEmpty()|| txtLastname.getText().isEmpty()|| txtEmail.getText().isEmpty()|| txtUsername.getText().isEmpty() ||txtPassword.getText().isEmpty())
+    	{
+    		Platform.runLater(new Runnable() {
+    			@Override
+    			public void run() {
+    				Alert alert = new Alert(AlertType.INFORMATION);
+    				alert.setAlertType(AlertType.INFORMATION); 
+    				alert.setContentText("There is missing field");
+    				alert.show(); 
+    			}
+    		});
+    	}
+    	else {
+    		ClientRegisterController.acainstance.chat.accept(new Message(6, user));
+ 
+ 
        	String creditCard=txtCreditA.getText()+txtCreditB.getText()+txtCreditC.getText()+txtCreditD.getText();
-    	System.out.println("creditcard:"+creditCard);
     	CreditCard card=new CreditCard(txtID.getText(), creditCard, txtMonth.getText(), txtYear.getText(), txtCVV.getText());
     	ClientRegisterController.acainstance.chat.accept(new Message(7, card));
     	ClientRegisterDetails clientRegister;
     	clientRegister = new ClientRegisterDetails();
     	runLater(() -> {
     		clientRegister.start(splitpane, user, "User");
-});
+});}
     }
-    
+    	
 	@SuppressWarnings("unused")
 	private void runLater(Func f) {
 		f.call();

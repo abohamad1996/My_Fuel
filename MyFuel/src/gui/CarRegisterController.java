@@ -18,11 +18,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -112,6 +114,9 @@ public class CarRegisterController implements Initializable{
     	String gastype;
     	Car car ;
     	String Services,Rate=null;
+    
+    		
+ 
     	car=new Car(comboID.getValue(), txtCarNumber.getText(), comboPlan.getValue(), comboServices.getValue(),comboGastype.getValue(), comboStation.getValue(), comboStation2.getValue(), comboStation3.getValue(),Rate);
     	double rateNew = 0;
     	gastype=comboGastype.getValue();
@@ -175,7 +180,13 @@ public class CarRegisterController implements Initializable{
     	car.setRateForCar(s);
     	System.out.println(car);
     	CarRegisterController.acainstance.chat.accept(new Message(8, car));
-    }
+    	CarRegisterDetails clientRegister;
+    	clientRegister = new CarRegisterDetails();
+    	runLater(() -> {
+    		clientRegister.start(splitpane, null, "User");
+});}
+    
+    
     @FXML
     void DisplayPrePaying(ActionEvent event) {
     	if(comboServices.getValue().equals("Full monthly"))

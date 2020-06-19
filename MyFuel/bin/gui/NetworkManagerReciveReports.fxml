@@ -17,8 +17,8 @@
       <Button fx:id="btnShowReports" layoutX="294.0" layoutY="467.0" mnemonicParsing="false" onAction="#Reports" prefHeight="25.0" prefWidth="107.0" styleClass="root4" stylesheets="@css2.css" text="Show Reports" />
       <TableView fx:id="filestable" layoutX="2.0" layoutY="125.0" prefHeight="304.0" prefWidth="682.0" styleClass="root2" stylesheets="@css2.css">
          <columns>
-            <TableColumn fx:id="clmName" prefWidth="319.0" text="File Name" />
-            <TableColumn fx:id="clmStatus" minWidth="0.0" prefWidth="123.0" text="Status" />
+            <TableColumn fx:id="clmName" prefWidth="376.0" text="File Name" />
+            <TableColumn fx:id="clmStatus" minWidth="0.0" prefWidth="185.0" text="Status" />
          </columns>
       </TableView>
    </children>

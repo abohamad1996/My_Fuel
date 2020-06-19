@@ -12,16 +12,19 @@ import Entity.Rates;
 import Entity.User;
 import client.ClientConsole;
 import common.Message;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -61,7 +64,16 @@ public class RepresentativeTransportSetMaxPrice implements Initializable{
     		RepresentativeTransportSetMaxPrice.acainstance.MaxRates.accept(new Message(28, Diesel));
     		RepresentativeTransportSetMaxPrice.acainstance.MaxRates.accept(new Message(28, Scotter));
     		RepresentativeTransportSetMaxPrice.acainstance.MaxRates.accept(new Message(28, HomeHeating));
-    		
+    		Platform.runLater(new Runnable() {
+    			@Override
+    			public void run() {
+    				Alert alert = new Alert(AlertType.INFORMATION);
+    				alert.setAlertType(AlertType.INFORMATION); 
+    				alert.setContentText("Rate Set Successfully");
+    				alert.show(); 
+    			}
+    		});
+ 
     }
 	public void RatesAcceptor(ArrayList<Rates> maxPrice) {
 		System.out.println(maxPrice.get(0).getPrice());

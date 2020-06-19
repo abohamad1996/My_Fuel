@@ -8,17 +8,20 @@ import Entity.OrderConfirmation;
 import Entity.User;
 import client.ClientConsole;
 import common.Message;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -162,6 +165,15 @@ public class SupplierOrderController implements Initializable{
 
 	                      }
                               System.out.println("this is the order:"+order);
+                              Platform.runLater(new Runnable() {
+                      			@Override
+                      			public void run() {
+                      				Alert alert = new Alert(AlertType.INFORMATION);
+                      				alert.setAlertType(AlertType.INFORMATION); 
+                      				alert.setContentText("Order have been confirmed");
+                      				alert.show(); 
+                      			}
+                      		});
 	                        });
 	                    }
 	                    public void updateItem(String item, boolean empty) {
@@ -197,7 +209,16 @@ public class SupplierOrderController implements Initializable{
 	                           System.out.println(order.getOrderNumber()+" " +order.getType()+" "+order.getQuantity());
 	                           System.out.println("not cinfirm");
 	                              SupplierOrderController.acainstance.details.accept(new Message(50, order));
-	                           // NetworkManagerApproveRatesController.acainstance.details.accept(new Message(20, newRates));
+	                              Platform.runLater(new Runnable() {
+	                      			@Override
+	                      			public void run() {
+	                      				Alert alert = new Alert(AlertType.INFORMATION);
+	                      				alert.setAlertType(AlertType.INFORMATION); 
+	                      				alert.setContentText("Order canceled");
+	                      				alert.show(); 
+	                      			}
+	                      		});
+	                              // NetworkManagerApproveRatesController.acainstance.details.accept(new Message(20, newRates));
 	                           // System.out.println("selectedData: " + data);
 	                        });
 	                    }

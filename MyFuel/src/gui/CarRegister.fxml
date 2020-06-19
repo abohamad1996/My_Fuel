@@ -12,7 +12,7 @@
    <children>
       <Label layoutX="38.0" layoutY="168.0" prefHeight="31.0" prefWidth="128.0" style="-fx-font-size: 15;" styleClass="root3" stylesheets="@css2.css" text="Car Number:" />
       <Label layoutX="16.0" layoutY="170.0" prefHeight="31.0" prefWidth="22.0" style="-fx-font-size: 15;" styleClass="redlabel" stylesheets="@css2.css" text="*" />
-      <Button fx:id="btnNext" layoutX="503.0" layoutY="382.0" mnemonicParsing="false" onAction="#Next" prefHeight="28.0" prefWidth="79.0" styleClass="root4" stylesheets="@css2.css" text="Next" />
+      <Button fx:id="btnNext" layoutX="503.0" layoutY="382.0" mnemonicParsing="false" onAction="#Next" prefHeight="28.0" prefWidth="79.0" styleClass="root4" stylesheets="@css2.css" text="Add Car" />
       <Text layoutX="20.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Car Details" textAlignment="CENTER">
          <font>
             <Font size="27.0" />

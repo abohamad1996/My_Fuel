@@ -10,7 +10,9 @@ import Entity.Rates;
 import Entity.StationsInventory;
 import Entity.User;
 import client.ClientConsole;
+import client.Func;
 import common.Message;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -134,6 +136,11 @@ public class HomeHeatingOrderController implements Initializable{
 		//System.out.println(Inventory);
 			HomeHeatingOrderController.acainstance.details.accept(new Message(23, heatingOrder));
 		   HomeHeatingOrderController.acainstance.details.accept(new Message(32, stationsInventory));
+		   HomeHeatingOrderDone homeHeatingOrderDone;
+		   homeHeatingOrderDone = new HomeHeatingOrderDone();
+	    	runLater(() -> {
+	    		homeHeatingOrderDone.start(splitpane, user, "User");
+	});
 			//System.out.println(stationsInventory);
 	    }
 	    @FXML
@@ -141,7 +148,7 @@ public class HomeHeatingOrderController implements Initializable{
 	    	  date=dateSelect.getValue().toString();
 			   quantity=Double.parseDouble(btnQuantity.getText());
 			   urgent=txtUrgent.getValue();
-			   heatingOrder=new HomeHeatingOrder(0, user.getId(), quantity, date, urgent, price, "in");
+			   heatingOrder=new HomeHeatingOrder(0, user.getId(), quantity, date, urgent, price, "In Progress");
 			 price =   heatingOrder.Calculate_Price_HomeHeating(quantity, urgent, rates);
 			 heatingOrder.setPrice(price);
 			finalPrice=String.valueOf(price);
@@ -153,6 +160,21 @@ public class HomeHeatingOrderController implements Initializable{
 	    void CalculatePrice(KeyEvent event) {
 	    	
 	    }
+		
+		private void runLater(Func f) {
+			f.call();
+			Platform.runLater(() -> {
+				try {
+					Thread.sleep(10);
+					f.call();
+
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
+		}
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance=this;

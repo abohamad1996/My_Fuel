@@ -249,6 +249,7 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
 						      msg.setSize(mybytearray.length);
 						      bis.read(msg.getMybytearray(),0,mybytearray.length);
 						      MarketingManagerNewReports.acainstance.details.accept(new Message(68, msg));
+						     
 						      Platform.runLater(new Runnable() {
 									@Override
 									public void run() {
