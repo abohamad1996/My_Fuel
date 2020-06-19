@@ -263,11 +263,7 @@ public class MarketingManagerNewReports implements Initializable{
 							count=0;
 						}
 							}
-						
-
-						
-						
-						
+					
 						//////////////////////////////////////////////////////////////////////////////
 						
 						
