@@ -10,6 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/** 
+ *  This class represents a controller for the gui 
+ *  HomePage
+ */
 
 public class HomePage implements Initializable{
 	@FXML

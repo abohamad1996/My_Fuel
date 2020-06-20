@@ -37,6 +37,11 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/**
+ * 
+ * This class represents a controller for the gui MarketingManagerNewReports
+ *
+ */
 
 public class MarketingManagerNewReports implements Initializable{
 	
@@ -90,6 +95,12 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
 
     ObservableList<User> List =FXCollections.observableArrayList(); 
     ObservableList<Sales> ListSales =FXCollections.observableArrayList(); 
+    /** This methode load the information into the gui
+   	*
+   	* @param splitpane this parameter form the type 
+   	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+   	* @param userJob this parameter from the type string 
+   	*/
 
     public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
@@ -108,25 +119,42 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
     LocalDateTime now = LocalDateTime.now();  
     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");  
     String formatDateTime = now.format(format);
-	
+    /**
+	 * this method get array of type sales from sql table
+	 * @param salse for type ArrayList
+	 */
+
     public void SalesAcceptor(ArrayList<Sales> salse) {
     	getSaless = (ArrayList<Sales>)salse.clone();
     	System.out.println(getSaless);
     	ListSales.addAll(getSaless);
 		}
-    
+    /**
+     * this method get array of type User from sql table
+     * @param cleints for type ArrayLis
+     */
+
     public void UserClientAcceptor(ArrayList<User> cleints) {
     	userClient = (ArrayList<User>)cleints.clone();
     	//System.out.println(userClient);
 		List.addAll(cleints);
 		}
-	
+    
+    /**
+	 * this method get array of type Refueling from sql table
+	 * @param ref for type ArrayLis
+	 */
+
 	public void RefuelingAcceptor(ArrayList<Refueling> ref) {
 		refuelings = (ArrayList<Refueling>)ref.clone();
 		System.out.println(refuelings);
 		}
 	
- 
+	/**
+	  * this method select the report button 
+	  * @param event of button 
+	  */
+
     @FXML
     void SelectReport(ActionEvent event) {
     	for(int i=0;i<refuelings.size();i++)
@@ -135,6 +163,10 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
     
     	}
     }
+    /**
+     * this method for sendreports the MarketingManager creat the reports 
+     * @param event of button 
+     */
 
     @FXML
     void SendReport(ActionEvent event) {
@@ -499,7 +531,10 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
     }
     
 	
-	
+    /** 
+	 * this method send notification  to chat client
+	 */
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance=this;

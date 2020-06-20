@@ -19,7 +19,11 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+/**
+ *In this class we added a dates for home heating order
+ * @author mahmoud odeh
+ *
+ */	
 public class StationManagerHomeHeatingDates implements Initializable{
 
 	
@@ -38,6 +42,12 @@ public class StationManagerHomeHeatingDates implements Initializable{
 	  final Button addButton  = new Button("Confirm");
 
 	private AnchorPane lowerAnchorPane;
+	/**
+	* 
+	* @param splitpane this parameter from the type splitpane
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string
+	*/
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -61,7 +71,12 @@ public class StationManagerHomeHeatingDates implements Initializable{
 
 	    @FXML
 	    private Button btnSet;
-
+/**
+ * 
+ * 
+this method sets the dates that station manager want to order home heating order
+ * @param event
+ */
 	    @FXML
 	    void Set(ActionEvent event) {
 	    	String date;
@@ -72,7 +87,9 @@ public class StationManagerHomeHeatingDates implements Initializable{
 
 	
 	
-	
+	    /**
+	     * This methode get notification from the chatclient
+	     */
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

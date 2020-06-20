@@ -23,6 +23,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/**
+ * 
+ * This class represents a controller for the gui AnalayticSystem
+ *
+ */
 
 public class AnalayticSystemController implements Initializable{
 
@@ -57,6 +62,13 @@ public class AnalayticSystemController implements Initializable{
 	 ObservableList<AnalyticSystem> List1 =FXCollections.observableArrayList(); 
 	 ObservableList<Rating> List2 =FXCollections.observableArrayList();
 	private AnchorPane lowerAnchorPane;
+	/** This methode load the information into the gui
+	*
+	* @param splitpane this parameter form the type 
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string 
+	*/
+
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -70,18 +82,32 @@ public class AnalayticSystemController implements Initializable{
 			e.printStackTrace();
 	}
 }
-	
+	/**
+	 *  this method get array of type AnalyticSystem from sql table
+	 * @param analyticsystem for type ArrayList
+	 */
+
 	
 	public void AnalayticSystemAcceptor(ArrayList<AnalyticSystem> analyticsystem) {
 		List1.addAll(analyticsystem);
 		System.out.println(List1);
 		}
+	
+	/**
+	 *  this method get array of type Rating from sql table
+	 * @param rating for type ArrayList
+	 */
+
 	public void RatingAcceptor(ArrayList<Rating> rating) {
 		List2.addAll(rating);
 		System.out.println(List2);
 		}
 
-	
+	/**
+	 *   this function for click showrates 
+	 * @param event of button 
+	 */
+
     @FXML
     void shorrates(ActionEvent event) {
     	System.out.println(List1);
@@ -192,7 +218,10 @@ public class AnalayticSystemController implements Initializable{
     }
 	
 	
-    
+    /**
+	 * this method send notification  to chat client
+	 */
+
 
 
 	@Override

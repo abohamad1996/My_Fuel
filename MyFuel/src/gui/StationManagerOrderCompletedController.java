@@ -1,6 +1,7 @@
 package gui;
 
 import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -29,6 +30,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+/**
+ * This class represents a controller for the gui StationManagerOrderCompleted
+ * @author  mahmoud odeh
+ *
+ */
 public class StationManagerOrderCompletedController implements Initializable{
 
 	
@@ -61,12 +67,18 @@ public class StationManagerOrderCompletedController implements Initializable{
 
 	    @FXML
 	    private TableColumn<OrderConfirmation, String> clmDate;
-	    
+	    /**
+	    * This methode show all the notification in the table view when we press the show order button
+	    * @param event
+	    */
 	    @FXML
 	    void ShowOrder(ActionEvent event) {
 	    	orderConfirmationTable.setItems(List);
 	    }
-	
+	    /**
+	    * This methode get notification from the chat client 
+	    * @param orderArray this parameter from the order confirmation contains ordernumber,type,quantity,status,stationname,address,date,managerid
+	    */
 	    public void OrderDoneAcceptor(ArrayList<OrderConfirmation> orderArray) {
 			List.addAll(orderArray);
 			System.out.println(List);
@@ -85,6 +97,12 @@ public class StationManagerOrderCompletedController implements Initializable{
 	  final Button addButton  = new Button("Confirm");
 
 	private AnchorPane lowerAnchorPane;
+	/**
+	* 
+	* @param splitpane this parameter from the type splitpane
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string
+	*/
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -102,7 +120,9 @@ public class StationManagerOrderCompletedController implements Initializable{
 	
 	
 	
-
+	/**
+	* This methode send notification to the chatclient
+	*/
 	
 	
 	
@@ -127,6 +147,9 @@ public class StationManagerOrderCompletedController implements Initializable{
 			clmDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
 			addConfirmButtonToTable();
 	}
+	/**
+	* This methode add the confirm button in the table view
+	*/
 	 private void addConfirmButtonToTable() {
 	        TableColumn<OrderConfirmation, String> colBtn = new TableColumn("Seen");
 	       

@@ -27,7 +27,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * This class represents a controller for the gui RepresentativeTransportSetMaxPrice
+ * @author  mahmoud odeh
+ *
+ */
 public class RepresentativeTransportSetMaxPrice implements Initializable{
     public static RepresentativeTransportSetMaxPrice acainstance;
     public 	 ClientConsole MaxRates= new ClientConsole("localhost", 5555);
@@ -54,6 +58,10 @@ public class RepresentativeTransportSetMaxPrice implements Initializable{
     private TextField txtHomeHeating;
 	    
 	Rates Gasoline,Diesel,Scotter,HomeHeating;
+	/**
+	* This methode get notification from the chat client if there is anew maxprice
+	* @param event
+	*/
     @FXML
     void SetPrice(ActionEvent event) {
     	if(txtGasoline.getText().isEmpty() || txtDiesel.getText().isEmpty()||txtScooter.getText().isEmpty()||txtHomeHeating.getText().isEmpty())
@@ -89,6 +97,10 @@ public class RepresentativeTransportSetMaxPrice implements Initializable{
     		});
     	}
     }
+    /**
+    * This methode get the fuel type and price 
+    * @param maxPrice this parameter from the type rates and contains fueltype,price
+    */
 	public void RatesAcceptor(ArrayList<Rates> maxPrice) {
 		System.out.println(maxPrice.get(0).getPrice());
 		Gasoline=new Rates(maxPrice.get(0).getFuelType(), maxPrice.get(0).getPrice());
@@ -107,6 +119,12 @@ public class RepresentativeTransportSetMaxPrice implements Initializable{
 	private AnchorPane lowerAnchorPane;
     ObservableList<String> gastypeList =FXCollections.observableArrayList(); 	
 		ArrayList<String> gastypeValues=new ArrayList<String>();
+		/**
+		* 
+		* @param splitpane this parameter from the type splitpane
+		* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+		* @param userJob this parameter from the type string
+		*/
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -120,7 +138,9 @@ public class RepresentativeTransportSetMaxPrice implements Initializable{
 			e.printStackTrace();
 	}		
 }
-	
+	/**
+	 * This methode get notification from the chatclient
+	 */
 	
 	
 	@Override

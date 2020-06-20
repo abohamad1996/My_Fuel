@@ -27,6 +27,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/**
+ * 
+ * This class represents a controller for the gui MarketingManagerRate
+ *
+ */
 
 public class MarketingManagerRateController implements Initializable {
 	public static MarketingManagerRateController acainstance;
@@ -102,6 +107,15 @@ public class MarketingManagerRateController implements Initializable {
 	
     ObservableList<String> gastypeList =FXCollections.observableArrayList(); 	
 		ArrayList<String> gastypeValues=new ArrayList<String>();
+		/**
+		* This methode load the information into the gui
+		*
+		* @param splitpane this parameter form the type 
+		* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+		* @param userJob this parameter from the type string 
+		*/
+
+		
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -115,6 +129,11 @@ public class MarketingManagerRateController implements Initializable {
 			e.printStackTrace();
 	}		
 }
+	/**
+	 * this method get array of type Rates from sql table
+	 * @param maxPrice for type ArrayList
+	 */
+
 	public void RatesAcceptor(ArrayList<Rates> maxPrice) {
 		Gasoline=new Rates(maxPrice.get(0).getFuelType(), maxPrice.get(0).getPrice());
 		Diesel=new Rates(maxPrice.get(1).getFuelType(), maxPrice.get(1).getPrice());
@@ -126,7 +145,11 @@ public class MarketingManagerRateController implements Initializable {
 		priceHomeHeating=Double.parseDouble(HomeHeating.getPrice());
 		System.out.println(""+priceGasoline+priceDiesel+priceScooter+priceHomeHeating);
 		}
-	
+	/**
+	 * this method get array of type Rates from sql table
+	 * @param actualPrice for type ArrayList
+	 */
+
 	public void actualRatesAcceptor(ArrayList<Rates> actualPrice) {
 		actualDiesel=new Rates(actualPrice.get(1).getFuelType(), actualPrice.get(1).getPrice());
 		actualGasoline=new Rates(actualPrice.get(0).getFuelType(), actualPrice.get(0).getPrice());
@@ -140,7 +163,11 @@ public class MarketingManagerRateController implements Initializable {
 		System.out.println(""+actual_priceGasoline+actual_priceDiesel+actual_priceScooter+actual_priceHomeHeating);
 		}
 
-	 
+	/**
+	  * this method open event when clicking on the button Refresh
+	  * @param event of button 
+	  */
+
 	 @FXML
 	    void Refresh(ActionEvent event) {
 		 rates= new MarketingManagerRateController();
@@ -150,7 +177,11 @@ public class MarketingManagerRateController implements Initializable {
 	    	
 	    }
 	
-	
+	 /**
+		 *  this function for click sendtoapprove the rate
+		 * @param event of button 
+		 */
+
     @FXML
     void SendToApprove(ActionEvent event) {
     	if(txtRate.getText().isEmpty()||comboFuelType.getSelectionModel().isEmpty())
@@ -240,7 +271,12 @@ public class MarketingManagerRateController implements Initializable {
     
     
     
-    
+    /**
+     * * This method run all the buttons in the gui
+
+	 * @param f for type function
+	 */
+
 	@SuppressWarnings("unused")
 	private void runLater(Func f) {
 		f.call();
@@ -256,6 +292,10 @@ public class MarketingManagerRateController implements Initializable {
 		});
 	}
 	
+	/** 
+	 * this method send notification  to chat client
+	 */
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		acainstance=this;		

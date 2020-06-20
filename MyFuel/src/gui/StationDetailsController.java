@@ -20,7 +20,11 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+/**
+ * This class represents a controller for the gui StationDetails
+ * @author  mahmoud odeh
+ *
+ */
 public class StationDetailsController implements Initializable{
     public static StationDetailsController acainstance;
 
@@ -85,7 +89,10 @@ public class StationDetailsController implements Initializable{
 	    private Label labelScooterThreshold;
 		public StationsInventory stationsInventory;
 		public ClientConsole details= new ClientConsole("localhost", 5555);
-
+		/**
+		 * This methode get notification from the chatclient
+		 * @param inv this paramet of type station inventory contaians StationID,StationName,StationAddress,GasolineQuantity,DieselQuantity,ScooterQuantity,HomeHeatingQuantity,GasolineThresholdLevel,DieselThresholdLevel,ScooterThresholdLevel,managerIDString;
+		 */
 		public void FuelAcceptor(ArrayList<StationsInventory> inv) {
 			stationsInventory=null;
 			for(StationsInventory temp:inv)
@@ -109,6 +116,12 @@ public class StationDetailsController implements Initializable{
 	  final Button addButton  = new Button("Confirm");
 
 	private AnchorPane lowerAnchorPane;
+	/**
+	* 
+	* @param splitpane this parameter from the type splitpane
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string
+	*/
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -122,7 +135,9 @@ public class StationDetailsController implements Initializable{
 			e.printStackTrace();
 	}
 }
-	
+	/**
+	 * This methode get notification from the chatclient
+	 */
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

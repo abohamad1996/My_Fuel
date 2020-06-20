@@ -46,7 +46,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/** This class represents a controller for the gui StationManagerReport
+* @author  malhmoud odeh
+*
+*/
 public class StationManagerReportController implements Initializable {
 	
 	public static StationManagerReportController acainstance;
@@ -109,15 +112,26 @@ public class StationManagerReportController implements Initializable {
 	LocalDateTime now = LocalDateTime.now();  
     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");  
     String formatDateTime = now.format(format);  
-
+    /**
+    * This methode get notification from the chat client if there is anew refueingl
+    * @param ref this parameter from the type refueling contains orderid,ownerid,carnumber,gasstaion,address,gastype,rateforliter,quantity,price,date,pumpnumber,service,time
+    */
 	public void RefuelingAcceptor(ArrayList<Refueling> ref) {
 		refuelings = (ArrayList<Refueling>)ref.clone();
 		//System.out.println(refuelings);
 		}
+	/**
+	*This methode get notification from the chat client if there is anew refueingl 
+	* @param station this parameter from the type refueling contains stationid,stationname,stationaddress,gasolinequantity,disealquantity,scooterquantity,homeheatingquantity,gasolinethresholdlevel,diselthreshollevel,scooterthresholdlevel,manageridstring
+	*/
 	public void StationAcceptor(ArrayList<StationsInventory> station) {
 		stations = (ArrayList<StationsInventory>)station.clone();
 		//System.out.println(stations);
 		}
+	/**
+	* This methode send the report to the wanted place and puth all the things at the way that required
+	* @param event
+	*/
     @FXML
     void SendReport(ActionEvent event) {
         try {
@@ -447,7 +461,12 @@ public class StationManagerReportController implements Initializable {
     void SelectReport(ActionEvent event) {
     	
     }
+    /**
+    * This methode take the report each quartet year
+    * @param event
+    */
     @FXML
+    
     void SelectQuartet(ActionEvent event) {
     	if(comboQuartet.getValue().equals("Quartet 1 (Between 1-1 To 30-3)"))
     			{
@@ -471,7 +490,10 @@ public class StationManagerReportController implements Initializable {
 		}
     	
     }
-
+    /**
+     * This methode send the reprt to the chatclient
+     * @param event
+     */
     @FXML
     void SelectYear(ActionEvent event) {
     	currentYear=comboYear.getValue()+"-";
@@ -482,7 +504,9 @@ public class StationManagerReportController implements Initializable {
 		System.out.println(Dates.get(0)+ "   "+Dates.get(1));
 		StationManagerReportController.acainstance.details.accept(new Message(57, Dates));
     }
-
+    /**
+     * This methode send notification to the chatclient
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance=this;

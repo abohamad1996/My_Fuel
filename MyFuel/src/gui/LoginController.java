@@ -25,6 +25,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+/**
+ * 
+ *This class represents a controller for the gui 
+ *  Login
+ *
+ */
 
 public class LoginController implements Initializable {
 	@FXML    
@@ -47,6 +53,10 @@ public class LoginController implements Initializable {
 		
 	}
 
+	/**
+	 * this method used if the user forget the password 
+	 * @param event
+	 */
 
     @FXML
     void Forget(ActionEvent event) {
@@ -63,7 +73,11 @@ public class LoginController implements Initializable {
     }
     	
     	
-    
+    /**
+     * 
+     * @param event of button
+     */
+
 	@FXML
     void LoginAction(ActionEvent event) {
     	String username = Username.getText();
@@ -74,6 +88,12 @@ public class LoginController implements Initializable {
 		loginMessage[2] = password;
 		login.accept(new Message(3, loginMessage));
     }
+	/** This methode load the information into the gui
+	*
+	*
+	* @param primaryStage  appearance of the software
+	*/
+
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		try {
@@ -93,6 +113,11 @@ public class LoginController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * 
+	 * @return  how appearance of the software
+	 */
+
 	public Stage getStage() {
 		return primaryStage;
 	}

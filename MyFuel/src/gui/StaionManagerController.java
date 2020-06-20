@@ -38,7 +38,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-
+/**
+ * This class represents a controller for the gui StaionManager
+ * @author  mahmoud odeh
+ *
+ */
 public class StaionManagerController implements Initializable {
     ObservableList<OrderConfirmation> List =FXCollections.observableArrayList(); 
     ObservableList<OrderConfirmation> List2 =FXCollections.observableArrayList(); 
@@ -101,7 +105,10 @@ public class StaionManagerController implements Initializable {
 	    @FXML
 	    private Label DiroctoryBar;
 		public StationsInventory stationsInventory;
-
+		/**
+		 * This methode get notification from the chatclient
+		 * @param invthis paramet of type station inventory contaians StationID,StationName,StationAddress,GasolineQuantity,DieselQuantity,ScooterQuantity,HomeHeatingQuantity,GasolineThresholdLevel,DieselThresholdLevel,ScooterThresholdLevel,managerIDString;
+		 */
 		public void FuelAcceptor(ArrayList<StationsInventory> inv) {
 			stationsInventory=null;
 			/*Diesel=new Inventory(inv.get(0).getFuelType(), inv.get(0).getQuantity(), inv.get(0).getLevel());
@@ -121,8 +128,12 @@ public class StaionManagerController implements Initializable {
 			}
 				System.out.println(stationsInventory);
 			}
-	    
-	    @FXML
+		/**
+		 * /**
+ * This methode make the button HomeHeating and get us to the gui Inventory
+ * @param event
+ */
+	
 	    void HomeHeating(ActionEvent event) {
 	    	  DiroctoryBar.setText("My Fuel->Home Heating Dates");
 	    	homeHeatingDates = new StationManagerHomeHeatingDates();
@@ -130,6 +141,10 @@ public class StaionManagerController implements Initializable {
 	    		homeHeatingDates.start(splitpane, user, "User");
 	});
 	    }
+	 /**
+ * This methode make the button Inventorywork and get us to the gui Inventory
+ * @param event
+ */
 	    @FXML
 	    void HomeButton(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->Home");
@@ -139,7 +154,10 @@ public class StaionManagerController implements Initializable {
 	    		HomePage.start(splitpane, user, "User");
 	});
 	    }
-
+	    /**
+	     * This methode make the button Inventorywork and get us to the gui Inventory
+	     * @param event
+	     */
 	    @FXML
 	    void Inventory(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->Inventory Managment");
@@ -147,7 +165,9 @@ public class StaionManagerController implements Initializable {
 	    	 inventory=new StationManagerInventoryController();
 	    	 inventory.start(splitpane, user, "User");
 	    }
-
+	    /**
+	    * his methode make the user log out from the program
+	    */
 	    @FXML
 	    void Logout(ActionEvent event) {
 	    	System.out.println("Logout");
@@ -161,7 +181,10 @@ public class StaionManagerController implements Initializable {
 				e.printStackTrace();
 			}
 	    }
-
+	    /**
+	     * This methode make the button NewReportswork and get us to the gui NewReports
+	     * @param event
+	     */
 	    @FXML
 	    void NewReports(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->Reports");
@@ -171,6 +194,10 @@ public class StaionManagerController implements Initializable {
 	    		reports.start(splitpane, user, "User");
 	});
 	    }
+	    /**
+	    * This methode make the button OrderConfirmationand get us to the gui OrderConfirmation
+	    * @param event
+	    */
 	    @FXML
 	    void OrderConfirmation(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->Order Confirmation");
@@ -178,7 +205,10 @@ public class StaionManagerController implements Initializable {
 	    	confirmation=new StationManagerOrderConfirmationController();
 	    	confirmation.start(splitpane, user, "User");
 	    }
-
+	    /**
+	    * This methode make the button ProfileSettingButtonget us to the gui ProfileSettingButton
+	    * @param event
+	    */
 	    @FXML
 	    void ProfileSettingButton(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->Profile Settings");
@@ -188,7 +218,10 @@ public class StaionManagerController implements Initializable {
 	    		ProfileSetting.start(splitpane, user, "User");
 	});
 	    }
-
+	    /**
+	    * This methode make the button btnAboutus to the gui btnAbout
+	    * @param event
+	    */
 	    @FXML
 	    void btnAbout(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->About");
@@ -198,6 +231,10 @@ public class StaionManagerController implements Initializable {
 	    		About.start(splitpane, user, "User");
 	});
 	    }
+	    /**
+	    * This methode send anotification to the station manager to approve rate
+	    * @param event
+	    */
 	    @FXML
 	    void OrderApprove(ActionEvent event) {
 	    	if(btnNotification.getText().equals("There is no notifications"))
@@ -213,19 +250,34 @@ public class StaionManagerController implements Initializable {
 	    		confirmation.start(splitpane, user, "User");
 	});}
 	    }
+	    /**
+	    * This methode turn of the red light when we click 
+	    * @param event
+	    */
 	    @FXML
 	    void NotificationBarClick(MouseEvent event) {
 	    	Alert(false);
 	    }
-
+	    /**
+	     * This methode to ligth if their is a new notification
+	     * @param event
+	     */
 	    @FXML
 	    void NotificationBarAction(ActionEvent event) {
 	    	Alert(false);
 			System.out.println("aaaa");
 	    }
+	    /**
+	    * This methode turn the light off when we return false and on when true
+	    * @param a this is aboolean parameter
+	    */
 	    void Alert(boolean a) {
 			notificationAlert.setVisible(a);
 		}
+	    /**
+	    * This methode get notification from the chat client if there is anew order
+	    * @param orderArray this parameter from the type order confirmation arraylist contains ordernumber,type,quantity,status,stationname,address,date,managerid
+	    */
 	    public void OrderAcceptor(ArrayList<OrderConfirmation> orderArray) {
 			List.addAll(orderArray);
 			System.out.println(List);
@@ -241,6 +293,10 @@ public class StaionManagerController implements Initializable {
 			}
 			
 			}
+	    /**
+	    * This methode get notification from the chat client 
+	    * @param orderArray this parameter from the order confirmation contains ordernumber,type,quantity,status,stationname,address,date,managerid
+	    */
 	    public void OrderDoneAcceptor(ArrayList<OrderConfirmation> orderArray) {
 			List2.addAll(orderArray);
 			System.out.println(List2);
@@ -255,6 +311,10 @@ public class StaionManagerController implements Initializable {
 			}
 			
 			}
+	    /**
+	    * This methode make the button Stationto work and go to the gui Station
+	    * @param event
+	    */
 	    @FXML
 	    void Station(ActionEvent event) {
 	    	  DiroctoryBar.setText("My Fuel->Station Details");
@@ -264,6 +324,10 @@ public class StaionManagerController implements Initializable {
 		    		stationDetailsController.start(splitpane, user, "User");
 		});
 	    }
+	    /**
+	    * This methode make the button OrderCompleted work and go to the gui Station
+	    * @param event
+	    */
 	    @FXML
 	    void OrderCompleted(ActionEvent event) {
 	    	 DiroctoryBar.setText("My Fuel->Order Completed");
@@ -272,6 +336,9 @@ public class StaionManagerController implements Initializable {
 		    		ordercompleted.start(splitpane, user, "User");
 		});
 	    }
+	    /**
+	     * This methode get notification from the chatclient
+	     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance=this;
@@ -297,7 +364,12 @@ public class StaionManagerController implements Initializable {
 	public static StationManagerInventoryController inventory;
 	public static StationManagerReportController reports;
 	public static StationManagerOrderConfirmationController confirmation;
-
+	/**
+	* 
+	* @param splitpane this parameter from the type splitpane
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string
+	*/
 	public void start(User user) {
 		this.user = user;
 		s = this;

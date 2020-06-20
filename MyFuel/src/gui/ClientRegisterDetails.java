@@ -18,6 +18,12 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/**
+ * 
+ *  This class represents a controller for the gui 
+ *  Client Register Details that the register is successfully
+ *
+ */
 
 public class ClientRegisterDetails implements Initializable{
 
@@ -81,7 +87,11 @@ public class ClientRegisterDetails implements Initializable{
 	
 	
 	
-	
+	/**
+	 *  This method run all the buttons in the gui
+     * @param f type for function
+	 */
+
 	
 	@SuppressWarnings("unused")
 	private void runLater(Func f) {

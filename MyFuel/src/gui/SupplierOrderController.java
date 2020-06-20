@@ -26,7 +26,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
+/**
+ * This class represents a controller for the gui SupplierOrder
+ * @author ahmoud odeh
+ *
+ */
 public class SupplierOrderController implements Initializable{
 	public static SupplierOrderController acainstance;
 	public ClientConsole details= new ClientConsole("localhost", 5555);
@@ -60,12 +64,18 @@ public class SupplierOrderController implements Initializable{
     @FXML
     private Button btnShowOrders;
     
-    
+    /**
+    * This methode get ingormation from the chatclient
+    * @param odcon this paramater from the type order confirmation contains ordernumber,type,quantity,status,stationname,address,date,managerid
+    */
 	public void OrderConfirmationAcceptor(ArrayList<OrderConfirmation> odcon) {
 		List.addAll(odcon);
 		System.out.println(List);
 		}
-    
+	/**
+	* This methode show all the items in the table view when we press the button showorders
+	* @param event
+	*/
     @FXML
     void ShowOrders(ActionEvent event) {
     	  orderConfirmationTable.setItems(List);
@@ -84,6 +94,12 @@ public class SupplierOrderController implements Initializable{
 	  final Button addButton  = new Button("Confirm");
 
 	private AnchorPane lowerAnchorPane;
+	/**
+	* This methode load the information into the gui
+	* @param splitpane this parameter from the type splitpane
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string
+	*/
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -98,7 +114,9 @@ public class SupplierOrderController implements Initializable{
 	}
 }
 	
-	
+	/**
+	* This methode  connect between the controller and the chatclient
+	*/
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -124,6 +142,9 @@ public class SupplierOrderController implements Initializable{
 		addConfirmButtonToTable();
 		addNotConfirmButtonToTable();
 	}
+	/**
+	* This methode add the confirm button in the table view
+	*/
 	 private void addConfirmButtonToTable() {
 	        TableColumn<OrderConfirmation, String> colBtn = new TableColumn("ConfirmOrder");
 	       
@@ -194,6 +215,9 @@ public class SupplierOrderController implements Initializable{
 	        colBtn.setStyle("-fx-background-color: #01509f; -fx-text-fill: white;");
 	        orderConfirmationTable.getColumns().add(colBtn);
 	    }
+	 /**
+	 * This methode add the no confirm button in the table view
+	 */
 	    private void addNotConfirmButtonToTable() {
 	        TableColumn<OrderConfirmation, String> colBtn = new TableColumn("Not Confirm");
 

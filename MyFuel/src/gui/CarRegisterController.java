@@ -27,6 +27,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/**
+ *  this class represents register car for client by the marketing representative.
+ */
 
 public class CarRegisterController implements Initializable{
 	public static CarRegisterController acainstance;
@@ -100,15 +103,30 @@ public class CarRegisterController implements Initializable{
 		e.printStackTrace();
 }	
 }
+	/**
+	 * 
+	 * @param bb put all ID clients to the combo box  
+	 */
 
 	public void IDAcceptor(ArrayList<String> bb) {
 		List.addAll(bb);		
 	}
 	
+	
+	/**
+	 * 
+	 * @param rates for car
+	 */
+
 	public void RatesAcceptor(ArrayList<Rates> rates) {
 		ratesUpdateArrayList = (ArrayList<Rates>)rates.clone();
 		}
 	
+	/**
+	 *this method for add a car client by marketing representative
+	 * @param event of button
+	 */
+
     @FXML
     void Next(ActionEvent event) {
     	String gastype;
@@ -200,7 +218,11 @@ public class CarRegisterController implements Initializable{
     		clientRegister.start(splitpane, null, "User");
 });}
     }
-    
+    /**
+     * this function for display the paying 
+     * @param  event of button
+     */
+
     @FXML
     void DisplayPrePaying(ActionEvent event) {
     	if(comboServices.getValue().equals("Full monthly"))
@@ -212,7 +234,14 @@ public class CarRegisterController implements Initializable{
     		comboPrePaying.setVisible(false);
 		}
     }
-    
+    /**
+     * in this function marketing representative choose a plan for a client 
+     * that in the plan we have two chooses level 1 or level 2 
+     * level 1 the client have a one station
+     * level 2 the client have 3 station   
+     * @param event
+     */
+
     @FXML
     void PlanChoose(ActionEvent event) {
     	String currentLevel=comboPlan.getValue();
@@ -242,6 +271,12 @@ public class CarRegisterController implements Initializable{
     	star.setVisible(true);
     	}
     }
+    /**
+     * This method run all the buttons in the gui
+
+     * @param f
+     */
+
 	@SuppressWarnings("unused")
 	private void runLater(Func f) {
 		f.call();
@@ -257,7 +292,10 @@ public class CarRegisterController implements Initializable{
 		});
 	}
 	
-	
+	/**
+	 * this method send notification  to chat client
+	 */
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		acainstance = this;

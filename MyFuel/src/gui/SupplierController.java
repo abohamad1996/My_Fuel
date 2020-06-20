@@ -30,7 +30,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
+/**
+ * This class represents a controller for the gui Supplier
+ * @author Mahmoud Odeh
+ *
+ */
 public class SupplierController implements Initializable{
 
 	public static SupplierController acainstance;
@@ -84,20 +88,34 @@ public class SupplierController implements Initializable{
     private Button btnNotification;
 
   
-
+    /**
+     * This methode to ligth if their is a new notification
+     * @param event
+     */
     @FXML
     void NotificationBarAction(ActionEvent event) {
     	Alert(false);
     }
-
+    /**
+    * This methode turn of the red light when we click 
+    * @param event
+    */
     @FXML
     void NotificationBarClick(MouseEvent event) {
     	Alert(false);
 
     }
+    /**
+    * This methode turn the light off when we return false and on when true
+    * @param a this is aboolean parameter
+    */
     void Alert(boolean a) {
  			notificationAlert.setVisible(a);
  		}
+    /**
+    * This methode show if their is a new orders
+    * @param event
+    */
     @FXML
     void OrderApprove(ActionEvent event) {
     	if(btnNotification.getText().equals("There is no notifications"))
@@ -113,7 +131,10 @@ public class SupplierController implements Initializable{
     		supplierOrder.start(splitpane, user, "User");
 });}
     }
-
+    /**
+     * This methode make the button order confirmation work and get us to the gui Order Confirmation
+     * @param event
+     */
     @FXML
     void OrderConfirmation(ActionEvent event) {
     	  DiroctoryBar.setText("My Fuel->Order Confirmation");
@@ -125,12 +146,15 @@ public class SupplierController implements Initializable{
     }
 
 
-
+ 
     @FXML
     void Station(ActionEvent event) {
 
     }
-
+    /**
+    * This methode make the button home work and get us to the gui home
+    * @param event
+    */
  
 	    @FXML
 	    void HomeButton(ActionEvent event) {
@@ -141,7 +165,10 @@ public class SupplierController implements Initializable{
 		    		HomePage.start(splitpane, user, "User");
 		});
 	    }
-
+	    /**
+	     * This methode make the user log out from the program
+	     * @param event
+	     */
 	    @FXML
 	    void Logout(ActionEvent event) {
 	    	System.out.println("Logout");
@@ -154,7 +181,10 @@ public class SupplierController implements Initializable{
 				e.printStackTrace();
 			}
 	    }
-
+	    /**
+	     * This methode make the button profile setting work and get us to the gui profile setting
+	     * @param event
+	     */
 	    @FXML
 	    void ProfileSettingButton(ActionEvent event) {
 	    	  DiroctoryBar.setText("My Fuel->Profile Settings");
@@ -165,7 +195,10 @@ public class SupplierController implements Initializable{
 		});
 	    }
 
-	
+	    /**
+	     * This methode make the button about work and get us to the gui about
+	     * @param event
+	     */
 
 	    @FXML
 	    void btnAbout(ActionEvent event) {
@@ -176,7 +209,10 @@ public class SupplierController implements Initializable{
 	    		About.start(splitpane, user, "User");
 	});
 	    }
-	
+	    /**
+	    * This methode get notification from the chat client if there is anew order
+	    * @param orderArray this parameter from the type order confirmation arraylist contains ordernumber,type,quantity,status,stationname,address,date,managerid
+	    */
 	    public void OrderAcceptor(ArrayList<OrderConfirmation> orderArray) {
 			List.addAll(orderArray);
 			System.out.println(List);
@@ -202,7 +238,10 @@ public class SupplierController implements Initializable{
 		public static NetworkManagerApproveRatesController approveRates;
 		public static SupplierOrderController supplierOrder;
 		
-
+		/**
+		 * This methode load the information into the gui
+		 * @param userthis paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+		 */
 		public void start(User user) {
 			this.user = user;
 			primaryStage = LoginController.primaryStage;
@@ -233,7 +272,10 @@ public class SupplierController implements Initializable{
 				}
 			});
 		}
-	
+		/**
+		* This methode run all the buttons in the gui
+		* @param f this paramater get a function to run the button
+		*/
 		private void runLater(Func f) {
 			f.call();
 			Platform.runLater(() -> {
@@ -247,7 +289,9 @@ public class SupplierController implements Initializable{
 				}
 			});
 		}
-	
+		/**
+		* This methode  connect between the controller and the chatclient
+		*/
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

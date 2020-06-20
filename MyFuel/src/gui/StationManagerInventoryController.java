@@ -27,7 +27,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import jdk.internal.dynalink.beans.StaticClass;
-
+/**
+ * This class represents a controller for the gui StationManagerInventory
+ * @author  mahmoud odeh
+ *
+ */
 public class StationManagerInventoryController implements Initializable{
     public static StationManagerInventoryController acainstance;
     @FXML
@@ -72,6 +76,12 @@ public class StationManagerInventoryController implements Initializable{
 
 
 	String status;
+	/**
+	* 
+	* @param splitpane this parameter from the type splitpane
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string
+	*/
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -86,7 +96,10 @@ public class StationManagerInventoryController implements Initializable{
 	}		
 }
 	
-	
+	/**
+	* This methode get notification from the chat client
+	* @param inv this paramet of type station inventory contaians StationID,StationName,StationAddress,GasolineQuantity,DieselQuantity,ScooterQuantity,HomeHeatingQuantity,GasolineThresholdLevel,DieselThresholdLevel,ScooterThresholdLevel,managerIDString;
+	*/
 	
 	public void FuelAcceptor(ArrayList<StationsInventory> inv) {
 		stationsInventory=null;
@@ -112,7 +125,10 @@ public class StationManagerInventoryController implements Initializable{
 	
 		}
 	
-	
+	/**
+	* This methode get notification from the chatclient
+	* @param event
+	*/
     @FXML
     void SetLevel(ActionEvent event) {
     /*	Gasoline=new Inventory(Gasoline.getFuelType(), Gasoline.getQuantity(), Gasoline.getLevel());
@@ -151,7 +167,9 @@ public class StationManagerInventoryController implements Initializable{
     			alert.show(); 
     }
     }
-
+    /**
+     * This methode get notification from the chatclient
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;		

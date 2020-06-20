@@ -20,7 +20,11 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
-
+/**
+ * This class represents a controller for the gui RepresentativeTransport
+ * @author mahmoud odeh 
+ *
+ */
 public class RepresentativeTransportController implements Initializable{
 
 	  @FXML
@@ -55,7 +59,10 @@ public class RepresentativeTransportController implements Initializable{
 	    @FXML
 	    private Label DiroctoryBar;
 	    
-	   
+	    /**
+	    * This methode make the button home work and get us to the gui home
+	    * @param event
+	    */
 	    @FXML
 	    void HomeButton(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->Home");
@@ -65,7 +72,9 @@ public class RepresentativeTransportController implements Initializable{
 	    		HomePage.start(splitpane, user, "User");
 	});
 	    }
-
+	    /**
+	    * his methode make the user log out from the program
+	    */
 	    @FXML
 	    void Logout(ActionEvent event) {
 	    	System.out.println("Logout");
@@ -78,7 +87,10 @@ public class RepresentativeTransportController implements Initializable{
 				e.printStackTrace();
 			}
 	    }
-
+	    /**
+	    * This methode make the button ProfileSettingButtonget us to the gui ProfileSettingButton
+	    * @param event
+	    */
 	    @FXML
 	    void ProfileSettingButton(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->Profile Settings");
@@ -88,7 +100,10 @@ public class RepresentativeTransportController implements Initializable{
 	    		ProfileSetting.start(splitpane, user, "User");
 	});
 	    }
-
+	    /**
+	     * This methode make the button SetPriceus to the gui SetPrice
+	     * @param event
+	     */
 	    @FXML
 	    void SetPrice(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->Set Maximum Price");
@@ -98,7 +113,10 @@ public class RepresentativeTransportController implements Initializable{
 	    		setMaxPrice.start(splitpane, user, "User");
 	});
 	    }
-
+	    /**
+	    * This methode make the button btnAboutus to the gui btnAbout
+	    * @param event
+	    */
 	    @FXML
 	    void btnAbout(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->About");
@@ -121,6 +139,12 @@ public class RepresentativeTransportController implements Initializable{
 	public static AboutController About;
 	public static HomePage HomePage;
 	RepresentativeTransportSetMaxPrice setMaxPrice;
+	/**
+	* 
+	* @param splitpane this parameter from the type splitpane
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string
+	*/
 	public void start(User user) {
 		this.user = user;
 		s = this;
@@ -152,6 +176,10 @@ public class RepresentativeTransportController implements Initializable{
 			}
 		});
 	}
+	/**
+	* This methode run all the buttons in the gui
+	* @param f this paramater get a function to run the button
+	*/
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
@@ -187,7 +215,9 @@ public class RepresentativeTransportController implements Initializable{
 	
 	
 	
-	
+	/**
+	 * This methode get notification from the chatclient
+	 */
 	
 	
 	

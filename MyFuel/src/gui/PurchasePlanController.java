@@ -20,7 +20,11 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * This class represents a controller for the gui PurchasePlan
+ * @author mahmod odeh
+ *
+ */
 public class PurchasePlanController implements Initializable{
     public static PurchasePlanController acainstance;
 	
@@ -70,7 +74,12 @@ public class PurchasePlanController implements Initializable{
 		Car detailsCar;
 	    ObservableList<String> List =FXCollections.observableArrayList(); 
 	    ObservableList<Car> CarList =FXCollections.observableArrayList(); 
-
+	    /**
+	    * 
+	    * @param splitpane this parameter from the type splitpane
+	    * @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	    * @param userJob this parameter from the type string
+	    */
 		public void start(SplitPane splitpane, User user,String userJob) {
 			this.splitpane=splitpane;
 			this.user=user;
@@ -85,16 +94,26 @@ public class PurchasePlanController implements Initializable{
 		}		
 	}
 	
-	
+		/**
+		* This methode get notification for thecar
+		* @param car this paramater from car type car and contains ownerid,carnumber,purchaseplane,services,gastype,gasstaion1,gasstaion2,gasstaion3,rateforcar
+		*/
 		public void CarAcceptor(ArrayList<Car> car) {
 			
 			car2.addAll(car);
 			//CarList.addAll(car);
 		}
-	
+		/**
+		* This methode transform to string
+		* @param bb
+		*/
 		public void Car2Acceptor(ArrayList<String> bb) {
 			List.addAll(bb);		
 		}
+		/**
+		* This methode get the details of the car
+		* @param event
+		*/
 	    @FXML
 	    void ShowDetails(ActionEvent event) {
 	    	Integer index;
@@ -112,7 +131,11 @@ public class PurchasePlanController implements Initializable{
 				txtRate.setText(car2.get(index).getRateForCar());
 				System.out.println(car2.toString());
 	        }
-	    
+	    /**
+	    * 
+	    * @param carnumber this parameter of the type string
+	    * @return the index of the car
+	    */
 	    private int getCarNumberPos(String carnumber) {
 	    	for(int i = 0; i < this.car2.size(); ++i) {
 	            if(this.car2.get(i).getCarNumber().equals(carnumber)) 
@@ -132,7 +155,9 @@ public class PurchasePlanController implements Initializable{
 		//	txtGastype.setText(detailsCar.getGastype());
 		//	txtCarnumber.setText(detailsCar.getCarNumber());
 	    
-	
+	    /**
+	     * This methode get notification from the chatclient
+	     */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		acainstance = this;		

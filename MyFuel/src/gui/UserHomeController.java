@@ -1,6 +1,7 @@
 package gui;
 
 import java.net.URL;
+
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -25,6 +26,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+/**
+*This class represents a controller for the gui USERHOME
+* 
+*
+*
+*/
 public class UserHomeController implements Initializable{
 	
 	   @FXML
@@ -62,6 +69,10 @@ public class UserHomeController implements Initializable{
 
 	    @FXML
 	    private Button btnLogout;
+	    /**
+	    * This methode bring us back to the home page of the gui 
+	    * @param event
+	    */
 	    @FXML
 	    void HomeButton(ActionEvent event) {
 	       	HomePage = new HomePage();
@@ -76,6 +87,10 @@ public class UserHomeController implements Initializable{
 
 	    }
 
+	    /**
+	     * This methode bring us to profile srtting gui
+	     * @param event
+	     */
 	    @FXML
 	    void ProfileSettingButton(ActionEvent event) {
 	    	ProfileSetting = new ProfileSettingsController();
@@ -98,7 +113,10 @@ public class UserHomeController implements Initializable{
 	    void RegisterClientButton(ActionEvent event) {
 
 	    }
-
+	    /**
+	     * This methode bring us to about gui
+	    * @param event
+	    */
 	    @FXML
 	    void btnAbout(ActionEvent event) {
 	    	About = new AboutController();
@@ -114,6 +132,10 @@ public class UserHomeController implements Initializable{
 	public static ProfileSettingsController ProfileSetting;
 	public static AboutController About;
 	public static HomePage HomePage;
+	/**
+	 * This methode load the information into the gui
+	 * @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	 */
 	public void start(User user) {
 		this.user = user;
 		s = this;
@@ -145,6 +167,10 @@ public class UserHomeController implements Initializable{
 			}
 		});
 	}
+	/**
+	* This methode make the user log out from the program
+	* @param event
+	*/
     @FXML
     void Logout(ActionEvent event) {
     		System.out.println("Logout");
@@ -157,10 +183,16 @@ public class UserHomeController implements Initializable{
     			e.printStackTrace();
     		}
     }
-	
+    /**
+    * This methode return the primary stage
+    * @return primary stage
+    */
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
+	/**
+	* This methode connect between the controller and the gui
+	*/
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		btnRank.setText(user.getRank());
@@ -169,7 +201,12 @@ public class UserHomeController implements Initializable{
 	}	
 	
 	
-	
+	/**
+	* This methode run all the buttons in the gui
+	* @param f this paramater get a function to run the button
+	*/
+
+
 	
 	
 	private void runLater(Func f) {

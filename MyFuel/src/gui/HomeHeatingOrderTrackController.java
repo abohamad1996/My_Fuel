@@ -23,6 +23,12 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/**
+ * This class represents a controller for the gui 
+ *  HomeHeatingOrderTrack that you can see which time you receive the order
+ * 
+ *
+ */
 
 public class HomeHeatingOrderTrackController implements Initializable{
 
@@ -78,7 +84,11 @@ public class HomeHeatingOrderTrackController implements Initializable{
 	}		
 }
 	
-	
+	/**
+	 * in this method we see all the HomeHeatingOrderID 
+	 * @param bb receive ArrayList that have HomeHeatingOrderAcceptor
+	 */
+
 	
 	public void HomeHeatingOrderAcceptor(ArrayList<String> bb) {
 		List.addAll(bb);		
@@ -86,12 +96,21 @@ public class HomeHeatingOrderTrackController implements Initializable{
 	
 	
 	
+	/**
+	 * 
+	 * in this method we see all the HomeHeatingOrder
+	 * @param bb receive ArrayList that have HomeHeatingOrderAcceptor
+	 */
 
 	public void HomeHeatingOrderAccept(ArrayList<HomeHeatingOrder> homeHeatingOrders) {
 		HomeHeating.addAll(homeHeatingOrders);
 		
 	}
-	
+	 /**
+     * in this function we can see the details of home heating order
+     * @param  event of button
+     */
+
     @FXML
     void ShowDetails(ActionEvent event) {
     	int index;
@@ -124,7 +143,12 @@ public class HomeHeatingOrderTrackController implements Initializable{
     	}
     }
 	
-	
+    /**
+	 * this method check if orderID founded in homeheating
+	 * @param orderID from type int
+	 * @return int this function return -1 if the Id not founded else return i 
+	 */
+
 	private int getOrderIDPos(int orderID) {
 	    	for(int i = 0; i < this.HomeHeating.size(); ++i) {
 	            if(this.HomeHeating.get(i).getOrderID()==orderID) 
@@ -132,7 +156,11 @@ public class HomeHeatingOrderTrackController implements Initializable{
 	    	}
 	        return -1;
 	    }
-	
+	/**
+     * This method run all the buttons in the gui
+     * @param f
+     */
+
     @SuppressWarnings("unused")
 	private void runLater(Func f) {
 		f.call();
@@ -147,6 +175,11 @@ public class HomeHeatingOrderTrackController implements Initializable{
 			}
 		});
 	}
+    /**
+    
+	 * this method send notification  to chat client
+	 */
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		acainstance = this;	

@@ -22,6 +22,11 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
+/**
+ * 
+ * This class represents a controller for the gui HomeHeating
+ *
+ */
 
 public class MarketingManagerController implements Initializable{
 	  @FXML
@@ -82,6 +87,10 @@ public class MarketingManagerController implements Initializable{
 	public static AnalayticSystemController system;
 	public static MarketingManagerNewReports report;
 	public static MarketingManagerRecieveReports reportFile;
+	/**
+	 * This method run all the buttons in the gui MarketingManager
+	 */
+
 	public void start(User user) {
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -113,7 +122,12 @@ public class MarketingManagerController implements Initializable{
 			}
 		});
 	}
-	
+	/**
+	 * this method for Home button
+	 * @param event of button
+
+	 */
+
     @FXML
     void HomeButton(ActionEvent event) {
      	DiroctoryBar.setText("My Fuel->Home");
@@ -122,6 +136,11 @@ public class MarketingManagerController implements Initializable{
     		HomePage.start(splitpane, user, "User");
 });
     }
+    /**
+	 * this method for RecieveReports button
+	 * @param event of button
+
+	 */
 
     @FXML
     void RecieveReports(ActionEvent event) {
@@ -131,6 +150,11 @@ public class MarketingManagerController implements Initializable{
     		reportFile.start(splitpane, user, "User");
 });
     }
+    /**
+	 * this method for Logout button
+	 * @param event of button
+
+	 */
 
     @FXML
     void Logout(ActionEvent event) {
@@ -144,6 +168,11 @@ public class MarketingManagerController implements Initializable{
 			e.printStackTrace();
 		}
     }
+    /**
+   	 * this method for Rates button
+   	 * @param event of button
+
+   	 */
 
 
     @FXML
@@ -154,6 +183,11 @@ public class MarketingManagerController implements Initializable{
     		rates.start(splitpane, user, "User");
 });
     }
+    /**
+   	 * this method for Sales button
+   	 * @param event of button
+
+   	 */
 
     @FXML
     void Sales(ActionEvent event) {
@@ -166,6 +200,12 @@ public class MarketingManagerController implements Initializable{
     	
     
     }
+    /**
+   	 * this method for NewReports button
+   	 * @param event of button
+
+   	 */
+
     @FXML
     void NewReports(ActionEvent event) {
     	DiroctoryBar.setText("My Fuel->Reports");
@@ -175,6 +215,12 @@ public class MarketingManagerController implements Initializable{
     	});
         
     }
+    /**
+   	 * this method for ProfileSetting button
+   	 * @param event of button
+
+   	 */
+
 
     @FXML
     void ProfileSettingButton(ActionEvent event) {
@@ -184,6 +230,11 @@ public class MarketingManagerController implements Initializable{
     		ProfileSetting.start(splitpane, user, "User");
 });
     }
+    /**
+   	 * this method for Aboutx button
+   	 * @param event of button
+
+   	 */
 
     @FXML
     void btnAbout(ActionEvent event) {
@@ -194,7 +245,11 @@ public class MarketingManagerController implements Initializable{
 });
     }
 	
-	
+    /**
+   	 * This method run all the buttons in the gui
+   	 * @param f type for function
+   	 */
+
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
@@ -210,7 +265,11 @@ public class MarketingManagerController implements Initializable{
 	}
 	
 	
-	
+	/**
+	 * `this method for Diroctory bar that show to the user  were he is
+	 * @param  event of button
+	 */
+
 	
 	   @FXML
 	    void System(ActionEvent event) {
@@ -219,7 +278,10 @@ public class MarketingManagerController implements Initializable{
 	    	runLater(() -> {
 	    		system.start(splitpane, user, "User");
 	});	    }
-	
+	   /** 
+		 * this method send notification  to chat client
+		 */
+
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

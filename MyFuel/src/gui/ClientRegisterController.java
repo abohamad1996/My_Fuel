@@ -41,6 +41,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+/**
+ * 
+ * This class represents a controller for the gui ClientRegister
+
+ *
+ */
 
 public class ClientRegisterController implements Initializable{
 	 MyFile msg= new MyFile("image.jpg");
@@ -118,6 +124,11 @@ public class ClientRegisterController implements Initializable{
 			e.printStackTrace();
 	}		
 }
+	/**
+	 * this method for register client 
+	 * @param  event of button 
+	 */
+
     @FXML
     void Register(ActionEvent event) {
     	Integer status=0;
@@ -163,7 +174,11 @@ public class ClientRegisterController implements Initializable{
     		clientRegister.start(splitpane, user, "User");
 });}
     }
-    	
+    /**
+	 * This method run all the buttons in the gui
+	 * @param f type for function
+	 */
+
 	@SuppressWarnings("unused")
 	private void runLater(Func f) {
 		f.call();
@@ -179,7 +194,10 @@ public class ClientRegisterController implements Initializable{
 		});
 	}
 
-	
+	/**
+	 * this method send notification  to chat client
+	 */
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;

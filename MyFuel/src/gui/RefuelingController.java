@@ -49,7 +49,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.stage.Stage;
-
+/**
+ * This class represents a controller for the gui Refueling
+ * @author  mahmoud odeh
+ *
+ */
 
 public class RefuelingController implements Initializable{
 	
@@ -111,7 +115,6 @@ public class RefuelingController implements Initializable{
 //////////////////////////////////////////////////////////////////////////////////////////
 
 	public static ProfileSettingsController ProfileSetting;
-	public static  ClientRefuelingDetailsController clientRefuelingDetails;
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
 	String CurrentRate;
@@ -133,6 +136,12 @@ public class RefuelingController implements Initializable{
 	StationsInventory currentStations;
 	Refueling refueling;
 	ArrayList<Car> car2=new ArrayList<Car>();
+	/**
+	* 
+	* @param splitpane this parameter from the type splitpane
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string
+	*/
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -146,6 +155,10 @@ public class RefuelingController implements Initializable{
 			e.printStackTrace();
 	}		
 }
+	/**
+	* This methode calculate the final price
+	* @param event
+	*/
     @FXML
     void Calculate(ActionEvent event) {
     	String now=dateFormat.format(loc_Time);
@@ -206,7 +219,10 @@ public class RefuelingController implements Initializable{
 		Quantity=txtQuantity.getText();
 		quantity=Double.parseDouble(Quantity);
     }
-    
+    /**
+    * This methode make the client see all the information 
+    * @param event
+    */
     @FXML
     void SeeDetails(ActionEvent event) {
     /*	clientRefuelingDetails = new ClientRefuelingDetailsController();
@@ -224,26 +240,50 @@ public class RefuelingController implements Initializable{
 		}
 	});
     }
+    /**
+    * This methode get ingormation of the station
+    * @param station this parameter of the type stationinventory and cnotains StationID,StationName,StationAddress,GasolineQuantity,DieselQuantity,ScooterQuantity,HomeHeatingQuantity,GasolineThresholdLevel,DieselThresholdLevel,ScooterThresholdLevel,managerIDString;
+    */
 	public void StationAcceptor(ArrayList<StationsInventory> station) {
 		stationsInventories = (ArrayList<StationsInventory>)station.clone();
 		}
+	/**
+	* This methode get ingormation of the sales
+	* @param sale this parameter of the type sales contains idsales,fueltype,discount,formhour.tohour,status
+	*/
 	public void checkForSaleAcceptor(Sales sale) {
 		sales = sale;
 		System.out.println(sales);
 		}
+	/**
+	* This methode get ingormation of the car
+	* @param car this paramater from car type car and contains ownerid,carnumber,purchaseplane,services,gastype,gasstaion1,gasstaion2,gasstaion3,rateforcar
+	*/
 	public void CarAcceptor(ArrayList<Car> car) {
 		car2.addAll(car);
 	//	System.out.println(car2.get(0).getOwnerID());
 		//CarList.addAll(car);
 	}
+	/**
+	* This methode get ingormation of the id station
+	* @param ID this parameter of the type string
+	*/
 	public void StationIDAcceptor(String ID) {
 		gasStationID=ID;
 		//System.out.println("Gas Station ID:"+gasStationID);
 	}
+	/**
+	* 
+	* @param station this parameter of the type stationinventory and cnotains StationID,StationName,StationAddress,GasolineQuantity,DieselQuantity,ScooterQuantity,HomeHeatingQuantity,GasolineThresholdLevel,DieselThresholdLevel,ScooterThresholdLevel,managerIDString;
+	*/
 	public void StationToUpdate(StationsInventory station) {
 		System.out.println(station);
 		
 	}
+	/**
+	* This methode make the client start refuling
+	* @param event
+	*/
     @FXML
     void StartRefueilng(ActionEvent event) {
 		 for(int i=0;i<stationsInventories.size();i++)
@@ -362,6 +402,10 @@ public class RefuelingController implements Initializable{
     		   //new Thread(t).run(); // wrong
     		   new Thread(t).start(); // right
 }
+    /**
+    * This methode run all the buttons in the gui
+    * @param f this paramater get a function to run the button
+    */
     private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
@@ -375,6 +419,9 @@ public class RefuelingController implements Initializable{
 			}
 		});
 	}
+    /**
+     * This methode get notification from the chatclient
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;		

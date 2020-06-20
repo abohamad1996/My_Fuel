@@ -22,7 +22,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import Server.EchoServer;
 import Server.ServerUI;
-
+/**
+ * This class represents a controller for the gui ServerPortFrame
+ * @author mahmoud odeh
+ *
+ */
 public class ServerPortFrameController  {
 	
 	String temp="";
@@ -46,6 +50,11 @@ public class ServerPortFrameController  {
 	{
 		return iptxt.getText();			
 	}
+	/**
+	* This methode to get p and ip for the server
+	* @param event
+	* @throws Exception
+	*/
 	public void Done(ActionEvent event) throws Exception {
 		String p;
 		String ip;
@@ -71,7 +80,11 @@ public class ServerPortFrameController  {
 			ServerUI.runServer(p);
 		}
 	}
-
+	/**
+	 * This methode to start th server
+	 * @param primaryStage
+	 * @throws Exception
+	 */
 	public void start(Stage primaryStage) throws Exception {	
 		Parent root = FXMLLoader.load(getClass().getResource("/gui/ServerPort.fxml"));
 		Scene scene = new Scene(root);

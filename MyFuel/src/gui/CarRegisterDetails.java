@@ -13,6 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/**
+ * this class represents about Car Register Details which display information details car.
+ *
+ */
 
 public class CarRegisterDetails implements Initializable {
 	
@@ -25,6 +29,12 @@ public class CarRegisterDetails implements Initializable {
 	private FXMLLoader loader;	
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
+	/** This methode load the information into the gui
+	*
+	* @param splitpane this parameter form the type 
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string 
+	*/
 
 	public void start(SplitPane splitpane, User user,String userJob) {
 	this.splitpane=splitpane;
@@ -41,7 +51,12 @@ public class CarRegisterDetails implements Initializable {
 	
 	
 	
-	
+	/**
+	 * This method run all the buttons in the gui
+
+	 * @param f
+	 */
+
 	
 	@SuppressWarnings("unused")
 	private void runLater(Func f) {

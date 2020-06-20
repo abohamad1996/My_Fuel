@@ -36,6 +36,9 @@ import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/**
+ *  This class represents a controller for the gui  HomeHeatingOrder
+ */
 
 public class HomeHeatingOrderController implements Initializable{
 	public static HomeHeatingOrderController acainstance;
@@ -101,12 +104,20 @@ public class HomeHeatingOrderController implements Initializable{
 			e.printStackTrace();
 	}		
 }
-	
+	/**
+	 * 
+	 * @param inv from type ArrayList put all gas station to the combo box  
+	 */
+
 	public void FuelAcceptorQuantity(ArrayList<StationsInventory> inv) {
 		stationsInventory=null;
 		
 		}
-	
+	/**
+	 * 
+	 * @param inv from type ArrayList put all gas station to the combo box  
+	 */
+
 	
 	public void FuelAcceptor(ArrayList<StationsInventory> inv) {
 		inven = (ArrayList<StationsInventory>)inv.clone();
@@ -119,16 +130,30 @@ public class HomeHeatingOrderController implements Initializable{
 		List.add(gasStation[i]);
 		}
 	}
+	/**
+	 * 
+	 *  accept dates for home heating order
+	 * @param dates
+	 */
 	public void DatesAcceptor(ArrayList<String> dates) {
 		DatesList.addAll(dates);
 		}
 	
-	
+	/**
+	 * This method insert the rate of type string to the SQL table 
+	 * @param rate new rate type string
+	 */
+
 	public void HomeHeatingRatesAcceptor(String rate) {
 		homeHeatingRate=rate;
 		System.out.println("new rate:"+rate);
 		  rates = Double.parseDouble(rate);
 		}
+	/**
+	 * This method insert the event of type ActionEvent to the SQL table 
+	 * @param event have the name of gas station
+	 */
+
     @FXML
     void SelectGasStation(ActionEvent event) {
     	String input = comboGasStation.getValue();;
@@ -139,6 +164,12 @@ public class HomeHeatingOrderController implements Initializable{
     		//System.out.println(inven.get(index).toString());
     	stationsInventory=inven.get(index);
     }
+    /**
+     * This method insert the event of type ActionEvent to the SQL table 
+     * @param event of button
+
+     */
+
 	   @FXML
 	    void AddNewOrder(ActionEvent event) {
 		  
@@ -165,7 +196,12 @@ public class HomeHeatingOrderController implements Initializable{
 	});
 			//System.out.println(stationsInventory);
 	    }
-	   
+	   /**
+	    *  this method Calculate price order
+	    * @param  event of button
+ 
+	    */
+
 	    @FXML
 	    void Calculate(ActionEvent event) {
 	    	 if(txtUrgent.getSelectionModel().isEmpty()|| comboGasStation.getSelectionModel().isEmpty() ||DateSelect.getSelectionModel().isEmpty())
@@ -198,7 +234,11 @@ public class HomeHeatingOrderController implements Initializable{
 	    void CalculatePrice(KeyEvent event) {
 	    	
 	    }
-		
+	    /**
+		 * This method run all the buttons in the gui
+		 * @param f type for function
+		 */
+
 		private void runLater(Func f) {
 			f.call();
 			Platform.runLater(() -> {
@@ -212,7 +252,10 @@ public class HomeHeatingOrderController implements Initializable{
 				}
 			});
 		}
-		
+		/**
+		 * this method send notification  to chat client
+		 */
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance=this;

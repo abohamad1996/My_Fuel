@@ -16,6 +16,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/**
+ * 
+ *  This class represents a controller for the gui HomeHeating
+ *
+ */
 
 public class HomeHeatingController implements Initializable{
 	public static	HomeHeatingOrderController  homeHeatingOrder;
@@ -53,7 +58,11 @@ public class HomeHeatingController implements Initializable{
 	
 	
 	
-	
+	/**
+	 * this method open event when clicking on the button AddNewOrder
+	 * @param  event of button
+	 */
+
     @FXML
     void AddNewOrder(ActionEvent event) {
     	homeHeatingOrder =new HomeHeatingOrderController();
@@ -61,6 +70,10 @@ public class HomeHeatingController implements Initializable{
     		homeHeatingOrder.start(splitpane, user, "User");
 });
 }
+    /**
+     * this method open event when clicking on the button TrackOrders
+     * @param event
+     */
 
     @FXML
     void TrackOrders(ActionEvent event) {
@@ -71,7 +84,11 @@ public class HomeHeatingController implements Initializable{
     }
 	
 	
-	
+    /**
+	 * This method run all the buttons in the gui
+	 * @param f type for function
+	 */
+
 	
     private void runLater(Func f) {
 		f.call();

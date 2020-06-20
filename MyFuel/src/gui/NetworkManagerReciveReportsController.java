@@ -29,7 +29,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
+/**
+ * This class represents a controller for the gui NetworkManagerReciveReports
+ * @author  mahmod odeh
+ *
+ */
 public class NetworkManagerReciveReportsController implements Initializable {
 	 ObservableList<Files> FilesList =FXCollections.observableArrayList(); 
 
@@ -55,7 +59,12 @@ public class NetworkManagerReciveReportsController implements Initializable {
 	private FXMLLoader loader;	
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
-
+	/**
+	* 
+	* @param splitpane this parameter from the type splitpane
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string
+	*/
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		primaryStage=LoginController.primaryStage;
@@ -67,17 +76,26 @@ public class NetworkManagerReciveReportsController implements Initializable {
 			e.printStackTrace();
 	}		
 }
+	/**
+	* This methode load all the information in arraylist
+	* @param files this parameter the type of files
+	*/
 	public void FilesAcceptor(ArrayList<Files> files) {
 		//filesarr = (ArrayList<Files>)files.clone();
 		FilesList.addAll(files);
 		}
-	
+	/**
+	 * This methode set all the file list
+	 * @param event
+	 */
     @FXML
     void Reports(ActionEvent event) {
     		System.out.println("List:"+FilesList);
     		filestable.setItems(FilesList);
     }
-
+    /**
+     * This methode get notification from the chatclient
+     */
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

@@ -25,7 +25,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
+/**
+ * This class represents a controller for the gui ProfileSettings
+ * @author  mahmoud odeh
+ *
+ */
 public class ProfileSettingsController implements Initializable{
     public static ProfileSettingsController acainstance;
 	  @FXML
@@ -73,6 +77,12 @@ public class ProfileSettingsController implements Initializable{
 	public ClientConsole details= new ClientConsole("localhost", 5555);
 	ArrayList<User> userdetails= new ArrayList<User>();
 	User detailsUser;
+	/**
+	* 
+	* @param splitpane this parameter from the type splitpane
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string
+	*/
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -86,12 +96,18 @@ public class ProfileSettingsController implements Initializable{
 			e.printStackTrace();
 	}		
 }
-
+	/**
+	 * 
+	 * @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	 */
 	public void Acceptor(User user) {
 	 detailsUser=new User(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), user.getUsername(), user.getPassword(), user.getRank(),user.getClientType(), user.getStatus(),user.getImage());
 	}
 
-
+	/**
+	 * This methode get notification from the chatclient
+	 * @param event event of button
+	 */
     @FXML
     void UpdateDetails(ActionEvent event) {
     	if(txtID.getText().isEmpty() ||txtEmail.getText().isEmpty()|| txtFirstName.getText().isEmpty()|| txtLastName.getText().isEmpty())
@@ -123,7 +139,10 @@ public class ProfileSettingsController implements Initializable{
 			});
     }
     }
-
+    /**
+     * This methode give the user accesbility to change the password
+     * @param event event of button
+     */
     @FXML
     void ChangePassword(ActionEvent event) {
     	btnPasswordChange.setVisible(true);
@@ -133,7 +152,10 @@ public class ProfileSettingsController implements Initializable{
     	txtConfirm.setVisible(true);
     	btnSetPassword.setVisible(true);
     }
-
+    /**
+     * This methode make the user to reset the password 
+     * @param event event of button
+     */
     @FXML
     void SetPassword(ActionEvent event) {
     	System.out.println(txxPassword.getText());
@@ -169,7 +191,9 @@ public class ProfileSettingsController implements Initializable{
     }
     
 
-
+    /**
+     * This methode get notification from the chatclient
+     */
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

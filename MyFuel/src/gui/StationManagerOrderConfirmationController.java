@@ -32,7 +32,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
+/**
+ *  This class represents a controller for the gui StationManagerOrderConfirmation
+ * @author mahmoud odeh 
+ *
+ */
 public class StationManagerOrderConfirmationController implements Initializable {
 
 	public static StationManagerOrderConfirmationController acainstance;
@@ -75,6 +79,12 @@ public class StationManagerOrderConfirmationController implements Initializable 
 	  final Button addButton  = new Button("Confirm");
 
 	private AnchorPane lowerAnchorPane;
+	/**
+	* 
+	* @param splitpane this parameter from the type splitpane
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string
+	*/
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -88,16 +98,27 @@ public class StationManagerOrderConfirmationController implements Initializable 
 			e.printStackTrace();
 	}
 }
+	/**
+	* This methode get notification from the chatclient
+	* @param odcon this parameter from the order confirmation contains ordernumber,type,quantity,status,stationname,address,date,managerid
+	*/
 	public void OrderConfirmationAcceptor(ArrayList<OrderConfirmation> odcon) {
 		List.addAll(odcon);
 		System.out.println(List);
 		}
+	/**
+	* This methode set all the confirmation in the table view when we press the button show order
+	* @param event
+	*/
 	  @FXML
 	    void ShowOrder(ActionEvent event) {
 		  orderConfirmationTable.setItems(List);
 		//  System.out.println(""+List.size());
 	//	  System.out.println(List.get(0).getQuantity());
 	    }
+	  /**
+	  * This methode send notification to the chatclient
+	  */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;		
@@ -120,6 +141,9 @@ public class StationManagerOrderConfirmationController implements Initializable 
 		addConfirmButtonToTable();
 		addNotConfirmButtonToTable();
 	}
+	/**
+	* This methode add the confirm button in the table view
+	*/
 	 private void addConfirmButtonToTable() {
 	        TableColumn<OrderConfirmation, String> colBtn = new TableColumn("ConfirmOrder");
 	       
@@ -167,6 +191,9 @@ public class StationManagerOrderConfirmationController implements Initializable 
 	        colBtn.setStyle("-fx-background-color: #0E76DD; -fx-text-fill: white;");
 	        orderConfirmationTable.getColumns().add(colBtn);
 	    }
+	 /**
+	 * This methode add the no confirm button in the table view
+	 */
 	    private void addNotConfirmButtonToTable() {
 	        TableColumn<OrderConfirmation, String> colBtn = new TableColumn("Not Confirm");
 

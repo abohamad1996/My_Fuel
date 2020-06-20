@@ -20,6 +20,11 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
+/**
+ * this class represents about Client Controller which display all the steps that client can do. 
+ * 
+ *
+ */
 
 public class ClientController implements Initializable{
     @FXML
@@ -60,6 +65,11 @@ public class ClientController implements Initializable{
 
     @FXML
     private Button btnLogout;
+    /**
+     *   
+     * @param event of button 
+     * this method open event when clicking on the button Home 
+     */
 
     @FXML
     void HomeButton(ActionEvent event) {
@@ -69,6 +79,12 @@ public class ClientController implements Initializable{
     		HomePage.start(splitpane, user, "User");
 });
     }
+    /**
+     *  
+     * @param  event of button
+       this method open event when clicking on the button Home Heating
+     */
+
 
     @FXML
     void HomeHeatingButton(ActionEvent event) {
@@ -78,6 +94,11 @@ public class ClientController implements Initializable{
     		homeHeating.start(splitpane, user, "User");
 });
     }
+    /**
+     * 
+     * @param  event of button
+    this method open event when clicking on the button log out
+     */
 
     @FXML
     void Logout(ActionEvent event) {
@@ -91,6 +112,11 @@ public class ClientController implements Initializable{
 			e.printStackTrace();
 		}
     }
+    /**
+     * 
+     * @param  event of button 
+     * this method open event when clicking on the button  Profile Setting
+     */
 
     @FXML
     void ProfileSettingButton(ActionEvent event) {
@@ -100,6 +126,11 @@ public class ClientController implements Initializable{
     		ProfileSetting.start(splitpane, user, "User");
 });
     }
+    /**
+     * 
+     * @param event of button
+     * this method open event when clicking on the button Purchase Plan
+     */
 
     @FXML
     void PurchasePlanButton(ActionEvent event) {
@@ -109,6 +140,10 @@ public class ClientController implements Initializable{
     		pController.start(splitpane, user, "User");
 });
     }
+    /**
+     * this method open event when clicking on the button Refuling
+     * @param  event of button
+     */
 
     @FXML
     void RefulingButton(ActionEvent event) {
@@ -118,6 +153,10 @@ public class ClientController implements Initializable{
     		refueling.start(splitpane, user, "User");
 });
     }
+    /**
+     * this method open event when clicking on the button About
+     * @param  event of button
+     */
 
     @FXML
     void btnAbout(ActionEvent event) {
@@ -138,6 +177,13 @@ public class ClientController implements Initializable{
 	public static HomePage HomePage;
 	public static PurchasePlanController pController;
 	public static	HomeHeatingController  homeHeating;
+	/**
+	* This method load the information into the gui
+	*
+	
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	*/
+
 	public void start(User user) {
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -172,6 +218,10 @@ public class ClientController implements Initializable{
 	
 	
 	
+	/**
+	 * This method run all the buttons in the gui
+	 * @param f type for function
+	 */
 
 	private void runLater(Func f) {
 		f.call();
@@ -191,7 +241,10 @@ public class ClientController implements Initializable{
 	
 	
 	
-	
+	/**
+	 * this method send notification  to chat client
+	 */
+
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
