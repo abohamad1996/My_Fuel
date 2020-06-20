@@ -134,12 +134,20 @@ public class AnalayticSystemController implements Initializable{
     						countnight++;
     			}
     			
-    				if(countgasoline95>=5)
+    				if(countgasoline95>=5) {
     					countgasoline95=1;
-    				if(countdiesel>=4)
+    					System.out.println("aa");
+    				}
+    				if(countdiesel>=4) {
     					countdiesel=1;
-    				if(countscooter>=2)
+    					System.out.println("bb");
+
+    				}
+    				if(countscooter>=2) {
     					countscooter=1;
+    					System.out.println("cc");
+
+    				}
     				
     						if(countCasualfueling!=0)
     							countCasualfueling=1;

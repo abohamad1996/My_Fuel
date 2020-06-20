@@ -149,8 +149,22 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
    			// TODO Auto-generated catch block
    			e.printStackTrace();
    		}
-           //////////////////////////////////////////////////////////////////////////////
     	   if(comboReportType.getSelectionModel().isEmpty())
+    	   
+    	   {
+    		   Platform.runLater(new Runnable() {
+    				@Override
+    				public void run() {
+    					Alert alert = new Alert(AlertType.INFORMATION);
+    					alert.setAlertType(AlertType.INFORMATION); 
+    					alert.setContentText("There is missing field");
+    					alert.show(); 
+    				}
+    			});
+    		   
+    	   }
+           //////////////////////////////////////////////////////////////////////////////
+    	   else  if(comboReportType.getSelectionModel().isEmpty())
     	   {
     	
     			Platform.runLater(new Runnable() {

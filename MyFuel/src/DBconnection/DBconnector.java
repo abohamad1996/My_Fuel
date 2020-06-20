@@ -13,10 +13,15 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import javax.swing.text.StyledEditorKit.ForegroundAction;
+
 import org.omg.CORBA.PUBLIC_MEMBER;
 
+import com.sun.accessibility.internal.resources.accessibility;
+import com.sun.beans.WeakCache;
 import com.sun.corba.se.pept.transport.Connection;
 import com.sun.crypto.provider.RSACipher;
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 import Entity.AnalyticSystem;
 import Entity.Car;
@@ -31,53 +36,40 @@ import Entity.Sales;
 import Entity.StationsInventory;
 import Entity.User;
 import gui.Employee;
-import gui.UpdateRoleController;
+import sun.security.util.Password;
 
+/**
+ * 
+ * 
+ * 
+ * @author Mohamed Abu Hamad
+ * In this class we added all the Queries of database (select,insert,update).
+ * we use this Queries to insert new data and update data and get data as we needed!
+ * 
+ */
 public class DBconnector {
+	
+	
+/**
+ * 	This class for connection to database 
+ * @return Connection into SQL 
+ * @throws SQLException
+ */
 public static java.sql.Connection getConnection() throws SQLException
 {
  java.sql.Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost/test?serverTimezone=IST","root","Aa123456");
 	return conn;
 }
-public static ArrayList<Employee> addtodb(java.sql.Connection connection)
-	{
-ArrayList<Employee> arr = new ArrayList<Employee>();
-Employee employee;
-		Statement stmt;
-		try 
-		{
-			stmt = ((java.sql.Connection) connection).createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.employee;");
-	 		while(rs.next())
-	 		{
-	 			employee=new Employee(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));	 			
-			arr.add(employee);	
-	 		}
-			rs.close();
-			//stmt.executeUpdate("UPDATE course SET semestr=\"W08\" WHERE num=61309");
-		} catch (SQLException e) {e.printStackTrace();}
-		return arr;
-	}
-public static String UpdateRole(Employee emp)
-{
-	Statement stmt;
-	try {
-		stmt = DBconnector.getConnection().createStatement();
-		String query = "update my_fuel.employee SET Role =? WHERE Empnum=?";
-		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.employee;");
-	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
-		String a = emp.getRole();
-		String b = emp.getEmpnum();
-		ps.setString(1,a); 
-		ps.setString(2,b); 	
-		ps.executeUpdate();
-		return "success";
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		return "error";
-	}
-}
+
+/**
+ * 
+ * In this method we check if the user is exist in the database  to make login into  My Fuel system
+ * 
+ * @param connection this parameter for making connection to SQL
+ * @param username  This parameter for username to check in database
+ * @param password  This parameter for password to check in database
+ * @return it returns a user from Entity  Object (User)
+ */
 public static User isInDB(java.sql.Connection connection, String username, String password) {
 	Statement stmt ;
 	User user=null ;
@@ -105,6 +97,16 @@ public static User isInDB(java.sql.Connection connection, String username, Strin
 	}
 	return null;
 }
+
+/**
+ * 
+ * 
+ * 
+ * In this method we take the details from a user by his username and save it in an Object of type User
+ * @param connection this parameter for making connection to SQL
+ * @param username this parameter username is for select all the data of this username from the database and save it into an Object from type User
+ * @return an Object user from type User thats all the data of selected user saved into this Object
+ */
 public static User userDetails(java.sql.Connection connection, String username)
 {
 	User user;
@@ -128,6 +130,13 @@ public static User userDetails(java.sql.Connection connection, String username)
 		} catch (SQLException e) {e.printStackTrace();}
 	return null;
 	}
+/**
+ * 
+ * In this method we can update details abouts the logged in user by ID and this updates saved into database
+ * 
+ * @param user this parameter is for saving the updates
+ * @return a Object from type User that the new details saved into this Object
+ */
 public static String UpdateUser(User user)
 {
 	Statement stmt;
@@ -153,6 +162,15 @@ public static String UpdateUser(User user)
 		return "error";
 	}
 }
+/**
+ * 
+ * this method is for register a new client into database to table user 
+ * 
+ * 
+ * 
+ * @param user we use this parameter here to save in it the new registered client data and insert it to database
+ * @return here we return if the inserting new client data into sql success or not
+ */
 public static String ClientRegisterUserDetails(User user)
 {
 	Statement stmt;
@@ -191,6 +209,14 @@ public static String ClientRegisterUserDetails(User user)
 		return "error";
 	}
 }
+/**
+ * this method is for register a credit card details into database to table creditcard
+ * 
+ * 
+ * 
+ * @param card we use this parameter here to save in it the new registered client credit card data and insert it to database
+ * @return here we return if the inserting new client credit card data into sql success or not
+ */
 public static String ClientRegisterCreditCard(CreditCard card)
 {
 	Statement stmt;
@@ -217,6 +243,15 @@ public static String ClientRegisterCreditCard(CreditCard card)
 		return "error";
 	}
 }
+/**
+ * this method is for add a new car for an exiting client into database to table car
+ * 
+ * 
+ * 
+ * 
+ * @param car  we use this parameter here to save in it the new registered car for exiting client data and insert it to database
+ * @return here we return if the inserting new car  data into sql success or not
+ */
 public static String ClientAddCars(Car car)
 {
 	Statement stmt;
@@ -251,6 +286,16 @@ public static String ClientAddCars(Car car)
 		return "error";
 	}
 }
+/**
+ * 
+ * 
+ * this method is for get a client ID from sql from table user 
+ * 
+ * 
+ * 
+ * @param connection this parameter for making connection to SQL
+ * @return it returns an array list from type String that includes all the ID's of Clients from table user in database
+ */
 public static ArrayList<String> getClientIDfromDatabase(java.sql.Connection connection)
 {
 ArrayList<String> arr = new ArrayList<String>();
@@ -268,7 +313,15 @@ ArrayList<String> arr = new ArrayList<String>();
 	} catch (SQLException e) {e.printStackTrace();}
 	return arr;
 }
-
+/**
+ * 
+ * 
+ * in this method we select all the car that included for a client by his ID and save it into arraylist from type String
+ * 
+ * @param connection this parameter for making connection to SQL
+ * @param id we use this parameter for getting all the cars number that included to this id
+ * @return it returns an arraylist from type String that included all the carnumbers that icluded to this ID
+ */
 public static ArrayList<String> getClientCars(java.sql.Connection connection,String id)
 {
 ArrayList<String> arr = new ArrayList<String>();
@@ -292,6 +345,15 @@ ArrayList<String> arr = new ArrayList<String>();
 	} catch (SQLException e) {e.printStackTrace();}
 	return arr;
 }
+/**
+ * 
+ * 
+ * 
+ * in this method we select all the data that connected between car and client in other words we save the purchase plan of car the included to this user logged in
+ * @param connection this parameter for making connection to SQL
+ * @param id this parameter to save the id of connected client and take data that included for this id
+ * @return an arraylist of type Car that included all the cars that included to logged in user 
+ */ 
 public static ArrayList<Car> PurchasePlanDetails(java.sql.Connection connection,String id)
 {
 	Car car ;
@@ -324,6 +386,13 @@ public static ArrayList<Car> PurchasePlanDetails(java.sql.Connection connection,
 	}
 	return arr;
 }
+/**
+ * 
+ * in this method we update a password for logged in user by id and update it in sql
+ * 
+ * @param user this parameter for saving the new password of the logged in user 
+ * @return an Object of type user that included the new password and update in sql
+ */
 public static String UpdateUserPassword(User user)
 {
 	Statement stmt;
@@ -345,6 +414,17 @@ public static String UpdateUserPassword(User user)
 		return "error";
 	}
 }
+/**
+ * 
+ * 
+ * 
+ * in this method we change and update the status for looged in user to active
+ * 
+ * @param connection this parameter for making connection to SQL
+ * @param username this parameter for checking the username data for user
+ * @param password this parameter for checking the password data for user
+ * @return an Object of type user that changed the status of to acative(1)
+ */
 public static User StatusLoginUpdate(java.sql.Connection connection, String username, String password) {
 	Statement stmt ;
 	User user=null ;
@@ -366,6 +446,14 @@ public static User StatusLoginUpdate(java.sql.Connection connection, String user
 	}
 	return user;
 }
+/**
+ * in this method we change the status of logged out account to disactive
+ * 
+ * @param connection this parameter for making connection to SQL
+ * @param username this parameter for checking the username data for user
+ * @param password this parameter for checking the password data for user
+ * @return an Object of type user that updated the status to disavtived (0)
+ */
 public static User StatusLogoutUpdate(java.sql.Connection connection, String username, String password) {
 	Statement stmt ;
 	User user=null ;
@@ -387,7 +475,14 @@ public static User StatusLogoutUpdate(java.sql.Connection connection, String use
 	}
 	return user;
 }
-
+/**
+ * 
+ * 
+ * in this method we select all the data of stations table and added into an arraylist of type StationsInventory 
+ * 
+ * @param connection this parameter for making connection to SQL
+ * @return an arraylist of type StationsInventory that included all the data of stations and inventory and threshould level
+ */
 public static ArrayList<StationsInventory> stationInventoryDetails(java.sql.Connection connection)
 {
 	StationsInventory inventory;
@@ -414,6 +509,13 @@ public static ArrayList<StationsInventory> stationInventoryDetails(java.sql.Conn
 	}
 	return arr;
 }
+/**
+ * 
+ * 
+ * in this method we can update and change the threshold level of gas to any type we want
+ * @param inv this parameter to save the new values of threshold level of any type of gas to the selected station
+ * @return success if the operation done okay 
+ */
 public static StationsInventory UpdateInventoryLevel(StationsInventory inv)
 {
 	Statement stmt;
@@ -438,6 +540,13 @@ public static StationsInventory UpdateInventoryLevel(StationsInventory inv)
 	}
 	return null;
 }
+/**
+ * 
+ * 
+ * in this method we make a new request to chnage rate of gas type and insert this request into database to table ratesrequest with status for checking if accepted or not
+ * @param rates this parameter for save the new rate request
+ * @return in returns if success or not 
+ */
 public static String RatesRequest(Rates rates)
 {
 	Statement stmt;
@@ -460,6 +569,14 @@ public static String RatesRequest(Rates rates)
 		return "error";
 	}
 }
+/**
+ * 
+ * 
+ * in this method we check if there is a new rate in table with status -1 (Not accepted yet)
+ * 
+ * @param connection connection this parameter for making connection to SQL
+ * @return in returns an arraylist of type Rates that included all the requests not accepted yet
+ */
 public static ArrayList<Rates> NewRatesRequest(java.sql.Connection connection)
 {
 	Rates rates;
@@ -486,6 +603,14 @@ public static ArrayList<Rates> NewRatesRequest(java.sql.Connection connection)
 	}
 	return arr;
 }
+/**
+ * 
+ * 
+ * 
+ * in this method we update the new rate in the table in sql
+ * @param rates this parameter for savig the new rates inside it 
+ * @return it return success or not
+ */
 public static String SetNewRates(Rates rates)
 {
 	Statement stmt;
@@ -506,6 +631,14 @@ public static String SetNewRates(Rates rates)
 	}
 	return null;
 }
+/**
+ * 
+ * 
+ * 
+ * in this method after accepting the new rate the status changed to 1 (Accepted)
+ * @param rates this parameter for saving the new status into the request
+ * @return it return success or not
+ */
 public static String SetNewRatesStatusConfirmed(Rates rates)
 {
 	Statement stmt;
@@ -524,6 +657,14 @@ public static String SetNewRatesStatusConfirmed(Rates rates)
 	}
 	return null;
 }
+/**
+ * 
+ * 
+ * 
+ * in this method after not accepting the new rate the status changed to 0 (not Accepted)
+ * @param rates rates this parameter for saving the new status into the request
+ * @return it return success or not
+ */
 public static String SetNewRatesStatusNotConfirmed(Rates rates)
 {
 	Statement stmt;
@@ -542,6 +683,16 @@ public static String SetNewRatesStatusNotConfirmed(Rates rates)
 	}
 	return null;
 }
+/**
+ * 
+ * 
+ * 
+ * 
+ * in this method we get the rate of Home Heating Gas
+ * 
+ * @param connection connection this parameter for making connection to SQL
+ * @return it returns a String that includes the rate of HomeHeating Gas from database
+ */
 public static String getHomeHeatingRate(java.sql.Connection connection)
 {
 	Statement stmt;
@@ -566,6 +717,12 @@ public static String getHomeHeatingRate(java.sql.Connection connection)
 	}
 	return homeHeatingRate;
 }
+/**
+ * 
+ * in this method we add a new home heating order into database (insert a home heating order details)
+ * @param homeHeating in this parameter we save the home heating order data
+ * @return return seccess or not
+ */
 public static String HomeHeatingOrder(Entity.HomeHeatingOrder homeHeating)
 {
 	Statement stmt;
@@ -598,6 +755,15 @@ public static String HomeHeatingOrder(Entity.HomeHeatingOrder homeHeating)
 		return "error";
 	}
 }
+/**
+ * 
+ * 
+ * in this method we take the id of home heating order for logged in client (Track home heating order)
+ * 
+ * @param connection connection this parameter for making connection to SQL
+ * @param id  we use the id for taking the logged in client id and take the correct data of home heating orders that connected to client logged in
+ * @return 
+ */
 public static ArrayList<String> getClientHomeHeatingOrders(java.sql.Connection connection,String id)
 {
 ArrayList<String> arr = new ArrayList<String>();
@@ -621,6 +787,14 @@ ArrayList<String> arr = new ArrayList<String>();
 	} catch (SQLException e) {e.printStackTrace();}
 	return arr;
 }
+/**
+ * 
+ * in this method we take all the data of home heating order the connected to id of looged in account from database 
+ * 
+ * @param connection connection this parameter for making connection to SQL
+ * @param id we use this parameter for taking data from home heating order table by id of logged in account
+ * @return arraylist from Type HomeHeatingOrder that included all the data of orders the included to id of logged in account
+ */
 public static ArrayList<Entity.HomeHeatingOrder> HomeHeatingOrders(java.sql.Connection connection,String id)
 {
 Entity.HomeHeatingOrder heatingOrder;
@@ -653,6 +827,15 @@ Statement stmt;
 	}
 	return arr;
 }
+/**
+ * 
+ * 
+ * in this method we make a new order of less gas in the station with threshold level
+ * 
+ * 
+ * @param orderConfirmation  in this parameter we save all the data about the new order into Object OrderConfirmation
+ * @return return seccess or not
+ */
 public static String orderconfirmation(Entity.OrderConfirmation orderConfirmation)
 {
 	Statement stmt;
@@ -677,6 +860,14 @@ public static String orderconfirmation(Entity.OrderConfirmation orderConfirmatio
 		return "error";
 	}
 }
+/**
+ * 
+ * 
+ * in this method we take from sql all the order requests from table orderconfirmation that have a status Waiting for Station Manager
+ * 
+ * @param connection connection this parameter for making connection to SQL
+ * @return arraylist of type OrderConfirmation that included all the orders from table orderconfirmation
+ */
 public static ArrayList<Entity.OrderConfirmation> OrderConfirmation(java.sql.Connection connection)
 {
 	OrderConfirmation orderConfirmation;
@@ -703,6 +894,16 @@ public static ArrayList<Entity.OrderConfirmation> OrderConfirmation(java.sql.Con
 	}
 	return arr;
 }
+/**
+ * 
+ * 
+in this method we set all the max prices of rates of gas types
+ * 
+ * 
+ * @param rate in this parameter we save all the new max prices and update it in database
+ * @return return seccess or not
+
+ */
 public static Rates SetMaxPrice(Rates rate)
 {
 	Statement stmt;
@@ -723,6 +924,13 @@ public static Rates SetMaxPrice(Rates rate)
 	}
 	return null;
 }
+/**
+ * 
+ * 
+ * in this method we select all the data of max prices in the database 
+ * @param connection connection this parameter for making connection to SQL
+ * @return  arraylist of tyoe Rates that imcluded all the pax prices from database
+ */
 public static ArrayList<Rates> MaxRatesDetails(java.sql.Connection connection)
 {
 	Rates rates;
@@ -749,6 +957,13 @@ public static ArrayList<Rates> MaxRatesDetails(java.sql.Connection connection)
 	}
 	return arr;
 }
+/**
+ * 
+ * 
+ * in this method we update the inventory of gas type after a client order
+ * @param inv in this parameter we save the new inventory of gas type after client order
+ * @return return seccess or not
+ */
 public static StationsInventory UpdateInventoryAfterOrder(StationsInventory inv)
 {
 	Statement stmt;
@@ -769,6 +984,13 @@ public static StationsInventory UpdateInventoryAfterOrder(StationsInventory inv)
 	}
 	return null;
 }
+/**
+ * 
+ * in this method we take all the rates of gas type that we choossed it (not the max prices ) from database
+ * 
+ * @param connection connection this parameter for making connection to SQL
+ * @return  arraylist of type Rates that included the current prices of gas in our system from database 
+ */
 public static ArrayList<Rates> rates(java.sql.Connection connection)
 {
 	Rates rates;
@@ -795,6 +1017,15 @@ public static ArrayList<Rates> rates(java.sql.Connection connection)
 	}
 	return arr;
 }
+/**
+ * in this method we select all the car rates of logged in account and save it
+ * 
+ * 
+ * @param connection connection this parameter for making connection to SQL
+
+ * @param id this paramter for selecting the correct cars details of logged in account
+ * @return arraylist of tye Car that included all the data abouts cars that connected to logged in account
+ */
 public static ArrayList<Car> CarRates(java.sql.Connection connection,String id)
 {
 	Car car ;
@@ -827,6 +1058,15 @@ public static ArrayList<Car> CarRates(java.sql.Connection connection,String id)
 	}
 	return arr;
 }
+/**
+ * 
+ * in this method we select all the gas stations from sql table and take it to use 
+ * 
+ * 
+ * 
+ * @param connection this parameter for making connection to SQL
+ * @return  arraylist of type StationsInventory that included the data of all stations in sql table 
+ */
 public static ArrayList<StationsInventory> GasStations(java.sql.Connection connection)
 {
 	StationsInventory stations;
@@ -853,6 +1093,14 @@ public static ArrayList<StationsInventory> GasStations(java.sql.Connection conne
 	}
 	return arr;
 }
+/**
+ * 
+ * in this method we take the station name and address from sql table 
+ * 
+ * @param connection connection this parameter for making connection to SQL
+ * @param id this parameter for select the current station from logged in account
+ * @return arraylist of type String that included all the names and address of stations in table station
+ */
 public static ArrayList<String> GasStationsAddress(java.sql.Connection connection,String id)
 {
 	Statement stmt;
@@ -879,7 +1127,12 @@ public static ArrayList<String> GasStationsAddress(java.sql.Connection connectio
 	}
 	return arr;
 }
-
+/**
+ * 
+ *  in this method we take the id of station from Name and Address and save it 
+ * @param ref this parameter for saving the station id in refueling
+ * @return returns id of selected gas station by Name and Address
+ */
 public static String GasStationsID(Refueling ref) // select id
 {
 	Statement stmt;
@@ -908,7 +1161,14 @@ public static String GasStationsID(Refueling ref) // select id
 	}
 	return iDString;
 }
+/**
+ * 
+ * in this method we update the inventory of Gasoline after order in refueling
+ *  
+ * @param station this parameter to save the new station details after order and chaged quantity
+ * @return return success or not
 
+ */
 public static StationsInventory UpdateInventoryAfterRefuelingOrderGasoline(StationsInventory station)
 {
 	Statement stmt;
@@ -929,6 +1189,13 @@ public static StationsInventory UpdateInventoryAfterRefuelingOrderGasoline(Stati
 	}
 	return null;
 }
+/**
+ * 
+ * 
+ * in this method we update the inventory of Diesel after order in refueling
+ * @param station this parameter to save the new station details after order and chaged quantity
+ * @return return success or not
+ */
 public static StationsInventory UpdateInventoryAfterRefuelingOrderDeisel(StationsInventory station)
 {
 	Statement stmt;
@@ -949,6 +1216,14 @@ public static StationsInventory UpdateInventoryAfterRefuelingOrderDeisel(Station
 	}
 	return null;
 }
+/**
+ * 
+ * in this method we update the inventory of Scooter after order in refueling
+ * 
+ * @param station this parameter to save the new station details after order and chaged quantity
+ * @return 
+return success or not
+ */
 public static StationsInventory UpdateInventoryAfterRefuelingOrderScooter(StationsInventory station)
 {
 	Statement stmt;
@@ -970,7 +1245,13 @@ public static StationsInventory UpdateInventoryAfterRefuelingOrderScooter(Statio
 	return null;
 }
 
-
+/**
+ * 
+ *   in this method we insert into database the data of refueling operation after refueling done
+ * 
+ * @param ref in this parameter we save all the data of refueling order 
+ * @return  return success or not
+ */
 public static String RefuelinggOrder(Refueling ref)
 {
 	Statement stmt;
@@ -1015,6 +1296,11 @@ public static String RefuelinggOrder(Refueling ref)
 		return "error";
 	}
 }
+/**
+ * in this method the system added a new order after threshold level for threshlod level of gas type 
+ * @param order this parameter of add the new order of system after threshlod level low
+ * @return return success or not
+ */
 public static String SystemNewOrder(OrderConfirmation order)
 {
 	Statement stmt;
@@ -1047,6 +1333,15 @@ public static String SystemNewOrder(OrderConfirmation order)
 		return "error";
 	}
 }
+/**
+ * 
+ * 
+ * in this method we send a notification for suppliwer by new order of system to confirm
+ * 
+ * @param connection connection this parameter for making connection to SQL
+
+ * @return arraylist of type OrderConfirmation that included all the order data
+ */
 public static ArrayList<Entity.OrderConfirmation> OrderConfirmationSupplier(java.sql.Connection connection)
 {
 	OrderConfirmation orderConfirmation;
@@ -1073,6 +1368,14 @@ public static ArrayList<Entity.OrderConfirmation> OrderConfirmationSupplier(java
 	}
 	return arr;
 }
+/**
+ * 
+ * 
+ * 
+ * in this method we update the status or order after confirm station manager 
+ * @param order this parameter for saving the new status to the order from table sql
+ * @return return success or not
+ */
 public static String UpdateStatusStationManagerConfirm(OrderConfirmation order)
 {
 	Statement stmt;
@@ -1091,6 +1394,14 @@ public static String UpdateStatusStationManagerConfirm(OrderConfirmation order)
 	}
 	return null;
 }
+/**
+ * 
+ * in this method we update the status or order after  no confirm station manager 
+ * 
+ * @param order order this parameter for saving the new status to the order from table sql
+ * @return  success or not
+
+ */
 public static String UpdateStatusStationManagerNotConfirm(OrderConfirmation order)
 {
 	Statement stmt;
@@ -1109,6 +1420,11 @@ public static String UpdateStatusStationManagerNotConfirm(OrderConfirmation orde
 	}
 	return null;
 }
+/**
+ * in this method we send an alert to Supplier by sql table change status with the new system order 
+ * @param connection connection this parameter for making connection to SQL
+ * @return  arraylist of type OrderConfirmation that included the new system order with status for supplier
+ */
 public static ArrayList<Entity.OrderConfirmation> OrderConfirmationSupplierAlert(java.sql.Connection connection)
 {
 	OrderConfirmation orderConfirmation;
@@ -1135,6 +1451,13 @@ public static ArrayList<Entity.OrderConfirmation> OrderConfirmationSupplierAlert
 	}
 	return arr;
 }
+/**
+ * 
+ * 
+ * in this method update status of system order after confirm the supplier for this order
+ * @param order  this parameter for saving the new status to the order from table sql
+ * @return
+ */
 public static String UpdateStatusSupplierConfirm(OrderConfirmation order)
 {
 	Statement stmt;
@@ -1153,6 +1476,13 @@ public static String UpdateStatusSupplierConfirm(OrderConfirmation order)
 	}
 	return null;
 }
+/**
+ * in this method we update the status or order after  no confirm supplier  
+ * 
+ * 
+ * @param order this parameter for saving the new status to the order from table sql
+ * @return return success or not
+ */
 public static String UpdateStatusSupplierNotConfirm(OrderConfirmation order)
 {
 	Statement stmt;
@@ -1171,6 +1501,12 @@ public static String UpdateStatusSupplierNotConfirm(OrderConfirmation order)
 	}
 	return null;
 }
+/**
+ * 
+ * in this method we updated the Gasoline quantity after system order in thredsold level
+ * @param order in this parameter we save the new quanatity after system order done
+ * @return  success or not
+ */
 public static String UpdateGasolineQuantity(OrderConfirmation order)
 {
 	Statement stmt;
@@ -1193,6 +1529,12 @@ public static String UpdateGasolineQuantity(OrderConfirmation order)
 	}
 	return null;
 }
+/**
+ * in this method we updated the Diesel quantity after system order in thredsold level
+ * 
+ * @param order order in this parameter we save the new quanatity after system order done
+ * @return success or not
+ */
 public static String UpdateDeiselQuantity(OrderConfirmation order)
 {
 	Statement stmt;
@@ -1215,6 +1557,12 @@ public static String UpdateDeiselQuantity(OrderConfirmation order)
 	}
 	return null;
 }
+/**
+ * 
+ * in this method we updated the Scooter quantity after system order in thredsold level
+ * @param order in this parameter we save the new quanatity after system order done
+ * @return success or not
+ */
 public static String UpdateScooterQuantity(OrderConfirmation order)
 {
 	Statement stmt;
@@ -1237,6 +1585,12 @@ public static String UpdateScooterQuantity(OrderConfirmation order)
 	}
 	return null;
 }
+/**
+ * in this method we send to Station manager an alert that system order have been done by sql table adn change status of system order
+ * 
+ * @param connection  this parameter for making connection to SQL
+ * @return arraylist of type OrderConfirmation with the new status after accepting and finish the order operation
+ */
 public static ArrayList<Entity.OrderConfirmation> OrderConfirmationDoneAlert(java.sql.Connection connection)
 {
 	OrderConfirmation orderConfirmation;
@@ -1263,6 +1617,13 @@ public static ArrayList<Entity.OrderConfirmation> OrderConfirmationDoneAlert(jav
 	}
 	return arr;
 }
+/**
+ * 
+ * in this method we update the status of system order after finish and seen by th station manager (alert)
+ * @param order in this parameter we save the new status of system order and the last one after finished the order
+ * @return success or not
+
+ */
 public static String UpdateStatusStationManagerSeen(OrderConfirmation order)
 {
 	Statement stmt;
@@ -1281,6 +1642,14 @@ public static String UpdateStatusStationManagerSeen(OrderConfirmation order)
 	}
 	return null;
 }
+/**
+ * 
+ * in this method we select from database between 2 dates we select a refueling details between 2 dates
+ * @param connection this parameter for making connection to SQL
+ * @param From this parameter for select the date we start to save details about refueling
+ * @param To this parameter for select the date we end to save details about refueling
+ * @return arraylist of type Refueling that included all the data between 2 dates selected 
+ */
 public static ArrayList<Entity.Refueling> RefuelingDateSelect(java.sql.Connection connection,String From,String To)
 {
 	Refueling refueling;
@@ -1314,6 +1683,12 @@ public static ArrayList<Entity.Refueling> RefuelingDateSelect(java.sql.Connectio
 	}
 	return arr;
 }
+/**
+ * 
+ * in this method we select all the stations from sql table 
+ * @param connection connection this parameter for making connection to SQL
+ * @return arraylist from type StationsInventory the included all gas stations from sql table 
+ */
 public static ArrayList<Entity.StationsInventory> StationDetails(java.sql.Connection connection)
 {
 	StationsInventory station;
@@ -1341,6 +1716,12 @@ public static ArrayList<Entity.StationsInventory> StationDetails(java.sql.Connec
 	}
 	return arr;
 }
+/**
+ * 
+ * in this method we added a new data of file to read it from another place
+ * @param file this parameter to save file details
+ * @return success or not
+ */
 public static String ReadFile(Files file)
 {
 	Statement stmt;
@@ -1366,6 +1747,12 @@ public static String ReadFile(Files file)
 		return "error";
 	}
 }
+/**
+ * 
+ * in this method we detect all the files that have been not readed from sql tables and pc locations
+ * @param connection this parameter for making connection to SQL
+ * @return arraylist of type Files that included all the files details from sql
+ */
 public static ArrayList<Entity.Files> DetectFiles(java.sql.Connection connection)
 {
 	Files files;
@@ -1392,6 +1779,13 @@ public static ArrayList<Entity.Files> DetectFiles(java.sql.Connection connection
 	}
 	return arr;
 }
+/**
+ * 
+ * 
+ * in this method we change the status to readed by station manager after station amanager read and open the file
+ * @param file in this parameter we save all the changes of readed files
+ * @return success or not
+ */
 public static String UpdateStatusStationManagerReaded(Files file)
 {
 	Statement stmt;
@@ -1410,6 +1804,12 @@ public static String UpdateStatusStationManagerReaded(Files file)
 	}
 	return null;
 }
+/**
+ * 
+ * in this method we save all the data o clients from database
+ * @param connection his parameter for making connection to SQL
+ * @return arraylist of type User that included all the clients data from database
+ */
 public static ArrayList<Entity.User> Clients(java.sql.Connection connection)
 {
 	User user;
@@ -1436,6 +1836,12 @@ public static ArrayList<Entity.User> Clients(java.sql.Connection connection)
 	}
 	return arr;
 }
+/**
+ * in this method we add and save all the refueling details from database into arraylist
+ * 
+ * @param connection this parameter for making connection to SQL
+ * @return arraylist of type Refueling that included all the details about all user from database
+ */
 public static ArrayList<Entity.Refueling> RefuelingFromDB(java.sql.Connection connection)
 {
 	Refueling refueling;
@@ -1462,6 +1868,12 @@ public static ArrayList<Entity.Refueling> RefuelingFromDB(java.sql.Connection co
 	}
 	return arr;
 }
+/**
+ * 
+ *  in this method we added a new data of file to read it 
+ * @param file this parameter to save file details
+ * @return  success or not
+ */
 public static String ReadFileMarketingManager(Files file)
 {
 	Statement stmt;
@@ -1487,6 +1899,13 @@ public static String ReadFileMarketingManager(Files file)
 		return "error";
 	}
 }
+/**
+ * 
+ * 
+ * in this method we detect all the files that have been not readed from sql tables and pc locations
+ * @param connection this parameter for making connection to SQL
+ * @return arraylist of type Files that included all the files details from sql
+ */
 public static ArrayList<Entity.Files> DetectFilesMarketingManager(java.sql.Connection connection)
 {
 	Files files;
@@ -1513,6 +1932,12 @@ public static ArrayList<Entity.Files> DetectFilesMarketingManager(java.sql.Conne
 	}
 	return arr;
 }
+/**
+ * 
+ * in this method we change the status to readed by marketing manager after station amanager read and open the file
+ * @param file  in this parameter we save all the changes of readed files
+ * @return success or not
+ */
 public static String UpdateStatusMarketingManagerReaded(Files file)
 {
 	Statement stmt;
@@ -1531,6 +1956,13 @@ public static String UpdateStatusMarketingManagerReaded(Files file)
 	}
 	return null;
 }
+/**
+ * 
+ * in this method we add a new sale into database with sale details
+
+ * @param sales in this parameter we save all the data of current sale 
+ * @return success or not
+ */
 public static String sales(Sales sales) {
 	Statement stmt;
 	try {
@@ -1560,6 +1992,12 @@ public static String sales(Sales sales) {
 		return "error";
 	}
 }
+/**
+ * in this method we take all the current rates from sql table
+ * 
+ * @param connection  this parameter for making connection to SQL
+ * @return arraylist of type Rates that included all the current rates of gas types
+ */
 public static ArrayList<Rates> actualRatesDetails(java.sql.Connection connection)
 {
 	Rates rates;
@@ -1586,6 +2024,12 @@ public static ArrayList<Rates> actualRatesDetails(java.sql.Connection connection
 	}
 	return arr;
 }
+/**
+ * 
+ * in this method we take all the actived sales from database and use the sale from sql table and the sales details
+ * @param connection this parameter for making connection to SQL
+ * @return  Object of type Sales that included all the sale details
+ */
 public static Sales getSale(java.sql.Connection connection)
 {
 	Sales sale = null;
@@ -1612,6 +2056,13 @@ public static Sales getSale(java.sql.Connection connection)
 	}
 	return sale;
 }
+/**
+ * 
+ * 
+ * in this method we update thge status of sale to off after time is over of sale
+ * @param sale in this parameter we save the new status of sale after time of sale over
+ * @return  success or not
+ */
 public static String endSale(Sales sale)
 {
 	Statement stmt;
@@ -1635,6 +2086,12 @@ public static String endSale(Sales sale)
 		return "error";
 	}
 }
+/**
+ * in this method we take all the sales from database 
+ * 
+ * @param connection this parameter for making connection to SQL
+ * @return arraylist of type Sales that included all the sales from database
+ */
 public static ArrayList<Sales> GetallSales(java.sql.Connection connection)
 {
 	Sales sales;
@@ -1661,6 +2118,12 @@ public static ArrayList<Sales> GetallSales(java.sql.Connection connection)
 	}
 	return arr;
 }
+/**
+ * 
+ * in this method we take all the data of analaytic system and for calculate the rates
+ * @param connection this parameter for making connection to SQL
+ * @return arraylist of type AnalyticSystem that included all the data from refueling table for making rates for system and users
+ */
 public static ArrayList<AnalyticSystem> analyticsystem(java.sql.Connection connection)
 {
 	AnalyticSystem analyticsystem;
@@ -1687,6 +2150,12 @@ public static ArrayList<AnalyticSystem> analyticsystem(java.sql.Connection conne
 	}
 	return arr;
 }
+/**
+ * 
+ * in this method we select the rates from user table
+ * @param connection this parameter for making connection to SQL
+ * @return  arraylist of type Rating that included the rates of every user 
+ */
 public static ArrayList<Rating> rating(java.sql.Connection connection)
 {
 	Rating rate;
@@ -1713,6 +2182,12 @@ public static ArrayList<Rating> rating(java.sql.Connection connection)
 	}
 	return arr;
 }
+/**
+ * 
+ * in this method we take all the dates we can buy home heating order from database 
+ * @param connection this parameter for making connection to SQL
+ * @return arraylist of type String that includes all the dates that client can order from it home heating gas 
+ */
 public static ArrayList<String> HomeHeatingDates(java.sql.Connection connection)
 {
 ArrayList<String> arr = new ArrayList<String>();
@@ -1730,6 +2205,12 @@ ArrayList<String> arr = new ArrayList<String>();
 	} catch (SQLException e) {e.printStackTrace();}
 	return arr;
 }
+/**
+ * 
+ * in this method we add a new dates to database table for home heating orders
+ * @param date this paramter for saving the value of date we added
+ * @return  success or not
+ */
 public static String HomeHeatingDateSelect(String date) {
 	Statement stmt;
 	try {
@@ -1752,6 +2233,13 @@ public static String HomeHeatingDateSelect(String date) {
 		return "error";
 	}
 }
+/**
+ * 
+ * in this method we update the status of home heating order after 2 min to done after orders and after time over
+ * @param arr this parameter to take the time and progress value
+ * @return success or not
+
+ */
 public static String HomeHeatingStatus(ArrayList<String> arr)
 {
 	Statement stmt;

@@ -9,7 +9,6 @@ import client.*;
 import common.ChatIF;
 import common.Message;
 import common.MyFile;
-import gui.EmployeeFrameController;
 import gui.HomeHeatingOrderController;
 import gui.HomeHeatingOrderTrackController;
 import gui.LoginController;
@@ -40,7 +39,6 @@ import gui.CarRegisterController;
 import gui.ClientController;
 import gui.ClientRegisterController;
 import gui.Employee;
-import gui.UpdateRoleController;
 import gui.UserHomeController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -127,18 +125,7 @@ public class ChatClient extends AbstractClient
 	  Message recieved =(Message)msg;
 	  System.out.println("Recived from server " +recieved.getCode());
 	  switch(recieved.getCode()) {
-	  case 1:
-		  ArrayList<?> employeeArrayList =(ArrayList<?>)recieved.getObject();
-			 ArrayList<Employee> b=(ArrayList<Employee>)employeeArrayList;
-			 EmployeeFrameController.acainstance.TestAcceptor1(b);
-		  break;
-		  
-	  case 2:
-		  String st = (String) recieved.getObject();
-		  Platform.runLater(() -> {
-			  UpdateRoleController.instance.status.setText(st + " Updated!");
-		    });
-		  break;
+	
 	  case 3:
 	 	  User user=(User) recieved.getObject();
 	 	 System.out.println(user); 	 

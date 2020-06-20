@@ -3,7 +3,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.util.Vector;
-import gui.EmployeeFrameController;
 import gui.LoginController;
 import client.ClientConsole;
 

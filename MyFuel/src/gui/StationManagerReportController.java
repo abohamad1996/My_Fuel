@@ -131,8 +131,22 @@ public class StationManagerReportController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        		if(comboReportType.getSelectionModel().isEmpty()||comboQuartet.getSelectionModel().isEmpty()||comboYear.getSelectionModel().isEmpty())
+        		{
+        			
+        			Platform.runLater(new Runnable() {
+        				@Override
+        				public void run() {
+        					Alert alert = new Alert(AlertType.INFORMATION);
+        					alert.setAlertType(AlertType.INFORMATION); 
+        					alert.setContentText("There is missing field");
+        					alert.show(); 
+        				}
+        			});
+        			
+        		}
         //////////////////////////////////////////////////////////////////////////////
-    			if(comboReportType.getValue().equals("Quarterly Revenue Report"))
+        		else if(comboReportType.getValue().equals("Quarterly Revenue Report"))
         		{
     				String path="C:\\MyFuel\\MyFuelStationManagerReports\\Send\\";
     				String filename="Quarterly Revenue Report";

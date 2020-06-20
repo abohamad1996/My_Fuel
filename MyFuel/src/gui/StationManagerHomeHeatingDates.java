@@ -65,7 +65,6 @@ public class StationManagerHomeHeatingDates implements Initializable{
 	    @FXML
 	    void Set(ActionEvent event) {
 	    	String date;
-	    	
 	    		date=dateSelect.getValue().toString();
 	    		StationManagerHomeHeatingDates.acainstance.details.accept(new Message(79, date));
 	    }

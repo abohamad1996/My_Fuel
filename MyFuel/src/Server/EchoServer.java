@@ -97,30 +97,7 @@ public class EchoServer extends AbstractServer {
 		Message recieved = (Message) msg;
 		System.out.println("Message received: " + recieved.getCode() + " from " + client);
 		switch (recieved.getCode()) {
-		case 1:// show emplouyee details
-			try {
-				ArrayList<Employee> aa = DBconnector.addtodb(DBconnector.getConnection());
-				Object bb = aa;
-				client.sendToClient(new Message(1, bb));
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-		case 2:// update role
-			Employee emp=(Employee) recieved.getObject();
-			String str=DBconnector.UpdateRole(emp);
-			try {
-				client.sendToClient(new Message(2, str));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-		
+	
 	case 3:// login
 		String[] loginMessage = (String[]) recieved.getObject();
 		System.out.println("Username:"+loginMessage[1]+" Password:"+loginMessage[2]);	
