@@ -110,20 +110,20 @@ public class StationManagerOrderCompletedController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 			acainstance=this;
 			details.accept(new Message(55, null));
-			clmOrderNumber.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+			clmOrderNumber.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 			clmOrderNumber.setCellValueFactory(new PropertyValueFactory<>("OrderNumber"));
-			clmType.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+			clmType.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 			clmType.setCellValueFactory(new PropertyValueFactory<>("Type"));
-			clmType.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
-			clmQuantity.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+			clmType.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
+			clmQuantity.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 			clmQuantity.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
-			clmStatus.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+			clmStatus.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 			clmStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
-			clmStation.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+			clmStation.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 			clmStation.setCellValueFactory(new PropertyValueFactory<>("StationName"));
-			clmAddress.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+			clmAddress.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 			clmAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
-			clmDate.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+			clmDate.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 			clmDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
 			addConfirmButtonToTable();
 	}
@@ -172,7 +172,7 @@ public class StationManagerOrderCompletedController implements Initializable{
 	        colBtn.setPrefWidth(120);
 	        
 	        colBtn.setCellFactory(cellFactory);
-	        colBtn.setStyle("-fx-background-color: #01509f; -fx-text-fill: white;");
+	        colBtn.setStyle("-fx-background-color: #0E76DD; -fx-text-fill: white;");
 	        orderConfirmationTable.getColumns().add(colBtn);
 	    }
 }

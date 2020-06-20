@@ -83,9 +83,9 @@ public class NetworkManagerReciveReportsController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 	acainstance=this;
 	details.accept(new Message(63, null));
-	clmName.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+	clmName.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 	clmName.setCellValueFactory(new PropertyValueFactory<>("Filename"));
-	clmStatus.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+	clmStatus.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 	clmStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 	addOpenButtonToTable();
 	}
@@ -133,7 +133,7 @@ public class NetworkManagerReciveReportsController implements Initializable {
         colBtn.setPrefWidth(120);
         
         colBtn.setCellFactory(cellFactory);
-        colBtn.setStyle("-fx-background-color: #01509f; -fx-text-fill: white;");
+        colBtn.setStyle("-fx-background-color: #0E76DD; -fx-text-fill: white;");
         filestable.getColumns().add(colBtn);
     }
 }

@@ -15,10 +15,10 @@
          </font>
       </Text>
       <Button fx:id="btnShowReports" layoutX="294.0" layoutY="467.0" mnemonicParsing="false" onAction="#Reports" prefHeight="25.0" prefWidth="107.0" styleClass="root4" stylesheets="@css2.css" text="Show Reports" />
-      <TableView fx:id="filestable" layoutX="152.0" layoutY="125.0" prefHeight="304.0" prefWidth="392.0" styleClass="root2" stylesheets="@css2.css">
+      <TableView fx:id="filestable" layoutX="11.0" layoutY="125.0" prefHeight="304.0" prefWidth="675.0" styleClass="root2" stylesheets="@css2.css">
          <columns>
-            <TableColumn fx:id="clmName" prefWidth="193.0" text="File Name" />
-            <TableColumn fx:id="clmStatus" minWidth="0.0" prefWidth="72.0" text="Status" />
+            <TableColumn fx:id="clmName" prefWidth="339.0" text="File Name" />
+            <TableColumn fx:id="clmStatus" minWidth="0.0" prefWidth="208.0" text="Status" />
          </columns>
       </TableView>
    </children>

@@ -192,9 +192,9 @@ public class AnalayticSystemController implements Initializable{
 		acainstance = this;		
 		details.accept(new Message(76, null));
 		details.accept(new Message(77, null));
-		clmClientID.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+		clmClientID.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 		clmClientID.setCellValueFactory(new PropertyValueFactory<>("clientid"));
-		clmRating.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+		clmRating.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 		clmRating.setCellValueFactory(new PropertyValueFactory<>("rate"));
 			
 	}

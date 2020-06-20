@@ -102,9 +102,9 @@ public class NetworkManagerApproveRatesController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;		
 		details.accept(new Message(17, null));
-		clmFuelType.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+		clmFuelType.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 		clmFuelType.setCellValueFactory(new PropertyValueFactory<>("FuelType"));
-		clmPrice.setStyle( "-fx-background-color: #01509f; -fx-text-fill: white;");
+		clmPrice.setStyle( "-fx-background-color: #0E76DD; -fx-text-fill: white;");
 		clmPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
 		addConfirmButtonToTable();
 		addNotConfirmButtonToTable();
@@ -148,7 +148,7 @@ public class NetworkManagerApproveRatesController implements Initializable {
         colBtn.setPrefWidth(120);
         
         colBtn.setCellFactory(cellFactory);
-        colBtn.setStyle("-fx-background-color: #01509f; -fx-text-fill: white;");
+        colBtn.setStyle("-fx-background-color: #0E76DD; -fx-text-fill: white;");
         ratesTable.getColumns().add(colBtn);
     }
     private void addNotConfirmButtonToTable() {
@@ -186,7 +186,7 @@ public class NetworkManagerApproveRatesController implements Initializable {
         };
         colBtn.setPrefWidth(120);
         colBtn.setCellFactory(cellFactory);
-        colBtn.setStyle("-fx-background-color: #01509f; -fx-text-fill: white;");
+        colBtn.setStyle("-fx-background-color: #0E76DD; -fx-text-fill: white;");
         ratesTable.getColumns().add(colBtn);
     }
 }
