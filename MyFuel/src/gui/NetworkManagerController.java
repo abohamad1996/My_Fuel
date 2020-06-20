@@ -238,7 +238,6 @@ public class NetworkManagerController implements Initializable {
 		{
 			btnNotification.setText("There is new rates request");
 			Alert(true);
-			
 		}
 		else {
 			System.out.println("null");
