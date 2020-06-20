@@ -42,8 +42,6 @@ public class HomeHeatingOrder implements Serializable{
 	*@param time- indecat to the hour of adding the order
 	*/
 
-
-
 	public HomeHeatingOrder(int orderID, String ownerID, double quantity, String supplyDate, String urgent,
 			double price, String status, String time) {
 		super();

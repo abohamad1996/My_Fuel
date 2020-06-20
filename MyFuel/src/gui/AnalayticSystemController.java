@@ -1,7 +1,7 @@
 package gui;
 
 import java.net.URL;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -86,6 +86,7 @@ public class AnalayticSystemController implements Initializable{
 	 *  this method get array of type AnalyticSystem from sql table
 	 * @param analyticsystem for type ArrayList
 	 */
+	 
 
 	
 	public void AnalayticSystemAcceptor(ArrayList<AnalyticSystem> analyticsystem) {
@@ -107,20 +108,24 @@ public class AnalayticSystemController implements Initializable{
 	 *   this function for click showrates 
 	 * @param event of button 
 	 */
+	LocalDate now=LocalDate.now();
 
     @FXML
     void shorrates(ActionEvent event) {
     	System.out.println(List1);
     	System.out.println(List2);
-    	
+    	String tempdate=String.valueOf(now.getDayOfWeek());
+
     	int countgasoline95 = 0,countdiesel = 0,countscooter = 0,countCasualfueling = 0,countRegularmonthly1car = 0,countRegularmonthly1 = 0,countFullmonthlysubscription = 0;
     	String morning="6:00",afternon="14:00",night="22:00";
     	int countmorning = 0,countafternon = 0,countnight = 0;
     	int Rating = 0;
     	String temp;
+    	if(tempdate.compareTo("SUNDAY")==0)
+		{
+
     	for(int j=0;j<List2.size();j++)
     	{
-    		
          countgasoline95=0;
          countdiesel=0;
          countscooter=0;
@@ -132,6 +137,7 @@ public class AnalayticSystemController implements Initializable{
          countafternon=0;
          countnight=0;
          Rating=0;
+    	
     		for(int i=0;i<List1.size();i++)
     		{
     			if(List2.get(j).getClientid().equals(List1.get(i).getClientID()))
@@ -175,14 +181,34 @@ public class AnalayticSystemController implements Initializable{
 
     				}
     				
-    						if(countCasualfueling!=0)
-    							countCasualfueling=1;
-    				else	if(countRegularmonthly1car!=0)
-    							countRegularmonthly1car=1;
-    				else	if(countRegularmonthly1!=0)
-    							countRegularmonthly1=2;
-    				else 	if(countFullmonthlysubscription!=0)
-    							countFullmonthlysubscription=3;
+    				if(countCasualfueling>countRegularmonthly1car && countCasualfueling>countRegularmonthly1&& countCasualfueling>countFullmonthlysubscription)
+					{
+    					countCasualfueling=1;
+    					countRegularmonthly1car=0;
+    					countRegularmonthly1=0;
+    					countFullmonthlysubscription=0;
+					}
+    				else	if(countRegularmonthly1car>countCasualfueling && countRegularmonthly1car>countRegularmonthly1&& countRegularmonthly1car>countFullmonthlysubscription)
+					{
+    					countCasualfueling=0;
+    					countRegularmonthly1car=1;
+    					countRegularmonthly1=0;
+    					countFullmonthlysubscription=0;
+					}
+    				else	if(countRegularmonthly1>countCasualfueling && countRegularmonthly1>countRegularmonthly1car&& countRegularmonthly1>countFullmonthlysubscription)
+					{
+    					countCasualfueling=0;
+    					countRegularmonthly1car=0;
+    					countRegularmonthly1=2;
+    					countFullmonthlysubscription=0;
+					}
+    				else		if(countFullmonthlysubscription>countCasualfueling && countFullmonthlysubscription>countRegularmonthly1car&& countFullmonthlysubscription>countRegularmonthly1)
+					{
+    					countCasualfueling=0;
+    					countRegularmonthly1car=0;
+    					countRegularmonthly1=0;
+    					countFullmonthlysubscription=3;
+					}
     				
     						if(countmorning>countafternon && countmorning>countnight)
     						{
@@ -203,12 +229,17 @@ public class AnalayticSystemController implements Initializable{
     							countafternon=0;
     						}
     		}
+    	
     		Rating=countafternon+countmorning+countnight+countscooter+countdiesel+countgasoline95+countCasualfueling+countRegularmonthly1car+countRegularmonthly1+countFullmonthlysubscription;
+    		if(Rating>10)
+    	    	Rating=10;
     		System.out.println(Rating);
     		temp=String.valueOf(Rating);
     		System.out.println(temp);
     		List2.get(j).setRate(temp);
     	}
+    	
+		}
     	
     	System.out.println(List1);
     	System.out.println(List2);
