@@ -1,6 +1,7 @@
 package gui;
 
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -60,6 +61,7 @@ public class HomeHeatingOrderTrackController implements Initializable{
 	public ClientConsole details= new ClientConsole("localhost", 5555);
 	ArrayList<User> userdetails= new ArrayList<User>();
 	User detailsUser;
+	String time;
 	ArrayList<HomeHeatingOrder> HomeHeating=new ArrayList<HomeHeatingOrder>();
     ObservableList<String> List =FXCollections.observableArrayList(); 
 	public void start(SplitPane splitpane, User user,String userJob) {
@@ -100,12 +102,26 @@ public class HomeHeatingOrderTrackController implements Initializable{
     	System.out.println(index);
     	String quantity = String.valueOf(HomeHeating.get(index).getQuantity()); 
     	String price = String.valueOf(HomeHeating.get(index).getPrice()); 
-
     	txtQuantity.setText(quantity);
     	txtSypplyDate.setText(HomeHeating.get(index).getSupplyDate());
     	txtUrgent.setText(HomeHeating.get(index).getUrgent());
     	txtPrice.setText(price);
     	txtStatus.setText(HomeHeating.get(index).getStatus());
+    	time=HomeHeating.get(index).getTime();
+    	LocalTime timenow=LocalTime.now().minusMinutes(2);
+    	String after2Min=String.valueOf(timenow);
+    	if(time.compareTo(after2Min)<0)
+    	{
+    		int id=HomeHeating.get(index).getOrderID();
+    		String done="Order Done";
+    		String s=String.valueOf(id);//Now it will return "10"  
+    		ArrayList<String> status=new ArrayList<String>();
+    		status.add(done);
+    		status.add(s);
+    		System.out.println("aaa");
+    		HomeHeatingOrderTrackController.acainstance.details.accept(new Message(80, status));
+    		
+    	}
     }
 	
 	

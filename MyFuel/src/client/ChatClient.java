@@ -141,20 +141,8 @@ public class ChatClient extends AbstractClient
 		  break;
 	  case 3:
 	 	  User user=(User) recieved.getObject();
-	 	  if(user==null)
-	 	  {
-	 		 System.out.println(user); 	 
-	 		 System.out.println("aaaaaaaaaaaaa");
-	 			Platform.runLater(new Runnable() {
-					@Override
-					public void run() {
-						Alert alert = new Alert(AlertType.ERROR);
-						alert.setAlertType(AlertType.ERROR); 
-						alert.setContentText("incorrect Username Or Password!!");
-						alert.show(); 
-					}
-				});
-	 	  }
+	 	 System.out.println(user); 	 
+	 	
 	
 	 	  switch (user.getRank()) {
 		case "Marketing Manager":
@@ -716,6 +704,12 @@ public class ChatClient extends AbstractClient
 			  String dateselected = (String) recieved.getObject();
 			  Platform.runLater(() -> {
 				 // ClientRegisterController.acainstance.status.setText(Order + " Updated!");
+			    });
+			  break;
+		  case 80:
+			  String homeHeatingStatus = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				 
 			    });
 			  break;
   }

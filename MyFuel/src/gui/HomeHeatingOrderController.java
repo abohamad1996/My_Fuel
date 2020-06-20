@@ -1,7 +1,12 @@
 package gui;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import Entity.HomeHeatingOrder;
@@ -145,6 +150,14 @@ public class HomeHeatingOrderController implements Initializable{
 		//System.out.println(Inventory);
 			HomeHeatingOrderController.acainstance.details.accept(new Message(23, heatingOrder));
 		   HomeHeatingOrderController.acainstance.details.accept(new Message(32, stationsInventory));
+		   LocalTime now=LocalTime.now();
+		   System.out.println(now);
+		   LocalTime nowAfter2Min=LocalTime.now().plusMinutes(2);
+		   System.out.println(nowAfter2Min);
+		   if(now.compareTo(nowAfter2Min)>0)
+		   {
+			   System.out.println("aaa");
+		   }
 		   HomeHeatingOrderDone homeHeatingOrderDone;
 		   homeHeatingOrderDone = new HomeHeatingOrderDone();
 	    	runLater(() -> {
@@ -169,9 +182,10 @@ public class HomeHeatingOrderController implements Initializable{
 			   }
 			   else {
 	    	  date=DateSelect.getValue();
+	    	  LocalTime now=LocalTime.now();
 			   quantity=Double.parseDouble(btnQuantity.getText());
 			   urgent=txtUrgent.getValue();
-			   heatingOrder=new HomeHeatingOrder(0, user.getId(), quantity, date, urgent, price, "In Progress");
+			   heatingOrder=new HomeHeatingOrder(0, user.getId(), quantity, date, urgent, price, "In Progress",now.toString());
 			 price =   heatingOrder.Calculate_Price_HomeHeating(quantity, urgent, rates);
 			 heatingOrder.setPrice(price);
 			finalPrice=String.valueOf(price);

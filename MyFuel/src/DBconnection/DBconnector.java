@@ -571,7 +571,7 @@ public static String HomeHeatingOrder(Entity.HomeHeatingOrder homeHeating)
 	Statement stmt;
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "insert into my_fuel.homeheating values(?,?,?,?,?,?,?);";
+		String query = "insert into my_fuel.homeheating values(?,?,?,?,?,?,?,?);";
 	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
 	      int a=0;
 	      String b=homeHeating.getOwnerID();
@@ -580,6 +580,7 @@ public static String HomeHeatingOrder(Entity.HomeHeatingOrder homeHeating)
 	  	String e=homeHeating.getUrgent();
 	  	double f=homeHeating.getPrice();
 	  	String h=homeHeating.getStatus();
+	  	String k=homeHeating.getTime();
 		ps.setInt(1, a);
 		ps.setString(2,b); 
 		ps.setDouble(3, c);
@@ -587,6 +588,7 @@ public static String HomeHeatingOrder(Entity.HomeHeatingOrder homeHeating)
 		ps.setString(5, e);
 		ps.setDouble(6, f);
 		ps.setString(7, h);
+		ps.setString(8, k);
 		System.out.println(""+ps.toString());
 		ps.executeUpdate();
 		return "success";
@@ -626,7 +628,7 @@ Statement stmt;
 	ArrayList<Entity.HomeHeatingOrder> arr = new ArrayList<Entity.HomeHeatingOrder>();
 	try {
 		stmt = DBconnector.getConnection().createStatement();
-		String query = "SELECT OrderID,ClientID,Quantity, SupplyDate, Urgent,Price, OrderStatus\r\n" + 
+		String query = "SELECT OrderID,ClientID,Quantity, SupplyDate, Urgent,Price, OrderStatus,time\r\n" + 
 				"							FROM my_fuel.homeheating home , my_fuel.user user\r\n" + 
 				"								WHERE home.ClientID=user.ID and ClientID=?";
 		ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.homeheating;");
@@ -639,7 +641,7 @@ Statement stmt;
 		while(rs.next())
  		{
 			System.out.println(""+ps.toString());
-			heatingOrder=new Entity.HomeHeatingOrder(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getString(7));
+			heatingOrder=new Entity.HomeHeatingOrder(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getString(7),rs.getString(8));
 			arr.add(heatingOrder);
 		//	System.out.println(arr);
  		}
@@ -1741,6 +1743,28 @@ public static String HomeHeatingDateSelect(String date) {
 		ps.setString(2,b); 	
 	
 	
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
+public static String HomeHeatingStatus(ArrayList<String> arr)
+{
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "update my_fuel.homeheating SET  OrderStatus=? WHERE OrderID=?;";
+		//ResultSet rs = stmt.executeQuery("SELECT * FROM my_fuel.sales;");
+	      PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+		String a=arr.get(0);
+		String b=arr.get(1);
+		ps.setString(1, a);
+		ps.setString(2, b);
+		 	
 		System.out.println(""+ps.toString());
 		ps.executeUpdate();
 		return "success";

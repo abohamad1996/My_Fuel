@@ -20,12 +20,18 @@ public class HomeHeatingOrder implements Serializable{
 	String Urgent;
 	double Price;
 	String Status;
-
+	String time;
 
 
 	
+	
+	
+
+
+
+
 	public HomeHeatingOrder(int orderID, String ownerID, double quantity, String supplyDate, String urgent,
-			double price, String status) {
+			double price, String status, String time) {
 		super();
 		OrderID = orderID;
 		this.ownerID = ownerID;
@@ -34,7 +40,13 @@ public class HomeHeatingOrder implements Serializable{
 		Urgent = urgent;
 		Price = price;
 		Status = status;
+		this.time = time;
 	}
+
+
+
+
+
 
 
 
@@ -46,9 +58,19 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
+
+
+
+
+
 	public void setOrderID(int orderID) {
 		OrderID = orderID;
 	}
+
+
+
+
+
 
 
 
@@ -60,9 +82,19 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
+
+
+
+
+
 	public void setOwnerID(String ownerID) {
 		this.ownerID = ownerID;
 	}
+
+
+
+
+
 
 
 
@@ -74,9 +106,19 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
+
+
+
+
+
 	public void setQuantity(double quantity) {
 		this.quantity = quantity;
 	}
+
+
+
+
+
 
 
 
@@ -88,9 +130,19 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
+
+
+
+
+
 	public void setSupplyDate(String supplyDate) {
 		SupplyDate = supplyDate;
 	}
+
+
+
+
+
 
 
 
@@ -102,9 +154,19 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
+
+
+
+
+
 	public void setUrgent(String urgent) {
 		Urgent = urgent;
 	}
+
+
+
+
+
 
 
 
@@ -116,9 +178,19 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
+
+
+
+
+
 	public void setPrice(double price) {
 		Price = price;
 	}
+
+
+
+
+
 
 
 
@@ -130,6 +202,11 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
+
+
+
+
+
 	public void setStatus(String status) {
 		Status = status;
 	}
@@ -137,9 +214,58 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
+
+
+
+
+
+	public String getTime() {
+		return time;
+	}
+
+
+
+
+
+
+
+
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+
+
+
+
+
+
+
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
+
+
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "HomeHeatingOrder [OrderID=" + OrderID + ", ownerID=" + ownerID + ", quantity=" + quantity
+				+ ", SupplyDate=" + SupplyDate + ", Urgent=" + Urgent + ", Price=" + Price + ", Status=" + Status
+				+ ", time=" + time + "]";
+	}
+
+
+
+
+
 
 
 
@@ -163,12 +289,6 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
-
-	@Override
-	public String toString() {
-		return "HomeHeatingOrder [OrderID=" + OrderID + ", ownerID=" + ownerID + ", quantity=" + quantity
-				+ ", SupplyDate=" + SupplyDate + ", Urgent=" + Urgent + ", Price=" + Price + ", Status=" + Status + "]";
-	}
 
 	
 

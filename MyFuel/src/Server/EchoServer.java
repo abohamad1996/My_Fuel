@@ -35,6 +35,7 @@ import gui.Employee;
 import gui.MarketingManagerRateController;
 import gui.NetworkManagerApproveRatesController;
 import gui.NetworkManagerController;
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import ocsf.server.*;
@@ -129,8 +130,22 @@ public class EchoServer extends AbstractServer {
 				try {
 						connection = DBconnector.getConnection();
 						User user=DBconnector.isInDB(connection, loginMessage[1], loginMessage[2]);
+						System.out.println("user is:"+user);
+						if(user==null)
+						{
+							Platform.runLater(new Runnable() {
+								@Override
+								public void run() {
+									Alert alert = new Alert(AlertType.ERROR);
+									alert.setAlertType(AlertType.ERROR); 
+									alert.setContentText("incorrect Username Or Password!!");
+									alert.show(); 
+								}
+							});
+						}else 
 						iD=user.getId();
 						client.sendToClient(new Message(3, user));
+						
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -1169,6 +1184,16 @@ public class EchoServer extends AbstractServer {
 				String DateSTR=DBconnector.HomeHeatingDateSelect(dateselect);
 				try {
 					client.sendToClient(new Message(79, DateSTR));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case 80:// update status from station manager to supllier confirm
+				ArrayList<String> homeHeatingStatus=(ArrayList<String>) recieved.getObject();
+				String homeHeatingStatusChange=DBconnector.HomeHeatingStatus(homeHeatingStatus);
+				try {
+					client.sendToClient(new Message(80, homeHeatingStatusChange));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
