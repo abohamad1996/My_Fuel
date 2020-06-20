@@ -1,7 +1,11 @@
 package Entity;
 
 import java.io.Serializable;
-
+/**
+*This class represents the report files
+*Every file characterized by id, filename, path, status
+*
+*/
 public class Files implements Serializable{
 
 	/**
@@ -12,6 +16,10 @@ public class Files implements Serializable{
 	String filename;
 	String path;
 	String status;
+	/**
+	*This method print object of type file
+	*
+	*/
 	@Override
 	public String toString() {
 		return "Files [id=" + id + ", filename=" + filename + ", path=" + path + ", status=" + status + "]";
@@ -40,6 +48,14 @@ public class Files implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	/**
+	* constructor and initializes file 
+	*
+	* @param id file id
+	* @param filename file name
+	* @param path file path to were it stored
+	* @param status file status
+	*/
 	public Files(int id, String filename, String path, String status) {
 		super();
 		this.id = id;

@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+/**This class represents Home Heating Order
+*Every Home heating Order Characterized by OrderID,
+*ownerID,quantity, SupplyDate, Urgent, Price, Status
+*/
 public class HomeHeatingOrder implements Serializable{
 	
 	/**
@@ -27,6 +30,17 @@ public class HomeHeatingOrder implements Serializable{
 	
 	
 
+	/**
+	*constructor and initializes object of type home heatimg order 
+	*@param OrderID- order's number
+	*@param ownerID- ID number for the client who ordered
+	*@param quantity- order's quantity 
+	*@param SupplyDate- the date that the client want to get the order
+	*@param Urgent- is the order urgent (if yes it order execute within 6 hours)
+	*@param Price- order's price calculated according to quantity and Urgent
+	*@param Status- Describes the Status of the order
+	*@param time- indecat to the hour of adding the order
+	*/
 
 
 
@@ -253,6 +267,9 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
+	/**
+	*This method print object of type home heating order 
+	*/
 
 
 	@Override
@@ -268,7 +285,21 @@ public class HomeHeatingOrder implements Serializable{
 
 
 
-
+	/**
+	*
+	*The method calculate the price for home heating order and the
+	*discount according to quantity and Urgent
+	*if it urgent the rate increase by 2% 
+	*if the quantiten less 600 liter the client do not get discount
+	*if the quantiten between 600 literand 800 liter the client get discount 3%
+	*if the quantiten more than 800 liter the client get discount 4%
+	*
+	*
+	*@param quan the quantity of the order
+	*@param H_Rate the rate for home heating fuel
+	*@return the price of the order 
+	*
+	*/
 
 	public double Calculate_Price_HomeHeating(double quan, String urg,double H_Rate) {
 		if (urg.equals("Yes")) {

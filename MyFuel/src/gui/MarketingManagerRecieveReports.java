@@ -26,6 +26,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+/**
+*This class represents Marketing Manager Recieve Reports controller
+*and allow to the marketing manager to recieve reports and read them
+*
+*/ 
 
 public class MarketingManagerRecieveReports implements Initializable{
 
@@ -55,6 +60,13 @@ public class MarketingManagerRecieveReports implements Initializable{
 	private FXMLLoader loader;	
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
+	/**
+	* This methode load the information into the gui
+	*
+	* @param splitpane this parameter form the type 
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string 
+	*/
 
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
@@ -67,11 +79,20 @@ public class MarketingManagerRecieveReports implements Initializable{
 			e.printStackTrace();
 	}		
 }
+	/**
+	* This method get notification from chatclient
+	* @param files parameter from type file contains id, filename, path, status                  
+	*/
+
+
 	public void FilesAcceptor(ArrayList<Files> files) {
 		//filesarr = (ArrayList<Files>)files.clone();
 		FilesList.addAll(files);
 		}
-	
+	/**
+	* This method insert the arraylist of type file to ths SQL table
+	* @param files arraylist of type file
+	*/
    @FXML
    void Reports(ActionEvent event) {
    		System.out.println("List:"+FilesList);
@@ -87,7 +108,10 @@ public class MarketingManagerRecieveReports implements Initializable{
 	
 	
 	
-	
+   /**
+   *
+   * This methode connect between the controller and the gui
+   */
 	
 	
 	@Override
@@ -100,6 +124,10 @@ public class MarketingManagerRecieveReports implements Initializable{
 		clmStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		addOpenButtonToTable();		
 	}
+	/**
+	*The method open the file on clicking on button Open
+	*
+	*/
 	private void addOpenButtonToTable() {
         TableColumn<Files, String> colBtn = new TableColumn("ConfirmOrder");
        

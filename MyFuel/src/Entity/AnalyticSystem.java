@@ -1,7 +1,11 @@
 package Entity;
 
 import java.io.Serializable;
-
+/**
+* This class represents the Analytic System for My_fuel
+* Every object characterized by orderid, clientID, gastype,
+* date, service, time
+*/
 public class AnalyticSystem implements Serializable {
 	
 	/**
@@ -14,6 +18,18 @@ public class AnalyticSystem implements Serializable {
 	String date;
 	String service;
 	String time;
+	/**
+	* 
+	*constructor and initializes object of type AnalyticSystem
+	*
+	*
+	* @param orderid - ID for refueling acceptance
+	* @param clientID- client's Id
+	* @param gastype - gas type used in the refueling
+	* @param date - date of refueling
+	* @param service - client service 
+	* @param time -time of refueling
+	*/
 	public AnalyticSystem(int orderid, String clientID, String gastype, String date, String service, String time) {
 		super();
 		this.orderid = orderid;
@@ -23,6 +39,8 @@ public class AnalyticSystem implements Serializable {
 		this.service = service;
 		this.time = time;
 	}
+	
+	
 	public int getOrderid() {
 		return orderid;
 	}
@@ -59,6 +77,10 @@ public class AnalyticSystem implements Serializable {
 	public void setTime(String time) {
 		this.time = time;
 	}
+	/**
+	*This method print object of type AnalyticSystem 
+	*
+	*/
 	@Override
 	public String toString() {
 		return "AnalyticSystem [orderid=" + orderid + ", clientID=" + clientID + ", gastype=" + gastype + ", date="

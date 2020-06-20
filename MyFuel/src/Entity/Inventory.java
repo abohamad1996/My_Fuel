@@ -1,8 +1,15 @@
 package Entity;
 
 import java.io.Serializable;
-
+/**
+*This class represents Inventory for management
+*Every inventory Characterized by fuelType, Quantity, Level
+*
+*/
 public class Inventory implements Serializable {
+	/**
+	*This method print invoentory details for each fuel type
+	*/
 
 	@Override
 	public String toString() {
@@ -11,6 +18,14 @@ public class Inventory implements Serializable {
 	String fuelType;
 	String Quantity;
 	String Level;
+	/**
+	* constructor and initializes object of type inventory
+	*
+	* @param fuelType fuel type name
+	* @param quantity of available inventory
+	* @param level Threshold level
+	*
+	*/
 	public Inventory(String fuelType, String quantity, String level) {
 		super();
 		this.fuelType = fuelType;

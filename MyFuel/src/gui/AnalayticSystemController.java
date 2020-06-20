@@ -112,9 +112,9 @@ public class AnalayticSystemController implements Initializable{
     			{
     						if(List1.get(i).getGastype().equals("Gasoline 95"))
     					countgasoline95++;
-    				else	if(List1.get(i).getGastype().equals("Diesel"))
+    				else	if(List1.get(i).getGastype().equals("Diesel fuel"))
     					countdiesel++;
-    				else	if(List1.get(i).getGastype().equals("Scooters"))
+    				else	if(List1.get(i).getGastype().equals("Scooters fuel"))
     					countscooter++;
     						
     						if(List1.get(i).getService().equals("Casual fueling"))

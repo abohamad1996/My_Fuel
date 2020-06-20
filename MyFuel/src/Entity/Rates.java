@@ -1,7 +1,12 @@
 package Entity;
 
 import java.io.Serializable;
-
+/**
+*This class represents the maximum price for the fuel
+*that determinated by Representative Transport
+*Every rate Characterized by fuelType, price
+*
+*/
 public class Rates implements Serializable{
 	/**
 	 * 
@@ -10,7 +15,12 @@ public class Rates implements Serializable{
 	String fuelType;
 	String price;
 
-	
+	/**
+	* constructor and initializes object of type Rates
+	*
+	* @param fuelType fuel type
+	* @param price maximum price 
+	*/
 	
 	public Rates(String fuelType, String price) {
 		super();
@@ -30,6 +40,9 @@ public class Rates implements Serializable{
 	public void setPrice(String price) {
 		this.price = price;
 	}
+	/**
+	*This method object of type maxbuy  
+	*/
 	@Override
 	public String toString() {
 		return "Rates [fuelType=" + fuelType + ", price=" + price + "]";

@@ -35,7 +35,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
+/**
+*This class represents Network Manager Controller
+*
+*/
 public class NetworkManagerController implements Initializable {
 
 	public static NetworkManagerController acainstance;
@@ -99,6 +102,12 @@ public class NetworkManagerController implements Initializable {
 	public static  NetworkManagerReciveReportsController reciveReports;
 	public static NetworkManagerApproveRatesController approveRates;
 	public static NetworkManagerReciveReportsController reports;
+	/**
+	* This methode load the information into the gui	 
+	*
+	* @param userthis paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	*/
+
 	public void start(User user) {
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -129,6 +138,11 @@ public class NetworkManagerController implements Initializable {
 			}
 		});
 	}
+	/**
+	* this method open event when clicking on the button Approve Rates button
+	* @param event event of button
+	*/
+
 	  @FXML
 	    void ApproveRatesbutton(ActionEvent event) {
 		  DiroctoryBar.setText("My Fuel->Approve Rates");
@@ -137,6 +151,10 @@ public class NetworkManagerController implements Initializable {
 	    		approveRates.start(splitpane, user, "User");
 	});
 	    }
+	  /**
+	  * This method open the gui of home page 
+	  * @param event event of button
+	  */
 
 	    @FXML
 	    void HomeButton(ActionEvent event) {
@@ -146,6 +164,10 @@ public class NetworkManagerController implements Initializable {
 	    		HomePage.start(splitpane, user, "User");
 	});
 	    }
+	    /**
+	    * This method make the user log out from the program
+	    * @param event event of button
+	    */
 
 	    @FXML
 	    void Logout(ActionEvent event) {
@@ -160,6 +182,11 @@ public class NetworkManagerController implements Initializable {
 				e.printStackTrace();
 			}
 	    }
+	    /**
+	     * This method bring us to profile setting gui
+	     * @param event event of button
+	     */
+
 
 	    @FXML
 	    void ProfileSettingButton(ActionEvent event) {
@@ -170,6 +197,10 @@ public class NetworkManagerController implements Initializable {
 	    		ProfileSetting.start(splitpane, user, "User");
 	});
 	    }
+	    /**
+	    * This method bring us to profile setting gui
+	    * @param event event of button
+	    */
 
 	    @FXML
 	    void ReciveReportsButton(ActionEvent event) {
@@ -179,7 +210,10 @@ public class NetworkManagerController implements Initializable {
 	    		reciveReports.start(splitpane, user, "User");
 	});
 	    }
-
+	    /**
+	     * This method bring us to about gui
+	    * @param event event of button
+	    */
 	    @FXML
 	    void btnAbout(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->About");
@@ -189,6 +223,10 @@ public class NetworkManagerController implements Initializable {
 		    		About.start(splitpane, user, "User");
 		});
 	    }
+	    /**
+	    * This show the notification for new approve Request
+	    * @param event event of button
+	    */
 	    @SuppressWarnings("unlikely-arg-type")
 		@FXML
 	    void RatesApprove(ActionEvent event) {
@@ -205,15 +243,29 @@ public class NetworkManagerController implements Initializable {
 	    		approveRates.start(splitpane, user, "User");
 	});}
 	    }
+	    /**
+	    * This method active method alert
+	    * @param event event of button
+	    */
+
 	    @FXML
 	    void NotificationBarAction(ActionEvent event) {
 	    			Alert(false);
 	    			System.out.println("aaaa");
 	    }
+	    /**
+	    * This method active method alert
+	    * @param event event of button
+	    */
+
 	    @FXML
 	    void NotificationBarClick(MouseEvent event) {
 	    	Alert(false);
 	    }
+	    /**
+	    * This method run all the buttons in the gui
+	    * @param f this paramater get a function to run the button
+	    */
 
 	private void runLater(Func f) {
 		f.call();
@@ -228,9 +280,21 @@ public class NetworkManagerController implements Initializable {
 			}
 		});
 	}
+	/**
+	* This method disappear the notification bar
+	* @param a
+	*/
+
 	void Alert(boolean a) {
 		notificationAlert.setVisible(a);
 	}
+	/**
+	* This method show that there is a new rate requset
+	* @param ratesArray arratlist of type rates
+	*/
+
+
+
 	public void RatesAcceptor(ArrayList<Rates> ratesArray) {
 		List.addAll(ratesArray);
 		System.out.println(List);
@@ -243,7 +307,11 @@ public class NetworkManagerController implements Initializable {
 			System.out.println("null");
 		}
 		}
-	
+	/**
+	* This method show that there is a new file
+	* @param files arratlist of type files
+	*/
+
 	public void FilesAcceptor(ArrayList<Files> files) {
 		filesarr = (ArrayList<Files>)files.clone();
 		System.out.println(filesarr);
@@ -259,6 +327,11 @@ public class NetworkManagerController implements Initializable {
 			System.out.println("null");
 		}
 		}
+	/**
+	* This method check if there is a new file
+	* @param event
+	*/
+
     @FXML
     void FilesReiceved(ActionEvent event) {
     	if(btnFiles.getText().equals("There is no recieved files"))
@@ -275,9 +348,23 @@ public class NetworkManagerController implements Initializable {
   		});   
   	}
     }
+
+/**
+* This methode return the primary stage
+* @return primary stage
+*/
+
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
+	/**
+	* This methode run all the buttons in the gui
+	* 
+	*/
+
+
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance=this;

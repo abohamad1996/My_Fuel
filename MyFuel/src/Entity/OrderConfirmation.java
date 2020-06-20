@@ -1,7 +1,12 @@
 package Entity;
 
 import java.io.Serializable;
-
+/**
+*This class represents the order that the system create when the inventory
+*for gas type goes below threshold level
+*Every order confirmation Characterized by orderNumber,type, quantity, status, stationName
+*address, date, managerID
+*/
 public class OrderConfirmation implements Serializable {
 	
 /**
@@ -21,7 +26,19 @@ public class OrderConfirmation implements Serializable {
 		
 		
 		
-		
+		/**
+		* 
+		*constructor and initializes object of type order confirmation
+		*
+		* @param orderNumber order's ID
+		* @param type  gas type wanted
+		* @param quantity quantity needed to refuel
+		* @param status order's status 
+		* @param stationName station name
+		* @param address station address
+		* @param date order's created date
+		* @param managerID station manafger ID
+		*/
 		public OrderConfirmation(int orderNumber, String type, String quantity, String status, String stationName,
 				String address, String date, String managerID) {
 			super();
@@ -181,6 +198,10 @@ public class OrderConfirmation implements Serializable {
 
 
 
+
+		/**
+		*This method object of type order confirmation 
+		*/
 
 
 

@@ -31,7 +31,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
+/**
+*This class represents Network Manager Approve Rates Controller
+*
+*
+*/ 
 public class NetworkManagerApproveRatesController implements Initializable {
     @FXML
     public Label status;
@@ -65,6 +69,13 @@ public class NetworkManagerApproveRatesController implements Initializable {
     ObservableList<Rates> List =FXCollections.observableArrayList(); 
 	public ClientConsole details= new ClientConsole("localhost", 5555);
 	Rates[] rates = new Rates[10];
+	/**
+	* This methode load the information into the gui
+	*
+	* @param splitpane this parameter form the type 
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string 
+	*/
 
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
@@ -77,7 +88,12 @@ public class NetworkManagerApproveRatesController implements Initializable {
 			e.printStackTrace();
 	}		
 }
-	
+	/**
+	* 
+	* This method insert the arraylist of type ratesArray to ths SQL table
+	* @param ratesArray arraylist of type ratesArray
+	*/
+
 	public void RatesAcceptor(ArrayList<Rates> ratesArray) {
 		List.addAll(ratesArray);
 		System.out.println(List);
@@ -88,16 +104,33 @@ public class NetworkManagerApproveRatesController implements Initializable {
 		ratesLentgh=i+1;
 		}*/
 		}
+	/**
+	* 
+	*The method open approve rate requests on clicking on button Open
+	* @param event event of button
+	*/
+
     @FXML
     void OpenRequests(ActionEvent event) {
 		//details.accept(new Message(17, null));
     	ratesTable.setItems(List);
     }
+    
+    /**
+    * this method open event when clicking on the button refrsh
+    * @param event event of button
+    */
+
     @FXML
     void Refresh(ActionEvent event) {
     	List.clear();
     	ratesTable.setItems(List);
     }
+    /**
+    *
+    * This methode connect between the controller and the gui
+    */
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		acainstance = this;		
@@ -110,7 +143,11 @@ public class NetworkManagerApproveRatesController implements Initializable {
 		addNotConfirmButtonToTable();
 		
 	}
-	
+	/**
+	*
+	* This methode confirm approve rate requests by clicking on buttun confirm
+	*/
+
     private void addConfirmButtonToTable() {
         TableColumn<Rates, String> colBtn = new TableColumn("Confirm Rate");
        
@@ -151,6 +188,13 @@ public class NetworkManagerApproveRatesController implements Initializable {
         colBtn.setStyle("-fx-background-color: #0E76DD; -fx-text-fill: white;");
         ratesTable.getColumns().add(colBtn);
     }
+    
+    /**
+    *
+    * This methode cancel approve rate requests by clicking on buttun not confirm
+    */
+
+
     private void addNotConfirmButtonToTable() {
         TableColumn<Rates, String> colBtn = new TableColumn("Confirm Rate");
 

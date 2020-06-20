@@ -1,6 +1,11 @@
 package Entity;
 
 import java.io.Serializable;
+/**
+*This class represents client's credit card 
+*Every credit card characterized by ownerID, creditCardNumber, creditMonth, 
+*creditYearString, cvv
+*/
 
 public class CreditCard implements Serializable{
 
@@ -13,6 +18,17 @@ public class CreditCard implements Serializable{
  String creditMonth;
  String creditYearString;
  String cvv;
+ 
+ 
+ /**
+ * constructor and initializes object of type creait crad
+ * 
+ * @param ownerID creait crad' owner ID
+ * @param creditCardNumber creait crad' number
+ * @param creditMonth Expired month
+ * @param creditYearString Expired year
+ * @param cvv cvv code
+ */
 public CreditCard(String ownerID, String creditCardNumber, String creditMonth, String creditYearString, String cvv) {
 	super();
 	this.ownerID = ownerID;
@@ -53,6 +69,16 @@ public void setCvv(String cvv) {
 }
 public static long getSerialversionuid() {
 	return serialVersionUID;
+}
+/**
+*This method print object of type creait crad
+*
+*/	 
+
+@Override
+public String toString() {
+	return "CreditCard [ownerID=" + ownerID + ", creditCardNumber=" + creditCardNumber + ", creditMonth=" + creditMonth
+			+ ", creditYearString=" + creditYearString + ", cvv=" + cvv + "]";
 }
 	
 	

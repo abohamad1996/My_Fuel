@@ -1,6 +1,14 @@
 package Entity;
 
 import java.io.Serializable;
+/**
+*
+*This class represents all the station that using my fule system
+*Every station inventory Characterized by StationID, StationName, 
+*StationAddress, GasolineQuantity ,DieselQuantity ,ScooterQuantity
+*HomeHeatingQuantity, GasolineThresholdLevel, DieselThresholdLevel,
+*ScooterThresholdLevel, managerIDString
+*/
 
 public class StationsInventory implements Serializable {
 
@@ -22,7 +30,10 @@ public class StationsInventory implements Serializable {
 	
 	
 
-	
+	/**
+	*This method object of type station inventory 
+	*/
+
 	@Override
 	public String toString() {
 		return "StationsInventory [StationID=" + StationID + ", StationName=" + StationName + ", StationAddress="
@@ -32,6 +43,21 @@ public class StationsInventory implements Serializable {
 				+ DieselThresholdLevel + ", ScooterThresholdLevel=" + ScooterThresholdLevel + ", managerIDString="
 				+ managerIDString + "]";
 	}
+	/**
+	*  constructor and initializes object of type station inventor
+	*
+	* @param stationID station Id
+	* @param stationName staion name
+	* @param stationAddress sation address
+	* @param gasolineQuantity gasoline fuel quantity in the inventory  
+	* @param dieselQuantity diesel fuel quantity in the inventory  
+	* @param scooterQuantity scooter fuel quantity in the inventory  
+	* @param homeHeatingQuantity home heating fuel quantity in the inventory  
+	* @param gasolineThresholdLevel gasoline Threshold Level at the staion
+	* @param dieselThresholdLevel diesel Threshold Level at the staion
+	* @param scooterThresholdLevel scooter Threshold Level at the staion
+	* @param managerIDString station manager Id
+	*/
 
 	public StationsInventory(String stationID, String stationName, String stationAddress, String gasolineQuantity,
 			String dieselQuantity, String scooterQuantity, String homeHeatingQuantity, String gasolineThresholdLevel,

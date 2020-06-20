@@ -1,6 +1,13 @@
 package Entity;
 
 import java.io.Serializable;
+/**
+*This class represents the details after refueling 
+*Every refueling Characterized by OrderID, ownerID, CarNumber,
+*GasStation, address, GasType, RateForLiter, Qunatity, 
+*Price, Date, pumpNumber, service, time, saleID
+*
+*/
 
 public class Refueling  implements Serializable{
 	
@@ -25,6 +32,24 @@ public class Refueling  implements Serializable{
 	String service;
 	String time;
 	String saleID;
+	/**
+	* constructor and initializes object of type refueling
+	*
+	* @param orderID refueling expired id
+	* @param ownerID client id
+	* @param carNumber car number
+	* @param gasStation gas staion that the client refuel from
+	* @param address station address
+	* @param gasType gas typ used in refueling
+	* @param rateForLiter rate for gas accordeing to to client
+	* @param qunatity refueling quantity
+	* @param price amount of many
+	* @param date refueling date
+	* @param pumpNumber pump number 
+	* @param service client services
+	* @param time refueling time
+	* @param saleID sale Id in case that the client refuel at sale time
+	*/
 	public Refueling(int orderID, String ownerID, String carNumber, String gasStation, String address, String gasType,
 			String rateForLiter, String qunatity, String price, String date, String pumpNumber, String service,
 			String time, String saleID) {
@@ -44,6 +69,11 @@ public class Refueling  implements Serializable{
 		this.time = time;
 		this.saleID = saleID;
 	}
+	/**
+	*This method object of type refueling 
+	*/
+
+
 	@Override
 	public String toString() {
 		return "Refueling [OrderID=" + OrderID + ", ownerID=" + ownerID + ", CarNumber=" + CarNumber + ", GasStation="

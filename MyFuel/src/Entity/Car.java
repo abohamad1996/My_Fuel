@@ -1,13 +1,15 @@
 package Entity;
 
 import java.io.Serializable;
-
+/**
+*lass represents client's Car
+*Every car characterized by ownerID, carNumber, purchasePlan, Services,
+*gastype, gasStation1, gasStation2, gasStation3, rateForCar;
+*/
 public class Car implements Serializable{
 
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	
 	String ownerID;
@@ -22,6 +24,19 @@ public class Car implements Serializable{
 	
 	
 	;
+	/**
+	*constructor and initializes object of type car 
+	*
+	*@param ownerID - car owner ID
+	*@param carNumber - car's number
+	*@param purchasePlan - purchasePlan's level
+	*@param services- client' services that he choose at the registertion 
+	*@param gastype - gasType that the car use 
+	*@param gasStation2- gas station that the client want to refuel from
+	*@param gasStation3- gas station that the client want to refuel from
+	*@param rateForCar- client' rate according to the services
+	*
+	*/
 	public Car(String ownerID, String carNumber, String purchasePlan, String services, String gastype,
 			String gasStation1, String gasStation2, String gasStation3, String rateForCar) {
 		super();
@@ -35,6 +50,10 @@ public class Car implements Serializable{
 		this.gasStation3 = gasStation3;
 		this.rateForCar = rateForCar;
 	}
+	/**
+	*This method print object of type car 
+	*
+	*/
 	@Override
 	public String toString() {
 		return "Car [ownerID=" + ownerID + ", carNumber=" + carNumber + ", purchasePlan=" + purchasePlan + ", Services="
@@ -99,14 +118,18 @@ public class Car implements Serializable{
 		return serialVersionUID;
 	}
 	/**
-	 * 
-	 * @param rate is the maximum price
-	 * @param service the service the Client get discount according to
-	 * @param Pay is the client use Pre-Paying
-	 * @return newRate that the client pay according to it
-	 * 
-	 * the method calculate the discount for client that he receive for the service he choose
-	 */
+	* The method calculate the discount for client that he receive according to the service he choose
+	* if the serivce Casual fueling the client do not get discount
+	* if the serivce Regular monthly 1 car the client get discount 4%
+	* if the serivce Regular monthly +1 the client get discount 4% and 10%
+	* if the serivce Full monthly the client get discount 4% and 10% and another 3% for pre-paying
+
+	* @param rate for gas type in the station
+	* @param service the service the Client get discount according to
+	* @param Pay for services Full monthly if he use Pre-Paying
+	* @return newRate that the client pay according to it
+	* 
+	*/
 	public double calculate_car_rate(double rate, String service, String Pay) {
 		double newRate = 0;
 		

@@ -31,6 +31,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/**
+*This class represents Marketing Manager Sale Controller
+*Marketing Manager can apply a new Sale
+*/ 
+
 
 public class MarketingManagerSaleController implements Initializable{
 	
@@ -82,7 +87,14 @@ public class MarketingManagerSaleController implements Initializable{
 	
 	
 	
-	
+	/**
+	* This methode load the information into the gui
+	*
+	* @param splitpane this parameter form the type 
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	* @param userJob this parameter from the type string 
+	*/
+
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
 		this.user=user;
@@ -97,7 +109,11 @@ public class MarketingManagerSaleController implements Initializable{
 		}
 	}
 		
-		
+	/**
+	* This method start a new sale 	
+	* @param event event of button
+	*/
+
 	@FXML
     void Start(ActionEvent event) {	
 		if(txtDiscout.getText().isEmpty()|| txtFrom.getText().isEmpty()|| txtTo.getText().isEmpty() ||comboFuelType.getSelectionModel().isEmpty())
@@ -129,7 +145,10 @@ public class MarketingManagerSaleController implements Initializable{
 	}}
 		
 	
-	
+	/**
+	*
+	* This methode connect between the controller and the gui
+	*/
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -144,7 +163,12 @@ public class MarketingManagerSaleController implements Initializable{
 
 	}
 
-
+/**
+ * 
+ * this method takes all the sales data from sql table database
+ * 
+ * @param salmarketingmanagerList  array list of type Sales that takes all the sales of database table
+ */
 	public void FuelAcceptor(ArrayList<Sales> salmarketingmanagerList) {
 		offer=new Sales(salmarketingmanagerList.get(0).getIDsales(), salmarketingmanagerList.get(0).getFuelType(), salmarketingmanagerList.get(0).getDiscount(), salmarketingmanagerList.get(0).getFormHour(), salmarketingmanagerList.get(0).getToHout(),salmarketingmanagerList.get(0).getStatus());
 		

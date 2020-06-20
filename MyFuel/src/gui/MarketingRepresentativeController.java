@@ -20,6 +20,10 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
+/**
+*This class represents Marketing Representative Controller
+*
+*/ 
 
 public class MarketingRepresentativeController implements Initializable{
 	@FXML
@@ -57,7 +61,11 @@ public class MarketingRepresentativeController implements Initializable{
     private Label DiroctoryBar;
     @FXML
     private Button btnCar;
-    
+    /**
+    * This method open the gui of home page 
+    * @param event event of button
+    */
+
     @FXML
     void HomeButton(ActionEvent event) {
      	DiroctoryBar.setText("My Fuel->Home");
@@ -66,7 +74,10 @@ public class MarketingRepresentativeController implements Initializable{
     		HomePage.start(splitpane, user, "User");
 });
     }
-
+    /**
+    * This method make the user log out from the program
+    * @param event event of button
+    */
     @FXML
     void Logout(ActionEvent event) {
 		System.out.println("Logout");
@@ -79,6 +90,10 @@ public class MarketingRepresentativeController implements Initializable{
 			e.printStackTrace();
 		}
     }
+    /**
+     * This method bring us to profile setting gui
+     * @param event event of button
+     */
 
     @FXML
     void ProfileSettingButton(ActionEvent event) {
@@ -88,7 +103,10 @@ public class MarketingRepresentativeController implements Initializable{
     		ProfileSetting.start(splitpane, user, "User");
 });
     }
-
+    /**
+     * This method bring us to Register Client gui
+     * @param event event of button
+     */
     @FXML
     void RegisterClient(ActionEvent event) {
     	DiroctoryBar.setText("My Fuel->Register Client");
@@ -97,7 +115,12 @@ public class MarketingRepresentativeController implements Initializable{
     		register.start(splitpane, user, "User");
 });
     	}
-    
+    /**
+     * This method bring us to Add Car gui
+     * @param event event of button
+     */
+
+
     @FXML
     void AddCar(ActionEvent event) {
      	DiroctoryBar.setText("My Fuel->Register Car");
@@ -108,6 +131,12 @@ public class MarketingRepresentativeController implements Initializable{
     		car.start(splitpane, user, "User");
     	});
     }
+    
+    /**
+     * This method bring us to about gui
+    * @param event event of button
+    */
+
     @FXML
     void btnAbout(ActionEvent event) {
      	DiroctoryBar.setText("My Fuel->About");
@@ -116,6 +145,11 @@ public class MarketingRepresentativeController implements Initializable{
     		About.start(splitpane, user, "User");
 });
     }
+    /**
+    * This methode return the primary stage
+    * @return primary stage
+    */
+
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
@@ -126,6 +160,12 @@ public class MarketingRepresentativeController implements Initializable{
 	public static ProfileSettingsController ProfileSetting;
 	public static AboutController About;
 	public static HomePage HomePage;
+	/**
+	* This methode load the information into the gui
+	*
+	* @param user this paramater from the type user that contains id,firtstname,lastname,email,username,password,rank,clienttype,status,image
+	*
+	*/
 	public void start(User user) {
 		this.user = user;
 		s = this;
@@ -158,7 +198,10 @@ public class MarketingRepresentativeController implements Initializable{
 		});
 	}
 	
-	
+	/**
+	* This method run all the buttons in the gui
+	* @param f this paramater get a function to run the button
+	*/
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
@@ -174,7 +217,11 @@ public class MarketingRepresentativeController implements Initializable{
 	}
 	
 
-	
+	/**
+	* This methode run all the buttons in the gui
+	* 
+	*/
+
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

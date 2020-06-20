@@ -9,6 +9,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
+/**
+*This class represents sale operation
+*Every sale Characterized by IDsales, FuelType, Discount, FromHour,
+*ToHour, status
+*
+*/
 
 public class Sales implements Serializable{
 
@@ -28,7 +34,17 @@ public class Sales implements Serializable{
 	
 	
 	
-	
+	/**
+	*  constructor and initializes object of type sales
+	*
+	* @param iDsales sale ID
+	* @param fuelType fuel type discount
+	* @param discount Percentage of discount
+	* @param formHour start hour
+	* @param toHout end hour
+	* @param status sale status
+	*/
+
 	public Sales(int iDsales, String fuelType, String discount, String formHour, String toHout, int status) {
 		super();
 		IDsales = iDsales;
@@ -77,6 +93,9 @@ public class Sales implements Serializable{
 		Status = status;
 	}
 
+	/**
+	*This method object of type sales  
+	*/
 
 	@Override
 	public String toString() {
