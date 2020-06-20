@@ -114,9 +114,23 @@ public class CarRegisterController implements Initializable{
     	String gastype;
     	Car car ;
     	String Services,Rate=null;
-    
+    System.out.println(comboPlan.getValue());
+    if(txtCarNumber.getText().isEmpty() || comboPlan.getSelectionModel().isEmpty()|| comboServices.getSelectionModel().isEmpty()|| comboStation.getSelectionModel().isEmpty()||comboID.getSelectionModel().isEmpty())
+    {
+    	
+    	
+    	Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setAlertType(AlertType.INFORMATION); 
+				alert.setContentText("There is missing field");
+				alert.show(); 
+			}
+		});
+    }
     		
- 
+    else {
     	car=new Car(comboID.getValue(), txtCarNumber.getText(), comboPlan.getValue(), comboServices.getValue(),comboGastype.getValue(), comboStation.getValue(), comboStation2.getValue(), comboStation3.getValue(),Rate);
     	double rateNew = 0;
     	gastype=comboGastype.getValue();
@@ -185,7 +199,7 @@ public class CarRegisterController implements Initializable{
     	runLater(() -> {
     		clientRegister.start(splitpane, null, "User");
 });}
-    
+    }
     
     @FXML
     void DisplayPrePaying(ActionEvent event) {

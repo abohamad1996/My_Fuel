@@ -12,6 +12,7 @@ import Entity.StationsInventory;
 import Entity.User;
 import client.ClientConsole;
 import common.Message;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -126,6 +127,21 @@ public class StationManagerInventoryController implements Initializable{
     	StationManagerInventoryController.acainstance.details.accept(new Message(14, Diesel));
     	StationManagerInventoryController.acainstance.details.accept(new Message(14, Scotter));
     	StationManagerInventoryController.acainstance.details.accept(new Message(14, HomeHeating));*/
+    	
+    	if(txtGasoline.getText().isEmpty()||txtDiesel.getText().isEmpty()||txtScooter.getText().isEmpty())
+    	{
+    		Platform.runLater(new Runnable() {
+    			@Override
+    			public void run() {
+    				Alert alert = new Alert(AlertType.INFORMATION);
+    				alert.setAlertType(AlertType.INFORMATION); 
+    				alert.setContentText("There is missing field");
+    				alert.show(); 
+    			}
+    		});
+    	}
+    	else
+    	{
     	gasStationsInventoryUpdate =new StationsInventory(stationsInventory.getStationID(), stationsInventory.getStationName(), stationsInventory.getStationAddress(),  stationsInventory.getGasolineQuantity(), stationsInventory.getDieselQuantity(), stationsInventory.getScooterQuantity(), stationsInventory.getHomeHeatingQuantity(), txtGasoline.getText(), txtDiesel.getText(), txtScooter.getText(), stationsInventory.getManagerIDString());
      	StationManagerInventoryController.acainstance.details.accept(new Message(14, gasStationsInventoryUpdate));
     	System.out.println(gasStationsInventoryUpdate);
@@ -134,7 +150,7 @@ public class StationManagerInventoryController implements Initializable{
     			alert.setContentText("ThresholdLevel changes successfully!!");
     			alert.show(); 
     }
-
+    }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

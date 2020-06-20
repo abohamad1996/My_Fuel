@@ -1148,6 +1148,32 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+			case 78:// get sales
+				try {
+					ArrayList<String> aa;
+					try {
+						aa = DBconnector.HomeHeatingDates(DBconnector.getConnection());
+						Object bb = aa;
+						client.sendToClient(new Message(78, bb));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case 79:// new order system
+				String dateselect=(String) recieved.getObject();
+				String DateSTR=DBconnector.HomeHeatingDateSelect(dateselect);
+				try {
+					client.sendToClient(new Message(79, DateSTR));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
 		}
 		
 	}

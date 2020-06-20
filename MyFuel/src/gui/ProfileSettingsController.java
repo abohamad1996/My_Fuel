@@ -94,6 +94,22 @@ public class ProfileSettingsController implements Initializable{
 
     @FXML
     void UpdateDetails(ActionEvent event) {
+    	if(txtID.getText().isEmpty() ||txtEmail.getText().isEmpty()|| txtFirstName.getText().isEmpty()|| txtLastName.getText().isEmpty())
+    	{
+    		Platform.runLater(new Runnable() {
+    			@Override
+    			public void run() {
+    				Alert alert = new Alert(AlertType.INFORMATION);
+    				alert.setAlertType(AlertType.INFORMATION); 
+    				alert.setContentText("There is missing field");
+    				alert.show(); 
+    			}
+    		});
+    		
+    		
+    		
+    	}
+    	else {
     	User user=new User(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), null, null, null, null,null,null);
     	ProfileSettingsController.acainstance.details.accept(new Message(5, user));;
     	Platform.runLater(new Runnable() {
@@ -105,6 +121,7 @@ public class ProfileSettingsController implements Initializable{
 					alert.show(); 
 				}
 			});
+    }
     }
 
     @FXML
@@ -121,7 +138,20 @@ public class ProfileSettingsController implements Initializable{
     void SetPassword(ActionEvent event) {
     	System.out.println(txxPassword.getText());
     	System.out.println(txtConfirm.getText());
-    	if(txxPassword.getText().equals(txtConfirm.getText()))
+    	if(txxPassword.getText().isEmpty() || txtConfirm.getText().isEmpty())
+    	{
+    		
+    		Platform.runLater(new Runnable() {
+    			@Override
+    			public void run() {
+    				Alert alert = new Alert(AlertType.INFORMATION);
+    				alert.setAlertType(AlertType.INFORMATION); 
+    				alert.setContentText("There is missing field");
+    				alert.show(); 
+    			}
+    		});
+    	}
+    	else if(txxPassword.getText().equals(txtConfirm.getText()))
     	{
         	User user2=new User(txtID.getText(), txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), null, txxPassword.getText(), null, null,null,null);
         	ProfileSettingsController.acainstance.details.accept(new Message(12, user2));;

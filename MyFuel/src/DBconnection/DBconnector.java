@@ -1711,4 +1711,43 @@ public static ArrayList<Rating> rating(java.sql.Connection connection)
 	}
 	return arr;
 }
+public static ArrayList<String> HomeHeatingDates(java.sql.Connection connection)
+{
+ArrayList<String> arr = new ArrayList<String>();
+	Statement stmt;
+	try 
+	{
+		stmt = ((java.sql.Connection) connection).createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT  Date FROM my_fuel.homeheatingdates;");
+ 		while(rs.next())
+ 		{
+		arr.add(rs.getString(1));	
+ 		}
+		rs.close();
+	
+	} catch (SQLException e) {e.printStackTrace();}
+	return arr;
+}
+public static String HomeHeatingDateSelect(String date) {
+	Statement stmt;
+	try {
+		stmt = DBconnector.getConnection().createStatement();
+		String query = "insert into my_fuel.homeheatingdates values(?,?);";
+	    PreparedStatement ps = DBconnector.getConnection().prepareStatement(query);
+	    int a = 0;
+	  String b=date;
+	
+		ps.setInt(1,a); 
+		ps.setString(2,b); 	
+	
+	
+		System.out.println(""+ps.toString());
+		ps.executeUpdate();
+		return "success";
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return "error";
+	}
+}
 }

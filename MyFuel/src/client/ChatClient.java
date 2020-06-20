@@ -707,6 +707,17 @@ public class ChatClient extends AbstractClient
 				 ArrayList<Rating> rating=(ArrayList<Rating>)ratArrayList;
 				 AnalayticSystemController.acainstance.RatingAcceptor(rating);
 				 break;
+		  case 78:
+			  ArrayList<?> dates =(ArrayList<?>)recieved.getObject();
+				 ArrayList<String> date=(ArrayList<String>)dates;
+				 HomeHeatingOrderController.acainstance.DatesAcceptor(date);
+				 break;
+		  case 79:
+			  String dateselected = (String) recieved.getObject();
+			  Platform.runLater(() -> {
+				 // ClientRegisterController.acainstance.status.setText(Order + " Updated!");
+			    });
+			  break;
   }
   }
   

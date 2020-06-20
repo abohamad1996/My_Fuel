@@ -16,8 +16,8 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="557.0" prefWidth="263.0" styleClass="root5" stylesheets="@css2.css">
                <children>
                   <Button fx:id="btnHome" layoutX="48.0" layoutY="148.0" mnemonicParsing="false" onAction="#HomeButton" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Home" />
-                  <Button fx:id="btnProfile" layoutX="48.0" layoutY="300.0" mnemonicParsing="false" onAction="#ProfileSettingButton" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Profile Settings" />
-                  <Button fx:id="btnAbout" layoutX="48.0" layoutY="339.0" mnemonicParsing="false" onAction="#btnAbout" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="About" />
+                  <Button fx:id="btnProfile" layoutX="46.0" layoutY="340.0" mnemonicParsing="false" onAction="#ProfileSettingButton" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Profile Settings" />
+                  <Button fx:id="btnAbout" layoutX="46.0" layoutY="379.0" mnemonicParsing="false" onAction="#btnAbout" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="About" />
                   <ImageView fitHeight="119.0" fitWidth="156.0" layoutX="31.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/HomeLogo.png" />
@@ -28,32 +28,38 @@
                         <Image url="@../images/HomeIcon.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="17.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="15.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Userprofile.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="17.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="15.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/AboutIcon.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="btnInventory" layoutX="47.0" layoutY="188.0" mnemonicParsing="false" onAction="#Inventory" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Inventory" />
-                  <Button fx:id="btnNewReports" layoutX="48.0" layoutY="225.0" mnemonicParsing="false" onAction="#NewReports" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="New Reports" />
-                  <ImageView fitHeight="38.0" fitWidth="28.0" layoutX="10.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="btnNewReports" layoutX="46.0" layoutY="265.0" mnemonicParsing="false" onAction="#NewReports" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="New Reports" />
+                  <ImageView fitHeight="38.0" fitWidth="28.0" layoutX="8.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/report.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnOrderConfirmation" layoutX="49.0" layoutY="263.0" mnemonicParsing="false" onAction="#OrderConfirmation" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Order Confirmation" />
+                  <Button fx:id="btnOrderConfirmation" layoutX="47.0" layoutY="303.0" mnemonicParsing="false" onAction="#OrderConfirmation" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Order Confirmation" />
                   <ImageView fitHeight="41.0" fitWidth="44.0" layoutX="-1.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/inventory.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="41.0" fitWidth="37.0" layoutX="10.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="41.0" fitWidth="37.0" layoutX="8.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/order%20confirmation.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnHomeHeating" layoutX="45.0" layoutY="228.0" mnemonicParsing="false" onAction="#HomeHeating" prefHeight="29.0" prefWidth="129.0" styleClass="root2" stylesheets="@css2.css" text="Home Heating" />
+                  <ImageView fitHeight="38.0" fitWidth="28.0" layoutX="9.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/HomeHeat.png" />
                      </image>
                   </ImageView>
                </children>

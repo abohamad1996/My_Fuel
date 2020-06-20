@@ -19,12 +19,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -44,7 +46,7 @@ public class HomeHeatingOrderController implements Initializable{
     private TextField btnQuantity;
 
     @FXML
-    private DatePicker dateSelect;
+    private ComboBox<String> DateSelect;
 
     @FXML
     private ComboBox<String> txtUrgent;
@@ -78,6 +80,8 @@ public class HomeHeatingOrderController implements Initializable{
 	public StationsInventory stationsInventory;
 	ArrayList<StationsInventory> inven;
     ObservableList<String> List =FXCollections.observableArrayList(); 
+    ObservableList<String> DatesList =FXCollections.observableArrayList(); 
+
     ObservableList<String> GasList =FXCollections.observableArrayList(); 
 	public void start(SplitPane splitpane, User user,String userJob) {
 		this.splitpane=splitpane;
@@ -110,6 +114,10 @@ public class HomeHeatingOrderController implements Initializable{
 		List.add(gasStation[i]);
 		}
 	}
+	public void DatesAcceptor(ArrayList<String> dates) {
+		DatesList.addAll(dates);
+		}
+	
 	
 	public void HomeHeatingRatesAcceptor(String rate) {
 		homeHeatingRate=rate;
@@ -128,6 +136,7 @@ public class HomeHeatingOrderController implements Initializable{
     }
 	   @FXML
 	    void AddNewOrder(ActionEvent event) {
+		  
 		   inventory=Double.parseDouble(stationsInventory.getHomeHeatingQuantity());
 		   newInventory=inventory-quantity;
 		   String Inventory=String.valueOf(newInventory); 
@@ -143,9 +152,23 @@ public class HomeHeatingOrderController implements Initializable{
 	});
 			//System.out.println(stationsInventory);
 	    }
+	   
 	    @FXML
 	    void Calculate(ActionEvent event) {
-	    	  date=dateSelect.getValue().toString();
+	    	 if(txtUrgent.getSelectionModel().isEmpty()|| comboGasStation.getSelectionModel().isEmpty() ||DateSelect.getSelectionModel().isEmpty())
+			   {
+				 	Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							Alert alert = new Alert(AlertType.INFORMATION);
+							alert.setAlertType(AlertType.INFORMATION); 
+							alert.setContentText("There is missing field");
+							alert.show(); 
+						}
+					});
+			   }
+			   else {
+	    	  date=DateSelect.getValue();
 			   quantity=Double.parseDouble(btnQuantity.getText());
 			   urgent=txtUrgent.getValue();
 			   heatingOrder=new HomeHeatingOrder(0, user.getId(), quantity, date, urgent, price, "In Progress");
@@ -155,6 +178,7 @@ public class HomeHeatingOrderController implements Initializable{
 			labelPrice.setVisible(true);
 			labelPrice.setText(finalPrice);
 			btnAddOrder.setVisible(true);
+	    }
 	    }
 	    @FXML
 	    void CalculatePrice(KeyEvent event) {
@@ -180,6 +204,7 @@ public class HomeHeatingOrderController implements Initializable{
 		acainstance=this;
 		details.accept(new Message(22, null));
 		details.accept(new Message(31, null));
+		details.accept(new Message(78, null));
 		labelRate.setVisible(true);
 		labelRate.setText(homeHeatingRate);
 		urgenttypeValues.add("Yes");
@@ -187,6 +212,7 @@ public class HomeHeatingOrderController implements Initializable{
 		urgentList.addAll(urgenttypeValues);
 		txtUrgent.setItems(urgentList);
 		comboGasStation.setItems(List);
+		DateSelect.setItems(DatesList);
 	}
 
 }

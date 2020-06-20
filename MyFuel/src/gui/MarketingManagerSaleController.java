@@ -100,8 +100,20 @@ public class MarketingManagerSaleController implements Initializable{
 		
 	@FXML
     void Start(ActionEvent event) {	
-		
-
+		if(txtDiscout.getText().isEmpty()|| txtFrom.getText().isEmpty()|| txtTo.getText().isEmpty() ||comboFuelType.getSelectionModel().isEmpty())
+		{	
+			
+			Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setAlertType(AlertType.INFORMATION); 
+				alert.setContentText("There is missing field");
+				alert.show(); 
+			}
+		});
+		}
+		else {
 	    	Sales sales=new Sales(IDsales, comboFuelType.getValue(), txtDiscout.getText(), txtFrom.getText(), txtTo.getText(),-1);
 	    	MarketingManagerSaleController.acainstance.chat.accept(new Message(42, sales));
 	    	Platform.runLater(new Runnable() {
@@ -114,8 +126,7 @@ public class MarketingManagerSaleController implements Initializable{
 				}
 			});
     	
-	  
-	}
+	}}
 		
 	
 	

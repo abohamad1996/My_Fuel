@@ -85,7 +85,8 @@ public class StaionManagerController implements Initializable {
 	    private MenuItem notificationOrder;
 	    @FXML
 	    private MenuButton UserMenu;
-
+	    @FXML
+	    private Button btnHomeHeating;
 	    @FXML
 	    private MenuItem Rank;
 
@@ -121,7 +122,14 @@ public class StaionManagerController implements Initializable {
 				System.out.println(stationsInventory);
 			}
 	    
-	    
+	    @FXML
+	    void HomeHeating(ActionEvent event) {
+	    	  DiroctoryBar.setText("My Fuel->Home Heating Dates");
+	    	homeHeatingDates = new StationManagerHomeHeatingDates();
+	    	runLater(() -> {
+	    		homeHeatingDates.start(splitpane, user, "User");
+	});
+	    }
 	    @FXML
 	    void HomeButton(ActionEvent event) {
 			  DiroctoryBar.setText("My Fuel->Home");
@@ -276,6 +284,7 @@ public class StaionManagerController implements Initializable {
 	    Rank=new MenuItem(user.getRank());
 	       UserMenu.setText(user.getFirstname());
 	}
+	public static StationManagerHomeHeatingDates homeHeatingDates;
 	public static StationManagerOrderCompletedController ordercompleted;
 	public static StationDetailsController stationDetailsController;
 	public static ClientRegisterController register;

@@ -56,6 +56,20 @@ public class RepresentativeTransportSetMaxPrice implements Initializable{
 	Rates Gasoline,Diesel,Scotter,HomeHeating;
     @FXML
     void SetPrice(ActionEvent event) {
+    	if(txtGasoline.getText().isEmpty() || txtDiesel.getText().isEmpty()||txtScooter.getText().isEmpty()||txtHomeHeating.getText().isEmpty())
+    	{
+    		
+    		Platform.runLater(new Runnable() {
+    			@Override
+    			public void run() {
+    				Alert alert = new Alert(AlertType.INFORMATION);
+    				alert.setAlertType(AlertType.INFORMATION); 
+    				alert.setContentText("There is missing field");
+    				alert.show(); 
+    			}
+    		});
+    	}
+    	else {
     		Gasoline=new Rates("Gasoline 95", txtGasoline.getText());
     		Diesel=new Rates("Diesel fuel", txtDiesel.getText());
     		Scotter=new Rates("Scooters fuel", txtScooter.getText());
@@ -73,7 +87,7 @@ public class RepresentativeTransportSetMaxPrice implements Initializable{
     				alert.show(); 
     			}
     		});
- 
+    	}
     }
 	public void RatesAcceptor(ArrayList<Rates> maxPrice) {
 		System.out.println(maxPrice.get(0).getPrice());

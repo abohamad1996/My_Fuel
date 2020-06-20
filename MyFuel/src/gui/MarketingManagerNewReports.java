@@ -150,7 +150,21 @@ ArrayList<maxbuy> max=new ArrayList<maxbuy>();
    			e.printStackTrace();
    		}
            //////////////////////////////////////////////////////////////////////////////
-    	if(comboReportType.getValue().equals("Comments Report for Marketing Campaign"))
+    	   if(comboReportType.getSelectionModel().isEmpty())
+    	   {
+    	
+    			Platform.runLater(new Runnable() {
+    				@Override
+    				public void run() {
+    					Alert alert = new Alert(AlertType.INFORMATION);
+    					alert.setAlertType(AlertType.INFORMATION); 
+    					alert.setContentText("There is missing field");
+    					alert.show(); 
+    				}
+    			});
+    	   }
+    	   
+    	   else if(comboReportType.getValue().equals("Comments Report for Marketing Campaign"))
 		{
     		String path="C:\\MyFuel\\MyFuelMarketingManagerReports\\Send\\";
 			String filename="Comments Report for Marketing Campaign";

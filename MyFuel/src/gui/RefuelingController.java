@@ -105,7 +105,7 @@ public class RefuelingController implements Initializable{
 	   
        
 	    Date loc_Time=new Date();
-	    DateFormat dateFormat = new SimpleDateFormat("hh:mm");
+	    DateFormat dateFormat = new SimpleDateFormat("h:mm");
 	 	boolean saleOn=false;
 	    double discount ;
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -149,6 +149,7 @@ public class RefuelingController implements Initializable{
     @FXML
     void Calculate(ActionEvent event) {
     	String now=dateFormat.format(loc_Time);
+    	System.out.println(now);
     /*	System.out.println(now);
     	System.out.println(sales.getFuelType().compareTo(car2.get(r).getGastype())==0);
     	System.out.println((now.compareTo(sales.getFormHour())>0));
@@ -208,10 +209,20 @@ public class RefuelingController implements Initializable{
     
     @FXML
     void SeeDetails(ActionEvent event) {
-    	clientRefuelingDetails = new ClientRefuelingDetailsController();
+    /*	clientRefuelingDetails = new ClientRefuelingDetailsController();
     	runLater(() -> {
     		clientRefuelingDetails.start(splitpane, user, "User");
-});
+});*/
+    	Platform.runLater(new Runnable() {
+    	@Override
+		public void run() {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Purchase Details");
+			alert.setAlertType(AlertType.INFORMATION); 
+			alert.setContentText("Car Number :"+labelCarNumber.getText()+"\n"+"Gas Station  :"+labelGasStation.getText()+"\n"+"Gas Type :"+labelGasStation.getText()+"\n"+"Rate for liter:"+labelRate.getText()+"\n"+"Quantity:"+txtQuantity.getText()+"\n"+"Price:"+labelPrice.getText()+" NIS"+"\n"+"Date:"+date+"\n");
+			alert.show(); 
+		}
+	});
     }
 	public void StationAcceptor(ArrayList<StationsInventory> station) {
 		stationsInventories = (ArrayList<StationsInventory>)station.clone();
@@ -386,7 +397,6 @@ public class RefuelingController implements Initializable{
 		labelFuelTyple.setText(car2.get(randomNum).getGastype());
 		labelFuelTyple.setVisible(true);
 		labelGasStation.setText(car2.get(randomNum).getGasStation1());
-		labelServices.setText(car2.get(randomNum).getServices());
 		labelGasStation.setVisible(true);
 		labelPump.setText(s);
 		labelPump.setVisible(true);

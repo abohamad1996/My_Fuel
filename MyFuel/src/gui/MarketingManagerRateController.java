@@ -153,6 +153,21 @@ public class MarketingManagerRateController implements Initializable {
 	
     @FXML
     void SendToApprove(ActionEvent event) {
+    	if(txtRate.getText().isEmpty()||comboFuelType.getSelectionModel().isEmpty())
+    	{
+    		Platform.runLater(new Runnable() {
+    			@Override
+    			public void run() {
+    				Alert alert = new Alert(AlertType.INFORMATION);
+    				alert.setAlertType(AlertType.INFORMATION); 
+    				alert.setContentText("There is missing field");
+    				alert.show(); 
+    			}
+    		});
+    	
+    	
+    	}
+    	else {
     	currentprice=Double.parseDouble(txtRate.getText());
     	//System.out.println(currentprice);
     	
@@ -221,7 +236,7 @@ public class MarketingManagerRateController implements Initializable {
     
     	}
     
-    
+    }
     
     
     

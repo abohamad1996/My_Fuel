@@ -110,6 +110,7 @@ public class PurchasePlanController implements Initializable{
 				txtGastype.setText(car2.get(index).getGastype());
 				txtCarnumber.setText(car2.get(index).getCarNumber());
 				txtRate.setText(car2.get(index).getRateForCar());
+				System.out.println(car2.toString());
 	        }
 	    
 	    private int getCarNumberPos(String carnumber) {

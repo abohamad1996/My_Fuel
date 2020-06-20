@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="analyticsystemtable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AnalayticSystemController">
+<AnchorPane fx:id="analyticsystemtable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AnalayticSystemController">
    <children>
       <Text layoutX="245.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Analytic System" wrappingWidth="218.0">
          <font>
