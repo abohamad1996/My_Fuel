@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="690.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SupplierOrderController">
+   <children>
+      <Text layoutX="298.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Orders">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnShowOrders" layoutX="303.0" layoutY="413.0" mnemonicParsing="false" onAction="#ShowOrders" styleClass="root4" text="Show Orders" />
+      <TableView fx:id="orderConfirmationTable" layoutX="3.0" layoutY="91.0" prefHeight="304.0" prefWidth="684.0" styleClass="root2" stylesheets="@css2.css">
+         <columns>
+            <TableColumn fx:id="clmOrderNumber" prefWidth="40.0" text="ID" />
+            <TableColumn fx:id="clmType" prefWidth="110.0" text="Type" />
+            <TableColumn fx:id="clmQuantity" minWidth="8.0" prefWidth="84.0" text="Quantity" />
+            <TableColumn fx:id="clmStatus" minWidth="8.0" prefWidth="126.0" text="Status" />
+            <TableColumn fx:id="clmStation" minWidth="8.0" prefWidth="105.0" text="Station" />
+            <TableColumn fx:id="clmAddress" minWidth="8.0" prefWidth="100.0" text="Address" />
+            <TableColumn fx:id="clmDate" minWidth="8.0" prefWidth="95.0" text="Date" />
+            <TableColumn fx:id="clmManagerID" minWidth="8.0" prefWidth="95.0" text="Manager ID" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
